@@ -1,0 +1,16 @@
+﻿namespace UniqueCreator
+{
+    runtimeclass ResourceCreateContext;
+
+    [version(1.0), uuid(aa299AD4-6455-4B11-ad5B-5224E92dffa2), exclusiveto(ResourceCreateContext)]
+    interface IResourceCreateContext : IInspectable
+    {
+        HRESULT SetSwapChain([in, annotation("_In_")] Windows.UI.Xaml.Controls.SwapChainPanel* swapChain);
+    };
+
+    [version(1.0), activatable(1.0)]
+    runtimeclass ResourceCreateContext
+    {
+        [default] interface IResourceCreateContext;
+    }
+}
