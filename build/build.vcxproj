@@ -75,8 +75,8 @@
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <PrecompiledHeaderOutputFile>$(IntDir)pch.pch</PrecompiledHeaderOutputFile>
       <WarningLevel>Level4</WarningLevel>
-      <AdditionalOptions>%(AdditionalOptions) /bigobj</AdditionalOptions>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\src\pch;$(GeneratedFilesDir);$(GeneratedFilesDir)\sources</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /bigobj</AdditionalOptions>                                      
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\src\pch;$(GeneratedFilesDir);..\src\dev\</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>28204</DisableSpecificWarnings>
       <PreprocessorDefinitions>_WINRT_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalUsingDirectories>$(WindowsSDK_WindowsMetadata);$(AdditionalUsingDirectories)</AdditionalUsingDirectories>
@@ -113,6 +113,10 @@
 
     <ClInclude Include="..\src\dev\SwapChainPanelSwapChainResources.h">
       <DependentUpon>..\src\idl\SwapChainPanelSwapChainResources.idl</DependentUpon>
+    </ClInclude>
+
+    <ClInclude Include="..\src\dev\IResourceCreateContextNative.h">
+
     </ClInclude>
 
   </ItemGroup>
