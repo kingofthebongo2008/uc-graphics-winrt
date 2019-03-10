@@ -1,10 +1,18 @@
 ﻿#include "pch.h"
 #include "ResourceCreateContext.h"
+#include <windows.h>
 
-namespace winrt::UniqueCreator::implementation
+namespace winrt::UniqueCreator::Graphics::implementation
 {
-    HRESULT ResourceCreateContext::SetSwapChain(IDXGISwapChain *swapChain)
+
+    hstring ResourceCreateContext::Text()
     {
-        return S_OK;
+        return L"Button1";
     }
+
+    HRESULT  ResourceCreateContext::Call()
+    {
+        return E_FAIL;
+    }
+
 }

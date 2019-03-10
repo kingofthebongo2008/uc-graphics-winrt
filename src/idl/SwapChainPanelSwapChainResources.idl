@@ -1,0 +1,40 @@
+﻿#pragma once
+
+//import "ResourceCreateContext.idl";
+//import "SwapChainResources.idl";
+
+namespace UniqueCreator
+{
+    namespace Graphics
+    {
+        interface ISwapChainPanelSwapChainResourcesFactory;
+        runtimeclass SwapChainPanelSwapChainResources;
+
+        [uuid(F2D80A74-731A-4F9C-BC56-910E21511D43)]
+        [version(1.0)]
+        [exclusiveto(SwapChainPanelSwapChainResources)]
+        interface ISwapChainPanelSwapChainResources : IInspectable
+        {
+            HRESULT f();
+        };
+
+        [version(1.0)]
+        [activatable(ISwapChainPanelSwapChainResourcesFactory, 1.0)]
+        [marshaling_behavior(agile)]
+        [threading(both)]
+        runtimeclass SwapChainPanelSwapChainResources
+        {
+           [default] interface ISwapChainPanelSwapChainResources;
+        }
+
+        [uuid(FBF1D69F-952D-4523-89B0-F4C6A99C13D7)]
+        [exclusiveto(SwapChainPanelSwapChainResources)]
+        [version(1.0)]
+        interface ISwapChainPanelSwapChainResourcesFactory : IInspectable
+        {
+            HRESULT Create( [in] unsigned int v, [out, retval] SwapChainPanelSwapChainResources** value);
+        };
+
+       
+    }
+}

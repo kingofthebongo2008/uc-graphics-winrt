@@ -1,0 +1,11 @@
+﻿namespace UniqueCreator
+{
+    namespace Graphics
+    {
+        [uuid(C6F1FC49-044A-4208-A806-55034A2199F2)]
+        [version(1.0)]
+        interface IFenceHandle : IInspectable
+        {
+        };
+    }
+}
