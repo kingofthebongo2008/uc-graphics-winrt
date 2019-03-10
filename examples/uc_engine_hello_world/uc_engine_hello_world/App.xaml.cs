@@ -44,7 +44,7 @@ namespace uc_engine_hello_world
 
             var t = ctx.Text;
 
-            SwapChainPanelSwapChainResources r = new SwapChainPanelSwapChainResources(32);
+            SwapChainPanelSwapChainResources r = new SwapChainPanelSwapChainResources(ctx);
 
             Frame rootFrame = Window.Current.Content as Frame;
 
