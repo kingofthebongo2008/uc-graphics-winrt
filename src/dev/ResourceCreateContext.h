@@ -1,40 +1,17 @@
 ﻿#pragma once
 
 #include "ResourceCreateContext.g.h"
-#include "SwapChainPanelSwapChainResources.g.h"
-
-#include <midlbase.h>
-
-namespace winrt::UniqueCreator::Graphics
-{
-    struct __declspec(uuid("ddc36e02-18ac-47c4-ae17-d420eece2281")) IMyComInterface : ::IUnknown
-    {
-        virtual HRESULT __stdcall Call() = 0;
-    };
-
-    /*
-    class IResourceCreateContextNative : public IUnknown
-    {
-        public:
-        virtual HRESULT Call() = 0;
-    };
-
-    */
-}
+#include "IResourceCreateContextNative.h"
 
 namespace winrt::UniqueCreator::Graphics::implementation
 {
-    struct ResourceCreateContext : ResourceCreateContextT<ResourceCreateContext, IMyComInterface >
+    struct ResourceCreateContext : ResourceCreateContextT<ResourceCreateContext, IResourceCreateContextNative >
     {
-        ResourceCreateContext() = default;
-
+        ResourceCreateContext();// = default;
         
         hstring Text();
 
-        
-        HRESULT Call();
-       
-
+        HRESULT Call() noexcept;
    };  
 }
 

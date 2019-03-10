@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-//import "ResourceCreateContext.idl";
+import "ResourceCreateContext.idl";
 //import "SwapChainResources.idl";
 
 namespace UniqueCreator
@@ -20,8 +20,8 @@ namespace UniqueCreator
 
         [version(1.0)]
         [activatable(ISwapChainPanelSwapChainResourcesFactory, 1.0)]
-        [marshaling_behavior(agile)]
-        [threading(both)]
+        //[marshaling_behavior(agile)]
+        //[threading(both)]
         runtimeclass SwapChainPanelSwapChainResources
         {
            [default] interface ISwapChainPanelSwapChainResources;
@@ -32,7 +32,7 @@ namespace UniqueCreator
         [version(1.0)]
         interface ISwapChainPanelSwapChainResourcesFactory : IInspectable
         {
-            HRESULT Create( [in] unsigned int v, [out, retval] SwapChainPanelSwapChainResources** value);
+            HRESULT Create( [in] ResourceCreateContext* ctx, [out, retval] SwapChainPanelSwapChainResources** value);
         };
 
        

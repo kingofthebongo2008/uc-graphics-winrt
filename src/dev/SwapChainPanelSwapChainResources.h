@@ -8,7 +8,7 @@ namespace winrt::UniqueCreator::Graphics::implementation
 {
     struct SwapChainPanelSwapChainResources : SwapChainPanelSwapChainResourcesT<SwapChainPanelSwapChainResources >
     {
-        SwapChainPanelSwapChainResources(uint32_t v);
+        SwapChainPanelSwapChainResources(UniqueCreator::Graphics::ResourceCreateContext const& ctx);
 
         HRESULT f();
    };  
