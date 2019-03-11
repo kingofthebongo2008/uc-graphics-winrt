@@ -12,6 +12,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using UniqueCreator.Graphics;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -25,6 +26,12 @@ namespace uc_engine_hello_world
         public MainPage()
         {
             this.InitializeComponent();
+
+            m_ctx       = new ResourceCreateContext();
+            m_swapChain = new SwapChainPanelSwapChainResources(m_ctx, m_swapChainPanel);
         }
+
+        private ResourceCreateContext m_ctx;
+        private SwapChainPanelSwapChainResources m_swapChain;
     }
 }

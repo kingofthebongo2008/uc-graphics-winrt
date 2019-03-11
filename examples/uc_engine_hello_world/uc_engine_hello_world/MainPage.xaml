@@ -9,6 +9,9 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
+        <Viewbox>
+        <SwapChainPanel x:Name="m_swapChainPanel" MinHeight="8" MinWidth="8"/>
+        </Viewbox>
 
     </Grid>
 </Page>
