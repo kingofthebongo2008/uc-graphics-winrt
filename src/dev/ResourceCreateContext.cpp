@@ -9,23 +9,21 @@ namespace winrt::UniqueCreator::Graphics::implementation
         return L"Button1";
     }
 
-    HRESULT  ResourceCreateContext::Call() noexcept
+    HRESULT __stdcall ResourceCreateContext::GetDevice( ID3D12Device** d ) noexcept
     {
+        *d = m_device.get();
+        (*d)->AddRef();
         return S_OK;
     }
 
     ResourceCreateContext::ResourceCreateContext()
     {
-        IResourceCreateContext* r = nullptr;
-        this->QueryInterface(__uuidof(IResourceCreateContextNative), reinterpret_cast<void**>(&r));
+        HRESULT r = D3D12CreateDevice(nullptr, D3D_FEATURE_LEVEL_12_1, __uuidof(ID3D12Device4), (void**) m_device.put());
 
-        if (r)
+        if (FAILED(r))
         {
             __debugbreak();
         }
-        else
-        {
-            __debugbreak();
-        }
+
     }
 }

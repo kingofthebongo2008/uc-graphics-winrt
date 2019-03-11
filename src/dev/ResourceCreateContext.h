@@ -7,11 +7,14 @@ namespace winrt::UniqueCreator::Graphics::implementation
 {
     struct ResourceCreateContext : ResourceCreateContextT<ResourceCreateContext, IResourceCreateContextNative >
     {
-        ResourceCreateContext();// = default;
+        ResourceCreateContext();
         
         hstring Text();
 
-        HRESULT Call() noexcept;
+        HRESULT __stdcall GetDevice( ID3D12Device** d) noexcept;
+
+    private:
+        winrt::com_ptr<ID3D12Device> m_device;
    };  
 }
 

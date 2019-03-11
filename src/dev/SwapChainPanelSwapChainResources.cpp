@@ -4,28 +4,23 @@
 
 namespace winrt::UniqueCreator::Graphics::implementation
 {
-    template <typename T>
-    T convert_from_abi(::IUnknown* from)
-    {
-        T to{ nullptr };
-
-        winrt::check_hresult(from->QueryInterface(winrt::guid_of<T>(),
-            reinterpret_cast<void**>(winrt::put_abi(to))));
-
-        return to;
-    }
-
-    SwapChainPanelSwapChainResources::SwapChainPanelSwapChainResources(UniqueCreator::Graphics::ResourceCreateContext const& ctx)
+    SwapChainPanelSwapChainResources::SwapChainPanelSwapChainResources(UniqueCreator::Graphics::ResourceCreateContext const & ctx, Windows::UI::Xaml::Controls::SwapChainPanel const & panel)
     {
         winrt::com_ptr<IResourceCreateContextNative> const dxdevice{ ctx.as<IResourceCreateContextNative>() };
 
         if (dxdevice)
         {
-            auto t = dxdevice.try_as < IResourceCreateContextNative >();
+            winrt::com_ptr<ID3D12Device> device;
 
-            if (t)
+            HRESULT hr = dxdevice->GetDevice(device.put());
+
+            if (SUCCEEDED(hr))
             {
-                dxdevice->Call();
+                winrt::com_ptr<ISwapChainPanelNative> const p{ panel.as<ISwapChainPanelNative>() };
+
+                HRESULT hr = dxdevice->GetDevice(device.put());
+                
+
             }
         }
     }

@@ -32,7 +32,7 @@ namespace UniqueCreator
         [version(1.0)]
         interface ISwapChainPanelSwapChainResourcesFactory : IInspectable
         {
-            HRESULT Create( [in] ResourceCreateContext* ctx, [out, retval] SwapChainPanelSwapChainResources** value);
+            HRESULT Create( [in] ResourceCreateContext* ctx, [in] Windows.UI.Xaml.Controls.SwapChainPanel* panel, [out, retval] SwapChainPanelSwapChainResources** value);
         };
 
        
