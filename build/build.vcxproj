@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\examples\uc_engine_hello_world\uc_engine_hello_world\packages\uc-graphics.1.0.15\build\native\uc-graphics.props" Condition="Exists('..\examples\uc_engine_hello_world\uc_engine_hello_world\packages\uc-graphics.1.0.15\build\native\uc-graphics.props')" />
+  <Import Project="..\examples\uc_engine_hello_world\uc_engine_hello_world\packages\uc-serialization-engine.1.0.2\build\native\uc-serialization-engine.props" Condition="Exists('..\examples\uc_engine_hello_world\uc_engine_hello_world\packages\uc-serialization-engine.1.0.2\build\native\uc-serialization-engine.props')" />
+  <Import Project="..\examples\uc_engine_hello_world\uc_engine_hello_world\packages\uc-math.1.0.4\build\native\uc-math.props" Condition="Exists('..\examples\uc_engine_hello_world\uc_engine_hello_world\packages\uc-math.1.0.4\build\native\uc-math.props')" />
+  <Import Project="..\examples\uc_engine_hello_world\uc_engine_hello_world\packages\uc-imaging.1.0.12\build\native\uc-imaging.props" Condition="Exists('..\examples\uc_engine_hello_world\uc_engine_hello_world\packages\uc-imaging.1.0.12\build\native\uc-imaging.props')" />
+  <Import Project="..\examples\uc_engine_hello_world\uc_engine_hello_world\packages\uc-core.1.0.13\build\native\uc-core.props" Condition="Exists('..\examples\uc_engine_hello_world\uc_engine_hello_world\packages\uc-core.1.0.13\build\native\uc-core.props')" />
+  <Import Project="..\examples\uc_engine_hello_world\uc_engine_hello_world\packages\Microsoft.Windows.CppWinRT.1.0.190211.5\build\native\Microsoft.Windows.CppWinRT.props" Condition="Exists('..\examples\uc_engine_hello_world\uc_engine_hello_world\packages\Microsoft.Windows.CppWinRT.1.0.190211.5\build\native\Microsoft.Windows.CppWinRT.props')" />
   <Import Project="packages\Microsoft.Windows.CppWinRT.1.0.190205.2\build\native\Microsoft.Windows.CppWinRT.props" Condition="Exists('packages\Microsoft.Windows.CppWinRT.1.0.190205.2\build\native\Microsoft.Windows.CppWinRT.props')" />
   <PropertyGroup Label="Globals">
     <CppWinRTEnabled>true</CppWinRTEnabled>
@@ -75,7 +81,7 @@
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <PrecompiledHeaderOutputFile>$(IntDir)pch.pch</PrecompiledHeaderOutputFile>
       <WarningLevel>Level4</WarningLevel>
-      <AdditionalOptions>%(AdditionalOptions) /bigobj</AdditionalOptions>                                      
+      <AdditionalOptions>%(AdditionalOptions) /bigobj</AdditionalOptions>
       <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\src\pch;$(GeneratedFilesDir);..\src\dev\</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>28204</DisableSpecificWarnings>
       <PreprocessorDefinitions>_WINRT_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -106,37 +112,35 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\src\pch\pch.h" />
-
     <ClInclude Include="..\src\dev\ResourceCreateContext.h">
       <DependentUpon>..\src\idl\ResourceCreateContext.idl</DependentUpon>
     </ClInclude>
-
     <ClInclude Include="..\src\dev\SwapChainPanelSwapChainResources.h">
       <DependentUpon>..\src\idl\SwapChainPanelSwapChainResources.idl</DependentUpon>
     </ClInclude>
-
     <ClInclude Include="..\src\dev\IResourceCreateContextNative.h">
-
     </ClInclude>
-
+    <ClInclude Include="..\src\dev\DirectQueue.h">
+      <DependentUpon>..\src\idl\DirectQueue.idl</DependentUpon>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\pch\pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-
     <ClCompile Include="..\src\dev\ResourceCreateContext.cpp">
       <DependentUpon>..\src\idl\ResourceCreateContext.idl</DependentUpon>
     </ClCompile>
-
     <ClCompile Include="..\src\dev\SwapChainPanelSwapChainResources.cpp">
       <DependentUpon>..\src\idl\SwapChainPanelSwapChainResources.idl</DependentUpon>
     </ClCompile>
-
+    <ClCompile Include="..\src\dev\DirectQueue.cpp">
+      <DependentUpon>..\src\idl\DirectQueue.idl</DependentUpon>
+    </ClCompile>
     <ClCompile Include="$(GeneratedFilesDir)module.g.cpp" />
   </ItemGroup>
-
   <ItemGroup>
+    <Midl Include="..\src\idl\DirectQueue.idl" />
     <Midl Include="..\src\idl\BackgroundSwapChainResources.idl" />
     <Midl Include="..\src\idl\Base.idl" />
     <Midl Include="..\src\idl\FenceHandle.idl" />
@@ -145,8 +149,8 @@
     <Midl Include="..\src\idl\SwapChainResources.idl" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
     <None Include="module.def" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="readme.txt">
@@ -156,6 +160,13 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
     <Import Project="packages\Microsoft.Windows.CppWinRT.1.0.190205.2\build\native\Microsoft.Windows.CppWinRT.targets" Condition="Exists('packages\Microsoft.Windows.CppWinRT.1.0.190205.2\build\native\Microsoft.Windows.CppWinRT.targets')" />
+    <Import Project="..\examples\uc_engine_hello_world\uc_engine_hello_world\packages\Microsoft.Windows.CppWinRT.1.0.190211.5\build\native\Microsoft.Windows.CppWinRT.targets" Condition="Exists('..\examples\uc_engine_hello_world\uc_engine_hello_world\packages\Microsoft.Windows.CppWinRT.1.0.190211.5\build\native\Microsoft.Windows.CppWinRT.targets')" />
+    <Import Project="..\examples\uc_engine_hello_world\uc_engine_hello_world\packages\microsoft-gsl-library.1.0.7\build\native\microsoft-gsl-library.targets" Condition="Exists('..\examples\uc_engine_hello_world\uc_engine_hello_world\packages\microsoft-gsl-library.1.0.7\build\native\microsoft-gsl-library.targets')" />
+    <Import Project="..\examples\uc_engine_hello_world\uc_engine_hello_world\packages\uc-core.1.0.13\build\native\uc-core.targets" Condition="Exists('..\examples\uc_engine_hello_world\uc_engine_hello_world\packages\uc-core.1.0.13\build\native\uc-core.targets')" />
+    <Import Project="..\examples\uc_engine_hello_world\uc_engine_hello_world\packages\uc-imaging.1.0.12\build\native\uc-imaging.targets" Condition="Exists('..\examples\uc_engine_hello_world\uc_engine_hello_world\packages\uc-imaging.1.0.12\build\native\uc-imaging.targets')" />
+    <Import Project="..\examples\uc_engine_hello_world\uc_engine_hello_world\packages\uc-math.1.0.4\build\native\uc-math.targets" Condition="Exists('..\examples\uc_engine_hello_world\uc_engine_hello_world\packages\uc-math.1.0.4\build\native\uc-math.targets')" />
+    <Import Project="..\examples\uc_engine_hello_world\uc_engine_hello_world\packages\uc-serialization-engine.1.0.2\build\native\uc-serialization-engine.targets" Condition="Exists('..\examples\uc_engine_hello_world\uc_engine_hello_world\packages\uc-serialization-engine.1.0.2\build\native\uc-serialization-engine.targets')" />
+    <Import Project="..\examples\uc_engine_hello_world\uc_engine_hello_world\packages\uc-graphics.1.0.15\build\native\uc-graphics.targets" Condition="Exists('..\examples\uc_engine_hello_world\uc_engine_hello_world\packages\uc-graphics.1.0.15\build\native\uc-graphics.targets')" />
   </ImportGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
@@ -163,5 +174,18 @@
     </PropertyGroup>
     <Error Condition="!Exists('packages\Microsoft.Windows.CppWinRT.1.0.190205.2\build\native\Microsoft.Windows.CppWinRT.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.Windows.CppWinRT.1.0.190205.2\build\native\Microsoft.Windows.CppWinRT.props'))" />
     <Error Condition="!Exists('packages\Microsoft.Windows.CppWinRT.1.0.190205.2\build\native\Microsoft.Windows.CppWinRT.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.Windows.CppWinRT.1.0.190205.2\build\native\Microsoft.Windows.CppWinRT.targets'))" />
+    <Error Condition="!Exists('..\examples\uc_engine_hello_world\uc_engine_hello_world\packages\Microsoft.Windows.CppWinRT.1.0.190211.5\build\native\Microsoft.Windows.CppWinRT.props')" Text="$([System.String]::Format('$(ErrorText)', '..\examples\uc_engine_hello_world\uc_engine_hello_world\packages\Microsoft.Windows.CppWinRT.1.0.190211.5\build\native\Microsoft.Windows.CppWinRT.props'))" />
+    <Error Condition="!Exists('..\examples\uc_engine_hello_world\uc_engine_hello_world\packages\Microsoft.Windows.CppWinRT.1.0.190211.5\build\native\Microsoft.Windows.CppWinRT.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\examples\uc_engine_hello_world\uc_engine_hello_world\packages\Microsoft.Windows.CppWinRT.1.0.190211.5\build\native\Microsoft.Windows.CppWinRT.targets'))" />
+    <Error Condition="!Exists('..\examples\uc_engine_hello_world\uc_engine_hello_world\packages\microsoft-gsl-library.1.0.7\build\native\microsoft-gsl-library.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\examples\uc_engine_hello_world\uc_engine_hello_world\packages\microsoft-gsl-library.1.0.7\build\native\microsoft-gsl-library.targets'))" />
+    <Error Condition="!Exists('..\examples\uc_engine_hello_world\uc_engine_hello_world\packages\uc-core.1.0.13\build\native\uc-core.props')" Text="$([System.String]::Format('$(ErrorText)', '..\examples\uc_engine_hello_world\uc_engine_hello_world\packages\uc-core.1.0.13\build\native\uc-core.props'))" />
+    <Error Condition="!Exists('..\examples\uc_engine_hello_world\uc_engine_hello_world\packages\uc-core.1.0.13\build\native\uc-core.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\examples\uc_engine_hello_world\uc_engine_hello_world\packages\uc-core.1.0.13\build\native\uc-core.targets'))" />
+    <Error Condition="!Exists('..\examples\uc_engine_hello_world\uc_engine_hello_world\packages\uc-imaging.1.0.12\build\native\uc-imaging.props')" Text="$([System.String]::Format('$(ErrorText)', '..\examples\uc_engine_hello_world\uc_engine_hello_world\packages\uc-imaging.1.0.12\build\native\uc-imaging.props'))" />
+    <Error Condition="!Exists('..\examples\uc_engine_hello_world\uc_engine_hello_world\packages\uc-imaging.1.0.12\build\native\uc-imaging.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\examples\uc_engine_hello_world\uc_engine_hello_world\packages\uc-imaging.1.0.12\build\native\uc-imaging.targets'))" />
+    <Error Condition="!Exists('..\examples\uc_engine_hello_world\uc_engine_hello_world\packages\uc-math.1.0.4\build\native\uc-math.props')" Text="$([System.String]::Format('$(ErrorText)', '..\examples\uc_engine_hello_world\uc_engine_hello_world\packages\uc-math.1.0.4\build\native\uc-math.props'))" />
+    <Error Condition="!Exists('..\examples\uc_engine_hello_world\uc_engine_hello_world\packages\uc-math.1.0.4\build\native\uc-math.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\examples\uc_engine_hello_world\uc_engine_hello_world\packages\uc-math.1.0.4\build\native\uc-math.targets'))" />
+    <Error Condition="!Exists('..\examples\uc_engine_hello_world\uc_engine_hello_world\packages\uc-serialization-engine.1.0.2\build\native\uc-serialization-engine.props')" Text="$([System.String]::Format('$(ErrorText)', '..\examples\uc_engine_hello_world\uc_engine_hello_world\packages\uc-serialization-engine.1.0.2\build\native\uc-serialization-engine.props'))" />
+    <Error Condition="!Exists('..\examples\uc_engine_hello_world\uc_engine_hello_world\packages\uc-serialization-engine.1.0.2\build\native\uc-serialization-engine.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\examples\uc_engine_hello_world\uc_engine_hello_world\packages\uc-serialization-engine.1.0.2\build\native\uc-serialization-engine.targets'))" />
+    <Error Condition="!Exists('..\examples\uc_engine_hello_world\uc_engine_hello_world\packages\uc-graphics.1.0.15\build\native\uc-graphics.props')" Text="$([System.String]::Format('$(ErrorText)', '..\examples\uc_engine_hello_world\uc_engine_hello_world\packages\uc-graphics.1.0.15\build\native\uc-graphics.props'))" />
+    <Error Condition="!Exists('..\examples\uc_engine_hello_world\uc_engine_hello_world\packages\uc-graphics.1.0.15\build\native\uc-graphics.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\examples\uc_engine_hello_world\uc_engine_hello_world\packages\uc-graphics.1.0.15\build\native\uc-graphics.targets'))" />
   </Target>
 </Project>
