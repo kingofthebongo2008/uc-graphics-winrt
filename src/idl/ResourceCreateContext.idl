@@ -1,17 +1,20 @@
 ﻿#pragma once
 
+import "DirectQueue.idl";
+
 namespace UniqueCreator
 {
     namespace Graphics
     {
         runtimeclass ResourceCreateContext;
+        
 
         [exclusiveto(ResourceCreateContext)]
         [uuid(D5161D72-0BF4-4C7F-9401-879AA646BFA9)]
         [version(1.0)]
         interface IResourceCreateContext : IInspectable
         {
-            [propget] HRESULT Text([out, retval] HSTRING* value);
+            HRESULT CreateDirectQueue( [out, retval] DirectQueue** value);
         };
 
         [version(1.0)]

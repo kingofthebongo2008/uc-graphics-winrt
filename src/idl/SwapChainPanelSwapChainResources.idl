@@ -15,7 +15,7 @@ namespace UniqueCreator
         [exclusiveto(SwapChainPanelSwapChainResources)]
         interface ISwapChainPanelSwapChainResources : IInspectable
         {
-            HRESULT f();
+         
         };
 
         [version(1.0)]
