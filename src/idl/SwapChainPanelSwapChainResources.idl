@@ -1,7 +1,7 @@
 ﻿#pragma once
 
 import "ResourceCreateContext.idl";
-//import "SwapChainResources.idl";
+import "SwapChainResources.idl";
 
 namespace UniqueCreator
 {
@@ -13,7 +13,7 @@ namespace UniqueCreator
         [uuid(F2D80A74-731A-4F9C-BC56-910E21511D43)]
         [version(1.0)]
         [exclusiveto(SwapChainPanelSwapChainResources)]
-        interface ISwapChainPanelSwapChainResources : IInspectable
+        interface ISwapChainPanelSwapChainResources : IInspectable requires ISwapChainResources
         {
          
         };

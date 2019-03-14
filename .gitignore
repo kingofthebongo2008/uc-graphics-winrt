@@ -3,3 +3,14 @@
 ################################################################################
 
 /build/.vs/build/v15/Browse.VC.db
+/build/.vs/build/v15/.suo
+/build/x64/Release
+/examples/uc_engine_hello_world/tmp/x64/uc-engine-winrt/Release
+/examples/uc_engine_hello_world/uc_engine_hello_world/.vs/uc_engine_hello_world/v15
+/examples/uc_engine_hello_world/uc_engine_hello_world/.vs/uc_engine_hello_world/v16
+/examples/uc_engine_hello_world/uc_engine_hello_world/x64/Release/build
+/examples/uc_engine_hello_world/uc_engine_hello_world/packages
+/examples/uc_engine_hello_world/uc_engine_hello_world/obj
+/examples/uc_engine_hello_world/uc_engine_hello_world/bin
+/lib/win-x64/Release
+/tmp

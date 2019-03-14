@@ -57,7 +57,7 @@ namespace winrt::UniqueCreator::Graphics::implementation
         }
     }
 
-    SwapChainPanelSwapChainResources::SwapChainPanelSwapChainResources(UniqueCreator::Graphics::ResourceCreateContext const & ctx, Windows::UI::Xaml::Controls::SwapChainPanel const & panel)
+    SwapChainPanelSwapChainResources::SwapChainPanelSwapChainResources(UniqueCreator::Graphics::ResourceCreateContext const& ctx, Windows::UI::Xaml::Controls::SwapChainPanel const& panel)
     {
         winrt::com_ptr<IResourceCreateContextNative> const native{ ctx.as<IResourceCreateContextNative>() };
 
@@ -68,13 +68,122 @@ namespace winrt::UniqueCreator::Graphics::implementation
 
             if (SUCCEEDED(hr))
             {
-                Microsoft::WRL::ComPtr<IDXGIFactory4> factory = uc::gx::dx12::create_dxgi_factory4();
-                m_direct_queue  = create_command_queue(device.get(), D3D12_COMMAND_LIST_TYPE_DIRECT);
-                m_swap_chain    = create_swap_chain(factory.Get(), m_direct_queue->queue(), panel.Width(), panel.Height());
+                m_resource_context = native;
+
+                using namespace uc::gx;
+
+                Microsoft::WRL::ComPtr<IDXGIFactory4> factory = dx12::create_dxgi_factory4();
+                m_direct_queue = create_command_queue(device.get(), D3D12_COMMAND_LIST_TYPE_DIRECT);
+                m_swap_chain = create_swap_chain(factory.Get(), m_direct_queue->queue(), panel.Width(), panel.Height());
 
                 winrt::com_ptr<ISwapChainPanelNative> const p{ panel.as<ISwapChainPanelNative>() };
                 p->SetSwapChain(m_swap_chain.get());
+
+                auto&& rc = m_resource_context->GetResourceCreateContext();
+
+                m_direct_command_manager    = std::make_unique<dx12::gpu_command_manager>(device.get(), m_direct_queue.get());
+                m_direct_context_allocator  = std::make_unique<dx12::gpu_command_context_allocator>(native->GetResourceCreateContext(), m_direct_command_manager.get(), m_direct_queue.get());
+
+                m_direct_queue->increment_fence();
+                m_direct_queue->increment_fence();
+
+                m_buffer_count = 3;
+
+                for (auto i = 0U; i < m_buffer_count; ++i)
+                {
+                    using namespace uc;
+
+                    //Recreate the back buffers
+                    Microsoft::WRL::ComPtr<ID3D12Resource> back_buffer;
+                    gx::dx12::throw_if_failed(m_swap_chain->GetBuffer(i, IID_PPV_ARGS(&back_buffer)));
+                    m_back_buffer[i] = std::unique_ptr<gx::dx12::gpu_back_buffer>(rc->create_back_buffer(back_buffer.Get()));
+                }
             }
         }
+    }
+
+    HRESULT SwapChainPanelSwapChainResources::Resize(uint32_t width, uint32_t height)
+    {
+        try
+        {
+            for (auto i = 0U; i < m_buffer_count; ++i)
+            {
+                m_back_buffer[i].reset();
+            }
+
+            uc::gx::dx12::throw_if_failed(m_swap_chain->ResizeBuffers(m_buffer_count, width, height, m_swap_chain_format, m_resize_flags));
+
+            auto&& rc = m_resource_context->GetResourceCreateContext();
+            uint32_t frame = m_buffer_index;
+
+            for (auto i = 0U; i < m_buffer_count; ++i)
+            {
+                using namespace uc;
+
+                //Recreate the back buffers
+                Microsoft::WRL::ComPtr<ID3D12Resource> back_buffer;
+                gx::dx12::throw_if_failed(m_swap_chain->GetBuffer(i, IID_PPV_ARGS(&back_buffer)));
+                m_back_buffer[frame] = std::unique_ptr<gx::dx12::gpu_back_buffer>(rc->create_back_buffer(back_buffer.Get()));
+
+                frame++;
+                frame %= m_buffer_count;
+            }
+
+            return S_OK;
+        }
+
+        catch (...)
+        {
+            return E_FAIL;
+        }
+    }
+
+    HRESULT SwapChainPanelSwapChainResources::WaitForGpu()
+    {
+        try
+        {
+            m_direct_queue->wait_for_idle_gpu();
+            return S_OK;
+        }
+        catch (...)
+        {
+            return E_FAIL;
+        }
+    }
+    HRESULT SwapChainPanelSwapChainResources::WaitForFence(IFenceHandle  v)
+    {
+        return S_OK;
+    }
+
+    HRESULT SwapChainPanelSwapChainResources::InsertWaitOn(IFenceHandle  v)
+    {
+        return S_OK;
+    }
+
+    HRESULT SwapChainPanelSwapChainResources::Present()
+    {
+        return m_swap_chain->Present(0, 0);
+    }
+
+    HRESULT SwapChainPanelSwapChainResources::Sync()
+    {
+        m_direct_context_allocator->sync();
+        return S_OK;
+    }
+
+    HRESULT SwapChainPanelSwapChainResources::MoveToNextFrame()
+    {
+        m_buffer_index = m_buffer_index + 1;
+        m_buffer_index = m_buffer_index % m_buffer_count;
+
+        auto fence = m_direct_queue->increment_fence();
+        m_direct_queue->wait_for_fence(fence - 2);
+
+        return S_OK;
+    }
+
+    HRESULT SwapChainPanelSwapChainResources::SetSourceSize(uint32_t width, uint32_t height)
+    {
+        return m_swap_chain->SetSourceSize(width, height);
     }
 }
