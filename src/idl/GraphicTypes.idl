@@ -1,0 +1,42 @@
+﻿namespace UniqueCreator
+{
+    namespace Graphics
+    {
+        [version(1.0)]
+        struct Size2D
+        {
+            float m_width;
+            float m_height;
+        };
+
+        [version(1.0)]
+        struct Size3D
+        {
+            float m_width;
+            float m_height;
+            float m_depth;
+        };
+
+        [version(1.0)]
+        struct Rectangle2D
+        {
+            float m_left;
+            float m_top;
+            float m_right;
+            float m_bottom;
+        };
+
+        [version(1.0)]
+        struct ViewPort
+        {
+            float m_topLeftX;
+            float m_topLeftY;
+            float m_width;
+            float m_height;
+            float m_minDepth;
+            float m_maxDepth;
+        };
+    }
+}
+
+

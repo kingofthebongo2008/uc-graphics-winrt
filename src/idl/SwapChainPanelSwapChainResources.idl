@@ -1,5 +1,6 @@
 ﻿#pragma once
 
+import "GraphicTypes.idl";
 import "ResourceCreateContext.idl";
 import "SwapChainResources.idl";
 
@@ -15,7 +16,9 @@ namespace UniqueCreator
         [exclusiveto(SwapChainPanelSwapChainResources)]
         interface ISwapChainPanelSwapChainResources : IInspectable requires ISwapChainResources
         {
-         
+            HRESULT SetCompositionScale(float scaleX, float scaleY);
+            HRESULT SetLogicalSize(Size2D size);
+            HRESULT SetDisplayInformation( [in] Windows.Graphics.Display.DisplayInformation* displayInformation);
         };
 
         [version(1.0)]

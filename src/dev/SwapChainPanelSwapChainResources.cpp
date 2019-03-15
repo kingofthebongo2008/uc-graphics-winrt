@@ -1,10 +1,10 @@
 ﻿#include "pch.h"
 #include "SwapChainPanelSwapChainResources.h"
-#include "IResourceCreateContextNative.h"
+#include "IFenceHandleNative.h"
 
 #include <uc/gx/dx12/dx12.h>
+#include "WindowsEnvironment.h"
 
-#include <dxgi1_6.h>
 
 namespace winrt::UniqueCreator::Graphics::implementation
 {
@@ -74,7 +74,7 @@ namespace winrt::UniqueCreator::Graphics::implementation
 
                 Microsoft::WRL::ComPtr<IDXGIFactory4> factory = dx12::create_dxgi_factory4();
                 m_direct_queue = create_command_queue(device.get(), D3D12_COMMAND_LIST_TYPE_DIRECT);
-                m_swap_chain = create_swap_chain(factory.Get(), m_direct_queue->queue(), panel.Width(), panel.Height());
+                m_swap_chain = create_swap_chain(factory.Get(), m_direct_queue->queue(), static_cast<uint32_t>(panel.Width()), static_cast<uint32_t>(panel.Height()));
 
                 winrt::com_ptr<ISwapChainPanelNative> const p{ panel.as<ISwapChainPanelNative>() };
                 p->SetSwapChain(m_swap_chain.get());
@@ -88,6 +88,7 @@ namespace winrt::UniqueCreator::Graphics::implementation
                 m_direct_queue->increment_fence();
 
                 m_buffer_count = 3;
+                m_back_buffer.resize(3);
 
                 for (auto i = 0U; i < m_buffer_count; ++i)
                 {
@@ -152,11 +153,28 @@ namespace winrt::UniqueCreator::Graphics::implementation
     }
     HRESULT SwapChainPanelSwapChainResources::WaitForFence(IFenceHandle  v)
     {
-        return S_OK;
+        winrt::com_ptr<IFenceHandleNative> const native{ v.as<IFenceHandleNative>() };
+
+        auto fence = native->GetFenceHandle();
+
+        if (fence->m_fence == m_direct_queue->fence())
+        {
+            m_direct_queue->wait_for_fence(fence->m_value);
+            return S_OK;
+        }
+        else
+        {
+            return E_FAIL;
+        }
     }
 
     HRESULT SwapChainPanelSwapChainResources::InsertWaitOn(IFenceHandle  v)
     {
+        winrt::com_ptr<IFenceHandleNative> const native{ v.as<IFenceHandleNative>() };
+
+        auto fence = native->GetFenceHandle();
+
+        m_direct_queue->insert_wait_on(*fence);
         return S_OK;
     }
 
@@ -185,5 +203,28 @@ namespace winrt::UniqueCreator::Graphics::implementation
     HRESULT SwapChainPanelSwapChainResources::SetSourceSize(uint32_t width, uint32_t height)
     {
         return m_swap_chain->SetSourceSize(width, height);
+    }
+
+    HRESULT SwapChainPanelSwapChainResources::SetLogicalSize(Size2D size)
+    {
+        m_logical_size = size;
+        auto r = BuildSwapChainSize(m_logical_size, m_display_information, m_composition_scale_x, m_composition_scale_y);
+        return Resize(static_cast<uint32_t>(r.m_width), static_cast<uint32_t>(r.m_height));
+    }
+
+    HRESULT SwapChainPanelSwapChainResources::SetCompositionScale(float scaleX, float scaleY)
+    {
+        m_composition_scale_x = scaleX;
+        m_composition_scale_y = scaleY;
+
+        auto r = BuildSwapChainSize(m_logical_size, m_display_information, m_composition_scale_x, m_composition_scale_y);
+        return Resize(static_cast<uint32_t>(r.m_width), static_cast<uint32_t>(r.m_height));
+    }
+
+    HRESULT SwapChainPanelSwapChainResources::SetDisplayInformation(const Windows::Graphics::Display::DisplayInformation& displayInformation)
+    {
+        m_display_information = displayInformation;
+        auto r = BuildSwapChainSize(m_logical_size, m_display_information, m_composition_scale_x, m_composition_scale_y);
+        return Resize(static_cast<uint32_t>(r.m_width), static_cast<uint32_t>(r.m_height));
     }
 }
