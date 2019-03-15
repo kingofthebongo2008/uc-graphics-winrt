@@ -72,9 +72,29 @@ namespace winrt::UniqueCreator::Graphics::implementation
 
                 using namespace uc::gx;
 
+                m_composition_scale_x = panel.CompositionScaleX();
+                m_composition_scale_y = panel.CompositionScaleY();
+                m_logical_size        = { static_cast<float>(panel.Width()), static_cast<float>(panel.Height()) };
+
+                if (m_logical_size.m_width != m_logical_size.m_width)
+                {
+                    m_logical_size.m_width = 8.0f;
+                }
+
+                if (m_logical_size.m_height != m_logical_size.m_height)
+                {
+                    m_logical_size.m_height = 8.0f;
+                }
+
+
+                m_display_information = Windows::Graphics::Display::DisplayInformation::GetForCurrentView();
+                auto r                = BuildSwapChainSize(m_logical_size, m_display_information, m_composition_scale_x, m_composition_scale_y);
+
+
                 Microsoft::WRL::ComPtr<IDXGIFactory4> factory = dx12::create_dxgi_factory4();
-                m_direct_queue = create_command_queue(device.get(), D3D12_COMMAND_LIST_TYPE_DIRECT);
-                m_swap_chain = create_swap_chain(factory.Get(), m_direct_queue->queue(), static_cast<uint32_t>(panel.Width()), static_cast<uint32_t>(panel.Height()));
+                m_direct_queue        = create_command_queue(device.get(), D3D12_COMMAND_LIST_TYPE_DIRECT);
+
+                m_swap_chain          = create_swap_chain(factory.Get(), m_direct_queue->queue(), static_cast<uint32_t>(r.m_width), static_cast<uint32_t>(r.m_height));
 
                 winrt::com_ptr<ISwapChainPanelNative> const p{ panel.as<ISwapChainPanelNative>() };
                 p->SetSwapChain(m_swap_chain.get());

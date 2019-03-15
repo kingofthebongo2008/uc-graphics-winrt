@@ -33,5 +33,34 @@ namespace uc_engine_hello_world
 
         private ResourceCreateContext m_ctx;
         private SwapChainPanelSwapChainResources m_swapChain;
+
+        private void M_swapChainPanel_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            m_swapChain.WaitForGpu();
+
+            UniqueCreator.Graphics.Size2D s;
+
+            s.m_width   = (float)e.NewSize.Width;
+            s.m_height  = (float)e.NewSize.Height;
+
+            m_swapChain.SetLogicalSize(s);
+
+            /*
+            std::unique_lock < std::mutex > lock (m_render_lock) ;
+            //stall and do not submit more work
+            m_device_resources->WaitForGpu();
+            m_background_swap_chain->WaitForGpu();
+
+            //Reset view dependent heaps
+            m_depth_buffer.reset();
+            m_device_resources->ResetViewDependentResources();
+
+            //Recreate the resources and buffers
+            UniqueCreator::Graphics::Size2D size = { args->NewSize.Width, args->NewSize.Height };
+
+            m_background_swap_chain->SetLogicalSize(size);
+            m_depth_buffer = m_resource_create_context->CreateViewDepthBuffer(m_background_swap_chain->GetBackBuffer()->GetSize2D(), UniqueCreator::Graphics::DepthBufferFormat::Depth32Float);
+            */
+        }
     }
 }
