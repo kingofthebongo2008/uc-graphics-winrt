@@ -5,11 +5,11 @@
 /build/.vs
 /build/x64
 /build/Generated Files
-/examples/uc_engine_hello_world/tmp/x64/uc-engine-winrt/Release
+/examples/uc_engine_hello_world/tmp
 /examples/uc_engine_hello_world/uc_engine_hello_world/.vs
 /examples/uc_engine_hello_world/uc_engine_hello_world/x64
 /examples/uc_engine_hello_world/uc_engine_hello_world/packages
 /examples/uc_engine_hello_world/uc_engine_hello_world/obj
 /examples/uc_engine_hello_world/uc_engine_hello_world/bin
-/lib/win-x64/Release
+/lib/win-x64
 /tmp
