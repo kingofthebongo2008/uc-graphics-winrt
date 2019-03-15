@@ -116,8 +116,8 @@
       <DependentUpon>..\src\idl\ResourceCreateContext.idl</DependentUpon>
     </ClInclude>
 
-    <ClInclude Include="..\src\dev\SwapChainPanelSwapChainResources.h">
-      <DependentUpon>..\src\idl\SwapChainPanelSwapChainResources.idl</DependentUpon>
+    <ClInclude Include="..\src\dev\CompositionSwapChainResources.h">
+      <DependentUpon>..\src\idl\CompositionSwapChainResources.idl</DependentUpon>
     </ClInclude>
 
     <ClInclude Include="..\src\dev\IResourceCreateContextNative.h"/>
@@ -133,6 +133,10 @@
     <ClInclude Include="..\src\dev\IFenceHandleNative.h"/>
     <ClInclude Include="..\src\dev\WindowsEnvironment.h"/>
 
+    <ClInclude Include="..\src\dev\DirectGpuCommandContext.h">
+      <DependentUpon>..\src\idl\DirectGpuCommandContext.idl</DependentUpon>
+    </ClInclude>
+
   </ItemGroup>
 
   <ItemGroup>
@@ -142,8 +146,8 @@
     <ClCompile Include="..\src\dev\ResourceCreateContext.cpp">
       <DependentUpon>..\src\idl\ResourceCreateContext.idl</DependentUpon>
     </ClCompile>
-    <ClCompile Include="..\src\dev\SwapChainPanelSwapChainResources.cpp">
-      <DependentUpon>..\src\idl\SwapChainPanelSwapChainResources.idl</DependentUpon>
+    <ClCompile Include="..\src\dev\CompositionSwapChainResources.cpp">
+      <DependentUpon>..\src\idl\CompositionSwapChainResources.idl</DependentUpon>
     </ClCompile>
     <ClCompile Include="..\src\dev\DirectQueue.cpp">
       <DependentUpon>..\src\idl\DirectQueue.idl</DependentUpon>
@@ -154,17 +158,28 @@
     </ClCompile>
 
     <ClCompile Include="..\src\dev\WindowsEnvironment.cpp"/>
-
     <ClCompile Include="$(GeneratedFilesDir)module.g.cpp" />
+
+    <ClCompile Include="..\src\dev\DirectGpuCommandContext.cpp">
+      <DependentUpon>..\src\idl\DirectGpuCommandContext.idl</DependentUpon>
+    </ClCompile>
+
   </ItemGroup>
   <ItemGroup>
+    <Midl Include="..\src\idl\BackBuffer.idl" />
+    <Midl Include="..\src\idl\PixelBuffer.idl" />
+    <Midl Include="..\src\idl\GpuVirtualResource.idl" />
+    <Midl Include="..\src\idl\GpuCommandContext.idl" />
+    <Midl Include="..\src\idl\CopyGpuCommandContext.idl" />
+    <Midl Include="..\src\idl\ComputeGpuCommandContext.idl" />
+    <Midl Include="..\src\idl\DirectGpuCommandContext.idl" />
     <Midl Include="..\src\idl\GraphicTypes.idl" />
     <Midl Include="..\src\idl\DirectQueue.idl" />
     <Midl Include="..\src\idl\BackgroundSwapChainResources.idl" />
     <Midl Include="..\src\idl\Base.idl" />
     <Midl Include="..\src\idl\FenceHandle.idl" />
     <Midl Include="..\src\idl\ResourceCreateContext.idl" />
-    <Midl Include="..\src\idl\SwapChainPanelSwapChainResources.idl" />
+    <Midl Include="..\src\idl\CompositionSwapChainResources.idl" />
     <Midl Include="..\src\idl\SwapChainResources.idl" />
   </ItemGroup>
   <ItemGroup>

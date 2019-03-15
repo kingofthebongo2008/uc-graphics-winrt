@@ -1,0 +1,15 @@
+﻿#pragma once
+
+import "GpuCommandContext.idl";
+
+namespace UniqueCreator
+{
+    namespace Graphics
+    {
+        [uuid(72F50941-F197-47B1-BF74-2D2D99BBABD5)]
+        [version(1.0)]
+        interface ICopyGpuCommandContext : IInspectable requires IGpuCommandContext
+        {
+        };
+    }
+}

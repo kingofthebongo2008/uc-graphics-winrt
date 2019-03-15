@@ -14,9 +14,11 @@ namespace winrt::UniqueCreator::Graphics::implementation
 
         uc::gx::dx12::gpu_resource_create_context* GetResourceCreateContext() noexcept;
 
-
         //ResourceCreateContext
         UniqueCreator::Graphics::DirectQueue CreateDirectQueue();
+
+        HRESULT Sync();
+        HRESULT ResetViewDependentResources();
 
     private:
         winrt::com_ptr<ID3D12Device>                               m_device;

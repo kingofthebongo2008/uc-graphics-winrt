@@ -1,0 +1,16 @@
+﻿#pragma once
+
+import "FenceHandle.idl";
+
+namespace UniqueCreator
+{
+    namespace Graphics
+    {
+        [uuid(DB4FCE5B-E142-47EA-AE54-4AE0B53A9A24)]
+        [version(1.0)]
+        interface IGpuCommandContext : IInspectable
+        {
+
+        };
+    }
+}

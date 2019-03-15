@@ -10,7 +10,7 @@
 
     <Grid>
         <Viewbox>
-        <SwapChainPanel x:Name="m_swapChainPanel" MinHeight="8" MinWidth="8" SizeChanged="M_swapChainPanel_SizeChanged" Width="1600" Height="900"/>
+        <SwapChainPanel x:Name="m_swapChainPanel" MinHeight="8" MinWidth="8" SizeChanged="M_swapChainPanel_SizeChanged" Width="1600" Height="900" CompositionScaleChanged="M_swapChainPanel_CompositionScaleChanged"/>
         </Viewbox>
 
     </Grid>

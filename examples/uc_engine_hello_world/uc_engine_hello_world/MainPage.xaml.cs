@@ -12,6 +12,8 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Windows.Graphics.Display;
+
 using UniqueCreator.Graphics;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
@@ -23,16 +25,26 @@ namespace uc_engine_hello_world
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        private ResourceCreateContext         m_ctx;
+        private CompositionSwapChainResources m_swapChain;
+
         public MainPage()
         {
             this.InitializeComponent();
 
             m_ctx       = new ResourceCreateContext();
-            m_swapChain = new SwapChainPanelSwapChainResources(m_ctx, m_swapChainPanel);
+            m_swapChain = new CompositionSwapChainResources(m_ctx, m_swapChainPanel);
+
+            var display = DisplayInformation.GetForCurrentView();
+            display.DpiChanged += new TypedEventHandler<DisplayInformation, object>(OnDpiChanged);
         }
 
-        private ResourceCreateContext m_ctx;
-        private SwapChainPanelSwapChainResources m_swapChain;
+
+        private void OnDpiChanged( DisplayInformation d, object o)
+        {
+            m_swapChain.WaitForGpu();
+            m_swapChain.SetDisplayInformation(d);
+        }
 
         private void M_swapChainPanel_SizeChanged(object sender, SizeChangedEventArgs e)
         {
@@ -61,6 +73,12 @@ namespace uc_engine_hello_world
             m_background_swap_chain->SetLogicalSize(size);
             m_depth_buffer = m_resource_create_context->CreateViewDepthBuffer(m_background_swap_chain->GetBackBuffer()->GetSize2D(), UniqueCreator::Graphics::DepthBufferFormat::Depth32Float);
             */
+        }
+
+        private void M_swapChainPanel_CompositionScaleChanged(SwapChainPanel sender, object args)
+        {
+            m_swapChain.WaitForGpu();
+            m_swapChain.SetCompositionScale(sender.CompositionScaleX, sender.CompositionScaleY);
         }
     }
 }

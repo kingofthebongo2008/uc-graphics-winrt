@@ -1,12 +1,14 @@
 ﻿#pragma once
 
+import "SwapChainResources.idl";
+
 namespace UniqueCreator
 {
     namespace Graphics
     {
         [uuid(BE4A9AB4-977F-4B2E-806E-3421557B561D)]
         [version(1.0)]
-        interface IBackgroundSwapChainResources : IInspectable
+        interface IBackgroundSwapChainResources : IInspectable requires ISwapChainResources
         {
 
         };

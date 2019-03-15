@@ -1,8 +1,13 @@
 ﻿#pragma once
 
 #include "ResourceCreateContext.g.h"
-#include "SwapChainPanelSwapChainResources.g.h"
+#include "CompositionSwapChainResources.g.h"
+
 #include "IResourceCreateContextNative.h"
+
+#include "DirectGpuCommandContext.h"
+
+
 
 #include <d3d12.h>
 #include <wrl/client.h>
@@ -12,10 +17,10 @@
 
 namespace winrt::UniqueCreator::Graphics::implementation
 {
-    struct SwapChainPanelSwapChainResources : SwapChainPanelSwapChainResourcesT<SwapChainPanelSwapChainResources >
+    struct CompositionSwapChainResources : CompositionSwapChainResourcesT<CompositionSwapChainResources >
     {
 
-        SwapChainPanelSwapChainResources(UniqueCreator::Graphics::ResourceCreateContext const& ctx, Windows::UI::Xaml::Controls::SwapChainPanel const & panel);
+        CompositionSwapChainResources(UniqueCreator::Graphics::ResourceCreateContext const& ctx, Windows::UI::Xaml::Controls::SwapChainPanel const & panel);
 
         HRESULT Resize(uint32_t width, uint32_t height);
         HRESULT WaitForGpu();
@@ -30,6 +35,8 @@ namespace winrt::UniqueCreator::Graphics::implementation
         HRESULT SetCompositionScale(float scaleX, float scaleY);
         HRESULT SetLogicalSize(Size2D size);
         HRESULT SetDisplayInformation(const Windows::Graphics::Display::DisplayInformation& displayInformation);
+
+        IDirectGpuCommandContext CreateDirectCommandContext();
         
         private:
 
@@ -60,7 +67,7 @@ namespace winrt::UniqueCreator::Graphics::implementation
 
 namespace winrt::UniqueCreator::Graphics::factory_implementation
 {
-    struct SwapChainPanelSwapChainResources : SwapChainPanelSwapChainResourcesT < SwapChainPanelSwapChainResources, winrt::UniqueCreator::Graphics::implementation::SwapChainPanelSwapChainResources >
+    struct CompositionSwapChainResources : CompositionSwapChainResourcesT < CompositionSwapChainResources, winrt::UniqueCreator::Graphics::implementation::CompositionSwapChainResources >
     {
 
     };

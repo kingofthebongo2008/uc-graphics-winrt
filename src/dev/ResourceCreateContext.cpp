@@ -35,4 +35,16 @@ namespace winrt::UniqueCreator::Graphics::implementation
     {
         return DirectQueue();
     }
+
+    HRESULT ResourceCreateContext::Sync()
+    {
+        m_ctx->sync();
+        return S_OK;
+    }
+
+    HRESULT ResourceCreateContext::ResetViewDependentResources()
+    {
+        m_ctx->reset_view_dependent_resources();
+        return S_OK;
+    }
 }

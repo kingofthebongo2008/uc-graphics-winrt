@@ -1,5 +1,6 @@
 ﻿
 import "FenceHandle.idl";
+import "DirectGpuCommandContext.idl";
 
 namespace UniqueCreator
 {
@@ -17,6 +18,8 @@ namespace UniqueCreator
             HRESULT Sync();
             HRESULT MoveToNextFrame();
             HRESULT SetSourceSize(UInt32 width, UInt32 height);
+
+            IDirectGpuCommandContext CreateDirectCommandContext();
         };
     }
 }

@@ -2,19 +2,20 @@
 
 import "GraphicTypes.idl";
 import "ResourceCreateContext.idl";
-import "SwapChainResources.idl";
+import "BackgroundSwapChainResources.idl";
 
 namespace UniqueCreator
 {
     namespace Graphics
     {
-        interface ISwapChainPanelSwapChainResourcesFactory;
-        runtimeclass SwapChainPanelSwapChainResources;
+        interface ICompositionSwapChainResourcesFactory;
+        runtimeclass CompositionSwapChainResources;
+
 
         [uuid(F2D80A74-731A-4F9C-BC56-910E21511D43)]
         [version(1.0)]
-        [exclusiveto(SwapChainPanelSwapChainResources)]
-        interface ISwapChainPanelSwapChainResources : IInspectable requires ISwapChainResources
+        [exclusiveto(CompositionSwapChainResources)]
+        interface ICompositionSwapChainResources : IInspectable requires IBackgroundSwapChainResources
         {
             HRESULT SetCompositionScale(float scaleX, float scaleY);
             HRESULT SetLogicalSize(Size2D size);
@@ -22,20 +23,18 @@ namespace UniqueCreator
         };
 
         [version(1.0)]
-        [activatable(ISwapChainPanelSwapChainResourcesFactory, 1.0)]
-        //[marshaling_behavior(agile)]
-        //[threading(both)]
-        runtimeclass SwapChainPanelSwapChainResources
+        [activatable(ICompositionSwapChainResourcesFactory, 1.0)]
+        runtimeclass CompositionSwapChainResources
         {
-           [default] interface ISwapChainPanelSwapChainResources;
+           [default] interface ICompositionSwapChainResources;
         }
 
         [uuid(FBF1D69F-952D-4523-89B0-F4C6A99C13D7)]
-        [exclusiveto(SwapChainPanelSwapChainResources)]
+        [exclusiveto(CompositionSwapChainResources)]
         [version(1.0)]
-        interface ISwapChainPanelSwapChainResourcesFactory : IInspectable
+        interface ICompositionSwapChainResourcesFactory : IInspectable
         {
-            HRESULT Create( [in] ResourceCreateContext* ctx, [in] Windows.UI.Xaml.Controls.SwapChainPanel* panel, [out, retval] SwapChainPanelSwapChainResources** value);
+            HRESULT Create( [in] ResourceCreateContext* ctx, [in] Windows.UI.Xaml.Controls.SwapChainPanel* panel, [out, retval] CompositionSwapChainResources** value);
         };
 
        

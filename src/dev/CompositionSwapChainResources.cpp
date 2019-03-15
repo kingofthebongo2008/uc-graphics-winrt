@@ -1,5 +1,6 @@
 ﻿#include "pch.h"
-#include "SwapChainPanelSwapChainResources.h"
+#include "CompositionSwapChainResources.h"
+
 #include "IFenceHandleNative.h"
 
 #include <uc/gx/dx12/dx12.h>
@@ -57,7 +58,7 @@ namespace winrt::UniqueCreator::Graphics::implementation
         }
     }
 
-    SwapChainPanelSwapChainResources::SwapChainPanelSwapChainResources(UniqueCreator::Graphics::ResourceCreateContext const& ctx, Windows::UI::Xaml::Controls::SwapChainPanel const& panel)
+    CompositionSwapChainResources::CompositionSwapChainResources(UniqueCreator::Graphics::ResourceCreateContext const& ctx, Windows::UI::Xaml::Controls::SwapChainPanel const& panel)
     {
         winrt::com_ptr<IResourceCreateContextNative> const native{ ctx.as<IResourceCreateContextNative>() };
 
@@ -123,7 +124,7 @@ namespace winrt::UniqueCreator::Graphics::implementation
         }
     }
 
-    HRESULT SwapChainPanelSwapChainResources::Resize(uint32_t width, uint32_t height)
+    HRESULT CompositionSwapChainResources::Resize(uint32_t width, uint32_t height)
     {
         try
         {
@@ -159,7 +160,7 @@ namespace winrt::UniqueCreator::Graphics::implementation
         }
     }
 
-    HRESULT SwapChainPanelSwapChainResources::WaitForGpu()
+    HRESULT CompositionSwapChainResources::WaitForGpu()
     {
         try
         {
@@ -171,7 +172,7 @@ namespace winrt::UniqueCreator::Graphics::implementation
             return E_FAIL;
         }
     }
-    HRESULT SwapChainPanelSwapChainResources::WaitForFence(IFenceHandle  v)
+    HRESULT CompositionSwapChainResources::WaitForFence(IFenceHandle  v)
     {
         winrt::com_ptr<IFenceHandleNative> const native{ v.as<IFenceHandleNative>() };
 
@@ -188,7 +189,7 @@ namespace winrt::UniqueCreator::Graphics::implementation
         }
     }
 
-    HRESULT SwapChainPanelSwapChainResources::InsertWaitOn(IFenceHandle  v)
+    HRESULT CompositionSwapChainResources::InsertWaitOn(IFenceHandle  v)
     {
         winrt::com_ptr<IFenceHandleNative> const native{ v.as<IFenceHandleNative>() };
 
@@ -198,18 +199,18 @@ namespace winrt::UniqueCreator::Graphics::implementation
         return S_OK;
     }
 
-    HRESULT SwapChainPanelSwapChainResources::Present()
+    HRESULT CompositionSwapChainResources::Present()
     {
         return m_swap_chain->Present(0, 0);
     }
 
-    HRESULT SwapChainPanelSwapChainResources::Sync()
+    HRESULT CompositionSwapChainResources::Sync()
     {
         m_direct_context_allocator->sync();
         return S_OK;
     }
 
-    HRESULT SwapChainPanelSwapChainResources::MoveToNextFrame()
+    HRESULT CompositionSwapChainResources::MoveToNextFrame()
     {
         m_buffer_index = m_buffer_index + 1;
         m_buffer_index = m_buffer_index % m_buffer_count;
@@ -220,19 +221,19 @@ namespace winrt::UniqueCreator::Graphics::implementation
         return S_OK;
     }
 
-    HRESULT SwapChainPanelSwapChainResources::SetSourceSize(uint32_t width, uint32_t height)
+    HRESULT CompositionSwapChainResources::SetSourceSize(uint32_t width, uint32_t height)
     {
         return m_swap_chain->SetSourceSize(width, height);
     }
 
-    HRESULT SwapChainPanelSwapChainResources::SetLogicalSize(Size2D size)
+    HRESULT CompositionSwapChainResources::SetLogicalSize(Size2D size)
     {
         m_logical_size = size;
         auto r = BuildSwapChainSize(m_logical_size, m_display_information, m_composition_scale_x, m_composition_scale_y);
         return Resize(static_cast<uint32_t>(r.m_width), static_cast<uint32_t>(r.m_height));
     }
 
-    HRESULT SwapChainPanelSwapChainResources::SetCompositionScale(float scaleX, float scaleY)
+    HRESULT CompositionSwapChainResources::SetCompositionScale(float scaleX, float scaleY)
     {
         m_composition_scale_x = scaleX;
         m_composition_scale_y = scaleY;
@@ -241,10 +242,15 @@ namespace winrt::UniqueCreator::Graphics::implementation
         return Resize(static_cast<uint32_t>(r.m_width), static_cast<uint32_t>(r.m_height));
     }
 
-    HRESULT SwapChainPanelSwapChainResources::SetDisplayInformation(const Windows::Graphics::Display::DisplayInformation& displayInformation)
+    HRESULT CompositionSwapChainResources::SetDisplayInformation(const Windows::Graphics::Display::DisplayInformation& displayInformation)
     {
         m_display_information = displayInformation;
         auto r = BuildSwapChainSize(m_logical_size, m_display_information, m_composition_scale_x, m_composition_scale_y);
         return Resize(static_cast<uint32_t>(r.m_width), static_cast<uint32_t>(r.m_height));
+    }
+
+    IDirectGpuCommandContext CompositionSwapChainResources::CreateDirectCommandContext()
+    {
+        return DirectGpuCommandContext(uc::gx::dx12::create_graphics_command_context(m_direct_context_allocator.get()));
     }
 }

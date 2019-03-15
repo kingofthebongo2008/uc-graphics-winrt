@@ -15,6 +15,9 @@ namespace UniqueCreator
         interface IResourceCreateContext : IInspectable
         {
             HRESULT CreateDirectQueue( [out, retval] DirectQueue** value);
+
+            HRESULT Sync();
+            HRESULT ResetViewDependentResources();
         };
 
         [version(1.0)]

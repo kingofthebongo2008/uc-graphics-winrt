@@ -1,0 +1,15 @@
+﻿#pragma once
+
+import "PixelBuffer.idl";
+
+namespace UniqueCreator
+{
+    namespace Graphics
+    {
+        [uuid(6D9BEE65-4F84-49D3-8814-1F931485DF7A)]
+        [version(1.0)]
+        interface IBackBuffer : IInspectable requires IPixelBuffer
+        {
+        };
+    }
+}
