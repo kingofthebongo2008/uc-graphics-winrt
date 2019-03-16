@@ -12,6 +12,8 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Windows.System.Threading;
+
 using Windows.Graphics.Display;
 
 using UniqueCreator.Graphics;
@@ -27,6 +29,8 @@ namespace uc_engine_hello_world
     {
         private ResourceCreateContext         m_ctx;
         private CompositionSwapChainResources m_swapChain;
+        private object m_rendererLock         = new object();
+        private IAsyncAction                  m_renderLoopWorker;
 
         public MainPage()
         {
@@ -39,46 +43,92 @@ namespace uc_engine_hello_world
             display.DpiChanged += new TypedEventHandler<DisplayInformation, object>(OnDpiChanged);
         }
 
+        public void OnResuming()
+        {
+            // If the animation render loop is already running then do not start another thread.
+            if (m_renderLoopWorker != null && m_renderLoopWorker.Status == AsyncStatus.Started)
+            {
+                return;
+            }
+
+            // Create a task that will be run on a background thread.
+            var workItemHandler = new WorkItemHandler((action) =>
+            {
+                // Calculate the updated frame and render once per vertical blanking interval.
+                while (action.Status == AsyncStatus.Started)
+                {
+                    lock (m_rendererLock)
+                    {
+                        Render();
+
+                        /*
+                         *Update();
+
+                        m_renderer->Render();
+
+                        m_deviceResources->Present();
+
+                        /*
+
+                        if (!m_haveFocus || (m_updateState == UpdateEngineState::TooSmall))
+                        {
+                            // The app is in an inactive state so stop rendering
+                            // This optimizes for power and allows the framework to become more queiecent
+                            break;
+                        }
+                        */
+                    }
+                }
+            });
+
+            // Run task on a dedicated high priority background thread.
+            m_renderLoopWorker = ThreadPool.RunAsync(workItemHandler, WorkItemPriority.High, WorkItemOptions.TimeSliced);
+
+        }
+
+        public void OnSuspending()
+        {
+            // If the animation render loop is already running then do not start another thread.
+            if (m_renderLoopWorker != null && m_renderLoopWorker.Status == AsyncStatus.Started)
+            {
+                m_renderLoopWorker.Cancel();
+                m_renderLoopWorker = null;
+            }
+        }
 
         private void OnDpiChanged( DisplayInformation d, object o)
         {
-            m_swapChain.WaitForGpu();
-            m_swapChain.SetDisplayInformation(d);
+            lock (m_rendererLock)
+            {
+                m_swapChain.WaitForGpu();
+                m_swapChain.SetDisplayInformation(d);
+            }
         }
 
         private void M_swapChainPanel_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            m_swapChain.WaitForGpu();
+            lock (m_rendererLock)
+            {
+                m_swapChain.WaitForGpu();
 
-            UniqueCreator.Graphics.Size2D s;
-
-            s.m_width   = (float)e.NewSize.Width;
-            s.m_height  = (float)e.NewSize.Height;
-
-            m_swapChain.SetLogicalSize(s);
-
-            /*
-            std::unique_lock < std::mutex > lock (m_render_lock) ;
-            //stall and do not submit more work
-            m_device_resources->WaitForGpu();
-            m_background_swap_chain->WaitForGpu();
-
-            //Reset view dependent heaps
-            m_depth_buffer.reset();
-            m_device_resources->ResetViewDependentResources();
-
-            //Recreate the resources and buffers
-            UniqueCreator::Graphics::Size2D size = { args->NewSize.Width, args->NewSize.Height };
-
-            m_background_swap_chain->SetLogicalSize(size);
-            m_depth_buffer = m_resource_create_context->CreateViewDepthBuffer(m_background_swap_chain->GetBackBuffer()->GetSize2D(), UniqueCreator::Graphics::DepthBufferFormat::Depth32Float);
-            */
+                UniqueCreator.Graphics.Size2D s;
+                s.m_width = (float)e.NewSize.Width;
+                s.m_height = (float)e.NewSize.Height;
+                m_swapChain.SetLogicalSize(s);
+            }
         }
 
         private void M_swapChainPanel_CompositionScaleChanged(SwapChainPanel sender, object args)
         {
-            m_swapChain.WaitForGpu();
-            m_swapChain.SetCompositionScale(sender.CompositionScaleX, sender.CompositionScaleY);
+            lock (m_rendererLock)
+            {
+                m_swapChain.WaitForGpu();
+                m_swapChain.SetCompositionScale(sender.CompositionScaleX, sender.CompositionScaleY);
+            }
+        }
+        private void Render()
+        {
+
         }
     }
 }
