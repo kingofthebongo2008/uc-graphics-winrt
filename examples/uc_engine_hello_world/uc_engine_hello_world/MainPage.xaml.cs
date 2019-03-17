@@ -84,6 +84,7 @@ namespace uc_engine_hello_world
             lock (m_rendererLock)
             {
                 m_swapChain.WaitForGpu();
+                m_ctx.ResetViewDependentResources();
                 m_swapChain.SetDisplayInformation(d);
             }
         }
@@ -93,6 +94,7 @@ namespace uc_engine_hello_world
             lock (m_rendererLock)
             {
                 m_swapChain.WaitForGpu();
+                m_ctx.ResetViewDependentResources();
 
                 UniqueCreator.Graphics.Size2D s;
                 s.m_width = (float)e.NewSize.Width;
@@ -106,6 +108,7 @@ namespace uc_engine_hello_world
             lock (m_rendererLock)
             {
                 m_swapChain.WaitForGpu();
+                m_ctx.ResetViewDependentResources();
                 m_swapChain.SetCompositionScale(sender.CompositionScaleX, sender.CompositionScaleY);
             }
         }
@@ -129,10 +132,10 @@ namespace uc_engine_hello_world
            
             m_swapChain.Present();
 
-            m_ctx.Sync();
             m_swapChain.MoveToNextFrame();
-            m_swapChain.Sync();
 
+            m_ctx.Sync();
+            m_swapChain.Sync();
         }
     }
 }
