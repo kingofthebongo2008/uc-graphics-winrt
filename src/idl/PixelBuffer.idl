@@ -6,10 +6,10 @@ namespace UniqueCreator
 {
     namespace Graphics
     {
-        [uuid(4B28DBAC-52F2-48C2-BFF4-CB1717EBD4B4)]
-        [version(1.0)]
-        interface IPixelBuffer : IInspectable requires IGpuVirtualResource
+        interface IPixelBuffer requires IGpuVirtualResource
         {
+            Size2D Size2D{ get; };
+            Size3D Size3D{ get; };
         };
     }
 }

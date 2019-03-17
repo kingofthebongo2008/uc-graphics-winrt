@@ -7,13 +7,9 @@
 
 #include "DirectGpuCommandContext.h"
 
-
-
 #include <d3d12.h>
 #include <wrl/client.h>
-
 #include <uc/gx/dx12/dx12.h>
-
 
 namespace winrt::UniqueCreator::Graphics::implementation
 {
@@ -40,7 +36,7 @@ namespace winrt::UniqueCreator::Graphics::implementation
         void SetLogicalSize(Size2D size);
         void SetDisplayInformation(const Windows::Graphics::Display::DisplayInformation& displayInformation);
 
-
+        IBackBuffer BackBuffer() const;
 
         private:
 
@@ -67,7 +63,6 @@ namespace winrt::UniqueCreator::Graphics::implementation
         Windows::Graphics::Display::DisplayInformation                      m_display_information = nullptr;
    };  
 }
-
 
 namespace winrt::UniqueCreator::Graphics::factory_implementation
 {

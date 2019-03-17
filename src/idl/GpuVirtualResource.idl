@@ -1,14 +1,14 @@
 ﻿#pragma once
 
+import "GraphicTypes.idl";
+
 namespace UniqueCreator
 {
     namespace Graphics
     {
-        //[uuid(BAE991B7-9856-4A8A-AB9C-6B3B5F0303AD)]
-        //[version(1.0)]
         interface IGpuVirtualResource : IInspectable
         {
-            void Dummy();
+            GpuVirtualAddress VirtualAddress { get; };
         };
     }
 }

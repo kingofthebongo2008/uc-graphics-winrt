@@ -57,6 +57,12 @@
             Present = 0,
             Predication = 0x200
         };
+
+        struct GpuVirtualAddress
+        {
+            UInt64   m_value;
+        };
+
     }
 }
 

@@ -1,6 +1,5 @@
 ﻿#pragma once
 
-//#include "DirectGpuCommandContext.g.h"
 #include "winrt/UniqueCreator.Graphics.h"
 
 #include <uc/gx/dx12/dx12.h>
@@ -10,8 +9,6 @@ namespace winrt::UniqueCreator::Graphics::implementation
     struct DirectGpuCommandContext : implements<DirectGpuCommandContext, IDirectGpuCommandContext, IComputeGpuCommandContext, ICopyGpuCommandContext, IGpuCommandContext >
     {
         DirectGpuCommandContext(uc::gx::dx12::managed_graphics_command_context ctx);
-        ~DirectGpuCommandContext();
-
 
         IFenceHandle Submit();
         void SubmitAndWaitToExecute();

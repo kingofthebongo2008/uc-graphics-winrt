@@ -1,6 +1,7 @@
 ﻿#include "pch.h"
 #include "DirectGpuCommandContext.h"
 #include "FenceHandle.h"
+#include "IGpuVirtualResourceNative.h"
 
 namespace winrt::UniqueCreator::Graphics::implementation
 {
@@ -23,11 +24,10 @@ namespace winrt::UniqueCreator::Graphics::implementation
     }
     void DirectGpuCommandContext::TransitionResource(IGpuVirtualResource r, ResourceState old_state, ResourceState new_state)
     {
-        //m_impl->m_context->transition_resource(b, static_cast<D3D12_RESOURCE_STATES>(old_state), static_cast<D3D12_RESOURCE_STATES>(new_state));
+        com_ptr<IGpuVirtualResourceNative> r0(r.as<IGpuVirtualResourceNative>());
+
+        m_ctx->transition_resource(r0->GetResource(), static_cast<D3D12_RESOURCE_STATES>(old_state), static_cast<D3D12_RESOURCE_STATES>(new_state));
     }
 
-    DirectGpuCommandContext::~DirectGpuCommandContext()
-    {
-        //__debugbreak();
-    }
+    
 }
