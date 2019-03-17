@@ -4,9 +4,14 @@
 
 namespace winrt::UniqueCreator::Graphics::implementation
 {
-    FenceHandle::FenceHandle( std::unique_ptr<uc::gx::dx12::gpu_fence> fence ) : m_fence(std::move(fence))
+    FenceHandle::FenceHandle( uc::gx::dx12::gpu_fence fence ) : m_fence(fence)
     {
+        m_fence.m_fence->AddRef();
+    }
 
+    FenceHandle::~FenceHandle()
+    {
+        m_fence.m_fence->Release();
     }
 
     uc::gx::dx12::gpu_fence* FenceHandle::GetFenceHandle()

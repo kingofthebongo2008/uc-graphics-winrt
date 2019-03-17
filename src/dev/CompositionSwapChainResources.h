@@ -19,27 +19,30 @@ namespace winrt::UniqueCreator::Graphics::implementation
 {
     struct CompositionSwapChainResources : CompositionSwapChainResourcesT<CompositionSwapChainResources >
     {
+        CompositionSwapChainResources(UniqueCreator::Graphics::ResourceCreateContext const& ctx, Windows::UI::Xaml::Controls::SwapChainPanel const& panel);
 
-        CompositionSwapChainResources(UniqueCreator::Graphics::ResourceCreateContext const& ctx, Windows::UI::Xaml::Controls::SwapChainPanel const & panel);
+        ~CompositionSwapChainResources();
 
-        HRESULT Resize(uint32_t width, uint32_t height);
-        HRESULT WaitForGpu();
-        HRESULT WaitForFence( IFenceHandle v);
-        HRESULT InsertWaitOn( IFenceHandle v);
-        HRESULT Present();
-        HRESULT Sync();
-        HRESULT MoveToNextFrame();
-        HRESULT SetSourceSize(uint32_t width, uint32_t height);
+        void Resize(uint32_t width, uint32_t height);
+        void WaitForGpu();
+        void WaitForFence(IFenceHandle v);
+        void InsertWaitOn(IFenceHandle v);
+        void Present();
 
-
-        HRESULT SetCompositionScale(float scaleX, float scaleY);
-        HRESULT SetLogicalSize(Size2D size);
-        HRESULT SetDisplayInformation(const Windows::Graphics::Display::DisplayInformation& displayInformation);
+        void Sync();
+        void MoveToNextFrame();
+        void SetSourceSize(uint32_t width, uint32_t height);
 
         IDirectGpuCommandContext CreateDirectCommandContext();
-        
-        private:
 
+
+        void SetCompositionScale(float scaleX, float scaleY);
+        void SetLogicalSize(Size2D size);
+        void SetDisplayInformation(const Windows::Graphics::Display::DisplayInformation& displayInformation);
+
+
+
+        private:
 
         std::unique_ptr<uc::gx::dx12::gpu_command_queue> m_direct_queue;
         winrt::com_ptr<IDXGISwapChain4>                  m_swap_chain;
@@ -65,6 +68,7 @@ namespace winrt::UniqueCreator::Graphics::implementation
    };  
 }
 
+
 namespace winrt::UniqueCreator::Graphics::factory_implementation
 {
     struct CompositionSwapChainResources : CompositionSwapChainResourcesT < CompositionSwapChainResources, winrt::UniqueCreator::Graphics::implementation::CompositionSwapChainResources >
@@ -72,3 +76,4 @@ namespace winrt::UniqueCreator::Graphics::factory_implementation
 
     };
 }
+

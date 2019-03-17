@@ -6,10 +6,9 @@ namespace UniqueCreator
 {
     namespace Graphics
     {
-        [uuid(5799060C-084A-439B-B79A-6770933CB6A5)]
-        [version(1.0)]
-        interface IComputeGpuCommandContext : IInspectable requires ICopyGpuCommandContext
+        interface IComputeGpuCommandContext requires ICopyGpuCommandContext
         {
+            void Dispatch();
         };
     }
 }

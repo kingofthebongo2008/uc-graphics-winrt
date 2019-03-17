@@ -2,41 +2,19 @@
 
 import "GraphicTypes.idl";
 import "ResourceCreateContext.idl";
-import "BackgroundSwapChainResources.idl";
+import "SwapChainResources.idl";
 
 namespace UniqueCreator
 {
     namespace Graphics
     {
-        interface ICompositionSwapChainResourcesFactory;
-        runtimeclass CompositionSwapChainResources;
-
-
-        [uuid(F2D80A74-731A-4F9C-BC56-910E21511D43)]
-        [version(1.0)]
-        [exclusiveto(CompositionSwapChainResources)]
-        interface ICompositionSwapChainResources : IInspectable requires IBackgroundSwapChainResources
+        runtimeclass CompositionSwapChainResources : ISwapChainResources
         {
-            HRESULT SetCompositionScale(float scaleX, float scaleY);
-            HRESULT SetLogicalSize(Size2D size);
-            HRESULT SetDisplayInformation( [in] Windows.Graphics.Display.DisplayInformation* displayInformation);
-        };
+            CompositionSwapChainResources(ResourceCreateContext ctx, Windows.UI.Xaml.Controls.SwapChainPanel  panel);
 
-        [version(1.0)]
-        [activatable(ICompositionSwapChainResourcesFactory, 1.0)]
-        runtimeclass CompositionSwapChainResources
-        {
-           [default] interface ICompositionSwapChainResources;
+            void SetCompositionScale(Single scaleX, Single scaleY);
+            void SetLogicalSize(Size2D size);
+            void SetDisplayInformation(Windows.Graphics.Display.DisplayInformation displayInformation);
         }
-
-        [uuid(FBF1D69F-952D-4523-89B0-F4C6A99C13D7)]
-        [exclusiveto(CompositionSwapChainResources)]
-        [version(1.0)]
-        interface ICompositionSwapChainResourcesFactory : IInspectable
-        {
-            HRESULT Create( [in] ResourceCreateContext* ctx, [in] Windows.UI.Xaml.Controls.SwapChainPanel* panel, [out, retval] CompositionSwapChainResources** value);
-        };
-
-       
     }
 }

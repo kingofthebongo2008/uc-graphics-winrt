@@ -6,18 +6,18 @@ namespace UniqueCreator
 {
     namespace Graphics
     {
-        [uuid(CD38D0C5-743A-43C2-889F-2EA3A14082DF)]
-        [version(1.0)]
-        interface ISwapChainResources : IInspectable
+        interface ISwapChainResources
         {
-            HRESULT Resize( UInt32 width, UInt32 height );
-            HRESULT WaitForGpu();
-            HRESULT WaitForFence(IFenceHandle v );
-            HRESULT InsertWaitOn(IFenceHandle v );
-            HRESULT Present();
-            HRESULT Sync();
-            HRESULT MoveToNextFrame();
-            HRESULT SetSourceSize(UInt32 width, UInt32 height);
+            void Resize( UInt32 width, UInt32 height );
+            void SetSourceSize(UInt32 width, UInt32 height);
+            void Present();
+
+
+            void WaitForGpu();
+            void WaitForFence(IFenceHandle v );
+            void InsertWaitOn(IFenceHandle v );
+            void Sync();
+            void MoveToNextFrame();
 
             IDirectGpuCommandContext CreateDirectCommandContext();
         };

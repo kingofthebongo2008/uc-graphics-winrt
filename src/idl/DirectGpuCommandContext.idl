@@ -6,18 +6,9 @@ namespace UniqueCreator
 {
     namespace Graphics
     {
-        [uuid("C714EA6E-B81B-48F0-BBA4-AB1A3AC4E76C")]
-        [version(1.0)]
-        interface IDirectGpuCommandContext : IInspectable requires IComputeGpuCommandContext
+        interface IDirectGpuCommandContext requires IComputeGpuCommandContext
         {
-
-        };
-        
-        [version(1.0)]
-        runtimeclass DirectGpuCommandContext
-        {
-            [default] interface IDirectGpuCommandContext;
+            void Draw();
         }
-
     }
 }

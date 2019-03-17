@@ -86,6 +86,8 @@ namespace uc_engine_hello_world
 
             // Ensure the current window is active
             Window.Current.Activate();
+
+            m_mainPage.OnResuming();
         }
 
         /// <summary>

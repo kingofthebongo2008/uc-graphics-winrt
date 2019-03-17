@@ -9,12 +9,19 @@ namespace winrt::UniqueCreator::Graphics::implementation
 {
     struct FenceHandle : implements<FenceHandle, IFenceHandle, IFenceHandleNative >
     {
-        FenceHandle( std::unique_ptr<uc::gx::dx12::gpu_fence> fence );
+        FenceHandle( uc::gx::dx12::gpu_fence fence);
+        ~FenceHandle();
 
         uc::gx::dx12::gpu_fence* GetFenceHandle();
 
+        void Dummy() {}
     private:
-        std::unique_ptr<uc::gx::dx12::gpu_fence> m_fence;
+
+        uc::gx::dx12::gpu_fence m_fence;
+        FenceHandle(const FenceHandle&);
+        FenceHandle& operator=(const FenceHandle&);
+
+
    };  
 }
 

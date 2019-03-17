@@ -1,13 +1,11 @@
 ﻿#include "pch.h"
 #include "ResourceCreateContext.h"
-#include "DirectQueue.h"
+//#include "DirectQueue.h"
 
 #include "uc/gx/dx12/dx12.h"
 
 namespace winrt::UniqueCreator::Graphics::implementation
 {
-
-
     HRESULT __stdcall ResourceCreateContext::GetDevice( ID3D12Device** d ) noexcept
     {
         *d = m_device.get();
@@ -31,20 +29,20 @@ namespace winrt::UniqueCreator::Graphics::implementation
         }
     }
 
+    /*
     UniqueCreator::Graphics::DirectQueue ResourceCreateContext::CreateDirectQueue()
     {
         return DirectQueue();
     }
+    */
 
-    HRESULT ResourceCreateContext::Sync()
+    void ResourceCreateContext::Sync()
     {
         m_ctx->sync();
-        return S_OK;
     }
 
-    HRESULT ResourceCreateContext::ResetViewDependentResources()
+    void ResourceCreateContext::ResetViewDependentResources()
     {
         m_ctx->reset_view_dependent_resources();
-        return S_OK;
     }
 }

@@ -1,16 +1,18 @@
 ﻿#pragma once
 
 import "FenceHandle.idl";
+import "GpuVirtualResource.idl";
+import "GraphicTypes.idl";
 
 namespace UniqueCreator
 {
     namespace Graphics
     {
-        [uuid(DB4FCE5B-E142-47EA-AE54-4AE0B53A9A24)]
-        [version(1.0)]
-        interface IGpuCommandContext : IInspectable
+        interface IGpuCommandContext 
         {
-
+            IFenceHandle Submit();
+            void SubmitAndWaitToExecute();
+            void TransitionResource( IGpuVirtualResource r, ResourceState old_state, ResourceState new_state );
         };
     }
 }

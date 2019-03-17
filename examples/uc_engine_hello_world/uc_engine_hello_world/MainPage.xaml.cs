@@ -130,18 +130,17 @@ namespace uc_engine_hello_world
         {
             var ctx = m_swapChain.CreateDirectCommandContext();
 
+            ctx.Copy();
+            ctx.Dispatch();
+            ctx.Draw();
 
-
-            //ctx;
-
+            ctx.Submit();
+           
             m_swapChain.Present();
 
             m_ctx.Sync();
             m_swapChain.MoveToNextFrame();
             m_swapChain.Sync();
-
-
-
 
         }
     }

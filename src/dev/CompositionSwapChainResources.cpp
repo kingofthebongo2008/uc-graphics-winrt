@@ -124,7 +124,12 @@ namespace winrt::UniqueCreator::Graphics::implementation
         }
     }
 
-    HRESULT CompositionSwapChainResources::Resize(uint32_t width, uint32_t height)
+    CompositionSwapChainResources::~CompositionSwapChainResources()
+    {
+        __debugbreak();
+    }
+
+    void CompositionSwapChainResources::Resize(uint32_t width, uint32_t height)
     {
         try
         {
@@ -151,28 +156,21 @@ namespace winrt::UniqueCreator::Graphics::implementation
                 frame %= m_buffer_count;
             }
 
-            return S_OK;
+            //return S_OK;
         }
 
         catch (...)
         {
-            return E_FAIL;
+            //return E_FAIL;
         }
     }
 
-    HRESULT CompositionSwapChainResources::WaitForGpu()
+    void CompositionSwapChainResources::WaitForGpu()
     {
-        try
-        {
-            m_direct_queue->wait_for_idle_gpu();
-            return S_OK;
-        }
-        catch (...)
-        {
-            return E_FAIL;
-        }
+        m_direct_queue->wait_for_idle_gpu();
     }
-    HRESULT CompositionSwapChainResources::WaitForFence(IFenceHandle  v)
+
+    void CompositionSwapChainResources::WaitForFence(IFenceHandle  v)
     {
         winrt::com_ptr<IFenceHandleNative> const native{ v.as<IFenceHandleNative>() };
 
@@ -181,76 +179,65 @@ namespace winrt::UniqueCreator::Graphics::implementation
         if (fence->m_fence == m_direct_queue->fence())
         {
             m_direct_queue->wait_for_fence(fence->m_value);
-            return S_OK;
-        }
-        else
-        {
-            return E_FAIL;
         }
     }
 
-    HRESULT CompositionSwapChainResources::InsertWaitOn(IFenceHandle  v)
+    void CompositionSwapChainResources::InsertWaitOn(IFenceHandle  v)
     {
         winrt::com_ptr<IFenceHandleNative> const native{ v.as<IFenceHandleNative>() };
-
         auto fence = native->GetFenceHandle();
-
         m_direct_queue->insert_wait_on(*fence);
-        return S_OK;
     }
 
-    HRESULT CompositionSwapChainResources::Present()
+    void CompositionSwapChainResources::Present()
     {
-        return m_swap_chain->Present(0, 0);
+        m_swap_chain->Present(0, 0);
     }
 
-    HRESULT CompositionSwapChainResources::Sync()
+    void CompositionSwapChainResources::Sync()
     {
         m_direct_context_allocator->sync();
-        return S_OK;
     }
 
-    HRESULT CompositionSwapChainResources::MoveToNextFrame()
+    void CompositionSwapChainResources::MoveToNextFrame()
     {
         m_buffer_index = m_buffer_index + 1;
         m_buffer_index = m_buffer_index % m_buffer_count;
 
         auto fence = m_direct_queue->increment_fence();
         m_direct_queue->wait_for_fence(fence - 2);
-
-        return S_OK;
     }
 
-    HRESULT CompositionSwapChainResources::SetSourceSize(uint32_t width, uint32_t height)
+    void CompositionSwapChainResources::SetSourceSize(uint32_t width, uint32_t height)
     {
-        return m_swap_chain->SetSourceSize(width, height);
+        m_swap_chain->SetSourceSize(width, height);
     }
 
-    HRESULT CompositionSwapChainResources::SetLogicalSize(Size2D size)
+    void CompositionSwapChainResources::SetLogicalSize(Size2D size)
     {
         m_logical_size = size;
         auto r = BuildSwapChainSize(m_logical_size, m_display_information, m_composition_scale_x, m_composition_scale_y);
-        return Resize(static_cast<uint32_t>(r.m_width), static_cast<uint32_t>(r.m_height));
+        Resize(static_cast<uint32_t>(r.m_width), static_cast<uint32_t>(r.m_height));
     }
 
-    HRESULT CompositionSwapChainResources::SetCompositionScale(float scaleX, float scaleY)
+    void CompositionSwapChainResources::SetCompositionScale(float scaleX, float scaleY)
     {
         m_composition_scale_x = scaleX;
         m_composition_scale_y = scaleY;
 
         auto r = BuildSwapChainSize(m_logical_size, m_display_information, m_composition_scale_x, m_composition_scale_y);
-        return Resize(static_cast<uint32_t>(r.m_width), static_cast<uint32_t>(r.m_height));
+        Resize(static_cast<uint32_t>(r.m_width), static_cast<uint32_t>(r.m_height));
     }
 
-    HRESULT CompositionSwapChainResources::SetDisplayInformation(const Windows::Graphics::Display::DisplayInformation& displayInformation)
+    void CompositionSwapChainResources::SetDisplayInformation(const Windows::Graphics::Display::DisplayInformation& displayInformation)
     {
         m_display_information = displayInformation;
         auto r = BuildSwapChainSize(m_logical_size, m_display_information, m_composition_scale_x, m_composition_scale_y);
-        return Resize(static_cast<uint32_t>(r.m_width), static_cast<uint32_t>(r.m_height));
+        Resize(static_cast<uint32_t>(r.m_width), static_cast<uint32_t>(r.m_height));
     }
 
     IDirectGpuCommandContext CompositionSwapChainResources::CreateDirectCommandContext()
     {
-        return DirectGpuCommandContext(uc::gx::dx12::create_graphics_command_context(m_direct_context_allocator.get()));
+        return make<DirectGpuCommandContext>(uc::gx::dx12::create_graphics_command_context(m_direct_context_allocator.get()));
     }
 }

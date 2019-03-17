@@ -10,6 +10,7 @@ namespace UniqueCreator
         [version(1.0)]
         interface IBackBuffer : IInspectable requires IPixelBuffer
         {
+
         };
     }
 }
