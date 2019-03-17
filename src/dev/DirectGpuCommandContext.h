@@ -18,6 +18,8 @@ namespace winrt::UniqueCreator::Graphics::implementation
         void Dispatch() {}
         void Draw() {}
 
+        void Clear(IBackBuffer b);
+
         private:
 
         uc::gx::dx12::managed_graphics_command_context m_ctx;

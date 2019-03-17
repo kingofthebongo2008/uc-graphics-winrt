@@ -1,6 +1,7 @@
 ﻿#pragma once
 
 import "ComputeGpuCommandContext.idl";
+import "BackBuffer.idl";
 
 namespace UniqueCreator
 {
@@ -8,6 +9,7 @@ namespace UniqueCreator
     {
         interface IDirectGpuCommandContext requires IComputeGpuCommandContext
         {
+            void Clear(IBackBuffer b);
             void Draw();
         }
     }

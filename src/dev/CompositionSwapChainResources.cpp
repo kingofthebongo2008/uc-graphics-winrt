@@ -128,7 +128,7 @@ namespace winrt::UniqueCreator::Graphics::implementation
 
     CompositionSwapChainResources::~CompositionSwapChainResources()
     {
-        __debugbreak();
+
     }
 
     void CompositionSwapChainResources::Resize(uint32_t width, uint32_t height)
@@ -235,6 +235,6 @@ namespace winrt::UniqueCreator::Graphics::implementation
 
     IBackBuffer CompositionSwapChainResources::BackBuffer() const
     {
-        return make<BackBuffer1>();
+        return make<BackBuffer1>(m_back_buffer[m_buffer_index].get());
     }
 }

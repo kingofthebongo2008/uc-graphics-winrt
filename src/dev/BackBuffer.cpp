@@ -3,29 +3,36 @@
 
 namespace winrt::UniqueCreator::Graphics::implementation
 {
-    GpuVirtualAddress BackBuffer::VirtualAddress() const
+    BackBuffer::BackBuffer(gpu_back_buffer* b) : m_back_buffer(b)
     {
-        return {};
+
     }
 
-    Size3D            BackBuffer::Size3D() const
+    GpuVirtualAddress BackBuffer::VirtualAddress() const
     {
-        return {};
+        return { m_back_buffer->virtual_address() };
+    }
+
+    Size3D BackBuffer::Size3D() const
+    {
+        auto r = m_back_buffer->desc();
+        return { static_cast<float>(r.Width), static_cast<float>(r.Height), static_cast<float>(r.DepthOrArraySize) };
     }
 
     Size2D            BackBuffer::Size2D() const
     {
-        return {};
+        auto r = m_back_buffer->desc();
+        return { static_cast<float>(r.Width), static_cast<float>(r.Height) };
     }
 
     uc::gx::dx12::gpu_back_buffer* BackBuffer::GetBackBuffer()
     {
-        return nullptr;
+        return m_back_buffer;
     }
 
     uc::gx::dx12::gpu_virtual_resource* BackBuffer::GetResource()
     {
-        return nullptr;
+        return m_back_buffer;
     }
    
 }

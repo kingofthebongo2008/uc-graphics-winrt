@@ -128,13 +128,15 @@ namespace uc_engine_hello_world
         }
         private void Render()
         {
-            var ctx = m_swapChain.CreateDirectCommandContext();
+            {
+                var ctx = m_swapChain.CreateDirectCommandContext();
 
-            ctx.Copy();
-            ctx.Dispatch();
-            ctx.Draw();
-
-            ctx.Submit();
+                ctx.Copy();
+                ctx.Dispatch();
+                ctx.Draw();
+                ctx.Clear(m_swapChain.BackBuffer);
+                ctx.Submit();
+            }
            
             m_swapChain.Present();
 
