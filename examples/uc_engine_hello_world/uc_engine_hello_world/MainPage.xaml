@@ -6,12 +6,10 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Width="1600" Height="900">
 
-    <Grid>
-        <Viewbox>
-        <SwapChainPanel x:Name="m_swapChainPanel" MinHeight="8" MinWidth="8" SizeChanged="M_swapChainPanel_SizeChanged" Width="1600" Height="900" CompositionScaleChanged="M_swapChainPanel_CompositionScaleChanged"/>
+        <Viewbox Width="1600" Height="900">
+            <SwapChainPanel x:Name="m_swapChainPanel" SizeChanged="M_swapChainPanel_SizeChanged" CompositionScaleChanged="M_swapChainPanel_CompositionScaleChanged" MaxHeight="900" MaxWidth="1600" MinHeight="900" MinWidth="1600" Height="900" Width="1600"/>
         </Viewbox>
 
-    </Grid>
 </Page>
