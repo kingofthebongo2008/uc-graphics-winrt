@@ -60,23 +60,6 @@ namespace uc_engine_hello_world
                     lock (m_rendererLock)
                     {
                         Render();
-
-                        /*
-                         *Update();
-
-                        m_renderer->Render();
-
-                        m_deviceResources->Present();
-
-                        /*
-
-                        if (!m_haveFocus || (m_updateState == UpdateEngineState::TooSmall))
-                        {
-                            // The app is in an inactive state so stop rendering
-                            // This optimizes for power and allows the framework to become more queiecent
-                            break;
-                        }
-                        */
                     }
                 }
             });
@@ -130,11 +113,17 @@ namespace uc_engine_hello_world
         {
             {
                 var ctx = m_swapChain.CreateDirectCommandContext();
+                var backBuffer = m_swapChain.BackBuffer;
 
                 ctx.Copy();
                 ctx.Dispatch();
                 ctx.Draw();
+                ctx.TransitionResource(backBuffer, ResourceState.Present, ResourceState.RenderTarget);
+
                 ctx.Clear(m_swapChain.BackBuffer);
+
+                ctx.TransitionResource(backBuffer, ResourceState.RenderTarget, ResourceState.Present);
+
                 ctx.Submit();
             }
            

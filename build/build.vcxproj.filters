@@ -1,3 +1,40 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="..\src\pch\pch.cpp" />
+    <ClCompile Include="..\src\dev\WindowsEnvironment.cpp" />
+    <ClCompile Include="$(GeneratedFilesDir)module.g.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\pch\pch.h" />
+    <ClInclude Include="..\src\dev\IResourceCreateContextNative.h" />
+    <ClInclude Include="..\src\dev\IFenceHandleNative.h" />
+    <ClInclude Include="..\src\dev\WindowsEnvironment.h" />
+    <ClInclude Include="..\src\dev\IBackBufferNative.h" />
+    <ClInclude Include="..\src\dev\IPixelBufferNative.h" />
+    <ClInclude Include="..\src\dev\IGpuVirtualResourceNative.h" />
+    <ClInclude Include="..\src\dev\IPixelBuffer.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Midl Include="..\src\idl\BackBuffer.idl" />
+    <Midl Include="..\src\idl\PixelBuffer.idl" />
+    <Midl Include="..\src\idl\GpuVirtualResource.idl" />
+    <Midl Include="..\src\idl\GpuCommandContext.idl" />
+    <Midl Include="..\src\idl\CopyGpuCommandContext.idl" />
+    <Midl Include="..\src\idl\ComputeGpuCommandContext.idl" />
+    <Midl Include="..\src\idl\DirectGpuCommandContext.idl" />
+    <Midl Include="..\src\idl\GraphicTypes.idl" />
+    <Midl Include="..\src\idl\Base.idl" />
+    <Midl Include="..\src\idl\FenceHandle.idl" />
+    <Midl Include="..\src\idl\ResourceCreateContext.idl" />
+    <Midl Include="..\src\idl\CompositionSwapChainResources.idl" />
+    <Midl Include="..\src\idl\SwapChainResources.idl" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="module.def" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="readme.txt" />
+  </ItemGroup>
 </Project>

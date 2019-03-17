@@ -20,7 +20,23 @@ namespace winrt::UniqueCreator::Graphics::implementation
 
     ResourceCreateContext::ResourceCreateContext()
     {
-        HRESULT r = D3D12CreateDevice(nullptr, D3D_FEATURE_LEVEL_12_1, __uuidof(ID3D12Device4), (void**) m_device.put());
+//#if defined(_DEBUG)
+        {
+            Microsoft::WRL::ComPtr<ID3D12Debug1>                        m_debug;
+            auto hresult = D3D12GetDebugInterface(IID_PPV_ARGS(&m_debug));
+            if (SUCCEEDED(hresult))
+            {
+                m_debug->EnableDebugLayer();
+
+                //todo: check intel driver, which failes with the gpu validation
+                m_debug->SetEnableGPUBasedValidation(TRUE);
+                m_debug->SetEnableSynchronizedCommandQueueValidation(TRUE);
+            }
+        }
+//#endif
+
+
+        HRESULT r = D3D12CreateDevice(nullptr, D3D_FEATURE_LEVEL_12_1, __uuidof(ID3D12Device4), (void**)m_device.put());
 
         if (r == S_OK)
         {
