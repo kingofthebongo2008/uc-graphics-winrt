@@ -8,7 +8,6 @@
             Single m_height;
         };
 
-        //[version(1.0)]
         struct Size3D
         {
             Single m_width;
@@ -16,7 +15,6 @@
             Single m_depth;
         };
 
-        //[version(1.0)]
         struct Rectangle2D
         {
             Single m_left;
@@ -25,7 +23,6 @@
             Single m_bottom;
         };
 
-        //[version(1.0)]
         struct ViewPort
         {
             Single m_topLeftX;
@@ -34,6 +31,153 @@
             Single m_height;
             Single m_minDepth;
             Single m_maxDepth;
+        };
+
+        enum GraphicsFormat
+        {
+            UNKNOWN = 0,
+            R32G32B32A32_TYPELESS = 1,
+            R32G32B32A32_Single = 2,
+            R32G32B32A32_UINT = 3,
+            R32G32B32A32_SINT = 4,
+            R32G32B32_TYPELESS = 5,
+            R32G32B32_Single = 6,
+            R32G32B32_UINT = 7,
+            R32G32B32_SINT = 8,
+            R16G16B16A16_TYPELESS = 9,
+            R16G16B16A16_Single = 10,
+            R16G16B16A16_UNORM = 11,
+            R16G16B16A16_UINT = 12,
+            R16G16B16A16_SNORM = 13,
+            R16G16B16A16_SINT = 14,
+            R32G32_TYPELESS = 15,
+            R32G32_Single = 16,
+            R32G32_UINT = 17,
+            R32G32_SINT = 18,
+            R32G8X24_TYPELESS = 19,
+            D32_Single_S8X24_UINT = 20,
+            R32_Single_X8X24_TYPELESS = 21,
+            X32_TYPELESS_G8X24_UINT = 22,
+            R10G10B10A2_TYPELESS = 23,
+            R10G10B10A2_UNORM = 24,
+            R10G10B10A2_UINT = 25,
+            R11G11B10_Single = 26,
+            R8G8B8A8_TYPELESS = 27,
+            R8G8B8A8_UNORM = 28,
+            R8G8B8A8_UNORM_SRGB = 29,
+            R8G8B8A8_UINT = 30,
+            R8G8B8A8_SNORM = 31,
+            R8G8B8A8_SINT = 32,
+            R16G16_TYPELESS = 33,
+            R16G16_Single = 34,
+            R16G16_UNORM = 35,
+            R16G16_UINT = 36,
+            R16G16_SNORM = 37,
+            R16G16_SINT = 38,
+            R32_TYPELESS = 39,
+            D32_Single = 40,
+            R32_Single = 41,
+            R32_UINT = 42,
+            R32_SINT = 43,
+            R24G8_TYPELESS = 44,
+            D24_UNORM_S8_UINT = 45,
+            R24_UNORM_X8_TYPELESS = 46,
+            X24_TYPELESS_G8_UINT = 47,
+            R8G8_TYPELESS = 48,
+            R8G8_UNORM = 49,
+            R8G8_UINT = 50,
+            R8G8_SNORM = 51,
+            R8G8_SINT = 52,
+            R16_TYPELESS = 53,
+            R16_Single = 54,
+            D16_UNORM = 55,
+            R16_UNORM = 56,
+            R16_UINT = 57,
+            R16_SNORM = 58,
+            R16_SINT = 59,
+            R8_TYPELESS = 60,
+            R8_UNORM = 61,
+            R8_UINT = 62,
+            R8_SNORM = 63,
+            R8_SINT = 64,
+            A8_UNORM = 65,
+            R1_UNORM = 66,
+            R9G9B9E5_SHAREDEXP = 67,
+            R8G8_B8G8_UNORM = 68,
+            G8R8_G8B8_UNORM = 69,
+            BC1_TYPELESS = 70,
+            BC1_UNORM = 71,
+            BC1_UNORM_SRGB = 72,
+            BC2_TYPELESS = 73,
+            BC2_UNORM = 74,
+            BC2_UNORM_SRGB = 75,
+            BC3_TYPELESS = 76,
+            BC3_UNORM = 77,
+            BC3_UNORM_SRGB = 78,
+            BC4_TYPELESS = 79,
+            BC4_UNORM = 80,
+            BC4_SNORM = 81,
+            BC5_TYPELESS = 82,
+            BC5_UNORM = 83,
+            BC5_SNORM = 84,
+            B5G6R5_UNORM = 85,
+            B5G5R5A1_UNORM = 86,
+            B8G8R8A8_UNORM = 87,
+            B8G8R8X8_UNORM = 88,
+            R10G10B10_XR_BIAS_A2_UNORM = 89,
+            B8G8R8A8_TYPELESS = 90,
+            B8G8R8A8_UNORM_SRGB = 91,
+            B8G8R8X8_TYPELESS = 92,
+            B8G8R8X8_UNORM_SRGB = 93,
+            BC6H_TYPELESS = 94,
+            BC6H_UF16 = 95,
+            BC6H_SF16 = 96,
+            BC7_TYPELESS = 97,
+            BC7_UNORM = 98,
+            BC7_UNORM_SRGB = 99,
+            AYUV = 100,
+            Y410 = 101,
+            Y416 = 102,
+            NV12 = 103,
+            P010 = 104,
+            P016 = 105,
+            F420_OPAQUE = 106,
+            YUY2 = 107,
+            Y210 = 108,
+            Y216 = 109,
+            NV11 = 110,
+            AI44 = 111,
+            IA44 = 112,
+            P8 = 113,
+            A8P8 = 114,
+            B4G4R4A4_UNORM = 115,
+
+            P208 = 130,
+            V208 = 131,
+            V408 = 132,
+        };
+
+        enum DepthBufferFormat
+        {
+            Depth32Single   = 40, //GraphicsFormat.D32_Single,
+            Depth16Unorm    = 55, //GraphicsFormat.D16_UNORM
+        };
+
+        enum DepthStencilBufferFormat
+        {
+            Depth24UnormS8Uint = 45 //GraphicsFormat.D24_UNORM_S8_UINT
+        };
+
+        enum ColorBufferFormat
+        {
+            R8G8B8A8Unorm       = 28, //GraphicsFormat::R8G8B8A8_UNORM
+            R8G8B8A8UnormSrgb   = 29  //GraphicsFormat::R8G8B8A8_UNORM
+        };
+
+        enum IndexBufferFormat
+        {
+            Bytes2 = 57, //GraphicsFormat.R16_UINT,
+            Bytes4 = 42, //GraphicsFormat.R32_UINT
         };
 
         enum ResourceState
@@ -58,11 +202,380 @@
             Predication = 0x200
         };
 
-        struct GpuVirtualAddress
+        enum InputClassification
         {
-            UInt64   m_value;
+            PerVertexData = 0,
+            PerInstanceData = 1
         };
 
+        enum PrimitiveTopologyType
+        {
+            Undefined = 0,
+            Point = 1,
+            Line = 2,
+            Triangle = 3,
+            Patch = 4
+        };
+
+        enum PrimitiveTopology
+        {
+            LineList = 2,
+            TriangleList = 4
+        };
+
+        struct InputElementDescription
+        {
+            const char*         m_semanticName;
+            UInt32              m_semanticIndex;
+            GraphicsFormat      m_format;
+            UInt32            m_inputSlot;
+            UInt32            m_alignedByteOffset;
+            InputClassification m_inputSlotClass;
+            UInt32            m_instanceDataStepRate;
+        };
+
+        enum FillMode
+        {
+            WireFrame = 2,
+            Solid = 3
+        };
+
+        enum CullMode
+        {
+            None = 1,
+            Front = 2,
+            Back = 3
+        };
+
+        struct StreamOutputDeclarationEntry
+        {
+            UInt32    m_stream;
+            const char* m_semanticName;
+            UInt32    m_semanticIndex;
+            UInt8     m_startComponent;
+            UInt8     m_componentCount;
+            UInt8     m_outputSlot;
+        };
+
+        enum ComparisonFunction
+        {
+            Never = 1,
+            Less = 2,
+            Equal = 3,
+            LessEqual = 4,
+            Greater = 5,
+            NotEqual = 6,
+            GreaterEqual = 7,
+            Always = 8
+        };
+
+        enum DepthWriteMask
+        {
+            Zero = 0,
+            All = 1
+        };
+
+        enum StencilOperation
+        {
+            Keep = 1,
+            Zero = 2,
+            Replace = 3,
+            IncrementSaturate = 4,
+            DecrementSaturate = 5,
+            Invert = 6,
+            Increment = 7,
+            Decrement = 8
+        };
+
+        struct DepthStencilOperationDescription
+        {
+            StencilOperation    m_stencilFailOperation;
+            StencilOperation    m_stencilDepthFailOperation;
+            StencilOperation    m_stencilPassOperation;
+            ComparisonFunction  m_stencilFunction;
+        };
+
+        struct DepthStencilDescription
+        {
+            Boolean                             m_depthEnable;
+            DepthWriteMask                      m_depthWriteMask;
+            ComparisonFunction                  m_depthFunc;
+            Boolean                             m_stencilEnable;
+            UInt8                               m_stencilReadMask;
+            UInt8                               m_stencilWriteMask;
+            DepthStencilOperationDescription    m_frontFace;
+            DepthStencilOperationDescription    m_backFace;
+        };
+
+
+        enum Blend
+        {
+            Zero = 1,
+            One = 2,
+            SourceColor = 3,
+            InverseSourceColor = 4,
+            SourceAlpha = 5,
+            InverseSourceAlpha = 6,
+            DestinationAlpha = 7,
+            InverseDestinationAlpha = 8,
+            DestinationColor = 9,
+            InverseDestinationColor = 10,
+            SourceAlphaSaturate = 11,
+            Factor = 14,
+            InverseBlendFactor = 15,
+            SourceOneColor = 16,
+            InverseSourceOneColor = 17,
+            SourceOneAlpha = 18,
+            InverseSourceOneAlpha = 19
+        };
+
+        enum BlendOperation
+        {
+            Add = 1,
+            Subtract = 2,
+            ReverseSubtract = 3,
+            Min = 4,
+            Max = 5
+        };
+
+        enum ColorWriteEnable
+        {
+            Red = 1,
+            Green = 2,
+            Blue = 4,
+            Alpha = 8,
+            ColorWriteEnable_All = Red | Green | Blue | Alpha
+        };
+
+        enum LogicOperation
+        {
+            Clear = 0,
+            Set = 1,
+            Copy = 2,
+            CopyInverted = 3,
+            Noop = 4,
+            Invert = 5,
+            And = 6,
+            Nand = 7,
+            Or = 8,
+            Nor = 9,
+            Xor = 10,
+            Equiv = 11,
+            AndReverse = 12,
+            AndInverted = 13,
+            OrReverse = 14,
+            OrInverted = 15
+        };
+
+        struct RenderTargetBlendDescription
+        {
+            Boolean            m_blendEnable;
+            Boolean            m_logicOperationEnable;
+            Blend           m_sourceBlend;
+            Blend           m_destinationBlend;
+            BlendOperation  m_blendOperation;
+            Blend           m_sourceBlendAlpha;
+            Blend           m_destinationBlendAlpha;
+            BlendOperation  m_blendOperationAlpha;
+            LogicOperation  m_logicOperation;
+            UInt8         m_renderTargetWriteMask;
+        };
+
+        struct BlendDescription
+        {
+            Boolean m_alphaToCoverageEnable;
+            Boolean m_independentBlendEnable;
+            RenderTargetBlendDescription m_renderTarget[8];
+        };
+
+        enum ConservativeRasterizationMode
+        {
+            Off = 0,
+            On  = 1
+        };
+
+        enum IndexBufferStripCut
+        {
+            ValueDisabled = 0,
+            Value0xFFFF = 1,
+            Value0xFFFFFFFF = 2
+        };
+
+        struct RasterizerDescription
+        {
+            FillMode                            m_fillMode;
+            CullMode                            m_cullMode;
+            Boolean                                m_frontCounterClockwise;
+            UInt32                             m_depthBias;
+            Single                              m_depthBiasClamp;
+            Single                              m_slopeScaledDepthBias;
+            Boolean                                m_depthClipEnable;
+            Boolean                                m_multisampleEnable;
+            Boolean                                m_antialiasedLineEnable;
+            UInt32                              m_forcedSampleCount;
+            ConservativeRasterizationMode       m_conservativeRaster;
+        };
+
+        struct ShaderByteCode
+        {
+            UInt8   m_code[];
+            UInt32    m_code_size;
+        };
+
+        struct ComputeShaderByteCode
+        {
+            UInt8     m_code[];
+            UInt32    m_code_size;
+        };
+
+        struct VertexShaderByteCode
+        {
+            UInt8     m_code[];
+            UInt32    m_code_size;
+        };
+
+        struct PixelShaderByteCode
+        {
+            UInt8     m_code[];
+            UInt32    m_code_size;
+        };
+
+        struct DomainShaderByteCode
+        {
+            UInt8     m_code[];
+            UInt32    m_code_size;
+        };
+
+        struct GeometryShaderByteCode
+        {
+            UInt8     m_code[];
+            UInt32    m_code_size;
+        };
+
+        struct HullShaderByteCode
+        {
+            UInt8     m_code[];
+            UInt32    m_code_size;
+        };
+
+        struct RootSignatureByteCode
+        {
+            UInt8     m_code[];
+            UInt32    m_code_size;
+        };
+
+        struct StreamOutputDescription
+        {
+            const StreamOutputDeclarationEntry* m_soDeclaration;
+            UInt32                              m_numEntries;
+            const UInt32*                       m_bufferStrides;
+            UInt32                              m_numStrides;
+            UInt32                              m_rasterizedStream;
+        };
+
+        struct InputLayoutDescription
+        {
+            const InputElementDescription*  m_inputElementDescs;
+            UInt32                          m_numElements;
+        };
+
+        struct ComputePipelineStateDescription
+        {
+            ComputeShaderByteCode   m_cs;
+        };
+
+        struct SampleDescription
+        {
+            UInt32 m_count;
+            UInt32 m_quality;
+        };
+
+        struct GraphicsPipelineStateDescription
+        {
+            VertexShaderByteCode        m_vs;
+            PixelShaderByteCode         m_ps;
+            DomainShaderByteCode        m_ds;
+            HullShaderByteCode          m_hs;
+            GeometryShaderByteCode      m_gs;
+
+            StreamOutputDescription     m_streamOutput;
+            BlendDescription            m_blendState;
+
+            UInt32                      m_sampleMask;
+            RasterizerDescription       m_rasterizerState;
+            DepthStencilDescription     m_depthStencilState;
+
+            InputLayoutDescription      m_inputLayout;
+            IndexBufferStripCut         m_ibStripCutValue;
+            PrimitiveTopologyType       m_primitiveTopologyType;
+            UInt32                      m_numRenderTargets;
+            GraphicsFormat              m_rtvFormats[8];
+            GraphicsFormat              m_dsvFormat;
+            SampleDescription           m_sampleDescription;
+        };
+
+        struct GpuVirtualAddress final
+        {
+            UInt64 m_value;
+        };
+
+        struct CpuVirtualAddress
+        {
+            UInt64 m_value;
+        };
+
+        struct RootIndex
+        {
+            UInt32 m_value;
+        };
+
+        struct VertexBufferView
+        {
+            GpuVirtualAddress   m_bufferLocation;
+            UInt32              m_sizeInBytes;
+            UInt32              m_strideInBytes;
+        };
+
+        enum VertexSlot
+        {
+            Zero = 0,
+            One = 1,
+            Two = 2,
+            Three = 3,
+            Four = 4,
+            Five = 5,
+            Six = 6
+        };
+
+        struct IndexBufferView
+        {
+            GpuVirtualAddress   m_bufferLocation;
+            UInt32              m_sizeInBytes;
+            IndexBufferFormat   m_format;
+        };
+
+        struct SubresourceData
+        {
+            CpuVirtualAddress   m_data;
+            UInt64              m_rowPitch;
+            UInt64              m_slicePitch;
+        };
+
+        struct PrimitiveRange
+        {
+            UInt32 m_begin;
+            UInt32 m_end;
+        };
+
+        struct PrimitiveRangeDescription
+        {
+            PrimitiveRange* m_ranges;
+            UInt64          m_ranges_size;
+        };
+
+
+
+        /////////////////////
     }
 }
 
