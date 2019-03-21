@@ -79,14 +79,14 @@ namespace winrt::UniqueCreator::Graphics::implementation
                 m_composition_scale_y = panel.CompositionScaleY();
                 m_logical_size        = { static_cast<float>(panel.Width()), static_cast<float>(panel.Height()) };
 
-                if (m_logical_size.m_width != m_logical_size.m_width)
+                if (m_logical_size.Width != m_logical_size.Width)
                 {
-                    m_logical_size.m_width = 8.0f;
+                    m_logical_size.Width = 8.0f;
                 }
 
-                if (m_logical_size.m_height != m_logical_size.m_height)
+                if (m_logical_size.Height != m_logical_size.Height)
                 {
-                    m_logical_size.m_height = 8.0f;
+                    m_logical_size.Height = 8.0f;
                 }
 
 
@@ -97,7 +97,7 @@ namespace winrt::UniqueCreator::Graphics::implementation
                 Microsoft::WRL::ComPtr<IDXGIFactory4> factory = dx12::create_dxgi_factory4();
                 m_direct_queue        = create_command_queue(device.get(), D3D12_COMMAND_LIST_TYPE_DIRECT);
 
-                m_swap_chain          = create_swap_chain(factory.Get(), m_direct_queue->queue(), static_cast<uint32_t>(r.m_width), static_cast<uint32_t>(r.m_height));
+                m_swap_chain          = create_swap_chain(factory.Get(), m_direct_queue->queue(), static_cast<uint32_t>(r.Width), static_cast<uint32_t>(r.Height));
 
                 winrt::com_ptr<ISwapChainPanelNative> const p{ panel.as<ISwapChainPanelNative>() };
                 p->SetSwapChain(m_swap_chain.get());
@@ -209,7 +209,7 @@ namespace winrt::UniqueCreator::Graphics::implementation
     {
         m_logical_size = size;
         auto r = BuildSwapChainSize(m_logical_size, m_display_information, m_composition_scale_x, m_composition_scale_y);
-        Resize(static_cast<uint32_t>(r.m_width), static_cast<uint32_t>(r.m_height));
+        Resize(static_cast<uint32_t>(r.Width), static_cast<uint32_t>(r.Height));
     }
 
     void CompositionSwapChainResources::SetCompositionScale(float scaleX, float scaleY)
@@ -218,14 +218,14 @@ namespace winrt::UniqueCreator::Graphics::implementation
         m_composition_scale_y = scaleY;
 
         auto r = BuildSwapChainSize(m_logical_size, m_display_information, m_composition_scale_x, m_composition_scale_y);
-        Resize(static_cast<uint32_t>(r.m_width), static_cast<uint32_t>(r.m_height));
+        Resize(static_cast<uint32_t>(r.Width), static_cast<uint32_t>(r.Height));
     }
 
     void CompositionSwapChainResources::SetDisplayInformation(const Windows::Graphics::Display::DisplayInformation& displayInformation)
     {
         m_display_information = displayInformation;
         auto r = BuildSwapChainSize(m_logical_size, m_display_information, m_composition_scale_x, m_composition_scale_y);
-        Resize(static_cast<uint32_t>(r.m_width), static_cast<uint32_t>(r.m_height));
+        Resize(static_cast<uint32_t>(r.Width), static_cast<uint32_t>(r.Height));
     }
 
     IDirectGpuCommandContext CompositionSwapChainResources::CreateDirectCommandContext()

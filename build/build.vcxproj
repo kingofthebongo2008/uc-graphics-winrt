@@ -144,6 +144,12 @@
     </ClInclude>
     <ClInclude Include="..\src\dev\IPixelBuffer.h">
     </ClInclude>
+
+    <ClInclude Include="..\src\dev\BlendDescription.h">
+      <DependentUpon>..\src\idl\GraphicTypes.idl</DependentUpon>
+    </ClInclude>
+
+
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\pch\pch.cpp">
@@ -169,6 +175,11 @@
     <ClCompile Include="..\src\dev\BackBuffer.cpp">
       <DependentUpon>..\src\idl\BackBuffer.idl</DependentUpon>
     </ClCompile>
+
+    <ClCompile Include="..\src\dev\BlendDescription.cpp">
+      <DependentUpon>..\src\idl\GraphicTypes.idl</DependentUpon>
+    </ClCompile>
+
   </ItemGroup>
   <ItemGroup>
     <Midl Include="..\src\idl\BackBuffer.idl" />

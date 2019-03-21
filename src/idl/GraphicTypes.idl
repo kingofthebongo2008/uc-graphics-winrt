@@ -4,33 +4,33 @@
     {
         struct Size2D
         {
-            Single m_width;
-            Single m_height;
+            Single Width;
+            Single Height;
         };
 
         struct Size3D
         {
-            Single m_width;
-            Single m_height;
-            Single m_depth;
+            Single Width;
+            Single Height;
+            Single Depth;
         };
 
         struct Rectangle2D
         {
-            Single m_left;
-            Single m_top;
-            Single m_right;
-            Single m_bottom;
+            Single Left;
+            Single Top;
+            Single Right;
+            Single Bottom;
         };
 
         struct ViewPort
         {
-            Single m_topLeftX;
-            Single m_topLeftY;
-            Single m_width;
-            Single m_height;
-            Single m_minDepth;
-            Single m_maxDepth;
+            Single TopLeftX;
+            Single TopLeftY;
+            Single Width;
+            Single Height;
+            Single MinDepth;
+            Single MaxDepth;
         };
 
         enum GraphicsFormat
@@ -225,13 +225,13 @@
 
         struct InputElementDescription
         {
-            const char*         m_semanticName;
-            UInt32              m_semanticIndex;
-            GraphicsFormat      m_format;
-            UInt32            m_inputSlot;
-            UInt32            m_alignedByteOffset;
-            InputClassification m_inputSlotClass;
-            UInt32            m_instanceDataStepRate;
+            String              SemanticName;
+            UInt32              SemanticIndex;
+            GraphicsFormat      Format;
+            UInt32              InputSlot;
+            UInt32              AlignedByteOffset;
+            InputClassification InputSlotClass;
+            UInt32              InstanceDataStepRate;
         };
 
         enum FillMode
@@ -249,12 +249,12 @@
 
         struct StreamOutputDeclarationEntry
         {
-            UInt32    m_stream;
-            const char* m_semanticName;
-            UInt32    m_semanticIndex;
-            UInt8     m_startComponent;
-            UInt8     m_componentCount;
-            UInt8     m_outputSlot;
+            UInt32    Stream;
+            String    SemanticName;
+            UInt32    SemanticIndex;
+            UInt8     StartComponent;
+            UInt8     ComponentCount;
+            UInt8     OutputSlot;
         };
 
         enum ComparisonFunction
@@ -289,22 +289,22 @@
 
         struct DepthStencilOperationDescription
         {
-            StencilOperation    m_stencilFailOperation;
-            StencilOperation    m_stencilDepthFailOperation;
-            StencilOperation    m_stencilPassOperation;
-            ComparisonFunction  m_stencilFunction;
+            StencilOperation    StencilFailOperation;
+            StencilOperation    StencilDepthFailOperation;
+            StencilOperation    StencilPassOperation;
+            ComparisonFunction  StencilFunction;
         };
 
         struct DepthStencilDescription
         {
-            Boolean                             m_depthEnable;
-            DepthWriteMask                      m_depthWriteMask;
-            ComparisonFunction                  m_depthFunc;
-            Boolean                             m_stencilEnable;
-            UInt8                               m_stencilReadMask;
-            UInt8                               m_stencilWriteMask;
-            DepthStencilOperationDescription    m_frontFace;
-            DepthStencilOperationDescription    m_backFace;
+            Boolean                             DepthEnable;
+            DepthWriteMask                      DepthWriteMask;
+            ComparisonFunction                  DepthFunc;
+            Boolean                             StencilEnable;
+            UInt8                               StencilReadMask;
+            UInt8                               StencilWriteMask;
+            DepthStencilOperationDescription    FrontFace;
+            DepthStencilOperationDescription    BackFace;
         };
 
 
@@ -369,23 +369,26 @@
 
         struct RenderTargetBlendDescription
         {
-            Boolean            m_blendEnable;
-            Boolean            m_logicOperationEnable;
-            Blend           m_sourceBlend;
-            Blend           m_destinationBlend;
-            BlendOperation  m_blendOperation;
-            Blend           m_sourceBlendAlpha;
-            Blend           m_destinationBlendAlpha;
-            BlendOperation  m_blendOperationAlpha;
-            LogicOperation  m_logicOperation;
-            UInt8         m_renderTargetWriteMask;
+            Boolean             BlendEnable;
+            Boolean             LogicOperationEnable;
+            Blend               SourceBlend;
+            Blend               DestinationBlend;
+            BlendOperation      BlendOperation;
+            Blend               SourceBlendAlpha;
+            Blend               DestinationBlendAlpha;
+            BlendOperation      BlendOperationAlpha;
+            LogicOperation      LogicOperation;
+            UInt8               RenderTargetWriteMask;
         };
 
-        struct BlendDescription
+        runtimeclass BlendDescription
         {
-            Boolean m_alphaToCoverageEnable;
-            Boolean m_independentBlendEnable;
-            RenderTargetBlendDescription m_renderTarget[8];
+            BlendDescription();
+
+            Boolean AlphaToCoverageEnable;
+            Boolean IndependentBlendEnable;
+
+            Windows.Foundation.Collections.IVector<RenderTargetBlendDescription> RenderTargets;
         };
 
         enum ConservativeRasterizationMode
@@ -403,137 +406,123 @@
 
         struct RasterizerDescription
         {
-            FillMode                            m_fillMode;
-            CullMode                            m_cullMode;
-            Boolean                                m_frontCounterClockwise;
-            UInt32                             m_depthBias;
-            Single                              m_depthBiasClamp;
-            Single                              m_slopeScaledDepthBias;
-            Boolean                                m_depthClipEnable;
-            Boolean                                m_multisampleEnable;
-            Boolean                                m_antialiasedLineEnable;
-            UInt32                              m_forcedSampleCount;
-            ConservativeRasterizationMode       m_conservativeRaster;
+            FillMode                            FillMode;
+            CullMode                            CullMode;
+            Boolean                             FrontCounterClockwise;
+            UInt32                              DepthBias;
+            Single                              DepthBiasClamp;
+            Single                              SlopeScaledDepthBias;
+            Boolean                             DepthClipEnable;
+            Boolean                             MultisampleEnable;
+            Boolean                             AntialiasedLineEnable;
+            UInt32                              ForcedSampleCount;
+            ConservativeRasterizationMode       ConservativeRaster;
         };
 
-        struct ShaderByteCode
+        runtimeclass ComputeShaderByteCode
         {
-            UInt8   m_code[];
-            UInt32    m_code_size;
+            Windows.Foundation.Collections.IVector<UInt8> Code;
         };
 
-        struct ComputeShaderByteCode
+        runtimeclass VertexShaderByteCode
         {
-            UInt8     m_code[];
-            UInt32    m_code_size;
+            Windows.Foundation.Collections.IVector<UInt8> Code;
         };
 
-        struct VertexShaderByteCode
+        runtimeclass PixelShaderByteCode
         {
-            UInt8     m_code[];
-            UInt32    m_code_size;
+            Windows.Foundation.Collections.IVector<UInt8> Code;
         };
 
-        struct PixelShaderByteCode
+        runtimeclass DomainShaderByteCode
         {
-            UInt8     m_code[];
-            UInt32    m_code_size;
+            Windows.Foundation.Collections.IVector<UInt8> Code;
         };
 
-        struct DomainShaderByteCode
+        runtimeclass GeometryShaderByteCode
         {
-            UInt8     m_code[];
-            UInt32    m_code_size;
+            Windows.Foundation.Collections.IVector<UInt8> Code;
         };
 
-        struct GeometryShaderByteCode
+        runtimeclass HullShaderByteCode
         {
-            UInt8     m_code[];
-            UInt32    m_code_size;
+            Windows.Foundation.Collections.IVector<UInt8> Code;
         };
 
-        struct HullShaderByteCode
+        runtimeclass RootSignatureByteCode
         {
-            UInt8     m_code[];
-            UInt32    m_code_size;
+            Windows.Foundation.Collections.IVector<UInt8> Code;
         };
 
-        struct RootSignatureByteCode
+        runtimeclass StreamOutputDescription
         {
-            UInt8     m_code[];
-            UInt32    m_code_size;
+            Windows.Foundation.Collections.IVector<StreamOutputDeclarationEntry>    SODeclaration;
+            Windows.Foundation.Collections.IVector<UInt32>                          BufferStrides;
+            UInt32                                                                  RasterizedStream;
         };
 
-        struct StreamOutputDescription
+        runtimeclass InputLayoutDescription
         {
-            const StreamOutputDeclarationEntry* m_soDeclaration;
-            UInt32                              m_numEntries;
-            const UInt32*                       m_bufferStrides;
-            UInt32                              m_numStrides;
-            UInt32                              m_rasterizedStream;
+            Windows.Foundation.Collections.IVector<InputElementDescription> InputElementDescs;
         };
 
-        struct InputLayoutDescription
+        runtimeclass ComputePipelineStateDescription
         {
-            const InputElementDescription*  m_inputElementDescs;
-            UInt32                          m_numElements;
-        };
-
-        struct ComputePipelineStateDescription
-        {
-            ComputeShaderByteCode   m_cs;
+            ComputeShaderByteCode   CS;
         };
 
         struct SampleDescription
         {
-            UInt32 m_count;
-            UInt32 m_quality;
+            UInt32 Count;
+            UInt32 Quality;
         };
 
-        struct GraphicsPipelineStateDescription
+        runtimeclass GraphicsPipelineStateDescription
         {
-            VertexShaderByteCode        m_vs;
-            PixelShaderByteCode         m_ps;
-            DomainShaderByteCode        m_ds;
-            HullShaderByteCode          m_hs;
-            GeometryShaderByteCode      m_gs;
+            VertexShaderByteCode        VS;
+            PixelShaderByteCode         PS;
+            DomainShaderByteCode        DS;
+            HullShaderByteCode          HS;
+            GeometryShaderByteCode      GS;
 
-            StreamOutputDescription     m_streamOutput;
-            BlendDescription            m_blendState;
+            StreamOutputDescription     StreamOutput;
+            BlendDescription            BlendState;
 
-            UInt32                      m_sampleMask;
-            RasterizerDescription       m_rasterizerState;
-            DepthStencilDescription     m_depthStencilState;
+            UInt32                      SampleMask;
+            RasterizerDescription       RasterizerState;
+            DepthStencilDescription     DepthStencilState;
 
-            InputLayoutDescription      m_inputLayout;
-            IndexBufferStripCut         m_ibStripCutValue;
-            PrimitiveTopologyType       m_primitiveTopologyType;
-            UInt32                      m_numRenderTargets;
-            GraphicsFormat              m_rtvFormats[8];
-            GraphicsFormat              m_dsvFormat;
-            SampleDescription           m_sampleDescription;
+            InputLayoutDescription      InputLayout;
+            IndexBufferStripCut         IbStripCutValue;
+            PrimitiveTopologyType       PrimitiveTopologyType;
+            UInt32                      NumRenderTargets;
+
+            Windows.Foundation.Collections.IVector<GraphicsFormat> RtvFormats;
+
+            GraphicsFormat              DsvFormat;
+            SampleDescription           SampleDescription;
         };
 
-        struct GpuVirtualAddress final
+        struct GpuVirtualAddress
         {
-            UInt64 m_value;
+            UInt64 Value;
         };
 
         struct CpuVirtualAddress
         {
-            UInt64 m_value;
+            UInt64 Value;
         };
 
         struct RootIndex
         {
-            UInt32 m_value;
+            UInt32 Value;
         };
 
         struct VertexBufferView
         {
-            GpuVirtualAddress   m_bufferLocation;
-            UInt32              m_sizeInBytes;
-            UInt32              m_strideInBytes;
+            GpuVirtualAddress   BufferLocation;
+            UInt32              SizeInBytes;
+            UInt32              StrideInBytes;
         };
 
         enum VertexSlot
@@ -549,33 +538,28 @@
 
         struct IndexBufferView
         {
-            GpuVirtualAddress   m_bufferLocation;
-            UInt32              m_sizeInBytes;
-            IndexBufferFormat   m_format;
+            GpuVirtualAddress   BufferLocation;
+            UInt32              SizeInBytes;
+            IndexBufferFormat   Format;
         };
 
         struct SubresourceData
         {
-            CpuVirtualAddress   m_data;
-            UInt64              m_rowPitch;
-            UInt64              m_slicePitch;
+            CpuVirtualAddress   Data;
+            UInt64              RowPitch;
+            UInt64              SlicePitch;
         };
 
         struct PrimitiveRange
         {
-            UInt32 m_begin;
-            UInt32 m_end;
+            UInt32 Begin;
+            UInt32 End;
         };
 
-        struct PrimitiveRangeDescription
+        runtimeclass PrimitiveRangeDescription
         {
-            PrimitiveRange* m_ranges;
-            UInt64          m_ranges_size;
+            Windows.Foundation.Collections.IVector<InputElementDescription> Ranges;
         };
-
-
-
-        /////////////////////
     }
 }
 

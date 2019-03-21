@@ -75,8 +75,8 @@ namespace winrt::UniqueCreator::Graphics::implementation
     {
         auto dpi = displayInformation.LogicalDpi();
 
-        auto physical_width     = convert_dips_to_pixels(compositionScaleX * logicalSize.m_width, dpi);
-        auto physical_height    = convert_dips_to_pixels(compositionScaleY * logicalSize.m_height, dpi);
+        auto physical_width     = convert_dips_to_pixels(compositionScaleX * logicalSize.Width, dpi);
+        auto physical_height    = convert_dips_to_pixels(compositionScaleY * logicalSize.Height, dpi);
 
         // Prevent small sizes DirectX content from being created.
         physical_width          = physical_width  < 8 ? 8 : physical_width;
@@ -87,8 +87,8 @@ namespace winrt::UniqueCreator::Graphics::implementation
 
         Size2D result;
 
-        result.m_width  = swap_dimensions ? physical_height : physical_width;
-        result.m_height = swap_dimensions ? physical_width  : physical_height;
+        result.Width  = swap_dimensions ? physical_height : physical_width;
+        result.Height = swap_dimensions ? physical_width  : physical_height;
 
         return result;
     }
