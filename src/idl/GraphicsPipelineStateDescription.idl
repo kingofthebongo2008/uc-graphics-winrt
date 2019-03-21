@@ -1,0 +1,41 @@
+﻿import "GraphicTypes.idl";
+import "BlendDescription.idl";
+import "VertexShaderByteCode.idl";
+import "PixelShaderByteCode.idl";
+import "HullShaderByteCode.idl";
+import "DomainShaderByteCode.idl";
+import "GeometryShaderByteCode.idl";
+
+namespace UniqueCreator
+{
+    namespace Graphics
+    {
+        runtimeclass GraphicsPipelineStateDescription
+        {
+            VertexShaderByteCode        VS;
+            PixelShaderByteCode         PS;
+            DomainShaderByteCode        DS;
+            HullShaderByteCode          HS;
+            GeometryShaderByteCode      GS;
+
+            StreamOutputDescription     StreamOutput;
+            BlendDescription            BlendState;
+
+            UInt32                      SampleMask;
+            RasterizerDescription       RasterizerState;
+            DepthStencilDescription     DepthStencilState;
+
+            InputLayoutDescription      InputLayout;
+            IndexBufferStripCut         IbStripCutValue;
+            PrimitiveTopologyType       PrimitiveTopologyType;
+            UInt32                      NumRenderTargets;
+
+            Windows.Foundation.Collections.IVector<GraphicsFormat> RtvFormats;
+
+            GraphicsFormat              DsvFormat;
+            SampleDescription           SampleDescription;
+        };
+    }
+}
+
+

@@ -1,0 +1,20 @@
+﻿import "GraphicTypes.idl";
+
+namespace UniqueCreator
+{
+    namespace Graphics
+    {
+        runtimeclass BlendDescription
+        {
+            BlendDescription();
+
+            Boolean AlphaToCoverageEnable;
+            Boolean IndependentBlendEnable;
+
+            Windows.Foundation.Collections.IVector<RenderTargetBlendDescription> RenderTargets;
+        };
+
+    }
+}
+
+

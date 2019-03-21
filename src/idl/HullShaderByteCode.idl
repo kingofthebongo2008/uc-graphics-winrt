@@ -1,0 +1,12 @@
+﻿namespace UniqueCreator
+{
+    namespace Graphics
+    {
+        runtimeclass HullShaderByteCode
+        {
+            Windows.Foundation.Collections.IVector<UInt8> Code;
+        };
+    }
+}
+
+

@@ -381,15 +381,6 @@
             UInt8               RenderTargetWriteMask;
         };
 
-        runtimeclass BlendDescription
-        {
-            BlendDescription();
-
-            Boolean AlphaToCoverageEnable;
-            Boolean IndependentBlendEnable;
-
-            Windows.Foundation.Collections.IVector<RenderTargetBlendDescription> RenderTargets;
-        };
 
         enum ConservativeRasterizationMode
         {
@@ -419,88 +410,10 @@
             ConservativeRasterizationMode       ConservativeRaster;
         };
 
-        runtimeclass ComputeShaderByteCode
-        {
-            Windows.Foundation.Collections.IVector<UInt8> Code;
-        };
-
-        runtimeclass VertexShaderByteCode
-        {
-            Windows.Foundation.Collections.IVector<UInt8> Code;
-        };
-
-        runtimeclass PixelShaderByteCode
-        {
-            Windows.Foundation.Collections.IVector<UInt8> Code;
-        };
-
-        runtimeclass DomainShaderByteCode
-        {
-            Windows.Foundation.Collections.IVector<UInt8> Code;
-        };
-
-        runtimeclass GeometryShaderByteCode
-        {
-            Windows.Foundation.Collections.IVector<UInt8> Code;
-        };
-
-        runtimeclass HullShaderByteCode
-        {
-            Windows.Foundation.Collections.IVector<UInt8> Code;
-        };
-
-        runtimeclass RootSignatureByteCode
-        {
-            Windows.Foundation.Collections.IVector<UInt8> Code;
-        };
-
-        runtimeclass StreamOutputDescription
-        {
-            Windows.Foundation.Collections.IVector<StreamOutputDeclarationEntry>    SODeclaration;
-            Windows.Foundation.Collections.IVector<UInt32>                          BufferStrides;
-            UInt32                                                                  RasterizedStream;
-        };
-
-        runtimeclass InputLayoutDescription
-        {
-            Windows.Foundation.Collections.IVector<InputElementDescription> InputElementDescs;
-        };
-
-        runtimeclass ComputePipelineStateDescription
-        {
-            ComputeShaderByteCode   CS;
-        };
-
         struct SampleDescription
         {
             UInt32 Count;
             UInt32 Quality;
-        };
-
-        runtimeclass GraphicsPipelineStateDescription
-        {
-            VertexShaderByteCode        VS;
-            PixelShaderByteCode         PS;
-            DomainShaderByteCode        DS;
-            HullShaderByteCode          HS;
-            GeometryShaderByteCode      GS;
-
-            StreamOutputDescription     StreamOutput;
-            BlendDescription            BlendState;
-
-            UInt32                      SampleMask;
-            RasterizerDescription       RasterizerState;
-            DepthStencilDescription     DepthStencilState;
-
-            InputLayoutDescription      InputLayout;
-            IndexBufferStripCut         IbStripCutValue;
-            PrimitiveTopologyType       PrimitiveTopologyType;
-            UInt32                      NumRenderTargets;
-
-            Windows.Foundation.Collections.IVector<GraphicsFormat> RtvFormats;
-
-            GraphicsFormat              DsvFormat;
-            SampleDescription           SampleDescription;
         };
 
         struct GpuVirtualAddress
@@ -560,6 +473,19 @@
         {
             Windows.Foundation.Collections.IVector<InputElementDescription> Ranges;
         };
+
+        runtimeclass StreamOutputDescription
+        {
+            Windows.Foundation.Collections.IVector<StreamOutputDeclarationEntry>    SODeclaration;
+            Windows.Foundation.Collections.IVector<UInt32>                          BufferStrides;
+            UInt32                                                                  RasterizedStream;
+        };
+
+        runtimeclass InputLayoutDescription
+        {
+            Windows.Foundation.Collections.IVector<InputElementDescription> InputElementDescs;
+        };
+
     }
 }
 

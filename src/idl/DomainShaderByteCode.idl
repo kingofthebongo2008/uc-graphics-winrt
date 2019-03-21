@@ -1,0 +1,12 @@
+﻿namespace UniqueCreator
+{
+    namespace Graphics
+    {
+        runtimeclass DomainShaderByteCode
+        {
+            Windows.Foundation.Collections.IVector<UInt8> Code;
+        };
+    }
+}
+
+

@@ -1,0 +1,12 @@
+﻿namespace UniqueCreator
+{
+    namespace Graphics
+    {
+        runtimeclass GeometryShaderByteCode
+        {
+            Windows.Foundation.Collections.IVector<UInt8> Code;
+        };
+    }
+}
+
+

@@ -1,0 +1,14 @@
+﻿import "ComputeShaderByteCode.idl";
+
+namespace UniqueCreator
+{
+    namespace Graphics
+    {
+        runtimeclass ComputePipelineStateDescription
+        {
+            ComputeShaderByteCode   CS;
+        };
+    }
+}
+
+
