@@ -10,7 +10,10 @@ namespace winrt::UniqueCreator::Graphics::implementation
 
         Windows::Foundation::Collections::IVector<uint8_t> Code();
         void Code(Windows::Foundation::Collections::IVector<uint8_t> const& value);
+    
         Windows::Foundation::Collections::IVector<uint8_t> m_code;
+
+        std::vector<uint8_t>                               m_nativeCode;
     };
 }
 
