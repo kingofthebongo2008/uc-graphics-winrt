@@ -1,0 +1,15 @@
+﻿
+import "GraphicTypes.idl";
+
+namespace UniqueCreator
+{
+    namespace Graphics
+    {
+        runtimeclass PrimitiveRangeDescription
+        {
+            Windows.Foundation.Collections.IVector<InputElementDescription> Ranges;
+        };
+    }
+}
+
+
