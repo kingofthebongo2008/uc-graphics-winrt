@@ -468,24 +468,6 @@
             UInt32 Begin;
             UInt32 End;
         };
-
-        runtimeclass PrimitiveRangeDescription
-        {
-            Windows.Foundation.Collections.IVector<InputElementDescription> Ranges;
-        };
-
-        runtimeclass StreamOutputDescription
-        {
-            Windows.Foundation.Collections.IVector<StreamOutputDeclarationEntry>    SODeclaration;
-            Windows.Foundation.Collections.IVector<UInt32>                          BufferStrides;
-            UInt32                                                                  RasterizedStream;
-        };
-
-        runtimeclass InputLayoutDescription
-        {
-            Windows.Foundation.Collections.IVector<InputElementDescription> InputElementDescs;
-        };
-
     }
 }
 
