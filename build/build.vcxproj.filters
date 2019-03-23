@@ -29,6 +29,32 @@
     <Midl Include="..\src\idl\ResourceCreateContext.idl" />
     <Midl Include="..\src\idl\CompositionSwapChainResources.idl" />
     <Midl Include="..\src\idl\SwapChainResources.idl" />
+    <Midl Include="..\src\idl\GraphicsPipelineStateDescription.idl" />
+    <Midl Include="..\src\idl\ComputePipelineStateDescription.idl" />
+    <Midl Include="..\src\idl\VertexShaderByteCode.idl">
+      <Filter>Shaders</Filter>
+    </Midl>
+    <Midl Include="..\src\idl\DomainShaderByteCode.idl">
+      <Filter>Shaders</Filter>
+    </Midl>
+    <Midl Include="..\src\idl\ComputeShaderByteCode.idl">
+      <Filter>Shaders</Filter>
+    </Midl>
+    <Midl Include="..\src\idl\PixelShaderByteCode.idl">
+      <Filter>Shaders</Filter>
+    </Midl>
+    <Midl Include="..\src\idl\HullShaderByteCode.idl">
+      <Filter>Shaders</Filter>
+    </Midl>
+    <Midl Include="..\src\idl\GeometryShaderByteCode.idl">
+      <Filter>Shaders</Filter>
+    </Midl>
+    <Midl Include="..\src\idl\RootSignatureByteCode.idl">
+      <Filter>Shaders</Filter>
+    </Midl>
+    <Midl Include="..\src\idl\BlendDescription.idl">
+      <Filter>GraphicsPipelineState</Filter>
+    </Midl>
   </ItemGroup>
   <ItemGroup>
     <None Include="module.def" />
@@ -36,5 +62,13 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="readme.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Shaders">
+      <UniqueIdentifier>{ee2d1a64-e2e6-42da-8ed6-911dfd74471b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GraphicsPipelineState">
+      <UniqueIdentifier>{62cd3bf4-c687-4fb1-ba56-294a7608ab3a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>

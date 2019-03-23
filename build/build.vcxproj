@@ -147,6 +147,36 @@
       <DependentUpon>..\src\idl\BlendDescription.idl</DependentUpon>
     </ClInclude>
 
+
+    <ClCompile Include="..\src\dev\ComputeShaderByteCode.cpp">
+      <DependentUpon>..\src\idl\ComputeShaderByteCode.idl</DependentUpon>
+    </ClCompile>
+
+    <ClCompile Include="..\src\dev\VertexShaderByteCode.cpp">
+      <DependentUpon>..\src\idl\VertexShaderByteCode.idl</DependentUpon>
+    </ClCompile>
+
+    <ClCompile Include="..\src\dev\PixelShaderByteCode.cpp">
+      <DependentUpon>..\src\idl\PixelShaderByteCode.idl</DependentUpon>
+    </ClCompile>
+
+    <ClCompile Include="..\src\dev\DomainShaderByteCode.cpp">
+      <DependentUpon>..\src\idl\DomainShaderByteCode.idl</DependentUpon>
+    </ClCompile>
+
+    <ClCompile Include="..\src\dev\HullShaderByteCode.cpp">
+      <DependentUpon>..\src\idl\HullShaderByteCode.idl</DependentUpon>
+    </ClCompile>
+
+    <ClCompile Include="..\src\dev\GeometryShaderByteCode.cpp">
+      <DependentUpon>..\src\idl\GeometryShaderByteCode.idl</DependentUpon>
+    </ClCompile>
+
+    <ClCompile Include="..\src\dev\RootSignatureByteCode.cpp">
+      <DependentUpon>..\src\idl\RootSignatureByteCode.idl</DependentUpon>
+    </ClCompile>
+
+
   </ItemGroup>
 
   <ItemGroup>
@@ -176,6 +206,34 @@
     <ClCompile Include="..\src\dev\BlendDescription.cpp">
       <DependentUpon>..\src\idl\BlendDescription.idl</DependentUpon>
     </ClCompile>
+
+    <ClInclude Include="..\src\dev\ComputeShaderByteCode.h">
+      <DependentUpon>..\src\idl\ComputeShaderByteCode.idl</DependentUpon>
+    </ClInclude>
+
+    <ClInclude Include="..\src\dev\VertexShaderByteCode.h">
+      <DependentUpon>..\src\idl\VertexShaderByteCode.idl</DependentUpon>
+    </ClInclude>
+
+    <ClInclude Include="..\src\dev\PixelShaderByteCode.h">
+      <DependentUpon>..\src\idl\PixelShaderByteCode.idl</DependentUpon>
+    </ClInclude>
+
+    <ClInclude Include="..\src\dev\DomainShaderByteCode.h">
+      <DependentUpon>..\src\idl\DomainShaderByteCode.idl</DependentUpon>
+    </ClInclude>
+
+    <ClInclude Include="..\src\dev\HullShaderByteCode.h">
+      <DependentUpon>..\src\idl\HullShaderByteCode.idl</DependentUpon>
+    </ClInclude>
+
+    <ClInclude Include="..\src\dev\GeometryShaderByteCode.h">
+      <DependentUpon>..\src\idl\GeometryShaderByteCode.idl</DependentUpon>
+    </ClInclude>
+
+    <ClInclude Include="..\src\dev\RootSignatureByteCode.h">
+      <DependentUpon>..\src\idl\RootSignatureByteCode.idl</DependentUpon>
+    </ClInclude>
 
   </ItemGroup>
 
