@@ -4,6 +4,7 @@
     {
         runtimeclass PixelShaderByteCode
         {
+            PixelShaderByteCode();
             Windows.Foundation.Collections.IVector<UInt8> Code;
         };
     }

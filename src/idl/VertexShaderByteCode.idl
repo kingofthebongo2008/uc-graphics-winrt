@@ -4,6 +4,7 @@
     {
         runtimeclass VertexShaderByteCode
         {
+            VertexShaderByteCode();
             Windows.Foundation.Collections.IVector<UInt8> Code;
         };
     }

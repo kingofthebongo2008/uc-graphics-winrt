@@ -4,6 +4,7 @@
     {
         runtimeclass ComputeShaderByteCode
         {
+            ComputeShaderByteCode();
             Windows.Foundation.Collections.IVector<UInt8> Code;
         };
     }
