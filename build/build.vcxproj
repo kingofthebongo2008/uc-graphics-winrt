@@ -147,35 +147,45 @@
       <DependentUpon>..\src\idl\BlendDescription.idl</DependentUpon>
     </ClInclude>
 
-
-    <ClCompile Include="..\src\dev\ComputeShaderByteCode.cpp">
+    <ClInclude Include="..\src\dev\ComputeShaderByteCode.h">
       <DependentUpon>..\src\idl\ComputeShaderByteCode.idl</DependentUpon>
-    </ClCompile>
+    </ClInclude>
 
-    <ClCompile Include="..\src\dev\VertexShaderByteCode.cpp">
+    <ClInclude Include="..\src\dev\VertexShaderByteCode.h">
       <DependentUpon>..\src\idl\VertexShaderByteCode.idl</DependentUpon>
-    </ClCompile>
+    </ClInclude>
 
-    <ClCompile Include="..\src\dev\PixelShaderByteCode.cpp">
+    <ClInclude Include="..\src\dev\PixelShaderByteCode.h">
       <DependentUpon>..\src\idl\PixelShaderByteCode.idl</DependentUpon>
-    </ClCompile>
+    </ClInclude>
 
-    <ClCompile Include="..\src\dev\DomainShaderByteCode.cpp">
+    <ClInclude Include="..\src\dev\DomainShaderByteCode.h">
       <DependentUpon>..\src\idl\DomainShaderByteCode.idl</DependentUpon>
-    </ClCompile>
+    </ClInclude>
 
-    <ClCompile Include="..\src\dev\HullShaderByteCode.cpp">
+    <ClInclude Include="..\src\dev\HullShaderByteCode.h">
       <DependentUpon>..\src\idl\HullShaderByteCode.idl</DependentUpon>
-    </ClCompile>
+    </ClInclude>
 
-    <ClCompile Include="..\src\dev\GeometryShaderByteCode.cpp">
+    <ClInclude Include="..\src\dev\GeometryShaderByteCode.h">
       <DependentUpon>..\src\idl\GeometryShaderByteCode.idl</DependentUpon>
-    </ClCompile>
+    </ClInclude>
 
-    <ClCompile Include="..\src\dev\RootSignatureByteCode.cpp">
+    <ClInclude Include="..\src\dev\RootSignatureByteCode.h">
       <DependentUpon>..\src\idl\RootSignatureByteCode.idl</DependentUpon>
-    </ClCompile>
+    </ClInclude>
 
+    <ClInclude Include="..\src\dev\InputLayoutDescription.h">
+      <DependentUpon>..\src\idl\InputLayoutDescription.idl</DependentUpon>
+    </ClInclude>
+
+    <ClInclude Include="..\src\dev\StreamOutputDescription.h">
+      <DependentUpon>..\src\idl\StreamOutputDescription.idl</DependentUpon>
+    </ClInclude>
+
+    <ClInclude Include="..\src\dev\PrimitiveRangeDescription.h">
+      <DependentUpon>..\src\idl\PrimitiveRangeDescription.idl</DependentUpon>
+    </ClInclude>
 
   </ItemGroup>
 
@@ -207,38 +217,54 @@
       <DependentUpon>..\src\idl\BlendDescription.idl</DependentUpon>
     </ClCompile>
 
-    <ClInclude Include="..\src\dev\ComputeShaderByteCode.h">
+    <ClCompile Include="..\src\dev\ComputeShaderByteCode.cpp">
       <DependentUpon>..\src\idl\ComputeShaderByteCode.idl</DependentUpon>
-    </ClInclude>
+    </ClCompile>
 
-    <ClInclude Include="..\src\dev\VertexShaderByteCode.h">
+    <ClCompile Include="..\src\dev\VertexShaderByteCode.cpp">
       <DependentUpon>..\src\idl\VertexShaderByteCode.idl</DependentUpon>
-    </ClInclude>
+    </ClCompile>
 
-    <ClInclude Include="..\src\dev\PixelShaderByteCode.h">
+    <ClCompile Include="..\src\dev\PixelShaderByteCode.cpp">
       <DependentUpon>..\src\idl\PixelShaderByteCode.idl</DependentUpon>
-    </ClInclude>
+    </ClCompile>
 
-    <ClInclude Include="..\src\dev\DomainShaderByteCode.h">
+    <ClCompile Include="..\src\dev\DomainShaderByteCode.cpp">
       <DependentUpon>..\src\idl\DomainShaderByteCode.idl</DependentUpon>
-    </ClInclude>
+    </ClCompile>
 
-    <ClInclude Include="..\src\dev\HullShaderByteCode.h">
+    <ClCompile Include="..\src\dev\HullShaderByteCode.cpp">
       <DependentUpon>..\src\idl\HullShaderByteCode.idl</DependentUpon>
-    </ClInclude>
+    </ClCompile>
 
-    <ClInclude Include="..\src\dev\GeometryShaderByteCode.h">
+    <ClCompile Include="..\src\dev\GeometryShaderByteCode.cpp">
       <DependentUpon>..\src\idl\GeometryShaderByteCode.idl</DependentUpon>
-    </ClInclude>
+    </ClCompile>
 
-    <ClInclude Include="..\src\dev\RootSignatureByteCode.h">
+    <ClCompile Include="..\src\dev\RootSignatureByteCode.cpp">
       <DependentUpon>..\src\idl\RootSignatureByteCode.idl</DependentUpon>
-    </ClInclude>
+    </ClCompile>
+
+    <ClCompile Include="..\src\dev\InputLayoutDescription.cpp">
+      <DependentUpon>..\src\idl\InputLayoutDescription.idl</DependentUpon>
+    </ClCompile>
+
+    <ClCompile Include="..\src\dev\StreamOutputDescription.cpp">
+      <DependentUpon>..\src\idl\StreamOutputDescription.idl</DependentUpon>
+    </ClCompile>
+
+    <ClCompile Include="..\src\dev\PrimitiveRangeDescription.cpp">
+      <DependentUpon>..\src\idl\PrimitiveRangeDescription.idl</DependentUpon>
+    </ClCompile>
 
   </ItemGroup>
 
   <ItemGroup>
     <Midl Include="..\src\idl\BlendDescription.idl" />
+    <Midl Include="..\src\idl\InputLayoutDescription.idl" />
+    <Midl Include="..\src\idl\StreamOutputDescription.idl" />
+    <Midl Include="..\src\idl\PrimitiveRangeDescription.idl" />
+
     <Midl Include="..\src\idl\GraphicsPipelineStateDescription.idl" />
     <Midl Include="..\src\idl\ComputePipelineStateDescription.idl" />
     <Midl Include="..\src\idl\ComputeShaderByteCode.idl" />

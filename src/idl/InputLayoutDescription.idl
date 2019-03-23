@@ -1,0 +1,15 @@
+﻿
+import "GraphicTypes.idl";
+
+namespace UniqueCreator
+{
+    namespace Graphics
+    {
+        runtimeclass InputLayoutDescription
+        {
+            Windows.Foundation.Collections.IVector<InputElementDescription> InputElementDescs;
+        };
+    }
+}
+
+

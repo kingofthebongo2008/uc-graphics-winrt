@@ -5,6 +5,9 @@ import "PixelShaderByteCode.idl";
 import "HullShaderByteCode.idl";
 import "DomainShaderByteCode.idl";
 import "GeometryShaderByteCode.idl";
+import "InputLayoutDescription.idl";
+import "StreamOutputDescription.idl";
+import "PrimitiveRangeDescription.idl";
 
 namespace UniqueCreator
 {

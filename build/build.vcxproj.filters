@@ -55,6 +55,15 @@
     <Midl Include="..\src\idl\BlendDescription.idl">
       <Filter>GraphicsPipelineState</Filter>
     </Midl>
+    <Midl Include="..\src\idl\StreamOutputDescription.idl">
+      <Filter>GraphicsPipelineState</Filter>
+    </Midl>
+    <Midl Include="..\src\idl\InputLayoutDescription.idl">
+      <Filter>GraphicsPipelineState</Filter>
+    </Midl>
+    <Midl Include="..\src\idl\PrimitiveRangeDescription.idl">
+      <Filter>GraphicsPipelineState</Filter>
+    </Midl>
   </ItemGroup>
   <ItemGroup>
     <None Include="module.def" />
