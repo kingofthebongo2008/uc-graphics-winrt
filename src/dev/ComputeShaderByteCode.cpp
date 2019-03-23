@@ -3,13 +3,18 @@
 
 namespace winrt::UniqueCreator::Graphics::implementation
 {
+    ComputeShaderByteCode::ComputeShaderByteCode()
+    {
+        m_code = single_threaded_vector< uint8_t >(std::vector<uint8_t>());
+    }
+
     Windows::Foundation::Collections::IVector<uint8_t> ComputeShaderByteCode::Code()
     {
-        throw hresult_not_implemented();
+        return m_code;
     }
 
     void ComputeShaderByteCode::Code(Windows::Foundation::Collections::IVector<uint8_t> const& value)
     {
-        throw hresult_not_implemented();
+        m_code = value;
     }
 }

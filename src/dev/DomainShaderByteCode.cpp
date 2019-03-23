@@ -3,13 +3,18 @@
 
 namespace winrt::UniqueCreator::Graphics::implementation
 {
+    DomainShaderByteCode::DomainShaderByteCode()
+    {
+        m_code = single_threaded_vector< uint8_t >(std::vector<uint8_t>());
+    }
+
     Windows::Foundation::Collections::IVector<uint8_t> DomainShaderByteCode::Code()
     {
-        throw hresult_not_implemented();
+        return m_code;
     }
 
     void DomainShaderByteCode::Code(Windows::Foundation::Collections::IVector<uint8_t> const& value)
     {
-        throw hresult_not_implemented();
+        m_code = value;
     }
 }

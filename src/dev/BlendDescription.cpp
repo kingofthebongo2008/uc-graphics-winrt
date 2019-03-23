@@ -5,8 +5,7 @@ namespace winrt::UniqueCreator::Graphics::implementation
 {
     BlendDescription::BlendDescription()
     {
-        std::vector<RenderTargetBlendDescription> values;
-        m_renderTargets = single_threaded_vector< RenderTargetBlendDescription >(std::move(values));
+        m_renderTargets = single_threaded_vector< RenderTargetBlendDescription >(std::vector<RenderTargetBlendDescription>());
     }
 
     bool BlendDescription::AlphaToCoverageEnable()

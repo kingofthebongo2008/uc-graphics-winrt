@@ -6,10 +6,11 @@ namespace winrt::UniqueCreator::Graphics::implementation
 {
     struct RootSignatureByteCode : RootSignatureByteCodeT<RootSignatureByteCode>
     {
-        RootSignatureByteCode() = default;
+        RootSignatureByteCode();
 
         Windows::Foundation::Collections::IVector<uint8_t> Code();
         void Code(Windows::Foundation::Collections::IVector<uint8_t> const& value);
+        Windows::Foundation::Collections::IVector<uint8_t> m_code;
     };
 }
 
