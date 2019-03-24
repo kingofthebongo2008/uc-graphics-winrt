@@ -6,6 +6,7 @@
 #include "IResourceCreateContextNative.h"
 
 #include "DirectGpuCommandContext.h"
+#include "ComputeGpuCommandContext.h"
 
 #include <d3d12.h>
 #include <wrl/client.h>
@@ -30,6 +31,7 @@ namespace winrt::UniqueCreator::Graphics::implementation
         void SetSourceSize(uint32_t width, uint32_t height);
 
         IDirectGpuCommandContext CreateDirectCommandContext();
+        IComputeGpuCommandContext CreateComputeCommandContext();
 
 
         void SetCompositionScale(float scaleX, float scaleY);

@@ -14,6 +14,7 @@
     <ClInclude Include="..\src\dev\IPixelBufferNative.h" />
     <ClInclude Include="..\src\dev\IGpuVirtualResourceNative.h" />
     <ClInclude Include="..\src\dev\IPixelBuffer.h" />
+    <ClInclude Include="..\src\dev\IShaderByteCodeNative.h" />
   </ItemGroup>
   <ItemGroup>
     <Midl Include="..\src\idl\BackBuffer.idl" />
@@ -21,7 +22,6 @@
     <Midl Include="..\src\idl\GpuVirtualResource.idl" />
     <Midl Include="..\src\idl\GpuCommandContext.idl" />
     <Midl Include="..\src\idl\CopyGpuCommandContext.idl" />
-    <Midl Include="..\src\idl\ComputeGpuCommandContext.idl" />
     <Midl Include="..\src\idl\DirectGpuCommandContext.idl" />
     <Midl Include="..\src\idl\GraphicTypes.idl" />
     <Midl Include="..\src\idl\Base.idl" />
@@ -29,15 +29,10 @@
     <Midl Include="..\src\idl\ResourceCreateContext.idl" />
     <Midl Include="..\src\idl\CompositionSwapChainResources.idl" />
     <Midl Include="..\src\idl\SwapChainResources.idl" />
-    <Midl Include="..\src\idl\GraphicsPipelineStateDescription.idl" />
-    <Midl Include="..\src\idl\ComputePipelineStateDescription.idl" />
     <Midl Include="..\src\idl\VertexShaderByteCode.idl">
       <Filter>Shaders</Filter>
     </Midl>
     <Midl Include="..\src\idl\DomainShaderByteCode.idl">
-      <Filter>Shaders</Filter>
-    </Midl>
-    <Midl Include="..\src\idl\ComputeShaderByteCode.idl">
       <Filter>Shaders</Filter>
     </Midl>
     <Midl Include="..\src\idl\PixelShaderByteCode.idl">
@@ -64,6 +59,21 @@
     <Midl Include="..\src\idl\PrimitiveRangeDescription.idl">
       <Filter>GraphicsPipelineState</Filter>
     </Midl>
+    <Midl Include="..\src\idl\ComputePipelineStateDescription.idl">
+      <Filter>Compute</Filter>
+    </Midl>
+    <Midl Include="..\src\idl\GraphicsPipelineStateDescription.idl">
+      <Filter>GraphicsPipelineState</Filter>
+    </Midl>
+    <Midl Include="..\src\idl\ComputePipelineState.idl">
+      <Filter>Compute</Filter>
+    </Midl>
+    <Midl Include="..\src\idl\ComputeGpuCommandContext.idl">
+      <Filter>Compute</Filter>
+    </Midl>
+    <Midl Include="..\src\idl\ComputeShaderByteCode.idl">
+      <Filter>Compute</Filter>
+    </Midl>
   </ItemGroup>
   <ItemGroup>
     <None Include="module.def" />
@@ -78,6 +88,9 @@
     </Filter>
     <Filter Include="GraphicsPipelineState">
       <UniqueIdentifier>{62cd3bf4-c687-4fb1-ba56-294a7608ab3a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Compute">
+      <UniqueIdentifier>{e34f062d-959a-4103-ad77-0240ab721844}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

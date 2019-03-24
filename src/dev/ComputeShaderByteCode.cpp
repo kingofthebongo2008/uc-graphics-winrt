@@ -35,4 +35,10 @@ namespace winrt::UniqueCreator::Graphics::implementation
         m_code = value;
         m_nativeCode = toNative(value); //double the memory
     }
+
+    Blob ComputeShaderByteCode::GetShaderByteCode()
+    {
+        return { &m_nativeCode[0], m_nativeCode.size() };
+    }
+
 }

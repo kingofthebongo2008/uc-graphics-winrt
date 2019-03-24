@@ -187,6 +187,24 @@
       <DependentUpon>..\src\idl\PrimitiveRangeDescription.idl</DependentUpon>
     </ClInclude>
 
+    <ClInclude Include="..\src\dev\GraphicsPipelineStateDescription.h">
+      <DependentUpon>..\src\idl\GraphicsPipelineStateDescription.idl</DependentUpon>
+    </ClInclude >
+
+    <ClInclude Include="..\src\dev\ComputePipelineStateDescription.h">
+      <DependentUpon>..\src\idl\ComputePipelineStateDescription.idl</DependentUpon>
+    </ClInclude >
+
+    <ClInclude Include="..\src\dev\ComputePipelineState.h">
+      <DependentUpon>..\src\idl\ComputePipelineState.idl</DependentUpon>
+    </ClInclude >
+
+    <ClInclude Include="..\src\dev\ComputeGpuCommandContext.h">
+      <DependentUpon>..\src\idl\ComputeGpuCommandContext.idl</DependentUpon>
+    </ClInclude >
+
+   <ClInclude Include="..\src\dev\IShaderByteCodeNative.h" />
+
   </ItemGroup>
 
   <ItemGroup>
@@ -257,6 +275,22 @@
       <DependentUpon>..\src\idl\PrimitiveRangeDescription.idl</DependentUpon>
     </ClCompile>
 
+    <ClCompile Include="..\src\dev\GraphicsPipelineStateDescription.cpp">
+      <DependentUpon>..\src\idl\GraphicsPipelineStateDescription.idl</DependentUpon>
+    </ClCompile>
+
+    <ClCompile Include="..\src\dev\ComputePipelineStateDescription.cpp">
+      <DependentUpon>..\src\idl\ComputePipelineStateDescription.idl</DependentUpon>
+    </ClCompile >
+
+    <ClCompile Include="..\src\dev\ComputePipelineState.cpp">
+      <DependentUpon>..\src\idl\ComputePipelineState.idl</DependentUpon>
+    </ClCompile>
+
+    <ClCompile Include="..\src\dev\ComputeGpuCommandContext.cpp">
+      <DependentUpon>..\src\idl\ComputeGpuCommandContext.idl</DependentUpon>
+    </ClCompile>
+
   </ItemGroup>
 
   <ItemGroup>
@@ -267,6 +301,8 @@
 
     <Midl Include="..\src\idl\GraphicsPipelineStateDescription.idl" />
     <Midl Include="..\src\idl\ComputePipelineStateDescription.idl" />
+    <Midl Include="..\src\idl\ComputePipelineState.idl" />
+
     <Midl Include="..\src\idl\ComputeShaderByteCode.idl" />
     <Midl Include="..\src\idl\VertexShaderByteCode.idl" />
     <Midl Include="..\src\idl\PixelShaderByteCode.idl" />
@@ -287,6 +323,9 @@
     <Midl Include="..\src\idl\ResourceCreateContext.idl" />
     <Midl Include="..\src\idl\CompositionSwapChainResources.idl" />
     <Midl Include="..\src\idl\SwapChainResources.idl" />
+
+
+
   </ItemGroup>
 
   <ItemGroup>

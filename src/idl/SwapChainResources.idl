@@ -20,7 +20,15 @@ namespace UniqueCreator
             void Sync();
             void MoveToNextFrame();
 
-            IDirectGpuCommandContext CreateDirectCommandContext();
+
+            //
+            //IDirectQueue               Queue{ get;  }
+
+            //todo: change
+            IDirectGpuCommandContext    CreateDirectCommandContext();
+
+            //IGraphicsGpuCommandContext  CreateGraphicsCommandContext();
+            IComputeGpuCommandContext   CreateComputeCommandContext();
 
             IBackBuffer BackBuffer{ get; };
         };

@@ -74,12 +74,6 @@
       <Version>6.2.2</Version>
     </PackageReference>
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\build\build.vcxproj">
-      <Project>{23f057fa-8518-4d9c-a57d-4809080f3234}</Project>
-      <Name>UniqueCreator</Name>
-    </ProjectReference>
-  </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

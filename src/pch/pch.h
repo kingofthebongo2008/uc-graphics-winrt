@@ -6,3 +6,5 @@
 #include "winrt/Windows.Graphics.Display.h"
 #include "winrt/Windows.UI.Xaml.Controls.h"
 #include "windows.ui.xaml.media.dxinterop.h"
+
+#include <wrl/client.h>

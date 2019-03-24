@@ -6,7 +6,8 @@ namespace UniqueCreator
     {
         runtimeclass ComputePipelineStateDescription
         {
-            ComputeShaderByteCode   CS;
+            ComputePipelineStateDescription();
+            ComputeShaderByteCode               CS;
         };
     }
 }

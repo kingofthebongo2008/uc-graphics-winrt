@@ -2,9 +2,11 @@
 
 #include "ComputeShaderByteCode.g.h"
 
+#include "IShaderByteCodeNative.h"
+
 namespace winrt::UniqueCreator::Graphics::implementation
 {
-    struct ComputeShaderByteCode : ComputeShaderByteCodeT<ComputeShaderByteCode>
+    struct ComputeShaderByteCode : ComputeShaderByteCodeT<ComputeShaderByteCode, IShaderByteCodeNative>
     {
         ComputeShaderByteCode();
 
@@ -13,7 +15,8 @@ namespace winrt::UniqueCreator::Graphics::implementation
 
         Windows::Foundation::Collections::IVector<uint8_t> m_code;
 
-        std::vector<uint8_t>                               m_nativeCode;
+        Blob GetShaderByteCode() override;
+        std::vector<uint8_t>     m_nativeCode;
     };
 }
 

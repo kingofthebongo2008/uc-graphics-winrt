@@ -1,6 +1,7 @@
 ﻿#pragma once
 
 import "CopyGpuCommandContext.idl";
+import "ComputePipelineState.idl";
 
 namespace UniqueCreator
 {
@@ -8,7 +9,8 @@ namespace UniqueCreator
     {
         interface IComputeGpuCommandContext requires ICopyGpuCommandContext
         {
-            void Dispatch();
+            void SetPSO(ComputePipelineState pso);
+            void Dispatch( UInt32 x, UInt32 y, UInt32 z);
         };
     }
 }

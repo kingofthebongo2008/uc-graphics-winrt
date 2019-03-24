@@ -15,8 +15,10 @@ namespace winrt::UniqueCreator::Graphics::implementation
         void TransitionResource(IGpuVirtualResource r, ResourceState old_state, ResourceState new_state);
 
         void Copy() {}
-        void Dispatch() {}
+        void Dispatch(uint32_t x, uint32_t y, uint32_t z) {}
         void Draw() {}
+
+        void SetPSO(const ComputePipelineState& s) {}
 
         void Clear(IBackBuffer b);
 

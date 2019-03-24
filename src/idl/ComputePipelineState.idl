@@ -1,0 +1,16 @@
+﻿import "ComputePipelineStateDescription.idl";
+import "ResourceCreateContext.idl";
+
+namespace UniqueCreator
+{
+    namespace Graphics
+    {
+        runtimeclass ComputePipelineState
+        {
+            ComputePipelineState(ResourceCreateContext ctx, ComputePipelineStateDescription d);
+            void GetCachedBlob();
+        };
+    }
+}
+
+

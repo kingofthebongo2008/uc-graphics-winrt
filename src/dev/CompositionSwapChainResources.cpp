@@ -233,6 +233,11 @@ namespace winrt::UniqueCreator::Graphics::implementation
         return make<DirectGpuCommandContext>(uc::gx::dx12::create_graphics_command_context(m_direct_context_allocator.get()));
     }
 
+    IComputeGpuCommandContext CompositionSwapChainResources::CreateComputeCommandContext()
+    {
+        return make<ComputeGpuCommandContext>(uc::gx::dx12::create_compute_command_context(m_direct_context_allocator.get()));
+    }
+
     IBackBuffer CompositionSwapChainResources::BackBuffer() const
     {
         return make<BackBuffer1>(m_back_buffer[m_buffer_index].get());
