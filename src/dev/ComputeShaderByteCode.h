@@ -15,7 +15,7 @@ namespace winrt::UniqueCreator::Graphics::implementation
 
         Windows::Foundation::Collections::IVector<uint8_t> m_code;
 
-        Blob GetShaderByteCode() override;
+        Blob GetShaderByteCode();
         std::vector<uint8_t>     m_nativeCode;
     };
 }
