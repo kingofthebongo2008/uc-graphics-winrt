@@ -13,3 +13,4 @@
 /examples/uc_engine_hello_world/uc_engine_hello_world/bin
 /lib/win-x64
 /tmp
+*.tlog

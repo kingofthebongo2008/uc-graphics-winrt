@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Graphics.Display;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -13,8 +14,6 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Windows.System.Threading;
-
-using Windows.Graphics.Display;
 
 using UniqueCreator.Graphics;
 
@@ -36,11 +35,49 @@ namespace uc_engine_hello_world
         {
             this.InitializeComponent();
 
-            m_ctx       = new ResourceCreateContext();
+            m_ctx = new ResourceCreateContext();
             m_swapChain = new CompositionSwapChainResources(m_ctx, m_swapChainPanel);
 
             var display = DisplayInformation.GetForCurrentView();
             display.DpiChanged += new TypedEventHandler<DisplayInformation, object>(OnDpiChanged);
+
+            var description = new BlendDescription();
+
+            RenderTargetBlendDescription d;
+            d.BlendEnable = true;
+            d.BlendOperation = BlendOperation.Add;
+            d.BlendOperationAlpha = BlendOperation.Add;
+            d.DestinationBlend = Blend.DestinationAlpha;
+            d.DestinationBlendAlpha = Blend.DestinationAlpha;
+            d.LogicOperation = LogicOperation.And;
+            d.LogicOperationEnable = false;
+            d.RenderTargetWriteMask = 0;
+            d.SourceBlend = Blend.DestinationAlpha;
+            d.SourceBlendAlpha = Blend.DestinationAlpha;
+
+
+            description.AlphaToCoverageEnable = true;
+            description.RenderTargets.Add(d);
+
+
+            var d0 = new RenderTargetBlendDescription[1];
+            d0[0] = d;
+
+            description.RenderTargets = d0;
+
+            var code = new VertexShaderByteCode();
+
+            var bytes = new byte[120];
+
+            for ( var i = 0;  i < 120; ++i)
+            {
+                bytes[i] = (byte)i;
+            }
+
+            code.Code = bytes;
+
+
+
         }
 
         public void OnResuming()
@@ -97,8 +134,8 @@ namespace uc_engine_hello_world
                 m_ctx.ResetViewDependentResources();
 
                 UniqueCreator.Graphics.Size2D s;
-                s.m_width = (float)e.NewSize.Width;
-                s.m_height = (float)e.NewSize.Height;
+                s.Width = (float)e.NewSize.Width;
+                s.Height = (float)e.NewSize.Height;
                 m_swapChain.SetLogicalSize(s);
             }
         }

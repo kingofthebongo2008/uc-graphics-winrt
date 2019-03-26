@@ -6,11 +6,9 @@
 
 namespace winrt::UniqueCreator::Graphics::implementation
 {
-    HRESULT __stdcall ResourceCreateContext::GetDevice( ID3D12Device** d ) noexcept
+    ID3D12Device* ResourceCreateContext::GetDevice( ) noexcept
     {
-        *d = m_device.get();
-        (*d)->AddRef();
-        return S_OK;
+        return m_device.get();
     }
 
     uc::gx::dx12::gpu_resource_create_context* ResourceCreateContext::GetResourceCreateContext() noexcept

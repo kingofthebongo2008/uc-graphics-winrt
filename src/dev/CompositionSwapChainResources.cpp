@@ -66,62 +66,58 @@ namespace winrt::UniqueCreator::Graphics::implementation
 
         if (native)
         {
-            winrt::com_ptr<ID3D12Device> device;
-            HRESULT hr = native->GetDevice(device.put());
+            ID3D12Device* device = native->GetDevice();
 
-            if (SUCCEEDED(hr))
+            m_resource_context = native;
+
+            using namespace uc::gx;
+
+            m_composition_scale_x = panel.CompositionScaleX();
+            m_composition_scale_y = panel.CompositionScaleY();
+            m_logical_size        = { static_cast<float>(panel.Width()), static_cast<float>(panel.Height()) };
+
+            if (m_logical_size.Width != m_logical_size.Width)
             {
-                m_resource_context = native;
+                m_logical_size.Width = 8.0f;
+            }
 
-                using namespace uc::gx;
-
-                m_composition_scale_x = panel.CompositionScaleX();
-                m_composition_scale_y = panel.CompositionScaleY();
-                m_logical_size        = { static_cast<float>(panel.Width()), static_cast<float>(panel.Height()) };
-
-                if (m_logical_size.Width != m_logical_size.Width)
-                {
-                    m_logical_size.Width = 8.0f;
-                }
-
-                if (m_logical_size.Height != m_logical_size.Height)
-                {
-                    m_logical_size.Height = 8.0f;
-                }
+            if (m_logical_size.Height != m_logical_size.Height)
+            {
+                m_logical_size.Height = 8.0f;
+            }
 
 
-                m_display_information = Windows::Graphics::Display::DisplayInformation::GetForCurrentView();
-                auto r                = BuildSwapChainSize(m_logical_size, m_display_information, m_composition_scale_x, m_composition_scale_y);
+            m_display_information = Windows::Graphics::Display::DisplayInformation::GetForCurrentView();
+            auto r                = BuildSwapChainSize(m_logical_size, m_display_information, m_composition_scale_x, m_composition_scale_y);
 
 
-                Microsoft::WRL::ComPtr<IDXGIFactory4> factory = dx12::create_dxgi_factory4();
-                m_direct_queue        = create_command_queue(device.get(), D3D12_COMMAND_LIST_TYPE_DIRECT);
+            Microsoft::WRL::ComPtr<IDXGIFactory4> factory = dx12::create_dxgi_factory4();
+            m_direct_queue        = create_command_queue(device, D3D12_COMMAND_LIST_TYPE_DIRECT);
 
-                m_swap_chain          = create_swap_chain(factory.Get(), m_direct_queue->queue(), static_cast<uint32_t>(r.Width), static_cast<uint32_t>(r.Height));
+            m_swap_chain          = create_swap_chain(factory.Get(), m_direct_queue->queue(), static_cast<uint32_t>(r.Width), static_cast<uint32_t>(r.Height));
 
-                winrt::com_ptr<ISwapChainPanelNative> const p{ panel.as<ISwapChainPanelNative>() };
-                p->SetSwapChain(m_swap_chain.get());
+            winrt::com_ptr<ISwapChainPanelNative> const p{ panel.as<ISwapChainPanelNative>() };
+            p->SetSwapChain(m_swap_chain.get());
 
-                auto&& rc = m_resource_context->GetResourceCreateContext();
+            auto&& rc = m_resource_context->GetResourceCreateContext();
 
-                m_direct_command_manager    = std::make_unique<dx12::gpu_command_manager>(device.get(), m_direct_queue.get());
-                m_direct_context_allocator  = std::make_unique<dx12::gpu_command_context_allocator>(native->GetResourceCreateContext(), m_direct_command_manager.get(), m_direct_queue.get());
+            m_direct_command_manager    = std::make_unique<dx12::gpu_command_manager>(device, m_direct_queue.get());
+            m_direct_context_allocator  = std::make_unique<dx12::gpu_command_context_allocator>(native->GetResourceCreateContext(), m_direct_command_manager.get(), m_direct_queue.get());
 
-                m_direct_queue->increment_fence();
-                m_direct_queue->increment_fence();
+            m_direct_queue->increment_fence();
+            m_direct_queue->increment_fence();
 
-                m_buffer_count = 3;
-                m_back_buffer.resize(3);
+            m_buffer_count = 3;
+            m_back_buffer.resize(3);
 
-                for (auto i = 0U; i < m_buffer_count; ++i)
-                {
-                    using namespace uc;
+            for (auto i = 0U; i < m_buffer_count; ++i)
+            {
+                using namespace uc;
 
-                    //Recreate the back buffers
-                    Microsoft::WRL::ComPtr<ID3D12Resource> back_buffer;
-                    gx::dx12::throw_if_failed(m_swap_chain->GetBuffer(i, IID_PPV_ARGS(&back_buffer)));
-                    m_back_buffer[i] = std::unique_ptr<gx::dx12::gpu_back_buffer>(rc->create_back_buffer(back_buffer.Get()));
-                }
+                //Recreate the back buffers
+                Microsoft::WRL::ComPtr<ID3D12Resource> back_buffer;
+                gx::dx12::throw_if_failed(m_swap_chain->GetBuffer(i, IID_PPV_ARGS(&back_buffer)));
+                m_back_buffer[i] = std::unique_ptr<gx::dx12::gpu_back_buffer>(rc->create_back_buffer(back_buffer.Get()));
             }
         }
     }

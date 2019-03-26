@@ -10,7 +10,7 @@ namespace winrt::UniqueCreator::Graphics::implementation
         ResourceCreateContext();
         
         //IResourceCreateContextNative
-        HRESULT __stdcall GetDevice( ID3D12Device** d) noexcept;
+        ID3D12Device* GetDevice( ) noexcept;
 
         uc::gx::dx12::gpu_resource_create_context* GetResourceCreateContext() noexcept;
 
