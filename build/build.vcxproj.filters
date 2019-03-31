@@ -7,17 +7,26 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\pch\pch.h" />
-    <ClInclude Include="..\src\dev\IResourceCreateContextNative.h" />
     <ClInclude Include="..\src\dev\IFenceHandleNative.h" />
     <ClInclude Include="..\src\dev\WindowsEnvironment.h" />
-    <ClInclude Include="..\src\dev\IBackBufferNative.h" />
-    <ClInclude Include="..\src\dev\IPixelBufferNative.h" />
     <ClInclude Include="..\src\dev\IGpuVirtualResourceNative.h" />
-    <ClInclude Include="..\src\dev\IPixelBuffer.h" />
-    <ClInclude Include="..\src\dev\IShaderByteCodeNative.h" />
+    <ClInclude Include="..\src\dev\IPixelBuffer.h">
+      <Filter>Buffers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\dev\IPixelBufferNative.h">
+      <Filter>Buffers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\dev\IBackBufferNative.h">
+      <Filter>Buffers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\dev\IResourceCreateContextNative.h">
+      <Filter>ResourceCreateContext</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\dev\IShaderByteCodeNative.h">
+      <Filter>Shaders</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Midl Include="..\src\idl\BackBuffer.idl" />
     <Midl Include="..\src\idl\PixelBuffer.idl" />
     <Midl Include="..\src\idl\GpuVirtualResource.idl" />
     <Midl Include="..\src\idl\GpuCommandContext.idl" />
@@ -26,9 +35,6 @@
     <Midl Include="..\src\idl\GraphicTypes.idl" />
     <Midl Include="..\src\idl\Base.idl" />
     <Midl Include="..\src\idl\FenceHandle.idl" />
-    <Midl Include="..\src\idl\ResourceCreateContext.idl" />
-    <Midl Include="..\src\idl\CompositionSwapChainResources.idl" />
-    <Midl Include="..\src\idl\SwapChainResources.idl" />
     <Midl Include="..\src\idl\VertexShaderByteCode.idl">
       <Filter>Shaders</Filter>
     </Midl>
@@ -60,19 +66,31 @@
       <Filter>GraphicsPipelineState</Filter>
     </Midl>
     <Midl Include="..\src\idl\ComputePipelineStateDescription.idl">
-      <Filter>Compute</Filter>
+      <Filter>ComputePipelineState</Filter>
     </Midl>
     <Midl Include="..\src\idl\GraphicsPipelineStateDescription.idl">
       <Filter>GraphicsPipelineState</Filter>
     </Midl>
     <Midl Include="..\src\idl\ComputePipelineState.idl">
-      <Filter>Compute</Filter>
+      <Filter>ComputePipelineState</Filter>
     </Midl>
     <Midl Include="..\src\idl\ComputeGpuCommandContext.idl">
-      <Filter>Compute</Filter>
+      <Filter>ComputePipelineState</Filter>
     </Midl>
     <Midl Include="..\src\idl\ComputeShaderByteCode.idl">
-      <Filter>Compute</Filter>
+      <Filter>ComputePipelineState</Filter>
+    </Midl>
+    <Midl Include="..\src\idl\BackBuffer.idl">
+      <Filter>Buffers</Filter>
+    </Midl>
+    <Midl Include="..\src\idl\ResourceCreateContext.idl">
+      <Filter>ResourceCreateContext</Filter>
+    </Midl>
+    <Midl Include="..\src\idl\CompositionSwapChainResources.idl">
+      <Filter>SwapChain</Filter>
+    </Midl>
+    <Midl Include="..\src\idl\SwapChainResources.idl">
+      <Filter>SwapChain</Filter>
     </Midl>
   </ItemGroup>
   <ItemGroup>
@@ -89,7 +107,16 @@
     <Filter Include="GraphicsPipelineState">
       <UniqueIdentifier>{62cd3bf4-c687-4fb1-ba56-294a7608ab3a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Compute">
+    <Filter Include="Buffers">
+      <UniqueIdentifier>{41d33748-ac02-4d95-9f37-309ae8c7ea51}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ResourceCreateContext">
+      <UniqueIdentifier>{75110e94-9894-4128-b55c-4c5373014ec2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SwapChain">
+      <UniqueIdentifier>{fd7e71b7-b41d-4f11-891d-819a28ea4441}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ComputePipelineState">
       <UniqueIdentifier>{e34f062d-959a-4103-ad77-0240ab721844}</UniqueIdentifier>
     </Filter>
   </ItemGroup>

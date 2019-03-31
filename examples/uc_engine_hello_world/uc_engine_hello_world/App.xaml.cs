@@ -90,6 +90,9 @@ namespace uc_engine_hello_world
             m_mainPage.OnResuming();
         }
 
+        protected override void OnLoad()
+        
+
         /// <summary>
         /// Invoked when Navigation to a certain page fails
         /// </summary>

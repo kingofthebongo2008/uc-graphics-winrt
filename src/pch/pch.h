@@ -10,3 +10,5 @@
 #include "windows.ui.xaml.media.dxinterop.h"
 
 #include <wrl/client.h>
+
+#include <d3d12.h>

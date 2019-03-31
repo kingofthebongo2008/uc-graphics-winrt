@@ -41,8 +41,9 @@ namespace uc_engine_hello_world
             var display = DisplayInformation.GetForCurrentView();
             display.DpiChanged += new TypedEventHandler<DisplayInformation, object>(OnDpiChanged);
 
-            var description = new BlendDescription();
+            /*unit test
 
+            var description = new BlendDescription();
             RenderTargetBlendDescription d;
             d.BlendEnable = true;
             d.BlendOperation = BlendOperation.Add;
@@ -55,10 +56,8 @@ namespace uc_engine_hello_world
             d.SourceBlend = Blend.DestinationAlpha;
             d.SourceBlendAlpha = Blend.DestinationAlpha;
 
-
             description.AlphaToCoverageEnable = true;
             description.RenderTargets.Add(d);
-
 
             var d0 = new RenderTargetBlendDescription[1];
             d0[0] = d;
@@ -75,9 +74,7 @@ namespace uc_engine_hello_world
             }
 
             code.Code = bytes;
-
-
-
+            */
         }
 
         public void OnResuming()
@@ -156,7 +153,7 @@ namespace uc_engine_hello_world
                 var backBuffer = m_swapChain.BackBuffer;
 
                 ctx.Copy();
-                ctx.Dispatch();
+                ctx.Dispatch(1,1,1);
                 ctx.Draw();
                 ctx.TransitionResource(backBuffer, ResourceState.Present, ResourceState.RenderTarget);
 
