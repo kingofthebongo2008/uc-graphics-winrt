@@ -19,8 +19,8 @@ namespace winrt::UniqueCreator::Graphics::implementation
 
         GpuVirtualAddress VirtualAddress() const;
 
-        gpu_back_buffer*        GetBackBuffer() override;
-        gpu_virtual_resource*   GetResource() override;
+        gpu_back_buffer*        GetBackBuffer();
+        gpu_virtual_resource*   GetResource();
 
         Size2D            Size2D() const;
         Size3D            Size3D() const;
