@@ -4,6 +4,26 @@
     <ClCompile Include="..\src\pch\pch.cpp" />
     <ClCompile Include="..\src\dev\WindowsEnvironment.cpp" />
     <ClCompile Include="$(GeneratedFilesDir)module.g.cpp" />
+    <ClCompile Include="..\src\dev\ResourceCreateContext.cpp" />
+    <ClCompile Include="..\src\dev\CompositionSwapChainResources.cpp" />
+    <ClCompile Include="..\src\dev\FenceHandle.cpp" />
+    <ClCompile Include="..\src\dev\DirectGpuCommandContext.cpp" />
+    <ClCompile Include="..\src\dev\BackBuffer.cpp" />
+    <ClCompile Include="..\src\dev\BlendDescription.cpp" />
+    <ClCompile Include="..\src\dev\ComputeShaderByteCode.cpp" />
+    <ClCompile Include="..\src\dev\VertexShaderByteCode.cpp" />
+    <ClCompile Include="..\src\dev\PixelShaderByteCode.cpp" />
+    <ClCompile Include="..\src\dev\DomainShaderByteCode.cpp" />
+    <ClCompile Include="..\src\dev\HullShaderByteCode.cpp" />
+    <ClCompile Include="..\src\dev\GeometryShaderByteCode.cpp" />
+    <ClCompile Include="..\src\dev\RootSignatureByteCode.cpp" />
+    <ClCompile Include="..\src\dev\InputLayoutDescription.cpp" />
+    <ClCompile Include="..\src\dev\StreamOutputDescription.cpp" />
+    <ClCompile Include="..\src\dev\PrimitiveRangeDescription.cpp" />
+    <ClCompile Include="..\src\dev\GraphicsPipelineStateDescription.cpp" />
+    <ClCompile Include="..\src\dev\ComputePipelineStateDescription.cpp" />
+    <ClCompile Include="..\src\dev\ComputePipelineState.cpp" />
+    <ClCompile Include="..\src\dev\ComputeGpuCommandContext.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\pch\pch.h" />
@@ -25,6 +45,26 @@
     <ClInclude Include="..\src\dev\IShaderByteCodeNative.h">
       <Filter>Shaders</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\dev\ResourceCreateContext.h" />
+    <ClInclude Include="..\src\dev\CompositionSwapChainResources.h" />
+    <ClInclude Include="..\src\dev\FenceHandle.h" />
+    <ClInclude Include="..\src\dev\DirectGpuCommandContext.h" />
+    <ClInclude Include="..\src\dev\BackBuffer.h" />
+    <ClInclude Include="..\src\dev\BlendDescription.h" />
+    <ClInclude Include="..\src\dev\ComputeShaderByteCode.h" />
+    <ClInclude Include="..\src\dev\VertexShaderByteCode.h" />
+    <ClInclude Include="..\src\dev\PixelShaderByteCode.h" />
+    <ClInclude Include="..\src\dev\DomainShaderByteCode.h" />
+    <ClInclude Include="..\src\dev\HullShaderByteCode.h" />
+    <ClInclude Include="..\src\dev\GeometryShaderByteCode.h" />
+    <ClInclude Include="..\src\dev\RootSignatureByteCode.h" />
+    <ClInclude Include="..\src\dev\InputLayoutDescription.h" />
+    <ClInclude Include="..\src\dev\StreamOutputDescription.h" />
+    <ClInclude Include="..\src\dev\PrimitiveRangeDescription.h" />
+    <ClInclude Include="..\src\dev\GraphicsPipelineStateDescription.h" />
+    <ClInclude Include="..\src\dev\ComputePipelineStateDescription.h" />
+    <ClInclude Include="..\src\dev\ComputePipelineState.h" />
+    <ClInclude Include="..\src\dev\ComputeGpuCommandContext.h" />
   </ItemGroup>
   <ItemGroup>
     <Midl Include="..\src\idl\PixelBuffer.idl" />

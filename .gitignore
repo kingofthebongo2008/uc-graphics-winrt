@@ -4,6 +4,7 @@
 
 /build/.vs
 /build/x64
+/build/packages
 /build/Generated Files
 /examples/uc_engine_hello_world/tmp
 /examples/uc_engine_hello_world/uc_engine_hello_world/.vs
