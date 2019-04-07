@@ -18,29 +18,12 @@ using Windows.System.Threading;
 using UniqueCreator.Graphics;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
-
 namespace UniqueCreator
 {
     namespace Graphics
     {
         namespace Shaders
         {
-            namespace MyShader
-            {
-                public sealed class Factory
-                {
-                    public static VertexShaderByteCode Create()
-                    {
-                        var code = new VertexShaderByteCode();
-                        var bytes = new byte[3]
-                        {
-                                0x0, 0x1, 0xa
-                        };
-                        code.Code = bytes;
-                        return code;
-                    }
-                }
-            }
         }
     }
 }
@@ -104,7 +87,11 @@ namespace uc_engine_hello_world
             code.Code = bytes;
             */
 
-            var code = UniqueCreator.Graphics.Shaders.MyShader.Factory.Create();
+            var code = UniqueCreator.Graphics.Shaders.compute_cs.Factory.Create();
+            var description = new ComputePipelineStateDescription();
+            description.CS = code;
+            var pipeline = new ComputePipelineState(m_ctx, description);
+
         }
 
         public void OnResuming()
