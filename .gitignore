@@ -6,12 +6,24 @@
 /build/x64
 /build/packages
 /build/Generated Files
+/build/unique_creator/Generated Files
+/build/UniqueCreatorx64/
+/build/unique_creator/UniqueCreatorx64/
+/build/unique_creator/bin
+/build/unique_creator/x64
+/build/unique_creator/packages
+/examples/uc_engine_hello_world/vs
 /examples/uc_engine_hello_world/tmp
 /examples/uc_engine_hello_world/uc_engine_hello_world/.vs
 /examples/uc_engine_hello_world/uc_engine_hello_world/x64
 /examples/uc_engine_hello_world/uc_engine_hello_world/packages
 /examples/uc_engine_hello_world/uc_engine_hello_world/obj
 /examples/uc_engine_hello_world/uc_engine_hello_world/bin
+/examples/uc_engine_hello_world/.vs
+/examples/uc_engine_hello_world/x64
+/examples/uc_engine_hello_world/packages
+/examples/uc_engine_hello_world/obj
+/examples/uc_engine_hello_world/bin
 /lib/win-x64
 /tmp
 *.tlog

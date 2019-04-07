@@ -21,29 +21,13 @@
     <ApplicationType>Windows Store</ApplicationType>
     <ApplicationTypeRevision>10.0</ApplicationTypeRevision>
     <WindowsTargetPlatformVersion Condition=" '$(WindowsTargetPlatformVersion)' == '' ">10.0.17763.0</WindowsTargetPlatformVersion>
-    <WindowsTargetPlatformMinVersion>10.0.0.0</WindowsTargetPlatformMinVersion>
+    <WindowsTargetPlatformMinVersion>10.0.17763.0</WindowsTargetPlatformMinVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <ItemGroup Label="ProjectConfigurations">
-    <ProjectConfiguration Include="Debug|ARM">
-      <Configuration>Debug</Configuration>
-      <Platform>ARM</Platform>
-    </ProjectConfiguration>
-    <ProjectConfiguration Include="Debug|Win32">
-      <Configuration>Debug</Configuration>
-      <Platform>Win32</Platform>
-    </ProjectConfiguration>
     <ProjectConfiguration Include="Debug|x64">
       <Configuration>Debug</Configuration>
       <Platform>x64</Platform>
-    </ProjectConfiguration>
-    <ProjectConfiguration Include="Release|ARM">
-      <Configuration>Release</Configuration>
-      <Platform>ARM</Platform>
-    </ProjectConfiguration>
-    <ProjectConfiguration Include="Release|Win32">
-      <Configuration>Release</Configuration>
-      <Platform>Win32</Platform>
     </ProjectConfiguration>
     <ProjectConfiguration Include="Release|x64">
       <Configuration>Release</Configuration>
@@ -81,7 +65,14 @@
     <Import Project="packages\Microsoft.Windows.CppWinRT.2.0.190405.3\build\native\Microsoft.Windows.CppWinRT.targets" Condition="Exists('packages\Microsoft.Windows.CppWinRT.2.0.190405.3\build\native\Microsoft.Windows.CppWinRT.targets')" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>$(SolutionDir)$(ProjectName)$(Platform)\$(Configuration)\$(MSBuildProjectName)\</OutDir>
+    <IntDir>$(ProjectName)$(Platform)\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>$(SolutionDir)$(ProjectName)$(Platform)\$(Configuration)\$(MSBuildProjectName)\</OutDir>
+    <IntDir>$(ProjectName)$(Platform)\$(Configuration)\</IntDir>
+  </PropertyGroup>
   <ItemDefinitionGroup>
     <ClCompile>
       <PrecompiledHeader>Use</PrecompiledHeader>
@@ -89,7 +80,7 @@
       <PrecompiledHeaderOutputFile>$(IntDir)pch.pch</PrecompiledHeaderOutputFile>
       <WarningLevel>Level4</WarningLevel>
       <AdditionalOptions>%(AdditionalOptions) /bigobj</AdditionalOptions>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\src\pch;$(GeneratedFilesDir);..\src\dev\;..\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\src\pch;$(GeneratedFilesDir);..\..\src\dev\;..\..\src</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>28204</DisableSpecificWarnings>
       <PreprocessorDefinitions>_WINRT_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalUsingDirectories>$(WindowsSDK_WindowsMetadata);$(AdditionalUsingDirectories)</AdditionalUsingDirectories>
@@ -114,7 +105,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup>
     <MIDL>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\src\idl</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\src\idl</AdditionalIncludeDirectories>
     </MIDL>
     <Link>
       <AdditionalDependencies Condition="'$(Configuration)|$(Platform)'=='Release|x64'">d3d12.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -127,190 +118,189 @@
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\src\pch\pch.h" />
-    <ClInclude Include="..\src\dev\ResourceCreateContext.h">
-      <DependentUpon>..\src\idl\ResourceCreateContext.idl</DependentUpon>
+    <ClInclude Include="..\..\src\pch\pch.h" />
+    <ClInclude Include="..\..\src\dev\ResourceCreateContext.h">
+      <DependentUpon>..\..\src\idl\ResourceCreateContext.idl</DependentUpon>
     </ClInclude>
-    <ClInclude Include="..\src\dev\CompositionSwapChainResources.h">
-      <DependentUpon>..\src\idl\CompositionSwapChainResources.idl</DependentUpon>
+    <ClInclude Include="..\..\src\dev\CompositionSwapChainResources.h">
+      <DependentUpon>..\..\src\idl\CompositionSwapChainResources.idl</DependentUpon>
     </ClInclude>
-    <ClInclude Include="..\src\dev\IResourceCreateContextNative.h" />
-    <ClInclude Include="..\src\dev\FenceHandle.h">
-      <DependentUpon>..\src\idl\FenceHandle.idl</DependentUpon>
+    <ClInclude Include="..\..\src\dev\IResourceCreateContextNative.h" />
+    <ClInclude Include="..\..\src\dev\FenceHandle.h">
+      <DependentUpon>..\..\src\idl\FenceHandle.idl</DependentUpon>
     </ClInclude>
-    <ClInclude Include="..\src\dev\IFenceHandleNative.h" />
-    <ClInclude Include="..\src\dev\WindowsEnvironment.h" />
-    <ClInclude Include="..\src\dev\DirectGpuCommandContext.h">
-      <DependentUpon>..\src\idl\DirectGpuCommandContext.idl</DependentUpon>
+    <ClInclude Include="..\..\src\dev\IFenceHandleNative.h" />
+    <ClInclude Include="..\..\src\dev\WindowsEnvironment.h" />
+    <ClInclude Include="..\..\src\dev\DirectGpuCommandContext.h">
+      <DependentUpon>..\..\src\idl\DirectGpuCommandContext.idl</DependentUpon>
     </ClInclude>
-    <ClInclude Include="..\src\dev\BackBuffer.h">
-      <DependentUpon>..\src\idl\BackBuffer.idl</DependentUpon>
+    <ClInclude Include="..\..\src\dev\BackBuffer.h">
+      <DependentUpon>..\..\src\idl\BackBuffer.idl</DependentUpon>
     </ClInclude>
-    <ClInclude Include="..\src\dev\IBackBufferNative.h" />
-    <ClInclude Include="..\src\dev\IPixelBufferNative.h" />
-    <ClInclude Include="..\src\dev\IGpuVirtualResourceNative.h" />
-    <ClInclude Include="..\src\dev\IPixelBuffer.h" />
-    <ClInclude Include="..\src\dev\BlendDescription.h">
-      <DependentUpon>..\src\idl\BlendDescription.idl</DependentUpon>
+    <ClInclude Include="..\..\src\dev\IBackBufferNative.h" />
+    <ClInclude Include="..\..\src\dev\IPixelBufferNative.h" />
+    <ClInclude Include="..\..\src\dev\IGpuVirtualResourceNative.h" />
+    <ClInclude Include="..\..\src\dev\IPixelBuffer.h" />
+    <ClInclude Include="..\..\src\dev\BlendDescription.h">
+      <DependentUpon>..\..\src\idl\BlendDescription.idl</DependentUpon>
     </ClInclude>
-    <ClInclude Include="..\src\dev\ComputeShaderByteCode.h">
-      <DependentUpon>..\src\idl\ComputeShaderByteCode.idl</DependentUpon>
+    <ClInclude Include="..\..\src\dev\ComputeShaderByteCode.h">
+      <DependentUpon>..\..\src\idl\ComputeShaderByteCode.idl</DependentUpon>
     </ClInclude>
-    <ClInclude Include="..\src\dev\VertexShaderByteCode.h">
-      <DependentUpon>..\src\idl\VertexShaderByteCode.idl</DependentUpon>
+    <ClInclude Include="..\..\src\dev\VertexShaderByteCode.h">
+      <DependentUpon>..\..\src\idl\VertexShaderByteCode.idl</DependentUpon>
     </ClInclude>
-    <ClInclude Include="..\src\dev\PixelShaderByteCode.h">
-      <DependentUpon>..\src\idl\PixelShaderByteCode.idl</DependentUpon>
+    <ClInclude Include="..\..\src\dev\PixelShaderByteCode.h">
+      <DependentUpon>..\..\src\idl\PixelShaderByteCode.idl</DependentUpon>
     </ClInclude>
-    <ClInclude Include="..\src\dev\DomainShaderByteCode.h">
-      <DependentUpon>..\src\idl\DomainShaderByteCode.idl</DependentUpon>
+    <ClInclude Include="..\..\src\dev\DomainShaderByteCode.h">
+      <DependentUpon>..\..\src\idl\DomainShaderByteCode.idl</DependentUpon>
     </ClInclude>
-    <ClInclude Include="..\src\dev\HullShaderByteCode.h">
-      <DependentUpon>..\src\idl\HullShaderByteCode.idl</DependentUpon>
+    <ClInclude Include="..\..\src\dev\HullShaderByteCode.h">
+      <DependentUpon>..\..\src\idl\HullShaderByteCode.idl</DependentUpon>
     </ClInclude>
-    <ClInclude Include="..\src\dev\GeometryShaderByteCode.h">
-      <DependentUpon>..\src\idl\GeometryShaderByteCode.idl</DependentUpon>
+    <ClInclude Include="..\..\src\dev\GeometryShaderByteCode.h">
+      <DependentUpon>..\..\src\idl\GeometryShaderByteCode.idl</DependentUpon>
     </ClInclude>
-    <ClInclude Include="..\src\dev\RootSignatureByteCode.h">
-      <DependentUpon>..\src\idl\RootSignatureByteCode.idl</DependentUpon>
+    <ClInclude Include="..\..\src\dev\RootSignatureByteCode.h">
+      <DependentUpon>..\..\src\idl\RootSignatureByteCode.idl</DependentUpon>
     </ClInclude>
-    <ClInclude Include="..\src\dev\InputLayoutDescription.h">
-      <DependentUpon>..\src\idl\InputLayoutDescription.idl</DependentUpon>
+    <ClInclude Include="..\..\src\dev\InputLayoutDescription.h">
+      <DependentUpon>..\..\src\idl\InputLayoutDescription.idl</DependentUpon>
     </ClInclude>
-    <ClInclude Include="..\src\dev\StreamOutputDescription.h">
-      <DependentUpon>..\src\idl\StreamOutputDescription.idl</DependentUpon>
+    <ClInclude Include="..\..\src\dev\StreamOutputDescription.h">
+      <DependentUpon>..\..\src\idl\StreamOutputDescription.idl</DependentUpon>
     </ClInclude>
-    <ClInclude Include="..\src\dev\PrimitiveRangeDescription.h">
-      <DependentUpon>..\src\idl\PrimitiveRangeDescription.idl</DependentUpon>
+    <ClInclude Include="..\..\src\dev\PrimitiveRangeDescription.h">
+      <DependentUpon>..\..\src\idl\PrimitiveRangeDescription.idl</DependentUpon>
     </ClInclude>
-    <ClInclude Include="..\src\dev\GraphicsPipelineStateDescription.h">
-      <DependentUpon>..\src\idl\GraphicsPipelineStateDescription.idl</DependentUpon>
+    <ClInclude Include="..\..\src\dev\GraphicsPipelineStateDescription.h">
+      <DependentUpon>..\..\src\idl\GraphicsPipelineStateDescription.idl</DependentUpon>
     </ClInclude>
-    <ClInclude Include="..\src\dev\ComputePipelineStateDescription.h">
-      <DependentUpon>..\src\idl\ComputePipelineStateDescription.idl</DependentUpon>
+    <ClInclude Include="..\..\src\dev\ComputePipelineStateDescription.h">
+      <DependentUpon>..\..\src\idl\ComputePipelineStateDescription.idl</DependentUpon>
     </ClInclude>
-    <ClInclude Include="..\src\dev\ComputePipelineState.h">
-      <DependentUpon>..\src\idl\ComputePipelineState.idl</DependentUpon>
+    <ClInclude Include="..\..\src\dev\ComputePipelineState.h">
+      <DependentUpon>..\..\src\idl\ComputePipelineState.idl</DependentUpon>
     </ClInclude>
-    <ClInclude Include="..\src\dev\ComputeGpuCommandContext.h">
-      <DependentUpon>..\src\idl\ComputeGpuCommandContext.idl</DependentUpon>
+    <ClInclude Include="..\..\src\dev\ComputeGpuCommandContext.h">
+      <DependentUpon>..\..\src\idl\ComputeGpuCommandContext.idl</DependentUpon>
     </ClInclude>
-    <ClInclude Include="..\src\dev\IShaderByteCodeNative.h" />
-
-    <ClInclude Include="..\src\dev\IComputePipelineStateNative.h" />
-
+    <ClInclude Include="..\..\src\dev\IShaderByteCodeNative.h" />
+    <ClInclude Include="..\..\src\dev\IComputePipelineStateNative.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\src\pch\pch.cpp">
+    <ClCompile Include="..\..\src\pch\pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="..\src\dev\ResourceCreateContext.cpp">
-      <DependentUpon>..\src\idl\ResourceCreateContext.idl</DependentUpon>
+    <ClCompile Include="..\..\src\dev\ResourceCreateContext.cpp">
+      <DependentUpon>..\..\src\idl\ResourceCreateContext.idl</DependentUpon>
     </ClCompile>
-    <ClCompile Include="..\src\dev\CompositionSwapChainResources.cpp">
-      <DependentUpon>..\src\idl\CompositionSwapChainResources.idl</DependentUpon>
+    <ClCompile Include="..\..\src\dev\CompositionSwapChainResources.cpp">
+      <DependentUpon>..\..\src\idl\CompositionSwapChainResources.idl</DependentUpon>
     </ClCompile>
-    <ClCompile Include="..\src\dev\FenceHandle.cpp">
-      <DependentUpon>..\src\idl\FenceHandle.idl</DependentUpon>
+    <ClCompile Include="..\..\src\dev\FenceHandle.cpp">
+      <DependentUpon>..\..\src\idl\FenceHandle.idl</DependentUpon>
     </ClCompile>
-    <ClCompile Include="..\src\dev\WindowsEnvironment.cpp" />
+    <ClCompile Include="..\..\src\dev\WindowsEnvironment.cpp" />
     <ClCompile Include="$(GeneratedFilesDir)module.g.cpp" />
-    <ClCompile Include="..\src\dev\DirectGpuCommandContext.cpp">
-      <DependentUpon>..\src\idl\DirectGpuCommandContext.idl</DependentUpon>
+    <ClCompile Include="..\..\src\dev\DirectGpuCommandContext.cpp">
+      <DependentUpon>..\..\src\idl\DirectGpuCommandContext.idl</DependentUpon>
     </ClCompile>
-    <ClCompile Include="..\src\dev\BackBuffer.cpp">
-      <DependentUpon>..\src\idl\BackBuffer.idl</DependentUpon>
+    <ClCompile Include="..\..\src\dev\BackBuffer.cpp">
+      <DependentUpon>..\..\src\idl\BackBuffer.idl</DependentUpon>
     </ClCompile>
-    <ClCompile Include="..\src\dev\BlendDescription.cpp">
-      <DependentUpon>..\src\idl\BlendDescription.idl</DependentUpon>
+    <ClCompile Include="..\..\src\dev\BlendDescription.cpp">
+      <DependentUpon>..\..\src\idl\BlendDescription.idl</DependentUpon>
     </ClCompile>
-    <ClCompile Include="..\src\dev\ComputeShaderByteCode.cpp">
-      <DependentUpon>..\src\idl\ComputeShaderByteCode.idl</DependentUpon>
+    <ClCompile Include="..\..\src\dev\ComputeShaderByteCode.cpp">
+      <DependentUpon>..\..\src\idl\ComputeShaderByteCode.idl</DependentUpon>
     </ClCompile>
-    <ClCompile Include="..\src\dev\VertexShaderByteCode.cpp">
-      <DependentUpon>..\src\idl\VertexShaderByteCode.idl</DependentUpon>
+    <ClCompile Include="..\..\src\dev\VertexShaderByteCode.cpp">
+      <DependentUpon>..\..\src\idl\VertexShaderByteCode.idl</DependentUpon>
     </ClCompile>
-    <ClCompile Include="..\src\dev\PixelShaderByteCode.cpp">
-      <DependentUpon>..\src\idl\PixelShaderByteCode.idl</DependentUpon>
+    <ClCompile Include="..\..\src\dev\PixelShaderByteCode.cpp">
+      <DependentUpon>..\..\src\idl\PixelShaderByteCode.idl</DependentUpon>
     </ClCompile>
-    <ClCompile Include="..\src\dev\DomainShaderByteCode.cpp">
-      <DependentUpon>..\src\idl\DomainShaderByteCode.idl</DependentUpon>
+    <ClCompile Include="..\..\src\dev\DomainShaderByteCode.cpp">
+      <DependentUpon>..\..\src\idl\DomainShaderByteCode.idl</DependentUpon>
     </ClCompile>
-    <ClCompile Include="..\src\dev\HullShaderByteCode.cpp">
-      <DependentUpon>..\src\idl\HullShaderByteCode.idl</DependentUpon>
+    <ClCompile Include="..\..\src\dev\HullShaderByteCode.cpp">
+      <DependentUpon>..\..\src\idl\HullShaderByteCode.idl</DependentUpon>
     </ClCompile>
-    <ClCompile Include="..\src\dev\GeometryShaderByteCode.cpp">
-      <DependentUpon>..\src\idl\GeometryShaderByteCode.idl</DependentUpon>
+    <ClCompile Include="..\..\src\dev\GeometryShaderByteCode.cpp">
+      <DependentUpon>..\..\src\idl\GeometryShaderByteCode.idl</DependentUpon>
     </ClCompile>
-    <ClCompile Include="..\src\dev\RootSignatureByteCode.cpp">
-      <DependentUpon>..\src\idl\RootSignatureByteCode.idl</DependentUpon>
+    <ClCompile Include="..\..\src\dev\RootSignatureByteCode.cpp">
+      <DependentUpon>..\..\src\idl\RootSignatureByteCode.idl</DependentUpon>
     </ClCompile>
-    <ClCompile Include="..\src\dev\InputLayoutDescription.cpp">
-      <DependentUpon>..\src\idl\InputLayoutDescription.idl</DependentUpon>
+    <ClCompile Include="..\..\src\dev\InputLayoutDescription.cpp">
+      <DependentUpon>..\..\src\idl\InputLayoutDescription.idl</DependentUpon>
     </ClCompile>
-    <ClCompile Include="..\src\dev\StreamOutputDescription.cpp">
-      <DependentUpon>..\src\idl\StreamOutputDescription.idl</DependentUpon>
+    <ClCompile Include="..\..\src\dev\StreamOutputDescription.cpp">
+      <DependentUpon>..\..\src\idl\StreamOutputDescription.idl</DependentUpon>
     </ClCompile>
-    <ClCompile Include="..\src\dev\PrimitiveRangeDescription.cpp">
-      <DependentUpon>..\src\idl\PrimitiveRangeDescription.idl</DependentUpon>
+    <ClCompile Include="..\..\src\dev\PrimitiveRangeDescription.cpp">
+      <DependentUpon>..\..\src\idl\PrimitiveRangeDescription.idl</DependentUpon>
     </ClCompile>
-    <ClCompile Include="..\src\dev\GraphicsPipelineStateDescription.cpp">
-      <DependentUpon>..\src\idl\GraphicsPipelineStateDescription.idl</DependentUpon>
+    <ClCompile Include="..\..\src\dev\GraphicsPipelineStateDescription.cpp">
+      <DependentUpon>..\..\src\idl\GraphicsPipelineStateDescription.idl</DependentUpon>
     </ClCompile>
-    <ClCompile Include="..\src\dev\ComputePipelineStateDescription.cpp">
-      <DependentUpon>..\src\idl\ComputePipelineStateDescription.idl</DependentUpon>
+    <ClCompile Include="..\..\src\dev\ComputePipelineStateDescription.cpp">
+      <DependentUpon>..\..\src\idl\ComputePipelineStateDescription.idl</DependentUpon>
     </ClCompile>
-    <ClCompile Include="..\src\dev\ComputePipelineState.cpp">
-      <DependentUpon>..\src\idl\ComputePipelineState.idl</DependentUpon>
+    <ClCompile Include="..\..\src\dev\ComputePipelineState.cpp">
+      <DependentUpon>..\..\src\idl\ComputePipelineState.idl</DependentUpon>
     </ClCompile>
-    <ClCompile Include="..\src\dev\ComputeGpuCommandContext.cpp">
-      <DependentUpon>..\src\idl\ComputeGpuCommandContext.idl</DependentUpon>
+    <ClCompile Include="..\..\src\dev\ComputeGpuCommandContext.cpp">
+      <DependentUpon>..\..\src\idl\ComputeGpuCommandContext.idl</DependentUpon>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Midl Include="..\src\idl\BlendDescription.idl" />
-    <Midl Include="..\src\idl\InputLayoutDescription.idl" />
-    <Midl Include="..\src\idl\StreamOutputDescription.idl" />
-    <Midl Include="..\src\idl\PrimitiveRangeDescription.idl" />
-    <Midl Include="..\src\idl\GraphicsPipelineStateDescription.idl" />
-    <Midl Include="..\src\idl\ComputePipelineStateDescription.idl" />
-    <Midl Include="..\src\idl\ComputePipelineState.idl" />
-    <Midl Include="..\src\idl\ComputeShaderByteCode.idl" />
-    <Midl Include="..\src\idl\VertexShaderByteCode.idl" />
-    <Midl Include="..\src\idl\PixelShaderByteCode.idl" />
-    <Midl Include="..\src\idl\DomainShaderByteCode.idl" />
-    <Midl Include="..\src\idl\GeometryShaderByteCode.idl" />
-    <Midl Include="..\src\idl\HullShaderByteCode.idl" />
-    <Midl Include="..\src\idl\RootSignatureByteCode.idl" />
-    <Midl Include="..\src\idl\BackBuffer.idl" />
-    <Midl Include="..\src\idl\PixelBuffer.idl" />
-    <Midl Include="..\src\idl\GpuVirtualResource.idl" />
-    <Midl Include="..\src\idl\GpuCommandContext.idl" />
-    <Midl Include="..\src\idl\CopyGpuCommandContext.idl" />
-    <Midl Include="..\src\idl\ComputeGpuCommandContext.idl" />
-    <Midl Include="..\src\idl\DirectGpuCommandContext.idl" />
-    <Midl Include="..\src\idl\GraphicTypes.idl" />
-    <Midl Include="..\src\idl\Base.idl" />
-    <Midl Include="..\src\idl\FenceHandle.idl" />
-    <Midl Include="..\src\idl\ResourceCreateContext.idl" />
-    <Midl Include="..\src\idl\CompositionSwapChainResources.idl" />
-    <Midl Include="..\src\idl\SwapChainResources.idl" />
+    <Midl Include="..\..\src\idl\BlendDescription.idl" />
+    <Midl Include="..\..\src\idl\InputLayoutDescription.idl" />
+    <Midl Include="..\..\src\idl\StreamOutputDescription.idl" />
+    <Midl Include="..\..\src\idl\PrimitiveRangeDescription.idl" />
+    <Midl Include="..\..\src\idl\GraphicsPipelineStateDescription.idl" />
+    <Midl Include="..\..\src\idl\ComputePipelineStateDescription.idl" />
+    <Midl Include="..\..\src\idl\ComputePipelineState.idl" />
+    <Midl Include="..\..\src\idl\ComputeShaderByteCode.idl" />
+    <Midl Include="..\..\src\idl\VertexShaderByteCode.idl" />
+    <Midl Include="..\..\src\idl\PixelShaderByteCode.idl" />
+    <Midl Include="..\..\src\idl\DomainShaderByteCode.idl" />
+    <Midl Include="..\..\src\idl\GeometryShaderByteCode.idl" />
+    <Midl Include="..\..\src\idl\HullShaderByteCode.idl" />
+    <Midl Include="..\..\src\idl\RootSignatureByteCode.idl" />
+    <Midl Include="..\..\src\idl\BackBuffer.idl" />
+    <Midl Include="..\..\src\idl\PixelBuffer.idl" />
+    <Midl Include="..\..\src\idl\GpuVirtualResource.idl" />
+    <Midl Include="..\..\src\idl\GpuCommandContext.idl" />
+    <Midl Include="..\..\src\idl\CopyGpuCommandContext.idl" />
+    <Midl Include="..\..\src\idl\ComputeGpuCommandContext.idl" />
+    <Midl Include="..\..\src\idl\DirectGpuCommandContext.idl" />
+    <Midl Include="..\..\src\idl\GraphicTypes.idl" />
+    <Midl Include="..\..\src\idl\Base.idl" />
+    <Midl Include="..\..\src\idl\FenceHandle.idl" />
+    <Midl Include="..\..\src\idl\ResourceCreateContext.idl" />
+    <Midl Include="..\..\src\idl\CompositionSwapChainResources.idl" />
+    <Midl Include="..\..\src\idl\SwapChainResources.idl" />
   </ItemGroup>
   <ItemGroup>
-    <RootSignature Include="..\src\shaders\default_graphics_signature.hlsl">
+    <RootSignature Include="..\..\src\shaders\default_graphics_signature.hlsl">
       <EntryPointName>MyRS1</EntryPointName>
-      <CPPOutput>..\src\shaders\default_graphics_signature.cpp</CPPOutput>
-      <CPPHeaderOutput>..\src\shaders\default_graphics_signature.h</CPPHeaderOutput>
+      <CPPOutput>..\..\src\shaders\default_graphics_signature.cpp</CPPOutput>
+      <CPPHeaderOutput>..\..\src\shaders\default_graphics_signature.h</CPPHeaderOutput>
     </RootSignature>
-    <RootSignature Include="..\src\shaders\default_compute_signature.hlsl">
-      <CPPOutput>..\src\shaders\default_compute_signature.cpp</CPPOutput>
-      <CPPHeaderOutput>..\src\shaders\default_compute_signature.h</CPPHeaderOutput>
+    <RootSignature Include="..\..\src\shaders\default_compute_signature.hlsl">
+      <CPPOutput>..\..\src\shaders\default_compute_signature.cpp</CPPOutput>
+      <CPPHeaderOutput>..\..\src\shaders\default_compute_signature.h</CPPHeaderOutput>
       <EntryPointName>MyRS2</EntryPointName>
     </RootSignature>
   </ItemGroup>
   <ItemGroup>
     <None Include="module.def" />
-    <None Include="packages.config" />
+    <None Include="packages.config">
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Text Include="readme.txt">
