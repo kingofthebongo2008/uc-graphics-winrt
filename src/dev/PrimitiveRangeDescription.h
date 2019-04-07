@@ -4,11 +4,12 @@
 
 namespace winrt::UniqueCreator::Graphics::implementation
 {
+	using namespace Windows::Foundation::Collections;
     struct PrimitiveRangeDescription : PrimitiveRangeDescriptionT<PrimitiveRangeDescription>
     {
         PrimitiveRangeDescription() = delete;
 
-        Windows::Foundation::Collections::IVector<UniqueCreator::Graphics::InputElementDescription> Ranges();
-        void Ranges(Windows::Foundation::Collections::IVector<UniqueCreator::Graphics::InputElementDescription> const& value);
+        IVector<UniqueCreator::Graphics::InputElementDescription> Ranges();
+        void Ranges(IVector<UniqueCreator::Graphics::InputElementDescription> const& value);
     };
 }

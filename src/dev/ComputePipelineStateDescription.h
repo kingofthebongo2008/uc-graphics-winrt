@@ -9,7 +9,9 @@ namespace winrt::UniqueCreator::Graphics::implementation
         ComputePipelineStateDescription() = default;
 
         UniqueCreator::Graphics::ComputeShaderByteCode CS();
-        void CS(UniqueCreator::Graphics::ComputeShaderByteCode const& value);
+        void CS(ComputeShaderByteCode const& value);
+
+		ComputeShaderByteCode m_code;
     };
 }
 

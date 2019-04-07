@@ -4,14 +4,16 @@
 
 namespace winrt::UniqueCreator::Graphics::implementation
 {
+	using namespace Windows::Foundation::Collections;
+
     struct StreamOutputDescription : StreamOutputDescriptionT<StreamOutputDescription>
     {
         StreamOutputDescription() = delete;
 
-        Windows::Foundation::Collections::IVector<UniqueCreator::Graphics::StreamOutputDeclarationEntry> SODeclaration();
-        void SODeclaration(Windows::Foundation::Collections::IVector<UniqueCreator::Graphics::StreamOutputDeclarationEntry> const& value);
-        Windows::Foundation::Collections::IVector<uint32_t> BufferStrides();
-        void BufferStrides(Windows::Foundation::Collections::IVector<uint32_t> const& value);
+        IVector<StreamOutputDeclarationEntry> SODeclaration();
+        void SODeclaration(IVector<StreamOutputDeclarationEntry> const& value);
+        IVector<uint32_t> BufferStrides();
+        void BufferStrides(IVector<uint32_t> const& value);
         uint32_t RasterizedStream();
         void RasterizedStream(uint32_t value);
     };

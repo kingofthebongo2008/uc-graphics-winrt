@@ -4,6 +4,8 @@
 
 namespace winrt::UniqueCreator::Graphics::implementation
 {
+	using namespace Windows::Foundation::Collections;
+
     struct BlendDescription : BlendDescriptionT<BlendDescription>
     {
         BlendDescription();
@@ -13,15 +15,13 @@ namespace winrt::UniqueCreator::Graphics::implementation
         bool IndependentBlendEnable();
         void IndependentBlendEnable(bool value);
 
-        Windows::Foundation::Collections::IVector<UniqueCreator::Graphics::RenderTargetBlendDescription> RenderTargets();
-        void RenderTargets(Windows::Foundation::Collections::IVector<UniqueCreator::Graphics::RenderTargetBlendDescription> const& value);
+		IVector<RenderTargetBlendDescription> RenderTargets();
+        void RenderTargets(IVector<RenderTargetBlendDescription> const& value);
 
 
         protected:
 
-        Windows::Foundation::Collections::IVector<UniqueCreator::Graphics::RenderTargetBlendDescription> m_renderTargets;
-        
-
+        IVector<RenderTargetBlendDescription> m_renderTargets;
     };  
 }
 

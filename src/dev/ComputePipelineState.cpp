@@ -29,7 +29,7 @@ namespace winrt::UniqueCreator::Graphics::implementation
         }
     }
     
-    ComputePipelineState::ComputePipelineState(UniqueCreator::Graphics::ResourceCreateContext const& ctx, UniqueCreator::Graphics::ComputePipelineStateDescription const& d)
+    ComputePipelineState::ComputePipelineState(ResourceCreateContext const& ctx, ComputePipelineStateDescription const& d)
     {
         using namespace uc::gx::dx12;
 
@@ -54,8 +54,8 @@ namespace winrt::UniqueCreator::Graphics::implementation
         m_compute_pipeline_state = { m_cached_pipeline_state.Get(), m_cached_root_signature.Get(), &m_cached_meta_data };
     }
 
-    void ComputePipelineState::GetCachedBlob()
-    {
-        throw hresult_not_implemented();
-    }
+	uc::gx::dx12::compute_pipeline_state* ComputePipelineState::GetPipelineState()
+	{
+		return &m_compute_pipeline_state;
+	}
 }

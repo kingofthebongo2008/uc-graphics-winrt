@@ -3,15 +3,16 @@
 #include "ComputePipelineState.g.h"
 
 #include "shaders/default_compute_signature.h"
+#include "IComputePipelineStateNative.h"
 
 namespace winrt::UniqueCreator::Graphics::implementation
 {
-    struct ComputePipelineState : ComputePipelineStateT<ComputePipelineState>
+    struct ComputePipelineState : ComputePipelineStateT<ComputePipelineState, IComputePipelineStateNative>
     {
         ComputePipelineState() = delete;
-        ComputePipelineState(UniqueCreator::Graphics::ResourceCreateContext const& ctx, UniqueCreator::Graphics::ComputePipelineStateDescription const& d);
+        ComputePipelineState(ResourceCreateContext const& ctx, ComputePipelineStateDescription const& d);
 
-        void GetCachedBlob();
+		uc::gx::dx12::compute_pipeline_state*		GetPipelineState() override;
 
         private:
 

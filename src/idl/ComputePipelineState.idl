@@ -5,10 +5,10 @@ namespace UniqueCreator
 {
     namespace Graphics
     {
+		[default_interface]
         runtimeclass ComputePipelineState
         {
             ComputePipelineState(ResourceCreateContext ctx, ComputePipelineStateDescription d);
-            void GetCachedBlob();
         };
     }
 }

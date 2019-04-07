@@ -3,13 +3,13 @@
 
 namespace winrt::UniqueCreator::Graphics::implementation
 {
-    UniqueCreator::Graphics::ComputeShaderByteCode ComputePipelineStateDescription::CS()
+    ComputeShaderByteCode ComputePipelineStateDescription::CS()
     {
-        throw hresult_not_implemented();
+		return m_code;
     }
 
-    void ComputePipelineStateDescription::CS(UniqueCreator::Graphics::ComputeShaderByteCode const& value)
+    void ComputePipelineStateDescription::CS(ComputeShaderByteCode const& value)
     {
-        throw hresult_not_implemented();
+		m_code = value;
     }
 }

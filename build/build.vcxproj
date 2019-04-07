@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="packages\Microsoft.Windows.CppWinRT.2.0.190405.3\build\native\Microsoft.Windows.CppWinRT.props" Condition="Exists('packages\Microsoft.Windows.CppWinRT.2.0.190405.3\build\native\Microsoft.Windows.CppWinRT.props')" />
   <Import Project="packages\uc-tools-msbuild-tasks.1.0.28\build\uc-tools-msbuild-tasks.props" Condition="Exists('packages\uc-tools-msbuild-tasks.1.0.28\build\uc-tools-msbuild-tasks.props')" />
   <Import Project="packages\uc-tools-graphics-gpu-shader-compiler.1.0.7\build\uc-tools-graphics-gpu-shader-compiler.props" Condition="Exists('packages\uc-tools-graphics-gpu-shader-compiler.1.0.7\build\uc-tools-graphics-gpu-shader-compiler.props')" />
   <Import Project="packages\uc-tools-graphics-gpu-pipeline-compiler.1.0.32\build\uc-tools-graphics-gpu-pipeline-compiler.props" Condition="Exists('packages\uc-tools-graphics-gpu-pipeline-compiler.1.0.32\build\uc-tools-graphics-gpu-pipeline-compiler.props')" />
@@ -8,7 +9,6 @@
   <Import Project="packages\uc-math.1.0.4\build\native\uc-math.props" Condition="Exists('packages\uc-math.1.0.4\build\native\uc-math.props')" />
   <Import Project="packages\uc-imaging.1.0.12\build\native\uc-imaging.props" Condition="Exists('packages\uc-imaging.1.0.12\build\native\uc-imaging.props')" />
   <Import Project="packages\uc-core.1.0.13\build\native\uc-core.props" Condition="Exists('packages\uc-core.1.0.13\build\native\uc-core.props')" />
-  <Import Project="packages\Microsoft.Windows.CppWinRT.1.0.190211.5\build\native\Microsoft.Windows.CppWinRT.props" Condition="Exists('packages\Microsoft.Windows.CppWinRT.1.0.190211.5\build\native\Microsoft.Windows.CppWinRT.props')" />
   <PropertyGroup Label="Globals">
     <CppWinRTEnabled>true</CppWinRTEnabled>
     <MinimalCoreWin>true</MinimalCoreWin>
@@ -70,7 +70,6 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
     <Import Project="packages\microsoft-gsl-library.1.0.7\build\native\microsoft-gsl-library.targets" Condition="Exists('packages\microsoft-gsl-library.1.0.7\build\native\microsoft-gsl-library.targets')" />
-    <Import Project="packages\Microsoft.Windows.CppWinRT.1.0.190211.5\build\native\Microsoft.Windows.CppWinRT.targets" Condition="Exists('packages\Microsoft.Windows.CppWinRT.1.0.190211.5\build\native\Microsoft.Windows.CppWinRT.targets')" />
     <Import Project="packages\uc-core.1.0.13\build\native\uc-core.targets" Condition="Exists('packages\uc-core.1.0.13\build\native\uc-core.targets')" />
     <Import Project="packages\uc-imaging.1.0.12\build\native\uc-imaging.targets" Condition="Exists('packages\uc-imaging.1.0.12\build\native\uc-imaging.targets')" />
     <Import Project="packages\uc-math.1.0.4\build\native\uc-math.targets" Condition="Exists('packages\uc-math.1.0.4\build\native\uc-math.targets')" />
@@ -79,6 +78,7 @@
     <Import Project="packages\uc-tools-graphics-gpu-pipeline-compiler.1.0.32\build\uc-tools-graphics-gpu-pipeline-compiler.targets" Condition="Exists('packages\uc-tools-graphics-gpu-pipeline-compiler.1.0.32\build\uc-tools-graphics-gpu-pipeline-compiler.targets')" />
     <Import Project="packages\uc-tools-graphics-gpu-shader-compiler.1.0.7\build\uc-tools-graphics-gpu-shader-compiler.targets" Condition="Exists('packages\uc-tools-graphics-gpu-shader-compiler.1.0.7\build\uc-tools-graphics-gpu-shader-compiler.targets')" />
     <Import Project="packages\uc-tools-msbuild-tasks.1.0.28\build\uc-tools-msbuild-tasks.targets" Condition="Exists('packages\uc-tools-msbuild-tasks.1.0.28\build\uc-tools-msbuild-tasks.targets')" />
+    <Import Project="packages\Microsoft.Windows.CppWinRT.2.0.190405.3\build\native\Microsoft.Windows.CppWinRT.targets" Condition="Exists('packages\Microsoft.Windows.CppWinRT.2.0.190405.3\build\native\Microsoft.Windows.CppWinRT.targets')" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup />
@@ -196,6 +196,9 @@
       <DependentUpon>..\src\idl\ComputeGpuCommandContext.idl</DependentUpon>
     </ClInclude>
     <ClInclude Include="..\src\dev\IShaderByteCodeNative.h" />
+
+    <ClInclude Include="..\src\dev\IComputePipelineStateNative.h" />
+
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\pch\pch.cpp">
@@ -320,8 +323,6 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('packages\microsoft-gsl-library.1.0.7\build\native\microsoft-gsl-library.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\microsoft-gsl-library.1.0.7\build\native\microsoft-gsl-library.targets'))" />
-    <Error Condition="!Exists('packages\Microsoft.Windows.CppWinRT.1.0.190211.5\build\native\Microsoft.Windows.CppWinRT.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.Windows.CppWinRT.1.0.190211.5\build\native\Microsoft.Windows.CppWinRT.props'))" />
-    <Error Condition="!Exists('packages\Microsoft.Windows.CppWinRT.1.0.190211.5\build\native\Microsoft.Windows.CppWinRT.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.Windows.CppWinRT.1.0.190211.5\build\native\Microsoft.Windows.CppWinRT.targets'))" />
     <Error Condition="!Exists('packages\uc-core.1.0.13\build\native\uc-core.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\uc-core.1.0.13\build\native\uc-core.props'))" />
     <Error Condition="!Exists('packages\uc-core.1.0.13\build\native\uc-core.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\uc-core.1.0.13\build\native\uc-core.targets'))" />
     <Error Condition="!Exists('packages\uc-imaging.1.0.12\build\native\uc-imaging.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\uc-imaging.1.0.12\build\native\uc-imaging.props'))" />
@@ -338,5 +339,7 @@
     <Error Condition="!Exists('packages\uc-tools-graphics-gpu-shader-compiler.1.0.7\build\uc-tools-graphics-gpu-shader-compiler.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\uc-tools-graphics-gpu-shader-compiler.1.0.7\build\uc-tools-graphics-gpu-shader-compiler.targets'))" />
     <Error Condition="!Exists('packages\uc-tools-msbuild-tasks.1.0.28\build\uc-tools-msbuild-tasks.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\uc-tools-msbuild-tasks.1.0.28\build\uc-tools-msbuild-tasks.props'))" />
     <Error Condition="!Exists('packages\uc-tools-msbuild-tasks.1.0.28\build\uc-tools-msbuild-tasks.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\uc-tools-msbuild-tasks.1.0.28\build\uc-tools-msbuild-tasks.targets'))" />
+    <Error Condition="!Exists('packages\Microsoft.Windows.CppWinRT.2.0.190405.3\build\native\Microsoft.Windows.CppWinRT.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.Windows.CppWinRT.2.0.190405.3\build\native\Microsoft.Windows.CppWinRT.props'))" />
+    <Error Condition="!Exists('packages\Microsoft.Windows.CppWinRT.2.0.190405.3\build\native\Microsoft.Windows.CppWinRT.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.Windows.CppWinRT.2.0.190405.3\build\native\Microsoft.Windows.CppWinRT.targets'))" />
   </Target>
 </Project>

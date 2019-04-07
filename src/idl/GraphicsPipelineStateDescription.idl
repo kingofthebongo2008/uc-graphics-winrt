@@ -32,13 +32,13 @@ namespace UniqueCreator
 
             InputLayoutDescription      InputLayout;
             IndexBufferStripCut         IbStripCutValue;
-            PrimitiveTopologyType       PrimitiveTopologyType;
+            PrimitiveTopologyType       PrimitiveTopology;
             UInt32                      NumRenderTargets;
 
             Windows.Foundation.Collections.IVector<GraphicsFormat> RtvFormats;
 
             GraphicsFormat              DsvFormat;
-            SampleDescription           SampleDescription;
+            SampleDescription           Samples;
         };
     }
 }

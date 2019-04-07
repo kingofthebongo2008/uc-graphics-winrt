@@ -3,12 +3,12 @@
 
 namespace winrt::UniqueCreator::Graphics::implementation
 {
-    Windows::Foundation::Collections::IVector<UniqueCreator::Graphics::InputElementDescription> InputLayoutDescription::InputElementDescs()
+    IVector<InputElementDescription> InputLayoutDescription::InputElementDescs()
     {
         throw hresult_not_implemented();
     }
 
-    void InputLayoutDescription::InputElementDescs(Windows::Foundation::Collections::IVector<UniqueCreator::Graphics::InputElementDescription> const& value)
+    void InputLayoutDescription::InputElementDescs(IVector<InputElementDescription> const& value)
     {
         throw hresult_not_implemented();
     }

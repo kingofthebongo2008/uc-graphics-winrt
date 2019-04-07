@@ -4,16 +4,17 @@
 
 namespace winrt::UniqueCreator::Graphics::implementation
 {
+	using namespace Windows::Foundation::Collections; 
+
     struct GeometryShaderByteCode : GeometryShaderByteCodeT<GeometryShaderByteCode>
     {
         GeometryShaderByteCode();
 
-        Windows::Foundation::Collections::IVector<uint8_t> Code();
-        void Code(Windows::Foundation::Collections::IVector<uint8_t> const& value);
+        IVector<uint8_t> Code();
+        void Code(IVector<uint8_t> const& value);
 
-        Windows::Foundation::Collections::IVector<uint8_t> m_code;
-
-        std::vector<uint8_t>                               m_nativeCode;
+        IVector<uint8_t> m_code;
+        std::vector<uint8_t> m_nativeCode;
     };
 }
 

@@ -28,12 +28,12 @@ namespace winrt::UniqueCreator::Graphics::implementation
 
     }
 
-    Windows::Foundation::Collections::IVector<UniqueCreator::Graphics::RenderTargetBlendDescription> BlendDescription::RenderTargets()
+    IVector<RenderTargetBlendDescription> BlendDescription::RenderTargets()
     {
         return m_renderTargets;
     }
 
-    void BlendDescription::RenderTargets(Windows::Foundation::Collections::IVector<UniqueCreator::Graphics::RenderTargetBlendDescription> const& value)
+    void BlendDescription::RenderTargets(IVector<RenderTargetBlendDescription> const& value)
     {
         m_renderTargets = value;
     }

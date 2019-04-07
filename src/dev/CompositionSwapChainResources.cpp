@@ -60,7 +60,7 @@ namespace winrt::UniqueCreator::Graphics::implementation
         }
     }
 
-    CompositionSwapChainResources::CompositionSwapChainResources(UniqueCreator::Graphics::ResourceCreateContext const& ctx, Windows::UI::Xaml::Controls::SwapChainPanel const& panel)
+    CompositionSwapChainResources::CompositionSwapChainResources(ResourceCreateContext const& ctx, Windows::UI::Xaml::Controls::SwapChainPanel const& panel)
     {
         winrt::com_ptr<IResourceCreateContextNative> const native{ ctx.as<IResourceCreateContextNative>() };
 

@@ -4,44 +4,47 @@
 
 namespace winrt::UniqueCreator::Graphics::implementation
 {
+	using namespace Windows::Foundation::Collections;
+
     struct GraphicsPipelineStateDescription : GraphicsPipelineStateDescriptionT<GraphicsPipelineStateDescription>
     {
         GraphicsPipelineStateDescription() = default;
 
-        UniqueCreator::Graphics::VertexShaderByteCode VS();
-        void VS(UniqueCreator::Graphics::VertexShaderByteCode const& value);
-        UniqueCreator::Graphics::PixelShaderByteCode PS();
-        void PS(UniqueCreator::Graphics::PixelShaderByteCode const& value);
-        UniqueCreator::Graphics::DomainShaderByteCode DS();
-        void DS(UniqueCreator::Graphics::DomainShaderByteCode const& value);
-        UniqueCreator::Graphics::HullShaderByteCode HS();
-        void HS(UniqueCreator::Graphics::HullShaderByteCode const& value);
-        UniqueCreator::Graphics::GeometryShaderByteCode GS();
-        void GS(UniqueCreator::Graphics::GeometryShaderByteCode const& value);
-        UniqueCreator::Graphics::StreamOutputDescription StreamOutput();
-        void StreamOutput(UniqueCreator::Graphics::StreamOutputDescription const& value);
-        UniqueCreator::Graphics::BlendDescription BlendState();
-        void BlendState(UniqueCreator::Graphics::BlendDescription const& value);
+		Graphics::VertexShaderByteCode VS();
+        void VS(Graphics::VertexShaderByteCode const& value);
+		Graphics::PixelShaderByteCode PS();
+        void PS(Graphics::PixelShaderByteCode const& value);
+		Graphics::DomainShaderByteCode DS();
+        void DS(Graphics::DomainShaderByteCode const& value);
+		Graphics::HullShaderByteCode HS();
+        void HS(Graphics::HullShaderByteCode const& value);
+		Graphics::GeometryShaderByteCode GS();
+        void GS(Graphics::GeometryShaderByteCode const& value);
+		Graphics::StreamOutputDescription StreamOutput();
+        void StreamOutput(Graphics::StreamOutputDescription const& value);
+		Graphics::BlendDescription BlendState();
+        void BlendState(Graphics::BlendDescription const& value);
         uint32_t SampleMask();
         void SampleMask(uint32_t value);
-        UniqueCreator::Graphics::RasterizerDescription RasterizerState();
-        void RasterizerState(UniqueCreator::Graphics::RasterizerDescription const& value);
-        UniqueCreator::Graphics::DepthStencilDescription DepthStencilState();
-        void DepthStencilState(UniqueCreator::Graphics::DepthStencilDescription const& value);
-        UniqueCreator::Graphics::InputLayoutDescription InputLayout();
-        void InputLayout(UniqueCreator::Graphics::InputLayoutDescription const& value);
-        UniqueCreator::Graphics::IndexBufferStripCut IbStripCutValue();
-        void IbStripCutValue(UniqueCreator::Graphics::IndexBufferStripCut const& value);
-        UniqueCreator::Graphics::PrimitiveTopologyType PrimitiveTopologyType();
-        void PrimitiveTopologyType(UniqueCreator::Graphics::PrimitiveTopologyType const& value);
+		Graphics::RasterizerDescription RasterizerState();
+        void RasterizerState(Graphics::RasterizerDescription const& value);
+		Graphics::DepthStencilDescription DepthStencilState();
+        void DepthStencilState(Graphics::DepthStencilDescription const& value);
+		Graphics::InputLayoutDescription InputLayout();
+        void InputLayout(Graphics::InputLayoutDescription const& value);
+		Graphics::IndexBufferStripCut IbStripCutValue();
+        void IbStripCutValue(Graphics::IndexBufferStripCut const& value);
+		Graphics::PrimitiveTopologyType PrimitiveTopology();
+        void PrimitiveTopology(Graphics::PrimitiveTopologyType const& value);
         uint32_t NumRenderTargets();
         void NumRenderTargets(uint32_t value);
-        Windows::Foundation::Collections::IVector<UniqueCreator::Graphics::GraphicsFormat> RtvFormats();
-        void RtvFormats(Windows::Foundation::Collections::IVector<UniqueCreator::Graphics::GraphicsFormat> const& value);
-        UniqueCreator::Graphics::GraphicsFormat DsvFormat();
-        void DsvFormat(UniqueCreator::Graphics::GraphicsFormat const& value);
-        UniqueCreator::Graphics::SampleDescription SampleDescription();
-        void SampleDescription(UniqueCreator::Graphics::SampleDescription const& value);
+        
+		IVector<GraphicsFormat> RtvFormats();
+        void RtvFormats(IVector<GraphicsFormat> const& value);
+        GraphicsFormat DsvFormat();
+        void DsvFormat(GraphicsFormat const& value);
+        SampleDescription Samples();
+        void Samples(SampleDescription const& value);
     };
 }
 

@@ -3,72 +3,72 @@
 
 namespace winrt::UniqueCreator::Graphics::implementation
 {
-    UniqueCreator::Graphics::VertexShaderByteCode GraphicsPipelineStateDescription::VS()
+	Graphics::VertexShaderByteCode GraphicsPipelineStateDescription::VS()
     {
         throw hresult_not_implemented();
     }
 
-    void GraphicsPipelineStateDescription::VS(UniqueCreator::Graphics::VertexShaderByteCode const& value)
+    void GraphicsPipelineStateDescription::VS(Graphics::VertexShaderByteCode const& value)
     {
         throw hresult_not_implemented();
     }
 
-    UniqueCreator::Graphics::PixelShaderByteCode GraphicsPipelineStateDescription::PS()
+	Graphics::PixelShaderByteCode GraphicsPipelineStateDescription::PS()
     {
         throw hresult_not_implemented();
     }
 
-    void GraphicsPipelineStateDescription::PS(UniqueCreator::Graphics::PixelShaderByteCode const& value)
+    void GraphicsPipelineStateDescription::PS(Graphics::PixelShaderByteCode const& value)
     {
         throw hresult_not_implemented();
     }
 
-    UniqueCreator::Graphics::DomainShaderByteCode GraphicsPipelineStateDescription::DS()
+	Graphics::DomainShaderByteCode GraphicsPipelineStateDescription::DS()
     {
         throw hresult_not_implemented();
     }
 
-    void GraphicsPipelineStateDescription::DS(UniqueCreator::Graphics::DomainShaderByteCode const& value)
+    void GraphicsPipelineStateDescription::DS(Graphics::DomainShaderByteCode const& value)
     {
         throw hresult_not_implemented();
     }
 
-    UniqueCreator::Graphics::HullShaderByteCode GraphicsPipelineStateDescription::HS()
+	Graphics::HullShaderByteCode GraphicsPipelineStateDescription::HS()
     {
         throw hresult_not_implemented();
     }
 
-    void GraphicsPipelineStateDescription::HS(UniqueCreator::Graphics::HullShaderByteCode const& value)
+    void GraphicsPipelineStateDescription::HS(Graphics::HullShaderByteCode const& value)
     {
         throw hresult_not_implemented();
     }
 
-    UniqueCreator::Graphics::GeometryShaderByteCode GraphicsPipelineStateDescription::GS()
+	Graphics::GeometryShaderByteCode GraphicsPipelineStateDescription::GS()
     {
         throw hresult_not_implemented();
     }
 
-    void GraphicsPipelineStateDescription::GS(UniqueCreator::Graphics::GeometryShaderByteCode const& value)
+    void GraphicsPipelineStateDescription::GS(Graphics::GeometryShaderByteCode const& value)
     {
         throw hresult_not_implemented();
     }
 
-    UniqueCreator::Graphics::StreamOutputDescription GraphicsPipelineStateDescription::StreamOutput()
+	Graphics::StreamOutputDescription GraphicsPipelineStateDescription::StreamOutput()
     {
         throw hresult_not_implemented();
     }
 
-    void GraphicsPipelineStateDescription::StreamOutput(UniqueCreator::Graphics::StreamOutputDescription const& value)
+    void GraphicsPipelineStateDescription::StreamOutput(Graphics::StreamOutputDescription const& value)
     {
         throw hresult_not_implemented();
     }
 
-    UniqueCreator::Graphics::BlendDescription GraphicsPipelineStateDescription::BlendState()
+    Graphics::BlendDescription GraphicsPipelineStateDescription::BlendState()
     {
         throw hresult_not_implemented();
     }
 
-    void GraphicsPipelineStateDescription::BlendState(UniqueCreator::Graphics::BlendDescription const& value)
+    void GraphicsPipelineStateDescription::BlendState(Graphics::BlendDescription const& value)
     {
         throw hresult_not_implemented();
     }
@@ -83,52 +83,52 @@ namespace winrt::UniqueCreator::Graphics::implementation
         throw hresult_not_implemented();
     }
 
-    UniqueCreator::Graphics::RasterizerDescription GraphicsPipelineStateDescription::RasterizerState()
+	Graphics::RasterizerDescription GraphicsPipelineStateDescription::RasterizerState()
     {
         throw hresult_not_implemented();
     }
 
-    void GraphicsPipelineStateDescription::RasterizerState(UniqueCreator::Graphics::RasterizerDescription const& value)
+    void GraphicsPipelineStateDescription::RasterizerState(Graphics::RasterizerDescription const& value)
     {
         throw hresult_not_implemented();
     }
 
-    UniqueCreator::Graphics::DepthStencilDescription GraphicsPipelineStateDescription::DepthStencilState()
+	Graphics::DepthStencilDescription GraphicsPipelineStateDescription::DepthStencilState()
     {
         throw hresult_not_implemented();
     }
 
-    void GraphicsPipelineStateDescription::DepthStencilState(UniqueCreator::Graphics::DepthStencilDescription const& value)
+    void GraphicsPipelineStateDescription::DepthStencilState(Graphics::DepthStencilDescription const& value)
     {
         throw hresult_not_implemented();
     }
 
-    UniqueCreator::Graphics::InputLayoutDescription GraphicsPipelineStateDescription::InputLayout()
+	Graphics::InputLayoutDescription GraphicsPipelineStateDescription::InputLayout()
     {
         throw hresult_not_implemented();
     }
 
-    void GraphicsPipelineStateDescription::InputLayout(UniqueCreator::Graphics::InputLayoutDescription const& value)
+    void GraphicsPipelineStateDescription::InputLayout(Graphics::InputLayoutDescription const& value)
     {
         throw hresult_not_implemented();
     }
 
-    UniqueCreator::Graphics::IndexBufferStripCut GraphicsPipelineStateDescription::IbStripCutValue()
+	Graphics::IndexBufferStripCut GraphicsPipelineStateDescription::IbStripCutValue()
     {
         throw hresult_not_implemented();
     }
 
-    void GraphicsPipelineStateDescription::IbStripCutValue(UniqueCreator::Graphics::IndexBufferStripCut const& value)
+    void GraphicsPipelineStateDescription::IbStripCutValue(Graphics::IndexBufferStripCut const& value)
     {
         throw hresult_not_implemented();
     }
 
-    UniqueCreator::Graphics::PrimitiveTopologyType GraphicsPipelineStateDescription::PrimitiveTopologyType()
+	Graphics::PrimitiveTopologyType GraphicsPipelineStateDescription::PrimitiveTopology()
     {
         throw hresult_not_implemented();
     }
 
-    void GraphicsPipelineStateDescription::PrimitiveTopologyType(UniqueCreator::Graphics::PrimitiveTopologyType const& value)
+    void GraphicsPipelineStateDescription::PrimitiveTopology(Graphics::PrimitiveTopologyType const& value)
     {
         throw hresult_not_implemented();
     }
@@ -143,32 +143,32 @@ namespace winrt::UniqueCreator::Graphics::implementation
         throw hresult_not_implemented();
     }
 
-    Windows::Foundation::Collections::IVector<UniqueCreator::Graphics::GraphicsFormat> GraphicsPipelineStateDescription::RtvFormats()
+    IVector<Graphics::GraphicsFormat> GraphicsPipelineStateDescription::RtvFormats()
     {
         throw hresult_not_implemented();
     }
 
-    void GraphicsPipelineStateDescription::RtvFormats(Windows::Foundation::Collections::IVector<UniqueCreator::Graphics::GraphicsFormat> const& value)
+    void GraphicsPipelineStateDescription::RtvFormats(IVector<Graphics::GraphicsFormat> const& value)
     {
         throw hresult_not_implemented();
     }
 
-    UniqueCreator::Graphics::GraphicsFormat GraphicsPipelineStateDescription::DsvFormat()
+	Graphics::GraphicsFormat GraphicsPipelineStateDescription::DsvFormat()
     {
         throw hresult_not_implemented();
     }
 
-    void GraphicsPipelineStateDescription::DsvFormat(UniqueCreator::Graphics::GraphicsFormat const& value)
+    void GraphicsPipelineStateDescription::DsvFormat(Graphics::GraphicsFormat const& value)
     {
         throw hresult_not_implemented();
     }
 
-    UniqueCreator::Graphics::SampleDescription GraphicsPipelineStateDescription::SampleDescription()
+	Graphics::SampleDescription GraphicsPipelineStateDescription::Samples()
     {
         throw hresult_not_implemented();
     }
 
-    void GraphicsPipelineStateDescription::SampleDescription(UniqueCreator::Graphics::SampleDescription const& value)
+    void GraphicsPipelineStateDescription::Samples(Graphics::SampleDescription const& value)
     {
         throw hresult_not_implemented();
     }
