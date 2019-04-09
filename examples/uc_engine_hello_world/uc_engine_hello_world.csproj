@@ -96,7 +96,7 @@
       <Version>2.1.190405004</Version>
     </PackageReference>
     <PackageReference Include="uc-tools-msbuild-tasks">
-      <Version>1.0.30</Version>
+      <Version>1.0.31</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
