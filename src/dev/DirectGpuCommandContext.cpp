@@ -7,7 +7,7 @@
 
 namespace winrt::UniqueCreator::Graphics::implementation
 {
-    DirectGpuCommandContext::DirectGpuCommandContext(uc::gx::dx12::managed_graphics_command_context ctx) : m_ctx(std::move(ctx))
+    DirectGpuCommandContext::DirectGpuCommandContext(uc::gx::dx12::managed_graphics_compute_command_context ctx) : m_ctx(std::move(ctx))
     {
 
     }
@@ -36,6 +36,13 @@ namespace winrt::UniqueCreator::Graphics::implementation
         com_ptr<IBackBufferNative> r0(b.as<IBackBufferNative>());
         m_ctx->clear(r0->GetBackBuffer());
     }
+
+	void DirectGpuCommandContext::SetComputeUAVBuffer(uint32_t slot, IGpuVirtualResource r)
+	{
+		com_ptr<IGpuVirtualResourceNative> r0(r.as<IGpuVirtualResourceNative>());
+		m_ctx->set_compute_uav_buffer(slot, r0->GetResource());
+	}
+	
 
     
 }

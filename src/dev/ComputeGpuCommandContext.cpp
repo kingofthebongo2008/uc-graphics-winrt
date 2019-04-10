@@ -44,4 +44,10 @@ namespace winrt::UniqueCreator::Graphics::implementation
 		auto native = s.as<IComputePipelineStateNative>();
 		m_ctx->set_pso(native->GetPipelineState());
     }
+
+	void ComputeGpuCommandContext::SetComputeUAVBuffer(uint32_t slot, IGpuVirtualResource r)
+	{
+		com_ptr<IGpuVirtualResourceNative> r0(r.as<IGpuVirtualResourceNative>());
+		m_ctx->set_compute_uav_buffer(slot, r0->GetResource());
+	}
 }
