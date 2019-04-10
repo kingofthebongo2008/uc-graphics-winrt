@@ -140,7 +140,6 @@
     <ClInclude Include="..\..\src\dev\IBackBufferNative.h" />
     <ClInclude Include="..\..\src\dev\IPixelBufferNative.h" />
     <ClInclude Include="..\..\src\dev\IGpuVirtualResourceNative.h" />
-    <ClInclude Include="..\..\src\dev\IPixelBuffer.h" />
     <ClInclude Include="..\..\src\dev\BlendDescription.h">
       <DependentUpon>..\..\src\idl\BlendDescription.idl</DependentUpon>
     </ClInclude>
@@ -301,11 +300,6 @@
     <None Include="module.def" />
     <None Include="packages.config">
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="readme.txt">
-      <DeploymentContent>false</DeploymentContent>
-    </Text>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
