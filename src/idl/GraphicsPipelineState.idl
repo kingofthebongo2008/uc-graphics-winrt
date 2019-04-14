@@ -1,0 +1,16 @@
+﻿import "GraphicsPipelineStateDescription.idl";
+import "ResourceCreateContext.idl";
+
+namespace UniqueCreator
+{
+    namespace Graphics
+    {
+        [default_interface]
+        runtimeclass GraphicsPipelineState
+        {
+            GraphicsPipelineState(ResourceCreateContext ctx, GraphicsPipelineStateDescription d);
+        };
+    }
+}
+
+

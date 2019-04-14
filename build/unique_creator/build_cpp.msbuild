@@ -13,6 +13,7 @@
 <ClCompile Include = "..\..\src\dev\DomainShaderByteCode.cpp" />	
 <ClCompile Include = "..\..\src\dev\FenceHandle.cpp" />	
 <ClCompile Include = "..\..\src\dev\GeometryShaderByteCode.cpp" />	
+<ClCompile Include = "..\..\src\dev\GraphicsPipelineState.cpp" />	
 <ClCompile Include = "..\..\src\dev\GraphicsPipelineStateDescription.cpp" />	
 <ClCompile Include = "..\..\src\dev\HullShaderByteCode.cpp" />	
 <ClCompile Include = "..\..\src\dev\InputLayoutDescription.cpp" />	

@@ -1,6 +1,7 @@
 ﻿#pragma once
 
 import "ComputeGpuCommandContext.idl";
+import "GraphicsPipelineState.idl";
 import "BackBuffer.idl";
 
 namespace UniqueCreator
@@ -9,6 +10,7 @@ namespace UniqueCreator
     {
         interface IGraphicsGpuCommandContext requires IComputeGpuCommandContext
         {
+			void SetGraphicsPipelineStateObject(GraphicsPipelineState pso);
             void Clear(IBackBuffer b);
             void Draw();
         }

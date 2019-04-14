@@ -126,6 +126,7 @@
     <Midl Include="..\..\src\idl\StreamOutputDescription.idl" />
     <Midl Include="..\..\src\idl\PrimitiveRangeDescription.idl" />
     <Midl Include="..\..\src\idl\GraphicsPipelineStateDescription.idl" />
+    <Midl Include="..\..\src\idl\GraphicsPipelineState.idl" />
     <Midl Include="..\..\src\idl\ComputePipelineStateDescription.idl" />
     <Midl Include="..\..\src\idl\ComputePipelineState.idl" />
     <Midl Include="..\..\src\idl\ComputeShaderByteCode.idl" />

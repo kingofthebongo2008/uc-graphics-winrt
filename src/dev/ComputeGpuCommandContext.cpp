@@ -39,7 +39,7 @@ namespace winrt::UniqueCreator::Graphics::implementation
 		m_ctx->dispatch(x, y, z);
     }
 
-	void ComputeGpuCommandContext::SetPSO(const ComputePipelineState& s)
+	void ComputeGpuCommandContext::SetComputePipelineStateObject(const ComputePipelineState& s)
     {
 		auto native = s.as<IComputePipelineStateNative>();
 		m_ctx->set_pso(native->GetPipelineState());
