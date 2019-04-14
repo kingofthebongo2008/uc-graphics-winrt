@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003"> 
+
+<ItemGroup>
+<Filter Include = "src"/>
+<Filter Include = "src\dev"/>
+</ItemGroup>
+<ItemGroup>	
+<ClInclude Include = "..\..\src\dev\BackBuffer.h"><Filter>src\dev</Filter></ClInclude>	
+<ClInclude Include = "..\..\src\dev\BlendDescription.h"><Filter>src\dev</Filter></ClInclude>	
+<ClInclude Include = "..\..\src\dev\CompositionSwapChainResources.h"><Filter>src\dev</Filter></ClInclude>	
+<ClInclude Include = "..\..\src\dev\ComputeGpuCommandContext.h"><Filter>src\dev</Filter></ClInclude>	
+<ClInclude Include = "..\..\src\dev\ComputePipelineState.h"><Filter>src\dev</Filter></ClInclude>	
+<ClInclude Include = "..\..\src\dev\ComputePipelineStateDescription.h"><Filter>src\dev</Filter></ClInclude>	
+<ClInclude Include = "..\..\src\dev\ComputeShaderByteCode.h"><Filter>src\dev</Filter></ClInclude>	
+<ClInclude Include = "..\..\src\dev\DirectGpuCommandContext.h"><Filter>src\dev</Filter></ClInclude>	
+<ClInclude Include = "..\..\src\dev\DomainShaderByteCode.h"><Filter>src\dev</Filter></ClInclude>	
+<ClInclude Include = "..\..\src\dev\FenceHandle.h"><Filter>src\dev</Filter></ClInclude>	
+<ClInclude Include = "..\..\src\dev\GeometryShaderByteCode.h"><Filter>src\dev</Filter></ClInclude>	
+<ClInclude Include = "..\..\src\dev\GraphicsPipelineStateDescription.h"><Filter>src\dev</Filter></ClInclude>	
+<ClInclude Include = "..\..\src\dev\HullShaderByteCode.h"><Filter>src\dev</Filter></ClInclude>	
+<ClInclude Include = "..\..\src\dev\IBackBufferNative.h"><Filter>src\dev</Filter></ClInclude>	
+<ClInclude Include = "..\..\src\dev\IComputePipelineStateNative.h"><Filter>src\dev</Filter></ClInclude>	
+<ClInclude Include = "..\..\src\dev\IFenceHandleNative.h"><Filter>src\dev</Filter></ClInclude>	
+<ClInclude Include = "..\..\src\dev\IGpuVirtualResourceNative.h"><Filter>src\dev</Filter></ClInclude>	
+<ClInclude Include = "..\..\src\dev\IPixelBufferNative.h"><Filter>src\dev</Filter></ClInclude>	
+<ClInclude Include = "..\..\src\dev\IResourceCreateContextNative.h"><Filter>src\dev</Filter></ClInclude>	
+<ClInclude Include = "..\..\src\dev\IShaderByteCodeNative.h"><Filter>src\dev</Filter></ClInclude>	
+<ClInclude Include = "..\..\src\dev\InputLayoutDescription.h"><Filter>src\dev</Filter></ClInclude>	
+<ClInclude Include = "..\..\src\dev\PixelShaderByteCode.h"><Filter>src\dev</Filter></ClInclude>	
+<ClInclude Include = "..\..\src\dev\PrimitiveRangeDescription.h"><Filter>src\dev</Filter></ClInclude>	
+<ClInclude Include = "..\..\src\dev\ResourceCreateContext.h"><Filter>src\dev</Filter></ClInclude>	
+<ClInclude Include = "..\..\src\dev\RootSignatureByteCode.h"><Filter>src\dev</Filter></ClInclude>	
+<ClInclude Include = "..\..\src\dev\StreamOutputDescription.h"><Filter>src\dev</Filter></ClInclude>	
+<ClInclude Include = "..\..\src\dev\VertexShaderByteCode.h"><Filter>src\dev</Filter></ClInclude>	
+<ClInclude Include = "..\..\src\dev\WindowsEnvironment.h"><Filter>src\dev</Filter></ClInclude>
+</ItemGroup>
+<ItemGroup>
+<Filter Include = "src"/>
+<Filter Include = "src\pch"/>
+</ItemGroup>
+<ItemGroup>	
+<ClInclude Include = "..\..\src\pch\pch.h"><Filter>src\pch</Filter></ClInclude>
+</ItemGroup>
+<ItemGroup>
+<Filter Include = "src"/>
+<Filter Include = "src\dev"/>
+</ItemGroup>
+<ItemGroup>	
+<ClCompile Include = "..\..\src\dev\BackBuffer.cpp"><Filter>src\dev</Filter></ClCompile>	
+<ClCompile Include = "..\..\src\dev\BlendDescription.cpp"><Filter>src\dev</Filter></ClCompile>	
+<ClCompile Include = "..\..\src\dev\CompositionSwapChainResources.cpp"><Filter>src\dev</Filter></ClCompile>	
+<ClCompile Include = "..\..\src\dev\ComputeGpuCommandContext.cpp"><Filter>src\dev</Filter></ClCompile>	
+<ClCompile Include = "..\..\src\dev\ComputePipelineState.cpp"><Filter>src\dev</Filter></ClCompile>	
+<ClCompile Include = "..\..\src\dev\ComputePipelineStateDescription.cpp"><Filter>src\dev</Filter></ClCompile>	
+<ClCompile Include = "..\..\src\dev\ComputeShaderByteCode.cpp"><Filter>src\dev</Filter></ClCompile>	
+<ClCompile Include = "..\..\src\dev\DirectGpuCommandContext.cpp"><Filter>src\dev</Filter></ClCompile>	
+<ClCompile Include = "..\..\src\dev\DomainShaderByteCode.cpp"><Filter>src\dev</Filter></ClCompile>	
+<ClCompile Include = "..\..\src\dev\FenceHandle.cpp"><Filter>src\dev</Filter></ClCompile>	
+<ClCompile Include = "..\..\src\dev\GeometryShaderByteCode.cpp"><Filter>src\dev</Filter></ClCompile>	
+<ClCompile Include = "..\..\src\dev\GraphicsPipelineStateDescription.cpp"><Filter>src\dev</Filter></ClCompile>	
+<ClCompile Include = "..\..\src\dev\HullShaderByteCode.cpp"><Filter>src\dev</Filter></ClCompile>	
+<ClCompile Include = "..\..\src\dev\InputLayoutDescription.cpp"><Filter>src\dev</Filter></ClCompile>	
+<ClCompile Include = "..\..\src\dev\PixelShaderByteCode.cpp"><Filter>src\dev</Filter></ClCompile>	
+<ClCompile Include = "..\..\src\dev\PrimitiveRangeDescription.cpp"><Filter>src\dev</Filter></ClCompile>	
+<ClCompile Include = "..\..\src\dev\ResourceCreateContext.cpp"><Filter>src\dev</Filter></ClCompile>	
+<ClCompile Include = "..\..\src\dev\RootSignatureByteCode.cpp"><Filter>src\dev</Filter></ClCompile>	
+<ClCompile Include = "..\..\src\dev\StreamOutputDescription.cpp"><Filter>src\dev</Filter></ClCompile>	
+<ClCompile Include = "..\..\src\dev\VertexShaderByteCode.cpp"><Filter>src\dev</Filter></ClCompile>	
+<ClCompile Include = "..\..\src\dev\WindowsEnvironment.cpp"><Filter>src\dev</Filter></ClCompile>
+</ItemGroup>
+<ItemGroup>
+<Filter Include = "src"/>
+<Filter Include = "src\pch"/>
+</ItemGroup>
+<ItemGroup>	
+<ClCompile Include = "..\..\src\pch\pch.cpp"><Filter>src\pch</Filter></ClCompile>
+</ItemGroup></Project> 
