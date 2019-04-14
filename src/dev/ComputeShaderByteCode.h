@@ -12,13 +12,13 @@ namespace winrt::UniqueCreator::Graphics::implementation
     {
         ComputeShaderByteCode();
 
+
         IVector<uint8_t> Code();
         void Code(IVector<uint8_t> const& value);
+		Blob GetShaderByteCode();
 
-        IVector<uint8_t> m_code;
-
-        Blob GetShaderByteCode();
-        std::vector<uint8_t>     m_nativeCode;
+		using vector = impl::input_vector<uint8_t, std::vector<uint8_t, std::allocator<uint8_t> > >;
+		vector m_code;
     };
 }
 

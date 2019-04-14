@@ -8,10 +8,12 @@ namespace winrt::UniqueCreator::Graphics::implementation
 
     struct InputLayoutDescription : InputLayoutDescriptionT<InputLayoutDescription>
     {
-        InputLayoutDescription() = default;
+        InputLayoutDescription();
 
-        IVector<UniqueCreator::Graphics::InputElementDescription> InputElementDescs();
-        void InputElementDescs(IVector<UniqueCreator::Graphics::InputElementDescription> const& value);
+        IVector<InputElementDescription> InputElementDescs();
+        void InputElementDescs(IVector<InputElementDescription> const& value);
+
+		IVector<InputElementDescription> m_descriptions;
     };
 }
 

@@ -17,18 +17,6 @@ using Windows.System.Threading;
 
 using UniqueCreator.Graphics;
 
-// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
-namespace UniqueCreator
-{
-    namespace Graphics
-    {
-        namespace Shaders
-        {
-        }
-    }
-}
-
-
 namespace uc_engine_hello_world
 {
 
@@ -91,6 +79,86 @@ namespace uc_engine_hello_world
             var description = new ComputePipelineStateDescription();
             description.CS = code;
             var pipeline = new ComputePipelineState(m_ctx, description);
+
+            var triangleVertex = UniqueCreator.Graphics.Shaders.triangle_vertex.Factory.Create();
+            var trianglePixel  = UniqueCreator.Graphics.Shaders.triangle_pixel.Factory.Create();
+
+            var description2    = new GraphicsPipelineStateDescription();
+
+            var rasterizerState = new RasterizerDescription();
+
+            var samples = new SampleDescription
+            {
+                Count = 1,
+                Quality = 0
+            };
+
+            var depthStencil = new DepthStencilDescription
+            {
+                DepthEnable = false,
+                StencilEnable = false,
+                DepthWriteMask = DepthWriteMask.All,
+                DepthFunc = ComparisonFunction.Less
+            };
+
+            depthStencil.BackFace.StencilFailOperation = StencilOperation.Keep;
+            depthStencil.BackFace.StencilPassOperation = StencilOperation.Keep;
+            depthStencil.BackFace.StencilFunction = ComparisonFunction.Always;
+            depthStencil.BackFace.StencilDepthFailOperation = StencilOperation.Keep;
+            depthStencil.FrontFace = depthStencil.BackFace;
+            depthStencil.StencilReadMask = 0xff;
+            depthStencil.StencilWriteMask = 0xff;
+
+
+            rasterizerState.CullMode = CullMode.None;
+            rasterizerState.FillMode = FillMode.Solid;
+            rasterizerState.FrontCounterClockwise = true;
+            rasterizerState.AntialiasedLineEnable = false;
+            rasterizerState.ConservativeRaster = ConservativeRasterizationMode.Off;
+            rasterizerState.DepthBias = 0;
+            rasterizerState.DepthBiasClamp = 0.0f;
+            rasterizerState.SlopeScaledDepthBias = 0.0f;
+            rasterizerState.DepthClipEnable = true;
+            rasterizerState.ForcedSampleCount = 0;
+            rasterizerState.MultisampleEnable = false;
+
+            var blendState = new BlendDescription
+            {
+                AlphaToCoverageEnable = false,
+                IndependentBlendEnable = false
+            };
+
+            var blend = new RenderTargetBlendDescription
+            {
+                BlendEnable = false,
+                LogicOperationEnable = false,
+                BlendOperation = BlendOperation.Add,
+                BlendOperationAlpha = BlendOperation.Add,
+                LogicOperation = LogicOperation.Clear,
+                DestinationBlend = Blend.DestinationColor,
+                DestinationBlendAlpha = Blend.DestinationAlpha,
+                SourceBlend = Blend.SourceColor,
+                SourceBlendAlpha = Blend.SourceAlpha,
+                RenderTargetWriteMask = 0xF
+            };
+
+            blendState.RenderTargets.Add(blend);
+
+            description2.VS                             = triangleVertex;
+            description2.PS                             = trianglePixel;
+            description2.SampleMask                     = 0xFFFFFFFF;
+            description2.RasterizerState                = rasterizerState;
+            description2.PrimitiveTopology              = PrimitiveTopologyType.Triangle;
+            description2.Samples                        = samples;
+            description2.DepthStencilState              = depthStencil;
+            description2.DsvFormat = GraphicsFormat.D32_Single;
+            description2.IbStripCutValue = IndexBufferStripCut.ValueDisabled;
+            description2.BlendState = blendState;
+            description2.RtvFormats.Add(GraphicsFormat.B8G8R8A8_UNORM_SRGB);
+
+            var state = new GraphicsPipelineState(m_ctx, description2);
+
+
 
         }
 

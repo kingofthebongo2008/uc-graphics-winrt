@@ -5,8 +5,10 @@
 
 namespace winrt::UniqueCreator::Graphics::implementation
 {
-
-	GeometryShaderByteCode   m_geometryShaderShaderCode;
+	GraphicsPipelineStateDescription::GraphicsPipelineStateDescription()
+	{
+		m_rtvFormats  = single_threaded_vector(std::vector<GraphicsFormat>());
+	}
 
 	Graphics::VertexShaderByteCode GraphicsPipelineStateDescription::VS()
     {
@@ -20,7 +22,7 @@ namespace winrt::UniqueCreator::Graphics::implementation
 
 	Graphics::PixelShaderByteCode GraphicsPipelineStateDescription::PS()
     {
-		throw m_pixelShaderCode;
+		return m_pixelShaderCode;
     }
 
     void GraphicsPipelineStateDescription::PS(Graphics::PixelShaderByteCode const& value)
@@ -100,7 +102,7 @@ namespace winrt::UniqueCreator::Graphics::implementation
 
 	Graphics::DepthStencilDescription GraphicsPipelineStateDescription::DepthStencilState()
     {
-        throw m_despthStencilState;
+        return m_despthStencilState;
     }
 
     void GraphicsPipelineStateDescription::DepthStencilState(Graphics::DepthStencilDescription const& value)
@@ -138,43 +140,33 @@ namespace winrt::UniqueCreator::Graphics::implementation
 		m_primitiveTopology = value;
     }
 
-    uint32_t GraphicsPipelineStateDescription::NumRenderTargets()
-    {
-        throw hresult_not_implemented();
-    }
-
-    void GraphicsPipelineStateDescription::NumRenderTargets(uint32_t value)
-    {
-        throw hresult_not_implemented();
-    }
-
     IVector<Graphics::GraphicsFormat> GraphicsPipelineStateDescription::RtvFormats()
     {
-        throw hresult_not_implemented();
+		return m_rtvFormats;
     }
 
     void GraphicsPipelineStateDescription::RtvFormats(IVector<Graphics::GraphicsFormat> const& value)
     {
-        throw hresult_not_implemented();
+		m_rtvFormats = value;
     }
 
 	Graphics::GraphicsFormat GraphicsPipelineStateDescription::DsvFormat()
     {
-        throw hresult_not_implemented();
+		return m_dsvFormat;
     }
 
     void GraphicsPipelineStateDescription::DsvFormat(Graphics::GraphicsFormat const& value)
     {
-        throw hresult_not_implemented();
+		m_dsvFormat = value;
     }
 
 	Graphics::SampleDescription GraphicsPipelineStateDescription::Samples()
     {
-        throw hresult_not_implemented();
+        return m_samples;
     }
 
     void GraphicsPipelineStateDescription::Samples(Graphics::SampleDescription const& value)
     {
-        throw hresult_not_implemented();
+		m_samples = value;
     }
 }

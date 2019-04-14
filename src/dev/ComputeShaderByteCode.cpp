@@ -20,9 +20,9 @@ namespace winrt::UniqueCreator::Graphics::implementation
         }
     }
 
-    ComputeShaderByteCode::ComputeShaderByteCode()
+    ComputeShaderByteCode::ComputeShaderByteCode() : m_code( std::vector<uint8_t> () )
     {
-        m_code = single_threaded_vector< uint8_t >(std::vector<uint8_t>());
+        
     }
 
     IVector<uint8_t> ComputeShaderByteCode::Code()
@@ -32,13 +32,12 @@ namespace winrt::UniqueCreator::Graphics::implementation
 
     void ComputeShaderByteCode::Code(IVector<uint8_t> const& value)
     {
-        m_code = value;
-        m_nativeCode = toNative(value); //double the memory
+		m_code.get_container() = toNative(value);
     }
 
     Blob ComputeShaderByteCode::GetShaderByteCode()
     {
-        return { &m_nativeCode[0], m_nativeCode.size() };
+        return { &m_code.get_container()[0], m_code.get_container().size() };
     }
 
 }

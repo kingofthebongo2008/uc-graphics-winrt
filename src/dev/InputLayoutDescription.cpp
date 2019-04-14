@@ -3,13 +3,17 @@
 
 namespace winrt::UniqueCreator::Graphics::implementation
 {
+	InputLayoutDescription::InputLayoutDescription() : m_descriptions ( single_threaded_vector(std::vector< InputElementDescription >()) )
+	{
+	}
+
     IVector<InputElementDescription> InputLayoutDescription::InputElementDescs()
     {
-        throw hresult_not_implemented();
+		return m_descriptions;
     }
 
     void InputLayoutDescription::InputElementDescs(IVector<InputElementDescription> const& value)
     {
-        throw hresult_not_implemented();
+		m_descriptions = value;
     }
 }

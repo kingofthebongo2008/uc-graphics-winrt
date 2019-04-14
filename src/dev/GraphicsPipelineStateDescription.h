@@ -8,7 +8,7 @@ namespace winrt::UniqueCreator::Graphics::implementation
 
     struct GraphicsPipelineStateDescription : GraphicsPipelineStateDescriptionT<GraphicsPipelineStateDescription>
     {
-        GraphicsPipelineStateDescription() = default;
+		GraphicsPipelineStateDescription();
 
 		Graphics::VertexShaderByteCode VS();
         void VS(Graphics::VertexShaderByteCode const& value);
@@ -36,8 +36,7 @@ namespace winrt::UniqueCreator::Graphics::implementation
         void IbStripCutValue(Graphics::IndexBufferStripCut const& value);
 		Graphics::PrimitiveTopologyType PrimitiveTopology();
         void PrimitiveTopology(Graphics::PrimitiveTopologyType const& value);
-        uint32_t NumRenderTargets();
-        void NumRenderTargets(uint32_t value);
+        
 
 		IVector<GraphicsFormat> RtvFormats();
         void RtvFormats(IVector<GraphicsFormat> const& value);
@@ -62,6 +61,13 @@ namespace winrt::UniqueCreator::Graphics::implementation
 		Graphics::InputLayoutDescription	m_inputLayout;
 		Graphics::IndexBufferStripCut		m_ibStripCut;
 		Graphics::PrimitiveTopologyType		m_primitiveTopology;
+
+		Graphics::SampleDescription			m_samples;
+
+		IVector<GraphicsFormat>				m_rtvFormats;
+		Graphics::GraphicsFormat			m_dsvFormat;
+
+				
 
     };
 }

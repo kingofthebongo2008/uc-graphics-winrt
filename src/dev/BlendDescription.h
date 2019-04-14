@@ -21,7 +21,10 @@ namespace winrt::UniqueCreator::Graphics::implementation
 
         protected:
 
-        IVector<RenderTargetBlendDescription> m_renderTargets;
+		IVector<RenderTargetBlendDescription> m_renderTargets;
+
+		bool m_alphaToCoverageEnable = false;
+		bool m_independentBlendEnable = false;
     };  
 }
 

@@ -3,13 +3,18 @@
 
 namespace winrt::UniqueCreator::Graphics::implementation
 {
+	PrimitiveRangeDescription::PrimitiveRangeDescription() : m_ranges( single_threaded_vector<InputElementDescription> () )
+	{
+		
+	}
+
     IVector<InputElementDescription> PrimitiveRangeDescription::Ranges()
     {
-        throw hresult_not_implemented();
+		return m_ranges;
     }
 
     void PrimitiveRangeDescription::Ranges(IVector<InputElementDescription> const& value)
     {
-        throw hresult_not_implemented();
+		m_ranges = value;
     }
 }

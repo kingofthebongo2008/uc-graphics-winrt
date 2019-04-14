@@ -3,29 +3,30 @@
 
 namespace winrt::UniqueCreator::Graphics::implementation
 {
-    BlendDescription::BlendDescription()
+    BlendDescription::BlendDescription() :
+	m_renderTargets( single_threaded_vector< RenderTargetBlendDescription >(std::vector<RenderTargetBlendDescription>()))
     {
-        m_renderTargets = single_threaded_vector< RenderTargetBlendDescription >(std::vector<RenderTargetBlendDescription>());
+        
     }
 
     bool BlendDescription::AlphaToCoverageEnable()
     {
-        return true;
+		return m_alphaToCoverageEnable;
     }
 
     void BlendDescription::AlphaToCoverageEnable(bool value)
     {
-
+		m_alphaToCoverageEnable = value;
     }
 
     bool BlendDescription::IndependentBlendEnable()
     {
-        return true;
+		return m_independentBlendEnable;
     }
 
     void BlendDescription::IndependentBlendEnable(bool value)
     {
-
+		m_independentBlendEnable = value;
     }
 
     IVector<RenderTargetBlendDescription> BlendDescription::RenderTargets()

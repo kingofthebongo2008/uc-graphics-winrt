@@ -6,6 +6,7 @@
 #include "IResourceCreateContextNative.h"
 
 #include "shaders/default_compute_signature.h"
+#include <uc/util/utf8_conv.h>
 
 
 namespace winrt::UniqueCreator::Graphics::implementation
@@ -74,9 +75,7 @@ namespace winrt::UniqueCreator::Graphics::implementation
 		/*
 		typedef struct D3D12_GRAPHICS_PIPELINE_STATE_DESC
 		{
-			D3D12_STREAM_OUTPUT_DESC StreamOutput;
 			D3D12_BLEND_DESC BlendState;
-			D3D12_INPUT_LAYOUT_DESC InputLayout;
 		} 	D3D12_GRAPHICS_PIPELINE_STATE_DESC;
 		*/
 
@@ -89,7 +88,7 @@ namespace winrt::UniqueCreator::Graphics::implementation
 			description.HS = create_shader_byte_code(hs->GetShaderByteCode());
 			description.GS = create_shader_byte_code(gs->GetShaderByteCode());
 
-			
+			//Rasterizer state
 			{
 				description.RasterizerState.FillMode = static_cast<D3D12_FILL_MODE>(d.RasterizerState().FillMode);
 				description.RasterizerState.CullMode = static_cast<D3D12_CULL_MODE>(d.RasterizerState().CullMode);
@@ -105,6 +104,7 @@ namespace winrt::UniqueCreator::Graphics::implementation
 				description.RasterizerState.ConservativeRaster = static_cast<D3D12_CONSERVATIVE_RASTERIZATION_MODE>(d.RasterizerState().ConservativeRaster);
 			}
 
+			//Depth Stencil State
 			{
 				description.DepthStencilState.DepthEnable		= d.DepthStencilState().DepthEnable;
 				description.DepthStencilState.DepthWriteMask	= static_cast<D3D12_DEPTH_WRITE_MASK>(d.DepthStencilState().DepthWriteMask);
@@ -128,6 +128,7 @@ namespace winrt::UniqueCreator::Graphics::implementation
 				description.PrimitiveTopologyType = static_cast<D3D12_PRIMITIVE_TOPOLOGY_TYPE> (d.PrimitiveTopology());
 			}
 
+			//Rtv Formats
 			{
 				auto&& targets = d.RtvFormats();
 				auto i = 0;
@@ -137,7 +138,7 @@ namespace winrt::UniqueCreator::Graphics::implementation
 				}
 				description.NumRenderTargets = targets.Size();
 			}
-
+			//Dsv Sample
 			{
 				description.SampleMask	= d.SampleMask();
 				description.DSVFormat	= static_cast<DXGI_FORMAT>(d.DsvFormat());
@@ -147,28 +148,114 @@ namespace winrt::UniqueCreator::Graphics::implementation
 				description.IBStripCutValue = static_cast<D3D12_INDEX_BUFFER_STRIP_CUT_VALUE> (d.IbStripCutValue());
 			}
 
+			std::vector< D3D12_INPUT_ELEMENT_DESC > ia;
+			std::vector< std::string >				ia_strings;
+			
+			//Input Description
 			{
-				auto view = d.InputLayout();
+				auto&& view = d.InputLayout();
 				
-				if (view.InputElementDescs().Size() > 0)
+				if (view && view.InputElementDescs().Size() > 0)
 				{
 					std::vector<InputElementDescription> elements1;
 					elements1.resize(view.InputElementDescs().Size());
 					view.InputElementDescs().GetMany(0, array_view<InputElementDescription>(elements1));
 
-					std::vector< D3D12_INPUT_ELEMENT_DESC > elements2;
-					elements2.resize(elements1.size());
+					ia.resize(elements1.size());
+					ia_strings.resize(elements1.size());
 
 					uint32_t i = 0;
 					for (auto&& e : elements1)
 					{
-						elements2[i].AlignedByteOffset		= e.AlignedByteOffset;
-						elements2[i].Format					= static_cast<DXGI_FORMAT> (e.Format);
-						elements2[i].InputSlot				= e.InputSlot;
-						elements2[i].InputSlotClass			= static_cast<D3D12_INPUT_CLASSIFICATION> (e.InputSlotClass);
-						elements2[i].InstanceDataStepRate	= e.InstanceDataStepRate;
-						elements2[i].SemanticIndex			= e.SemanticIndex;
-						//elements2[i].SemanticName			= e.SemanticName().c_str();
+						ia_strings[i]				= uc::util::utf8_from_utf16(e.SemanticName.c_str());
+						ia[i].AlignedByteOffset		= e.AlignedByteOffset;
+						ia[i].Format				= static_cast<DXGI_FORMAT> (e.Format);
+						ia[i].InputSlot				= e.InputSlot;
+						ia[i].InputSlotClass		= static_cast<D3D12_INPUT_CLASSIFICATION> (e.InputSlotClass);
+						ia[i].InstanceDataStepRate	= e.InstanceDataStepRate;
+						ia[i].SemanticIndex			= e.SemanticIndex;
+						ia[i].SemanticName			= ia_strings[i].c_str();
+					}
+
+					description.InputLayout.NumElements = static_cast<uint32_t> (ia.size());
+					description.InputLayout.pInputElementDescs = &ia[0];
+				}
+			}
+
+			std::vector< D3D12_SO_DECLARATION_ENTRY > so;
+			std::vector< std::string >				  so_strings;
+			std::vector< std::uint32_t >			  so_strides;
+
+			//Stream out
+			{
+				auto&& so_ = d.StreamOutput();
+
+				if (so_ && so_.SODeclaration().Size() > 0)
+				{
+					std::vector<StreamOutputDeclarationEntry> elements1;
+					elements1.resize(so_.SODeclaration().Size());
+					so_.SODeclaration().GetMany(0, array_view<StreamOutputDeclarationEntry>(elements1));
+
+					so_strings.resize(elements1.size());
+					so.resize(elements1.size());
+
+					uint32_t i = 0;
+					for (auto&& e : elements1)
+					{
+						so_strings[i] = uc::util::utf8_from_utf16(e.SemanticName.c_str());
+						so[i].ComponentCount = e.ComponentCount;
+						so[i].SemanticIndex = e.SemanticIndex;
+						so[i].SemanticName = so_strings[i].c_str();
+						so[i].OutputSlot = e.OutputSlot;
+						so[i].StartComponent = e.StartComponent;
+						so[i].Stream = e.Stream;
+					}
+
+
+					description.StreamOutput.RasterizedStream = so_.RasterizedStream();
+					description.StreamOutput.pSODeclaration = &so[0];
+					description.StreamOutput.NumEntries = static_cast<uint32_t> (so.size());
+				}
+
+				if (so_.BufferStrides().Size() > 0)
+				{
+					so_strides.resize(so_.BufferStrides().Size());
+					so_.BufferStrides().GetMany(0, array_view<uint32_t>(so_strides));
+
+					description.StreamOutput.pBufferStrides = &so_strides[0];
+					description.StreamOutput.NumStrides = static_cast<uint32_t> (so_strides.size());
+				}
+
+			}
+
+
+			description.BlendState.AlphaToCoverageEnable = d.BlendState().AlphaToCoverageEnable();
+			description.BlendState.IndependentBlendEnable = d.BlendState().IndependentBlendEnable();
+
+			//Blend state
+			{
+				if (d.BlendState().RenderTargets().Size() > 0)
+				{
+					std::vector<RenderTargetBlendDescription> blends;
+					blends.resize(d.BlendState().RenderTargets().Size());
+					d.BlendState().RenderTargets().GetMany(0, array_view<RenderTargetBlendDescription>(blends));
+
+					uint32_t i = 0;
+					for (auto& v : blends)
+					{
+						description.BlendState.RenderTarget[i].BlendEnable = v.BlendEnable;
+						description.BlendState.RenderTarget[i].LogicOpEnable = v.LogicOperationEnable;
+
+						description.BlendState.RenderTarget[i].SrcBlend = static_cast<D3D12_BLEND> (v.SourceBlend);
+						description.BlendState.RenderTarget[i].DestBlend = static_cast<D3D12_BLEND> (v.DestinationBlend);
+						description.BlendState.RenderTarget[i].BlendOp = static_cast<D3D12_BLEND_OP> (v.BlendOperation);
+
+						description.BlendState.RenderTarget[i].SrcBlendAlpha = static_cast<D3D12_BLEND> (v.SourceBlendAlpha);
+						description.BlendState.RenderTarget[i].DestBlendAlpha = static_cast<D3D12_BLEND> (v.DestinationBlendAlpha);
+						description.BlendState.RenderTarget[i].BlendOpAlpha = static_cast<D3D12_BLEND_OP> (v.BlendOperationAlpha);
+
+						description.BlendState.RenderTarget[i].LogicOp = static_cast<D3D12_LOGIC_OP> (v.LogicOperation);
+						description.BlendState.RenderTarget[i].RenderTargetWriteMask = static_cast<D3D12_LOGIC_OP> (v.RenderTargetWriteMask);
 					}
 				}
 			}

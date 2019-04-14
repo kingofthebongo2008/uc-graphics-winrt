@@ -7,9 +7,11 @@ namespace winrt::UniqueCreator::Graphics::implementation
 	using namespace Windows::Foundation::Collections;
     struct PrimitiveRangeDescription : PrimitiveRangeDescriptionT<PrimitiveRangeDescription>
     {
-        PrimitiveRangeDescription() = delete;
+		PrimitiveRangeDescription();
 
-        IVector<UniqueCreator::Graphics::InputElementDescription> Ranges();
-        void Ranges(IVector<UniqueCreator::Graphics::InputElementDescription> const& value);
+        IVector<InputElementDescription> Ranges();
+        void Ranges(IVector<InputElementDescription> const& value);
+
+		IVector< InputElementDescription > m_ranges;
     };
 }

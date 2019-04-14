@@ -3,33 +3,40 @@
 
 namespace winrt::UniqueCreator::Graphics::implementation
 {
+	StreamOutputDescription::StreamOutputDescription() :
+	m_so(single_threaded_vector<StreamOutputDeclarationEntry>())
+	, m_strides(single_threaded_vector<uint32_t>())
+	{
+
+	}
+
     IVector<StreamOutputDeclarationEntry> StreamOutputDescription::SODeclaration()
     {
-        throw hresult_not_implemented();
+		return m_so;
     }
 
     void StreamOutputDescription::SODeclaration(IVector<StreamOutputDeclarationEntry> const& value)
     {
-        throw hresult_not_implemented();
+		m_so = value;
     }
 
     IVector<uint32_t> StreamOutputDescription::BufferStrides()
     {
-        throw hresult_not_implemented();
+		return m_strides;
     }
 
     void StreamOutputDescription::BufferStrides(IVector<uint32_t> const& value)
     {
-        throw hresult_not_implemented();
+		m_strides = value;
     }
 
     uint32_t StreamOutputDescription::RasterizedStream()
     {
-        throw hresult_not_implemented();
+		return m_rasterized_stream;
     }
 
     void StreamOutputDescription::RasterizedStream(uint32_t value)
     {
-        throw hresult_not_implemented();
+		m_rasterized_stream = value;
     }
 }

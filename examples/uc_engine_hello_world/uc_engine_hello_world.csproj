@@ -67,9 +67,19 @@
     <Content Include="Assets\StoreLogo.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
   </ItemGroup>
+
+  <ItemGroup>
+    <VertexSharpShader Include="triangle_vertex.hlsl" />
+  </ItemGroup>
+
   <ItemGroup>
     <ComputeSharpShader Include="compute_cs.hlsl" />
   </ItemGroup>
+
+  <ItemGroup>
+    <PixelSharpShader Include="triangle_pixel.hlsl" />
+  </ItemGroup>
+
   <ItemGroup>
     <RootSharpSignature Include="default_graphics_signature_cs.hlsl">
       <EntryPointName>MyRS1</EntryPointName>
