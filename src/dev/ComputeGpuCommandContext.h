@@ -19,7 +19,7 @@ namespace winrt::UniqueCreator::Graphics::implementation
         void Copy() {}
 
         void Dispatch(uint32_t x, uint32_t y, uint32_t z);
-        void SetPSO(const ComputePipelineState& s);
+        void SetComputePipelineStateObject(const ComputePipelineState& s);
 
 
         private:
