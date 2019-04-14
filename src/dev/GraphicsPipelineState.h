@@ -1,5 +1,6 @@
 ﻿#pragma once
 
+#include "winrt/UniqueCreator.Graphics.h"
 #include "GraphicsPipelineState.g.h"
 
 #include "shaders/default_graphics_signature.h"
