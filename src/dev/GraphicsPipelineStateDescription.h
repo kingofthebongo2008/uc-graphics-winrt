@@ -38,13 +38,31 @@ namespace winrt::UniqueCreator::Graphics::implementation
         void PrimitiveTopology(Graphics::PrimitiveTopologyType const& value);
         uint32_t NumRenderTargets();
         void NumRenderTargets(uint32_t value);
-        
+
 		IVector<GraphicsFormat> RtvFormats();
         void RtvFormats(IVector<GraphicsFormat> const& value);
         GraphicsFormat DsvFormat();
         void DsvFormat(GraphicsFormat const& value);
         SampleDescription Samples();
         void Samples(SampleDescription const& value);
+
+		Graphics::VertexShaderByteCode		m_vertexShaderCode;
+		Graphics::PixelShaderByteCode		m_pixelShaderCode;
+		Graphics::DomainShaderByteCode		m_domainShaderCode;
+		Graphics::HullShaderByteCode		m_hullShaderCode;
+		Graphics::GeometryShaderByteCode	m_geometryShaderCode;
+
+		Graphics::StreamOutputDescription	m_streamOutDescription;
+		Graphics::BlendDescription			m_blendState;
+		uint32_t							m_sampleMask;
+
+		Graphics::RasterizerDescription		m_rasterizerState;
+		Graphics::DepthStencilDescription	m_despthStencilState;
+
+		Graphics::InputLayoutDescription	m_inputLayout;
+		Graphics::IndexBufferStripCut		m_ibStripCut;
+		Graphics::PrimitiveTopologyType		m_primitiveTopology;
+
     };
 }
 

@@ -7,6 +7,7 @@ namespace UniqueCreator
     {
         runtimeclass InputLayoutDescription
         {
+            InputLayoutDescription();
             Windows.Foundation.Collections.IVector<InputElementDescription> InputElementDescs;
         };
     }

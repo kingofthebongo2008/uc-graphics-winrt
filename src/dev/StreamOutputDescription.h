@@ -8,7 +8,7 @@ namespace winrt::UniqueCreator::Graphics::implementation
 
     struct StreamOutputDescription : StreamOutputDescriptionT<StreamOutputDescription>
     {
-        StreamOutputDescription() = delete;
+        StreamOutputDescription() = default;
 
         IVector<StreamOutputDeclarationEntry> SODeclaration();
         void SODeclaration(IVector<StreamOutputDeclarationEntry> const& value);
@@ -18,3 +18,12 @@ namespace winrt::UniqueCreator::Graphics::implementation
         void RasterizedStream(uint32_t value);
     };
 }
+
+namespace winrt::UniqueCreator::Graphics::factory_implementation
+{
+	struct StreamOutputDescription : StreamOutputDescriptionT < StreamOutputDescription, winrt::UniqueCreator::Graphics::implementation::StreamOutputDescription >
+	{
+
+	};
+}
+

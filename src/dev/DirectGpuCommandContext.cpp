@@ -37,12 +37,12 @@ namespace winrt::UniqueCreator::Graphics::implementation
         m_ctx->clear(r0->GetBackBuffer());
     }
 
-	void DirectGpuCommandContext::SetComputeUAVBuffer(uint32_t slot, IGpuVirtualResource r)
-	{
-		com_ptr<IGpuVirtualResourceNative> r0(r.as<IGpuVirtualResourceNative>());
-		m_ctx->set_compute_uav_buffer(slot, r0->GetResource());
-	}
-	
+    void DirectGpuCommandContext::SetComputeUAVBuffer(uint32_t slot, IGpuVirtualResource r)
+    {
+        com_ptr<IGpuVirtualResourceNative> r0(r.as<IGpuVirtualResourceNative>());
+        m_ctx->set_compute_uav_buffer(slot, r0->GetResource());
+    }
+    
 
     
 }

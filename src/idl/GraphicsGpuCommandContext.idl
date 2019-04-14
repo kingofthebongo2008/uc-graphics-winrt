@@ -7,7 +7,7 @@ namespace UniqueCreator
 {
     namespace Graphics
     {
-        interface IDirectGpuCommandContext requires IComputeGpuCommandContext
+        interface IGraphicsGpuCommandContext requires IComputeGpuCommandContext
         {
             void Clear(IBackBuffer b);
             void Draw();

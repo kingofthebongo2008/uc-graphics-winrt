@@ -6,7 +6,7 @@
 
 namespace winrt::UniqueCreator::Graphics::implementation
 {
-    struct DirectGpuCommandContext : implements<DirectGpuCommandContext, IDirectGpuCommandContext, IComputeGpuCommandContext, ICopyGpuCommandContext, IGpuCommandContext >
+    struct DirectGpuCommandContext : implements<DirectGpuCommandContext, IGraphicsGpuCommandContext, IComputeGpuCommandContext, ICopyGpuCommandContext, IGpuCommandContext >
     {
         DirectGpuCommandContext(uc::gx::dx12::managed_graphics_compute_command_context ctx);
 
@@ -19,7 +19,7 @@ namespace winrt::UniqueCreator::Graphics::implementation
         void Draw() {}
 
         void SetPSO(const ComputePipelineState& s) {}
-		void SetComputeUAVBuffer(uint32_t slot, IGpuVirtualResource r);
+        void SetComputeUAVBuffer(uint32_t slot, IGpuVirtualResource r);
 
         void Clear(IBackBuffer b);
 

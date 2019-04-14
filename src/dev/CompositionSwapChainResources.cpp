@@ -6,6 +6,8 @@
 #include <uc/gx/dx12/dx12.h>
 #include "WindowsEnvironment.h"
 
+#include "DirectGpuCommandContext.h"
+#include "ComputeGpuCommandContext.h"
 
 namespace winrt::UniqueCreator::Graphics::implementation
 {
@@ -224,9 +226,9 @@ namespace winrt::UniqueCreator::Graphics::implementation
         Resize(static_cast<uint32_t>(r.Width), static_cast<uint32_t>(r.Height));
     }
 
-    IDirectGpuCommandContext CompositionSwapChainResources::CreateDirectCommandContext()
+    IGraphicsGpuCommandContext CompositionSwapChainResources::CreateDirectCommandContext()
     {
-        return make<DirectGpuCommandContext>(uc::gx::dx12::create_graphics_command_context(m_direct_context_allocator.get()));
+        return make<DirectGpuCommandContext>(uc::gx::dx12::create_graphics_compute_command_context(m_direct_context_allocator.get()));
     }
 
     IComputeGpuCommandContext CompositionSwapChainResources::CreateComputeCommandContext()

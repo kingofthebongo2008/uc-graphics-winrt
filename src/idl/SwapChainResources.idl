@@ -1,6 +1,6 @@
 ﻿
 import "FenceHandle.idl";
-import "DirectGpuCommandContext.idl";
+import "GraphicsGpuCommandContext.idl";
 import "BackBuffer.idl";
 
 namespace UniqueCreator
@@ -21,13 +21,7 @@ namespace UniqueCreator
             void MoveToNextFrame();
 
 
-            //
-            //IDirectQueue               Queue{ get;  }
-
-            //todo: change
-            IDirectGpuCommandContext    CreateDirectCommandContext();
-
-            //IGraphicsGpuCommandContext  CreateGraphicsCommandContext();
+            IGraphicsGpuCommandContext  CreateDirectCommandContext();
             IComputeGpuCommandContext   CreateComputeCommandContext();
 
             IBackBuffer BackBuffer{ get; };
