@@ -10,8 +10,10 @@ namespace UniqueCreator
     {
         interface IGraphicsGpuCommandContext requires IComputeGpuCommandContext
         {
+			void SetDescriptorHeaps();
 			void SetGraphicsPipelineStateObject(GraphicsPipelineState pso);
             void Clear(IBackBuffer b);
+			void SetPrimitiveTopology(PrimitiveTopology t);
             void Draw(UInt32 vertexCount, UInt32 vertexOffset);
         }
     }

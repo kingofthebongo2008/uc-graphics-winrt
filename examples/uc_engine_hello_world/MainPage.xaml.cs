@@ -27,6 +27,7 @@ namespace uc_engine_hello_world
     {
         private ResourceCreateContext         m_ctx;
         private CompositionSwapChainResources m_swapChain;
+        private GraphicsPipelineState         m_triangle;
         private object m_rendererLock         = new object();
         private IAsyncAction                  m_renderLoopWorker;
 
@@ -156,7 +157,7 @@ namespace uc_engine_hello_world
             description2.BlendState = blendState;
             description2.RtvFormats.Add(GraphicsFormat.B8G8R8A8_UNORM_SRGB);
 
-            var state = new GraphicsPipelineState(m_ctx, description2);
+            m_triangle = new GraphicsPipelineState(m_ctx, description2);
 
 
 
@@ -237,12 +238,13 @@ namespace uc_engine_hello_world
                 var ctx = m_swapChain.CreateDirectCommandContext();
                 var backBuffer = m_swapChain.BackBuffer;
 
-                ctx.Copy();
-                ctx.Dispatch(1,1,1);
-                ctx.Draw(3,0);
-                ctx.TransitionResource(backBuffer, ResourceState.Present, ResourceState.RenderTarget);
+                ctx.SetGraphicsPipelineStateObject(m_triangle);
 
+                ctx.SetDescriptorHeaps();
+                ctx.TransitionResource(backBuffer, ResourceState.Present, ResourceState.RenderTarget);
                 ctx.Clear(m_swapChain.BackBuffer);
+                ctx.SetPrimitiveTopology(PrimitiveTopology.TriangleList);
+                ctx.Draw(3, 0);
 
                 ctx.TransitionResource(backBuffer, ResourceState.RenderTarget, ResourceState.Present);
 

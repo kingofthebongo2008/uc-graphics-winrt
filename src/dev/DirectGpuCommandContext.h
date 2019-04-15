@@ -18,9 +18,13 @@ namespace winrt::UniqueCreator::Graphics::implementation
         void Dispatch(uint32_t x, uint32_t y, uint32_t z) {}
 		void Draw(uint32_t vertex_count, uint32_t vertex_offset);
 
+		void SetDescriptorHeaps();
         void SetComputePipelineStateObject(const ComputePipelineState& s) {}
 		void SetGraphicsPipelineStateObject(const GraphicsPipelineState& s);
-		
+
+
+		void SetPrimitiveTopology(const PrimitiveTopology& t);
+
         void SetComputeUAVBuffer(uint32_t slot, IGpuVirtualResource r);
 
         void Clear(IBackBuffer b);

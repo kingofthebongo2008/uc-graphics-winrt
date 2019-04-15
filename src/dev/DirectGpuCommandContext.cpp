@@ -56,7 +56,14 @@ namespace winrt::UniqueCreator::Graphics::implementation
 	{
 		m_ctx->draw(vertex_count, vertex_offset);
 	}
-    
 
-    
+	void DirectGpuCommandContext::SetDescriptorHeaps()
+	{
+		m_ctx->set_descriptor_heaps();
+	}
+
+	void DirectGpuCommandContext::SetPrimitiveTopology(const PrimitiveTopology& t)
+	{
+		m_ctx->set_primitive_topology(static_cast<D3D12_PRIMITIVE_TOPOLOGY>(t));
+	}
 }
