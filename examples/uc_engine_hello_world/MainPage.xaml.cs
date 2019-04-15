@@ -155,7 +155,7 @@ namespace uc_engine_hello_world
             description2.DsvFormat = GraphicsFormat.D32_Single;
             description2.IbStripCutValue = IndexBufferStripCut.ValueDisabled;
             description2.BlendState = blendState;
-            description2.RtvFormats.Add(GraphicsFormat.B8G8R8A8_UNORM_SRGB);
+            description2.RtvFormats.Add(GraphicsFormat.R8G8B8A8_UNORM);
 
             m_triangle = new GraphicsPipelineState(m_ctx, description2);
 
@@ -239,11 +239,43 @@ namespace uc_engine_hello_world
                 var backBuffer = m_swapChain.BackBuffer;
 
                 ctx.SetGraphicsPipelineStateObject(m_triangle);
-
                 ctx.SetDescriptorHeaps();
+
                 ctx.TransitionResource(backBuffer, ResourceState.Present, ResourceState.RenderTarget);
+                ctx.SetRenderTarget(m_swapChain.BackBuffer);
                 ctx.Clear(m_swapChain.BackBuffer);
+
                 ctx.SetPrimitiveTopology(PrimitiveTopology.TriangleList);
+
+                {
+                    Size2D s = m_swapChain.BackBuffer.Size2D;
+
+                    {
+                        ViewPort v;
+
+                        v.MinDepth = 0.0f;
+                        v.MaxDepth = 1.0f;
+                        v.TopLeftX = 0.0f;
+                        v.TopLeftY = 0.0f;
+                        v.Width = s.Width;
+                        v.Height = s.Height;
+                        ctx.SetViewPort(v);
+                    }
+
+                    {
+                        Rectangle2D v;
+
+                        v.Left = 0;
+                        v.Top = 0;
+                        v.Right = s.Width;
+                        v.Bottom = s.Height;
+
+                        ctx.SetScissorRectangle(v);
+                    }
+                }
+
+
+
                 ctx.Draw(3, 0);
 
                 ctx.TransitionResource(backBuffer, ResourceState.RenderTarget, ResourceState.Present);

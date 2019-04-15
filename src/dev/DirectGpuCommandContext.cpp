@@ -34,7 +34,7 @@ namespace winrt::UniqueCreator::Graphics::implementation
         m_ctx->transition_resource(r0->GetResource(), static_cast<D3D12_RESOURCE_STATES>(old_state), static_cast<D3D12_RESOURCE_STATES>(new_state));
     }
 
-    void DirectGpuCommandContext::Clear(IBackBuffer b)
+    void DirectGpuCommandContext::Clear(const IBackBuffer& b)
     {
         com_ptr<IBackBufferNative> r0(b.as<IBackBufferNative>());
         m_ctx->clear(r0->GetBackBuffer());
@@ -65,5 +65,36 @@ namespace winrt::UniqueCreator::Graphics::implementation
 	void DirectGpuCommandContext::SetPrimitiveTopology(const PrimitiveTopology& t)
 	{
 		m_ctx->set_primitive_topology(static_cast<D3D12_PRIMITIVE_TOPOLOGY>(t));
+	}
+
+	void DirectGpuCommandContext::SetViewPort(const ViewPort& vp)
+	{
+		D3D12_VIEWPORT v = {};
+
+		v.Height	= vp.Height;
+		v.MaxDepth	= vp.MaxDepth;
+		v.MinDepth	= vp.MinDepth;
+		v.TopLeftX	= vp.TopLeftX;
+		v.TopLeftY	= vp.TopLeftY;
+		v.Width		= vp.Width;
+		m_ctx->set_view_port(v);
+	}
+
+	void DirectGpuCommandContext::SetScissorRectangle(const Rectangle2D& rp)
+	{
+		D3D12_RECT r = {};
+
+		r.bottom = rp.Bottom;
+		r.left = rp.Left;
+		r.right = rp.Right;
+		r.top = rp.Top;
+
+		m_ctx->set_scissor_rectangle(r);
+	}
+
+	void DirectGpuCommandContext::SetRenderTarget(const IBackBuffer& b)
+	{
+		com_ptr<IBackBufferNative> r0(b.as<IBackBufferNative>());
+		m_ctx->set_render_target(r0->GetBackBuffer());
 	}
 }

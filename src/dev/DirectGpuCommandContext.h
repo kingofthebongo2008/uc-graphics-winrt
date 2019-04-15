@@ -22,12 +22,14 @@ namespace winrt::UniqueCreator::Graphics::implementation
         void SetComputePipelineStateObject(const ComputePipelineState& s) {}
 		void SetGraphicsPipelineStateObject(const GraphicsPipelineState& s);
 
-
+		void SetViewPort(const ViewPort& vp);
+		void SetScissorRectangle(const Rectangle2D& r);
 		void SetPrimitiveTopology(const PrimitiveTopology& t);
 
         void SetComputeUAVBuffer(uint32_t slot, IGpuVirtualResource r);
 
-        void Clear(IBackBuffer b);
+        void Clear(const IBackBuffer& b);
+		void SetRenderTarget(const IBackBuffer& b);
 
         private:
 
