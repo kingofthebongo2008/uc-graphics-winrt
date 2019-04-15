@@ -12,7 +12,7 @@ namespace UniqueCreator
         {
 			void SetGraphicsPipelineStateObject(GraphicsPipelineState pso);
             void Clear(IBackBuffer b);
-            void Draw();
+            void Draw(UInt32 vertexCount, UInt32 vertexOffset);
         }
     }
 }

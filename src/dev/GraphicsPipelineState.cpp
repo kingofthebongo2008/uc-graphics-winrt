@@ -234,7 +234,7 @@ namespace winrt::UniqueCreator::Graphics::implementation
 
 			//Blend state
 			{
-				if (d.BlendState().RenderTargets().Size() > 0)
+				if (d.BlendState() && d.BlendState().RenderTargets().Size() > 0)
 				{
 					std::vector<RenderTargetBlendDescription> blends;
 					blends.resize(d.BlendState().RenderTargets().Size());

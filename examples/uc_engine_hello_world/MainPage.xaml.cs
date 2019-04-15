@@ -142,7 +142,7 @@ namespace uc_engine_hello_world
                 RenderTargetWriteMask = 0xF
             };
 
-            blendState.RenderTargets.Add(blend);
+            blendState.RenderTargets = new RenderTargetBlendDescription[] { blend };
 
             description2.VS                             = triangleVertex;
             description2.PS                             = trianglePixel;
@@ -239,7 +239,7 @@ namespace uc_engine_hello_world
 
                 ctx.Copy();
                 ctx.Dispatch(1,1,1);
-                ctx.Draw();
+                ctx.Draw(3,0);
                 ctx.TransitionResource(backBuffer, ResourceState.Present, ResourceState.RenderTarget);
 
                 ctx.Clear(m_swapChain.BackBuffer);

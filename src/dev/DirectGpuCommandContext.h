@@ -16,10 +16,10 @@ namespace winrt::UniqueCreator::Graphics::implementation
 
         void Copy() {}
         void Dispatch(uint32_t x, uint32_t y, uint32_t z) {}
-        void Draw() {}
+		void Draw(uint32_t vertex_count, uint32_t vertex_offset);
 
         void SetComputePipelineStateObject(const ComputePipelineState& s) {}
-		void SetGraphicsPipelineStateObject(const GraphicsPipelineState& s) {}
+		void SetGraphicsPipelineStateObject(const GraphicsPipelineState& s);
 		
         void SetComputeUAVBuffer(uint32_t slot, IGpuVirtualResource r);
 

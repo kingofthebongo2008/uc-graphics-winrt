@@ -3,6 +3,9 @@
 #include "FenceHandle.h"
 
 #include "IGpuVirtualResourceNative.h"
+#include "IGraphicsPipelineStateNative.h"
+#include "IComputePipelineStateNative.h"
+
 #include "IBackBufferNative.h"
 
 namespace winrt::UniqueCreator::Graphics::implementation
@@ -42,6 +45,17 @@ namespace winrt::UniqueCreator::Graphics::implementation
         com_ptr<IGpuVirtualResourceNative> r0(r.as<IGpuVirtualResourceNative>());
         m_ctx->set_compute_uav_buffer(slot, r0->GetResource());
     }
+
+	void DirectGpuCommandContext::SetGraphicsPipelineStateObject(const GraphicsPipelineState& s)
+	{
+		com_ptr<IGraphicsPipelineStateNative> s0(s.as<IGraphicsPipelineStateNative>());
+		m_ctx->set_pso(s0->GetPipelineState());
+	}
+
+	void DirectGpuCommandContext::Draw(uint32_t vertex_count, uint32_t vertex_offset)
+	{
+		m_ctx->draw(vertex_count, vertex_offset);
+	}
     
 
     
