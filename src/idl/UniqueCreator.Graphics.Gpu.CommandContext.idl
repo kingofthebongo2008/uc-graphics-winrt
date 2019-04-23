@@ -1,0 +1,20 @@
+﻿#pragma once
+
+import "UniqueCreator.Graphics.Gpu.FenceHandle.idl";
+import "UniqueCreator.Graphics.Gpu.VirtualResource.idl";
+import "UniqueCreator.Graphics.Gpu.GraphicTypes.idl";
+
+namespace UniqueCreator
+{
+    namespace Graphics
+    {
+        namespace Gpu
+        {
+            interface ICommandContext 
+            {
+                IFenceHandle Submit();
+                void SubmitAndWaitToExecute();
+            };
+        }
+    }
+}

@@ -1,0 +1,18 @@
+﻿#pragma once
+
+namespace UniqueCreator
+{
+    namespace Graphics
+    {
+        namespace Gpu
+        {
+        runtimeclass DomainShaderByteCode
+        {
+            DomainShaderByteCode();
+            Windows.Foundation.Collections.IVector<UInt8> Code;
+        };
+        }
+    }
+}
+
+

@@ -1,0 +1,18 @@
+﻿#pragma once
+
+import "UniqueCreator.Graphics.Gpu.VirtualResource.idl";
+
+namespace UniqueCreator
+{
+    namespace Graphics
+    {
+        namespace Gpu
+        {
+            interface IPixelBuffer requires IVirtualResource
+            {
+                Size2D Size2D{ get; };
+                Size3D Size3D{ get; };
+            };
+        }
+    }
+}

@@ -1,0 +1,50 @@
+﻿#pragma once
+
+import "UniqueCreator.Graphics.Gpu.GraphicTypes.idl";
+import "UniqueCreator.Graphics.Gpu.BlendDescription.idl";
+import "UniqueCreator.Graphics.Gpu.VertexShaderByteCode.idl";
+import "UniqueCreator.Graphics.Gpu.PixelShaderByteCode.idl";
+import "UniqueCreator.Graphics.Gpu.HullShaderByteCode.idl";
+import "UniqueCreator.Graphics.Gpu.DomainShaderByteCode.idl";
+import "UniqueCreator.Graphics.Gpu.GeometryShaderByteCode.idl";
+import "UniqueCreator.Graphics.Gpu.InputLayoutDescription.idl";
+import "UniqueCreator.Graphics.Gpu.StreamOutputDescription.idl";
+import "UniqueCreator.Graphics.Gpu.PrimitiveRangeDescription.idl";
+
+namespace UniqueCreator
+{
+    namespace Graphics
+    {
+        namespace Gpu
+        {
+            runtimeclass GraphicsPipelineStateDescription
+            {
+                GraphicsPipelineStateDescription ();
+
+                VertexShaderByteCode        VS;
+                PixelShaderByteCode         PS;
+                DomainShaderByteCode        DS;
+                HullShaderByteCode          HS;
+                GeometryShaderByteCode      GS;
+
+                StreamOutputDescription     StreamOutput;
+                BlendDescription            BlendState;
+
+                UInt32                      SampleMask;
+                RasterizerDescription       RasterizerState;
+                DepthStencilDescription     DepthStencilState;
+
+                InputLayoutDescription      InputLayout;
+                IndexBufferStripCut         IbStripCutValue;
+                PrimitiveTopologyType       PrimitiveTopology;
+
+                Windows.Foundation.Collections.IVector<GraphicsFormat> RtvFormats;
+
+                GraphicsFormat              DsvFormat;
+                SampleDescription           Samples;
+            };
+        }
+    }
+}
+
+

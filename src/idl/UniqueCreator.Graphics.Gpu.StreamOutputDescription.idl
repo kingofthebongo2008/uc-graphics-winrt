@@ -1,0 +1,22 @@
+﻿#pragma once
+
+import "UniqueCreator.Graphics.Gpu.GraphicTypes.idl";
+
+namespace UniqueCreator
+{
+    namespace Graphics
+    {
+        namespace Gpu
+        {
+            runtimeclass StreamOutputDescription
+            { 
+                StreamOutputDescription();
+                Windows.Foundation.Collections.IVector<StreamOutputDeclarationEntry>    SODeclaration;
+                Windows.Foundation.Collections.IVector<UInt32>                          BufferStrides;
+                UInt32                                                                  RasterizedStream;
+            };
+        }
+    }
+}
+
+

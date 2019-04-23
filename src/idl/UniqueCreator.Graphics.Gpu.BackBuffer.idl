@@ -1,0 +1,15 @@
+﻿#pragma once
+import "UniqueCreator.Graphics.Gpu.PixelBuffer.idl";
+namespace UniqueCreator
+{
+    namespace Graphics
+    {
+        namespace Gpu
+        {
+        interface IBackBuffer requires IPixelBuffer
+        {
+            void Dummy1();
+        };
+        }
+    }
+}

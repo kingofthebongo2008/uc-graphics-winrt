@@ -1,0 +1,20 @@
+﻿#pragma once
+
+import "UniqueCreator.Graphics.Gpu.GraphicTypes.idl";
+
+namespace UniqueCreator
+{
+    namespace Graphics
+    {
+        namespace Gpu
+        {
+            runtimeclass InputLayoutDescription
+            {
+                InputLayoutDescription();
+                Windows.Foundation.Collections.IVector<InputElementDescription> InputElementDescs;
+            };
+        }
+    }
+}
+
+

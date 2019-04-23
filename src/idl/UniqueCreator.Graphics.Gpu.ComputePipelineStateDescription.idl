@@ -1,0 +1,20 @@
+﻿#pragma once
+
+import "UniqueCreator.Graphics.Gpu.ComputeShaderByteCode.idl";
+
+namespace UniqueCreator
+{
+    namespace Graphics
+    {
+        namespace Gpu
+        {
+        runtimeclass ComputePipelineStateDescription
+        {
+            ComputePipelineStateDescription();
+            ComputeShaderByteCode               CS;
+        };
+        }
+    }
+}
+
+

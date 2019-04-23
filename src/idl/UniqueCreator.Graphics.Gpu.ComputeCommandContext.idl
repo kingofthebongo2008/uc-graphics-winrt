@@ -1,0 +1,24 @@
+﻿#pragma once
+
+import "UniqueCreator.Graphics.Gpu.CommandContext.idl";
+import "UniqueCreator.Graphics.Gpu.ComputePipelineState.idl";
+import "UniqueCreator.Graphics.Gpu.VirtualResource.idl";
+
+namespace UniqueCreator
+{
+    namespace Graphics
+    {
+        namespace Gpu
+        {
+            interface IComputeCommandContext requires ICommandContext
+            {
+                void SetDescriptorHeaps();
+
+                void SetComputeUAVBuffer(UInt32 slot, IVirtualResource r);
+                void SetComputePipelineStateObject(ComputePipelineState pso);
+
+                void Dispatch( UInt32 x, UInt32 y, UInt32 z);
+            };
+        }
+    }
+}

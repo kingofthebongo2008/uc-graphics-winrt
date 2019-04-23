@@ -1,0 +1,21 @@
+﻿#pragma once
+
+import "UniqueCreator.Graphics.Gpu.GraphicsPipelineStateDescription.idl";
+import "UniqueCreator.Graphics.Gpu.ResourceCreateContext.idl";
+
+namespace UniqueCreator
+{
+    namespace Graphics
+    {
+        namespace Gpu
+        {
+        [default_interface]
+        runtimeclass GraphicsPipelineState
+        {
+            GraphicsPipelineState(ResourceCreateContext ctx, GraphicsPipelineStateDescription d);
+        };
+        }
+    }
+}
+
+

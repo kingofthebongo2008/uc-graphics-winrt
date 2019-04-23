@@ -1,0 +1,18 @@
+﻿#pragma once
+
+namespace UniqueCreator
+{
+    namespace Graphics
+    {
+        namespace Gpu
+        {
+        runtimeclass HullShaderByteCode
+        {
+            HullShaderByteCode();
+            Windows.Foundation.Collections.IVector<UInt8> Code;
+        };
+        }
+    }
+}
+
+

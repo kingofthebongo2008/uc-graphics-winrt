@@ -1,0 +1,17 @@
+﻿#pragma once
+
+namespace UniqueCreator
+{
+    namespace Graphics
+    {
+        namespace Gpu
+        {
+        runtimeclass ResourceCreateContext
+        {
+            ResourceCreateContext();
+            void Sync();
+            void ResetViewDependentResources();
+        }
+        }
+    }
+}

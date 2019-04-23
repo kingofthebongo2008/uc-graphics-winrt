@@ -1,0 +1,17 @@
+﻿#pragma once
+
+import "UniqueCreator.Graphics.Gpu.GraphicTypes.idl";
+
+namespace UniqueCreator
+{
+    namespace Graphics
+    {
+        namespace Gpu
+        {
+            interface IVirtualResource 
+            {
+                GpuVirtualAddress VirtualAddress { get; };
+            };
+        }
+    }
+}

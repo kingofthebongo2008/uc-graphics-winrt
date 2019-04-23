@@ -1,0 +1,23 @@
+﻿#pragma once
+
+import "UniqueCreator.Graphics.Gpu.GraphicTypes.idl";
+import "UniqueCreator.Graphics.Gpu.ResourceCreateContext.idl";
+import "UniqueCreator.Graphics.Gpu.SwapChainResources.idl";
+
+namespace UniqueCreator
+{
+    namespace Graphics
+    {
+        namespace Gpu
+        {
+			runtimeclass CompositionSwapChainResources : ISwapChainResources
+			{
+				CompositionSwapChainResources(ResourceCreateContext ctx, Windows.UI.Xaml.Controls.SwapChainPanel  panel);
+
+				void SetCompositionScale(Single scaleX, Single scaleY);
+				void SetLogicalSize(Size2D size);
+				void SetDisplayInformation(Windows.Graphics.Display.DisplayInformation displayInformation);
+			}
+        }
+    }
+}
