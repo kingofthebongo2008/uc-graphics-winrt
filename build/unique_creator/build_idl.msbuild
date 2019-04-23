@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003"> 
+
+<ItemGroup>	
+<Midl Include = "..\..\src\idl\UniqueCreator.Graphics.Gpu.BackBuffer.idl"/>	
+<Midl Include = "..\..\src\idl\UniqueCreator.Graphics.Gpu.BlendDescription.idl"/>	
+<Midl Include = "..\..\src\idl\UniqueCreator.Graphics.Gpu.CommandContext.idl"/>	
+<Midl Include = "..\..\src\idl\UniqueCreator.Graphics.Gpu.CompositionSwapChainResources.idl"/>	
+<Midl Include = "..\..\src\idl\UniqueCreator.Graphics.Gpu.ComputeCommandContext.idl"/>	
+<Midl Include = "..\..\src\idl\UniqueCreator.Graphics.Gpu.ComputePipelineState.idl"/>	
+<Midl Include = "..\..\src\idl\UniqueCreator.Graphics.Gpu.ComputePipelineStateDescription.idl"/>	
+<Midl Include = "..\..\src\idl\UniqueCreator.Graphics.Gpu.ComputeShaderByteCode.idl"/>	
+<Midl Include = "..\..\src\idl\UniqueCreator.Graphics.Gpu.DomainShaderByteCode.idl"/>	
+<Midl Include = "..\..\src\idl\UniqueCreator.Graphics.Gpu.FenceHandle.idl"/>	
+<Midl Include = "..\..\src\idl\UniqueCreator.Graphics.Gpu.GeometryShaderByteCode.idl"/>	
+<Midl Include = "..\..\src\idl\UniqueCreator.Graphics.Gpu.GraphicTypes.idl"/>	
+<Midl Include = "..\..\src\idl\UniqueCreator.Graphics.Gpu.GraphicsCommandContext.idl"/>	
+<Midl Include = "..\..\src\idl\UniqueCreator.Graphics.Gpu.GraphicsComputeCommandContext.idl"/>	
+<Midl Include = "..\..\src\idl\UniqueCreator.Graphics.Gpu.GraphicsPipelineState.idl"/>	
+<Midl Include = "..\..\src\idl\UniqueCreator.Graphics.Gpu.GraphicsPipelineStateDescription.idl"/>	
+<Midl Include = "..\..\src\idl\UniqueCreator.Graphics.Gpu.HullShaderByteCode.idl"/>	
+<Midl Include = "..\..\src\idl\UniqueCreator.Graphics.Gpu.InputLayoutDescription.idl"/>	
+<Midl Include = "..\..\src\idl\UniqueCreator.Graphics.Gpu.PixelBuffer.idl"/>	
+<Midl Include = "..\..\src\idl\UniqueCreator.Graphics.Gpu.PixelShaderByteCode.idl"/>	
+<Midl Include = "..\..\src\idl\UniqueCreator.Graphics.Gpu.PrimitiveRangeDescription.idl"/>	
+<Midl Include = "..\..\src\idl\UniqueCreator.Graphics.Gpu.ResourceCreateContext.idl"/>	
+<Midl Include = "..\..\src\idl\UniqueCreator.Graphics.Gpu.RootSignatureByteCode.idl"/>	
+<Midl Include = "..\..\src\idl\UniqueCreator.Graphics.Gpu.StreamOutputDescription.idl"/>	
+<Midl Include = "..\..\src\idl\UniqueCreator.Graphics.Gpu.SwapChainResources.idl"/>	
+<Midl Include = "..\..\src\idl\UniqueCreator.Graphics.Gpu.VertexShaderByteCode.idl"/>	
+<Midl Include = "..\..\src\idl\UniqueCreator.Graphics.Gpu.VirtualResource.idl"/>
+</ItemGroup></Project> 
