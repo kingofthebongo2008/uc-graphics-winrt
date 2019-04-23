@@ -4,7 +4,7 @@
 
 #include "WindowsEnvironment.h"
 
-namespace winrt::UniqueCreator::Graphics::implementation
+namespace winrt::UniqueCreator::Graphics::Gpu::implementation
 {
     namespace
     {

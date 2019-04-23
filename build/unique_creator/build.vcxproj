@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\uc-tools-graphics-gpu-shader-compiler.1.0.9\build\uc-tools-graphics-gpu-shader-compiler.props" Condition="Exists('..\packages\uc-tools-graphics-gpu-shader-compiler.1.0.9\build\uc-tools-graphics-gpu-shader-compiler.props')" />
-  <Import Project="..\packages\uc-tools-msbuild-tasks.1.0.31\build\uc-tools-msbuild-tasks.props" Condition="Exists('..\packages\uc-tools-msbuild-tasks.1.0.31\build\uc-tools-msbuild-tasks.props')" />
+  <Import Project="..\packages\uc-tools-graphics-gpu-shader-compiler.1.0.11\build\uc-tools-graphics-gpu-shader-compiler.props" Condition="Exists('..\packages\uc-tools-graphics-gpu-shader-compiler.1.0.11\build\uc-tools-graphics-gpu-shader-compiler.props')" />
+  <Import Project="..\packages\uc-tools-msbuild-tasks.1.0.32\build\uc-tools-msbuild-tasks.props" Condition="Exists('..\packages\uc-tools-msbuild-tasks.1.0.32\build\uc-tools-msbuild-tasks.props')" />
   <Import Project="..\packages\Microsoft.Windows.CppWinRT.2.0.190405.3\build\native\Microsoft.Windows.CppWinRT.props" Condition="Exists('..\packages\Microsoft.Windows.CppWinRT.2.0.190405.3\build\native\Microsoft.Windows.CppWinRT.props')" />
   <Import Project="..\packages\uc-tools-graphics-gpu-pipeline-compiler.1.0.32\build\uc-tools-graphics-gpu-pipeline-compiler.props" Condition="Exists('..\packages\uc-tools-graphics-gpu-pipeline-compiler.1.0.32\build\uc-tools-graphics-gpu-pipeline-compiler.props')" />
   <Import Project="..\packages\uc-graphics.1.0.15\build\native\uc-graphics.props" Condition="Exists('..\packages\uc-graphics.1.0.15\build\native\uc-graphics.props')" />
@@ -14,7 +14,7 @@
     <MinimalCoreWin>true</MinimalCoreWin>
     <ProjectGuid>{23f057fa-8518-4d9c-a57d-4809080f3234}</ProjectGuid>
     <ProjectName>UniqueCreator</ProjectName>
-    <RootNamespace>UniqueCreator.Graphics</RootNamespace>
+    <!--RootNamespace>UniqueCreator.Graphics.Gpu</RootNamespace-->
     <DefaultLanguage>en-US</DefaultLanguage>
     <MinimumVisualStudioVersion>14.0</MinimumVisualStudioVersion>
     <AppContainerApplication>true</AppContainerApplication>
@@ -40,7 +40,7 @@
     <PlatformToolset Condition="'$(VisualStudioVersion)' == '15.0'">v141</PlatformToolset>
     <PlatformToolset Condition="'$(VisualStudioVersion)' == '16.0'">v141</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
-    <GenerateManifest>false</GenerateManifest>
+    <GenerateManifest>true</GenerateManifest>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)'=='Debug'" Label="Configuration">
     <UseDebugLibraries>true</UseDebugLibraries>
@@ -61,17 +61,19 @@
     <Import Project="..\packages\uc-graphics.1.0.15\build\native\uc-graphics.targets" Condition="Exists('..\packages\uc-graphics.1.0.15\build\native\uc-graphics.targets')" />
     <Import Project="..\packages\uc-tools-graphics-gpu-pipeline-compiler.1.0.32\build\uc-tools-graphics-gpu-pipeline-compiler.targets" Condition="Exists('..\packages\uc-tools-graphics-gpu-pipeline-compiler.1.0.32\build\uc-tools-graphics-gpu-pipeline-compiler.targets')" />
     <Import Project="..\packages\Microsoft.Windows.CppWinRT.2.0.190405.3\build\native\Microsoft.Windows.CppWinRT.targets" Condition="Exists('..\packages\Microsoft.Windows.CppWinRT.2.0.190405.3\build\native\Microsoft.Windows.CppWinRT.targets')" />
-    <Import Project="..\packages\uc-tools-msbuild-tasks.1.0.31\build\uc-tools-msbuild-tasks.targets" Condition="Exists('..\packages\uc-tools-msbuild-tasks.1.0.31\build\uc-tools-msbuild-tasks.targets')" />
-    <Import Project="..\packages\uc-tools-graphics-gpu-shader-compiler.1.0.9\build\uc-tools-graphics-gpu-shader-compiler.targets" Condition="Exists('..\packages\uc-tools-graphics-gpu-shader-compiler.1.0.9\build\uc-tools-graphics-gpu-shader-compiler.targets')" />
+    <Import Project="..\packages\uc-tools-msbuild-tasks.1.0.32\build\uc-tools-msbuild-tasks.targets" Condition="Exists('..\packages\uc-tools-msbuild-tasks.1.0.32\build\uc-tools-msbuild-tasks.targets')" />
+    <Import Project="..\packages\uc-tools-graphics-gpu-shader-compiler.1.0.11\build\uc-tools-graphics-gpu-shader-compiler.targets" Condition="Exists('..\packages\uc-tools-graphics-gpu-shader-compiler.1.0.11\build\uc-tools-graphics-gpu-shader-compiler.targets')" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>$(SolutionDir)$(ProjectName)$(Platform)\$(Configuration)\$(MSBuildProjectName)\</OutDir>
     <IntDir>$(ProjectName)$(Platform)\$(Configuration)\</IntDir>
+    <TargetName>UniqueCreator.Graphics.Gpu</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir)$(ProjectName)$(Platform)\$(Configuration)\$(MSBuildProjectName)\</OutDir>
     <IntDir>$(ProjectName)$(Platform)\$(Configuration)\</IntDir>
+    <TargetName>UniqueCreator.Graphics.Gpu</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup>
     <ClCompile>
@@ -121,36 +123,6 @@
     <ClCompile Include="$(GeneratedFilesDir)module.g.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Midl Include="..\..\src\idl\BlendDescription.idl" />
-    <Midl Include="..\..\src\idl\InputLayoutDescription.idl" />
-    <Midl Include="..\..\src\idl\StreamOutputDescription.idl" />
-    <Midl Include="..\..\src\idl\PrimitiveRangeDescription.idl" />
-    <Midl Include="..\..\src\idl\GraphicsPipelineStateDescription.idl" />
-    <Midl Include="..\..\src\idl\GraphicsPipelineState.idl" />
-    <Midl Include="..\..\src\idl\ComputePipelineStateDescription.idl" />
-    <Midl Include="..\..\src\idl\ComputePipelineState.idl" />
-    <Midl Include="..\..\src\idl\ComputeShaderByteCode.idl" />
-    <Midl Include="..\..\src\idl\VertexShaderByteCode.idl" />
-    <Midl Include="..\..\src\idl\PixelShaderByteCode.idl" />
-    <Midl Include="..\..\src\idl\DomainShaderByteCode.idl" />
-    <Midl Include="..\..\src\idl\GeometryShaderByteCode.idl" />
-    <Midl Include="..\..\src\idl\HullShaderByteCode.idl" />
-    <Midl Include="..\..\src\idl\RootSignatureByteCode.idl" />
-    <Midl Include="..\..\src\idl\BackBuffer.idl" />
-    <Midl Include="..\..\src\idl\PixelBuffer.idl" />
-    <Midl Include="..\..\src\idl\GpuVirtualResource.idl" />
-    <Midl Include="..\..\src\idl\GpuCommandContext.idl" />
-    <Midl Include="..\..\src\idl\CopyGpuCommandContext.idl" />
-    <Midl Include="..\..\src\idl\ComputeGpuCommandContext.idl" />
-    <Midl Include="..\..\src\idl\GraphicsGpuCommandContext.idl" />
-    <Midl Include="..\..\src\idl\GraphicTypes.idl" />
-    <Midl Include="..\..\src\idl\Base.idl" />
-    <Midl Include="..\..\src\idl\FenceHandle.idl" />
-    <Midl Include="..\..\src\idl\ResourceCreateContext.idl" />
-    <Midl Include="..\..\src\idl\CompositionSwapChainResources.idl" />
-    <Midl Include="..\..\src\idl\SwapChainResources.idl" />
-  </ItemGroup>
-  <ItemGroup>
     <RootSignature Include="..\..\src\shaders\default_graphics_signature.hlsl">
       <EntryPointName>MyRS1</EntryPointName>
       <CPPOutput>..\..\src\shaders\default_graphics_signature.cpp</CPPOutput>
@@ -187,11 +159,12 @@
     <Error Condition="!Exists('..\packages\uc-tools-graphics-gpu-pipeline-compiler.1.0.32\build\uc-tools-graphics-gpu-pipeline-compiler.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\uc-tools-graphics-gpu-pipeline-compiler.1.0.32\build\uc-tools-graphics-gpu-pipeline-compiler.targets'))" />
     <Error Condition="!Exists('..\packages\Microsoft.Windows.CppWinRT.2.0.190405.3\build\native\Microsoft.Windows.CppWinRT.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Windows.CppWinRT.2.0.190405.3\build\native\Microsoft.Windows.CppWinRT.props'))" />
     <Error Condition="!Exists('..\packages\Microsoft.Windows.CppWinRT.2.0.190405.3\build\native\Microsoft.Windows.CppWinRT.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Windows.CppWinRT.2.0.190405.3\build\native\Microsoft.Windows.CppWinRT.targets'))" />
-    <Error Condition="!Exists('..\packages\uc-tools-msbuild-tasks.1.0.31\build\uc-tools-msbuild-tasks.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\uc-tools-msbuild-tasks.1.0.31\build\uc-tools-msbuild-tasks.props'))" />
-    <Error Condition="!Exists('..\packages\uc-tools-msbuild-tasks.1.0.31\build\uc-tools-msbuild-tasks.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\uc-tools-msbuild-tasks.1.0.31\build\uc-tools-msbuild-tasks.targets'))" />
-    <Error Condition="!Exists('..\packages\uc-tools-graphics-gpu-shader-compiler.1.0.9\build\uc-tools-graphics-gpu-shader-compiler.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\uc-tools-graphics-gpu-shader-compiler.1.0.9\build\uc-tools-graphics-gpu-shader-compiler.props'))" />
-    <Error Condition="!Exists('..\packages\uc-tools-graphics-gpu-shader-compiler.1.0.9\build\uc-tools-graphics-gpu-shader-compiler.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\uc-tools-graphics-gpu-shader-compiler.1.0.9\build\uc-tools-graphics-gpu-shader-compiler.targets'))" />
+    <Error Condition="!Exists('..\packages\uc-tools-msbuild-tasks.1.0.32\build\uc-tools-msbuild-tasks.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\uc-tools-msbuild-tasks.1.0.32\build\uc-tools-msbuild-tasks.props'))" />
+    <Error Condition="!Exists('..\packages\uc-tools-msbuild-tasks.1.0.32\build\uc-tools-msbuild-tasks.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\uc-tools-msbuild-tasks.1.0.32\build\uc-tools-msbuild-tasks.targets'))" />
+    <Error Condition="!Exists('..\packages\uc-tools-graphics-gpu-shader-compiler.1.0.11\build\uc-tools-graphics-gpu-shader-compiler.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\uc-tools-graphics-gpu-shader-compiler.1.0.11\build\uc-tools-graphics-gpu-shader-compiler.props'))" />
+    <Error Condition="!Exists('..\packages\uc-tools-graphics-gpu-shader-compiler.1.0.11\build\uc-tools-graphics-gpu-shader-compiler.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\uc-tools-graphics-gpu-shader-compiler.1.0.11\build\uc-tools-graphics-gpu-shader-compiler.targets'))" />
   </Target>
   <Import Project="build_h.msbuild" />
   <Import Project="build_cpp.msbuild" />
+  <Import Project="build_idl.msbuild" />
 </Project>

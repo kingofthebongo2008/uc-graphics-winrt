@@ -15,7 +15,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Windows.System.Threading;
 
-using UniqueCreator.Graphics;
+using UniqueCreator.Graphics.Gpu;
 
 namespace uc_engine_hello_world
 {
@@ -76,13 +76,13 @@ namespace uc_engine_hello_world
             code.Code = bytes;
             */
 
-            var code = UniqueCreator.Graphics.Shaders.compute_cs.Factory.Create();
+            var code = UniqueCreator.Graphics.Gpu.Shaders.compute_cs.Factory.Create();
             var description = new ComputePipelineStateDescription();
             description.CS = code;
             var pipeline = new ComputePipelineState(m_ctx, description);
 
-            var triangleVertex = UniqueCreator.Graphics.Shaders.triangle_vertex.Factory.Create();
-            var trianglePixel  = UniqueCreator.Graphics.Shaders.triangle_pixel.Factory.Create();
+            var triangleVertex = UniqueCreator.Graphics.Gpu.Shaders.triangle_vertex.Factory.Create();
+            var trianglePixel  = UniqueCreator.Graphics.Gpu.Shaders.triangle_pixel.Factory.Create();
 
             var description2    = new GraphicsPipelineStateDescription();
 
@@ -216,7 +216,7 @@ namespace uc_engine_hello_world
                 m_swapChain.WaitForGpu();
                 m_ctx.ResetViewDependentResources();
 
-                UniqueCreator.Graphics.Size2D s;
+                UniqueCreator.Graphics.Gpu.Size2D s;
                 s.Width = (float)e.NewSize.Width;
                 s.Height = (float)e.NewSize.Height;
                 m_swapChain.SetLogicalSize(s);
@@ -235,7 +235,7 @@ namespace uc_engine_hello_world
         private void Render()
         {
             {
-                var ctx = m_swapChain.CreateDirectCommandContext();
+                var ctx = m_swapChain.CreateGraphicsComputeCommandContext();
                 var backBuffer = m_swapChain.BackBuffer;
 
                 ctx.SetGraphicsPipelineStateObject(m_triangle);

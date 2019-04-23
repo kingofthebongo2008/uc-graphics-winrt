@@ -3,50 +3,10 @@
   <ItemGroup>
     <Filter Include="src" />
     <Filter Include="src\dev" />
+    <Filter Include="src\dev\cmd" />
+    <Filter Include="src\dev\gpu" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\src\dev\BackBuffer.h">
-      <Filter>src\dev</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\dev\BlendDescription.h">
-      <Filter>src\dev</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\dev\CompositionSwapChainResources.h">
-      <Filter>src\dev</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\dev\ComputeGpuCommandContext.h">
-      <Filter>src\dev</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\dev\ComputePipelineState.h">
-      <Filter>src\dev</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\dev\ComputePipelineStateDescription.h">
-      <Filter>src\dev</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\dev\ComputeShaderByteCode.h">
-      <Filter>src\dev</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\dev\DirectGpuCommandContext.h">
-      <Filter>src\dev</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\dev\DomainShaderByteCode.h">
-      <Filter>src\dev</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\dev\FenceHandle.h">
-      <Filter>src\dev</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\dev\GeometryShaderByteCode.h">
-      <Filter>src\dev</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\dev\GraphicsPipelineState.h">
-      <Filter>src\dev</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\dev\GraphicsPipelineStateDescription.h">
-      <Filter>src\dev</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\dev\HullShaderByteCode.h">
-      <Filter>src\dev</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\dev\IBackBufferNative.h">
       <Filter>src\dev</Filter>
     </ClInclude>
@@ -71,29 +31,71 @@
     <ClInclude Include="..\..\src\dev\IShaderByteCodeNative.h">
       <Filter>src\dev</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\dev\InputLayoutDescription.h">
+    <ClInclude Include="..\..\src\dev\UniqueCreator.Graphics.Gpu.BlendDescription.h">
       <Filter>src\dev</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\dev\PixelShaderByteCode.h">
+    <ClInclude Include="..\..\src\dev\UniqueCreator.Graphics.Gpu.CompositionSwapChainResources.h">
       <Filter>src\dev</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\dev\PrimitiveRangeDescription.h">
+    <ClInclude Include="..\..\src\dev\UniqueCreator.Graphics.Gpu.ComputePipelineState.h">
       <Filter>src\dev</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\dev\ResourceCreateContext.h">
+    <ClInclude Include="..\..\src\dev\UniqueCreator.Graphics.Gpu.ComputePipelineStateDescription.h">
       <Filter>src\dev</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\dev\RootSignatureByteCode.h">
+    <ClInclude Include="..\..\src\dev\UniqueCreator.Graphics.Gpu.ComputeShaderByteCode.h">
       <Filter>src\dev</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\dev\StreamOutputDescription.h">
+    <ClInclude Include="..\..\src\dev\UniqueCreator.Graphics.Gpu.DomainShaderByteCode.h">
       <Filter>src\dev</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\dev\VertexShaderByteCode.h">
+    <ClInclude Include="..\..\src\dev\UniqueCreator.Graphics.Gpu.FenceHandle.h">
+      <Filter>src\dev</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\dev\UniqueCreator.Graphics.Gpu.GeometryShaderByteCode.h">
+      <Filter>src\dev</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\dev\UniqueCreator.Graphics.Gpu.GraphicsPipelineState.h">
+      <Filter>src\dev</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\dev\UniqueCreator.Graphics.Gpu.GraphicsPipelineStateDescription.h">
+      <Filter>src\dev</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\dev\UniqueCreator.Graphics.Gpu.HullShaderByteCode.h">
+      <Filter>src\dev</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\dev\UniqueCreator.Graphics.Gpu.InputLayoutDescription.h">
+      <Filter>src\dev</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\dev\UniqueCreator.Graphics.Gpu.PixelShaderByteCode.h">
+      <Filter>src\dev</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\dev\UniqueCreator.Graphics.Gpu.PrimitiveRangeDescription.h">
+      <Filter>src\dev</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\dev\UniqueCreator.Graphics.Gpu.ResourceCreateContext.h">
+      <Filter>src\dev</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\dev\UniqueCreator.Graphics.Gpu.RootSignatureByteCode.h">
+      <Filter>src\dev</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\dev\UniqueCreator.Graphics.Gpu.StreamOutputDescription.h">
+      <Filter>src\dev</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\dev\UniqueCreator.Graphics.Gpu.VertexShaderByteCode.h">
       <Filter>src\dev</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\dev\WindowsEnvironment.h">
       <Filter>src\dev</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\dev\cmd\ComputeCommandContext.h">
+      <Filter>src\dev\cmd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\dev\cmd\GraphicsComputeCommandContext.h">
+      <Filter>src\dev\cmd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\dev\gpu\BackBuffer.h">
+      <Filter>src\dev\gpu</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -108,73 +110,75 @@
   <ItemGroup>
     <Filter Include="src" />
     <Filter Include="src\dev" />
+    <Filter Include="src\dev\cmd" />
+    <Filter Include="src\dev\gpu" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\src\dev\BackBuffer.cpp">
+    <ClCompile Include="..\..\src\dev\UniqueCreator.Graphics.Gpu.BlendDescription.cpp">
       <Filter>src\dev</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\dev\BlendDescription.cpp">
+    <ClCompile Include="..\..\src\dev\UniqueCreator.Graphics.Gpu.CompositionSwapChainResources.cpp">
       <Filter>src\dev</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\dev\CompositionSwapChainResources.cpp">
+    <ClCompile Include="..\..\src\dev\UniqueCreator.Graphics.Gpu.ComputePipelineState.cpp">
       <Filter>src\dev</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\dev\ComputeGpuCommandContext.cpp">
+    <ClCompile Include="..\..\src\dev\UniqueCreator.Graphics.Gpu.ComputePipelineStateDescription.cpp">
       <Filter>src\dev</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\dev\ComputePipelineState.cpp">
+    <ClCompile Include="..\..\src\dev\UniqueCreator.Graphics.Gpu.ComputeShaderByteCode.cpp">
       <Filter>src\dev</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\dev\ComputePipelineStateDescription.cpp">
+    <ClCompile Include="..\..\src\dev\UniqueCreator.Graphics.Gpu.DomainShaderByteCode.cpp">
       <Filter>src\dev</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\dev\ComputeShaderByteCode.cpp">
+    <ClCompile Include="..\..\src\dev\UniqueCreator.Graphics.Gpu.FenceHandle.cpp">
       <Filter>src\dev</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\dev\DirectGpuCommandContext.cpp">
+    <ClCompile Include="..\..\src\dev\UniqueCreator.Graphics.Gpu.GeometryShaderByteCode.cpp">
       <Filter>src\dev</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\dev\DomainShaderByteCode.cpp">
+    <ClCompile Include="..\..\src\dev\UniqueCreator.Graphics.Gpu.GraphicsPipelineState.cpp">
       <Filter>src\dev</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\dev\FenceHandle.cpp">
+    <ClCompile Include="..\..\src\dev\UniqueCreator.Graphics.Gpu.GraphicsPipelineStateDescription.cpp">
       <Filter>src\dev</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\dev\GeometryShaderByteCode.cpp">
+    <ClCompile Include="..\..\src\dev\UniqueCreator.Graphics.Gpu.HullShaderByteCode.cpp">
       <Filter>src\dev</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\dev\GraphicsPipelineState.cpp">
+    <ClCompile Include="..\..\src\dev\UniqueCreator.Graphics.Gpu.InputLayoutDescription.cpp">
       <Filter>src\dev</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\dev\GraphicsPipelineStateDescription.cpp">
+    <ClCompile Include="..\..\src\dev\UniqueCreator.Graphics.Gpu.PixelShaderByteCode.cpp">
       <Filter>src\dev</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\dev\HullShaderByteCode.cpp">
+    <ClCompile Include="..\..\src\dev\UniqueCreator.Graphics.Gpu.PrimitiveRangeDescription.cpp">
       <Filter>src\dev</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\dev\InputLayoutDescription.cpp">
+    <ClCompile Include="..\..\src\dev\UniqueCreator.Graphics.Gpu.ResourceCreateContext.cpp">
       <Filter>src\dev</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\dev\PixelShaderByteCode.cpp">
+    <ClCompile Include="..\..\src\dev\UniqueCreator.Graphics.Gpu.RootSignatureByteCode.cpp">
       <Filter>src\dev</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\dev\PrimitiveRangeDescription.cpp">
+    <ClCompile Include="..\..\src\dev\UniqueCreator.Graphics.Gpu.StreamOutputDescription.cpp">
       <Filter>src\dev</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\dev\ResourceCreateContext.cpp">
-      <Filter>src\dev</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\dev\RootSignatureByteCode.cpp">
-      <Filter>src\dev</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\dev\StreamOutputDescription.cpp">
-      <Filter>src\dev</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\dev\VertexShaderByteCode.cpp">
+    <ClCompile Include="..\..\src\dev\UniqueCreator.Graphics.Gpu.VertexShaderByteCode.cpp">
       <Filter>src\dev</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\dev\WindowsEnvironment.cpp">
       <Filter>src\dev</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dev\cmd\ComputeCommandContext.cpp">
+      <Filter>src\dev\cmd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dev\cmd\GraphicsComputeCommandContext.cpp">
+      <Filter>src\dev\cmd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dev\gpu\BackBuffer.cpp">
+      <Filter>src\dev\gpu</Filter>
     </ClCompile>
     <ClCompile Include="$(GeneratedFilesDir)module.g.cpp" />
   </ItemGroup>
@@ -188,34 +192,91 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Midl Include="..\..\src\idl\BlendDescription.idl" />
-    <Midl Include="..\..\src\idl\InputLayoutDescription.idl" />
-    <Midl Include="..\..\src\idl\StreamOutputDescription.idl" />
-    <Midl Include="..\..\src\idl\PrimitiveRangeDescription.idl" />
-    <Midl Include="..\..\src\idl\GraphicsPipelineStateDescription.idl" />
-    <Midl Include="..\..\src\idl\GraphicsPipelineState.idl" />
-    <Midl Include="..\..\src\idl\ComputePipelineStateDescription.idl" />
-    <Midl Include="..\..\src\idl\ComputePipelineState.idl" />
-    <Midl Include="..\..\src\idl\ComputeShaderByteCode.idl" />
-    <Midl Include="..\..\src\idl\VertexShaderByteCode.idl" />
-    <Midl Include="..\..\src\idl\PixelShaderByteCode.idl" />
-    <Midl Include="..\..\src\idl\DomainShaderByteCode.idl" />
-    <Midl Include="..\..\src\idl\GeometryShaderByteCode.idl" />
-    <Midl Include="..\..\src\idl\HullShaderByteCode.idl" />
-    <Midl Include="..\..\src\idl\RootSignatureByteCode.idl" />
-    <Midl Include="..\..\src\idl\BackBuffer.idl" />
-    <Midl Include="..\..\src\idl\PixelBuffer.idl" />
-    <Midl Include="..\..\src\idl\GpuVirtualResource.idl" />
-    <Midl Include="..\..\src\idl\GpuCommandContext.idl" />
-    <Midl Include="..\..\src\idl\CopyGpuCommandContext.idl" />
-    <Midl Include="..\..\src\idl\ComputeGpuCommandContext.idl" />
-    <Midl Include="..\..\src\idl\GraphicsGpuCommandContext.idl" />
-    <Midl Include="..\..\src\idl\GraphicTypes.idl" />
-    <Midl Include="..\..\src\idl\Base.idl" />
-    <Midl Include="..\..\src\idl\FenceHandle.idl" />
-    <Midl Include="..\..\src\idl\ResourceCreateContext.idl" />
-    <Midl Include="..\..\src\idl\CompositionSwapChainResources.idl" />
-    <Midl Include="..\..\src\idl\SwapChainResources.idl" />
+    <Filter Include="src" />
+    <Filter Include="src\idl" />
+  </ItemGroup>
+  <ItemGroup>
+    <Midl Include="..\..\src\idl\UniqueCreator.Graphics.Gpu.BackBuffer.idl">
+      <Filter>src\idl</Filter>
+    </Midl>
+    <Midl Include="..\..\src\idl\UniqueCreator.Graphics.Gpu.BlendDescription.idl">
+      <Filter>src\idl</Filter>
+    </Midl>
+    <Midl Include="..\..\src\idl\UniqueCreator.Graphics.Gpu.CommandContext.idl">
+      <Filter>src\idl</Filter>
+    </Midl>
+    <Midl Include="..\..\src\idl\UniqueCreator.Graphics.Gpu.CompositionSwapChainResources.idl">
+      <Filter>src\idl</Filter>
+    </Midl>
+    <Midl Include="..\..\src\idl\UniqueCreator.Graphics.Gpu.ComputeCommandContext.idl">
+      <Filter>src\idl</Filter>
+    </Midl>
+    <Midl Include="..\..\src\idl\UniqueCreator.Graphics.Gpu.ComputePipelineState.idl">
+      <Filter>src\idl</Filter>
+    </Midl>
+    <Midl Include="..\..\src\idl\UniqueCreator.Graphics.Gpu.ComputePipelineStateDescription.idl">
+      <Filter>src\idl</Filter>
+    </Midl>
+    <Midl Include="..\..\src\idl\UniqueCreator.Graphics.Gpu.ComputeShaderByteCode.idl">
+      <Filter>src\idl</Filter>
+    </Midl>
+    <Midl Include="..\..\src\idl\UniqueCreator.Graphics.Gpu.DomainShaderByteCode.idl">
+      <Filter>src\idl</Filter>
+    </Midl>
+    <Midl Include="..\..\src\idl\UniqueCreator.Graphics.Gpu.FenceHandle.idl">
+      <Filter>src\idl</Filter>
+    </Midl>
+    <Midl Include="..\..\src\idl\UniqueCreator.Graphics.Gpu.GeometryShaderByteCode.idl">
+      <Filter>src\idl</Filter>
+    </Midl>
+    <Midl Include="..\..\src\idl\UniqueCreator.Graphics.Gpu.GraphicTypes.idl">
+      <Filter>src\idl</Filter>
+    </Midl>
+    <Midl Include="..\..\src\idl\UniqueCreator.Graphics.Gpu.GraphicsCommandContext.idl">
+      <Filter>src\idl</Filter>
+    </Midl>
+    <Midl Include="..\..\src\idl\UniqueCreator.Graphics.Gpu.GraphicsComputeCommandContext.idl">
+      <Filter>src\idl</Filter>
+    </Midl>
+    <Midl Include="..\..\src\idl\UniqueCreator.Graphics.Gpu.GraphicsPipelineState.idl">
+      <Filter>src\idl</Filter>
+    </Midl>
+    <Midl Include="..\..\src\idl\UniqueCreator.Graphics.Gpu.GraphicsPipelineStateDescription.idl">
+      <Filter>src\idl</Filter>
+    </Midl>
+    <Midl Include="..\..\src\idl\UniqueCreator.Graphics.Gpu.HullShaderByteCode.idl">
+      <Filter>src\idl</Filter>
+    </Midl>
+    <Midl Include="..\..\src\idl\UniqueCreator.Graphics.Gpu.InputLayoutDescription.idl">
+      <Filter>src\idl</Filter>
+    </Midl>
+    <Midl Include="..\..\src\idl\UniqueCreator.Graphics.Gpu.PixelBuffer.idl">
+      <Filter>src\idl</Filter>
+    </Midl>
+    <Midl Include="..\..\src\idl\UniqueCreator.Graphics.Gpu.PixelShaderByteCode.idl">
+      <Filter>src\idl</Filter>
+    </Midl>
+    <Midl Include="..\..\src\idl\UniqueCreator.Graphics.Gpu.PrimitiveRangeDescription.idl">
+      <Filter>src\idl</Filter>
+    </Midl>
+    <Midl Include="..\..\src\idl\UniqueCreator.Graphics.Gpu.ResourceCreateContext.idl">
+      <Filter>src\idl</Filter>
+    </Midl>
+    <Midl Include="..\..\src\idl\UniqueCreator.Graphics.Gpu.RootSignatureByteCode.idl">
+      <Filter>src\idl</Filter>
+    </Midl>
+    <Midl Include="..\..\src\idl\UniqueCreator.Graphics.Gpu.StreamOutputDescription.idl">
+      <Filter>src\idl</Filter>
+    </Midl>
+    <Midl Include="..\..\src\idl\UniqueCreator.Graphics.Gpu.SwapChainResources.idl">
+      <Filter>src\idl</Filter>
+    </Midl>
+    <Midl Include="..\..\src\idl\UniqueCreator.Graphics.Gpu.VertexShaderByteCode.idl">
+      <Filter>src\idl</Filter>
+    </Midl>
+    <Midl Include="..\..\src\idl\UniqueCreator.Graphics.Gpu.VirtualResource.idl">
+      <Filter>src\idl</Filter>
+    </Midl>
   </ItemGroup>
   <ItemGroup>
     <None Include="module.def" />

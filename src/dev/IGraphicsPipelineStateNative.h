@@ -13,7 +13,7 @@ namespace uc
     }
 }
 
-namespace winrt::UniqueCreator::Graphics
+namespace winrt::UniqueCreator::Graphics::Gpu
 {
     struct __declspec(uuid("BAABC13E-9291-439E-9C12-EF441FCC9A49")) __declspec(novtable) IGraphicsPipelineStateNative : ::IUnknown
     {
