@@ -6,9 +6,9 @@ namespace UniqueCreator
     {
         namespace Gpu
         {
+			[default_interface]
             runtimeclass SwapChainBuffer : IPixelBuffer
             {
-                void Dummy1();
             };
         }
     }

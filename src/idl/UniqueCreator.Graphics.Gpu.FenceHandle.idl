@@ -6,10 +6,10 @@ namespace UniqueCreator
     {
         namespace Gpu
         {
-        interface IFenceHandle
-        {
-            void Dummy();
-        }
+			interface IFenceHandle
+			{
+				void Dummy();
+			}
         }
     }
 }
