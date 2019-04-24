@@ -30,7 +30,7 @@ namespace UniqueCreator
                 IComputeCommandContext           CreateComputeCommandContext();
                 IGraphicsComputeCommandContext   CreateGraphicsComputeCommandContext();
 
-                IBackBuffer BackBuffer{ get; };
+				SwapChainBuffer BackBuffer{ get; };
             };
         }
     }

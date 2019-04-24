@@ -1,7 +1,7 @@
 ﻿#pragma once
 
 #include "winrt/UniqueCreator.Graphics.Gpu.h"
-
+#include "UniqueCreator.Graphics.Gpu.SwapChainBuffer.g.h"
 #include "IBackBufferNative.h"
 #include "IGpuVirtualResourceNative.h"
 
@@ -11,7 +11,7 @@ namespace winrt::UniqueCreator::Graphics::Gpu::implementation
 {
     using namespace uc::gx::dx12;
 
-    struct BackBuffer : implements<BackBuffer, IBackBuffer, IPixelBuffer, IVirtualResource, IGpuVirtualResourceNative, IBackBufferNative >
+    struct BackBuffer : SwapChainBufferT<BackBuffer, IGpuVirtualResourceNative, IBackBufferNative >
     {
         BackBuffer(gpu_back_buffer* b);
 

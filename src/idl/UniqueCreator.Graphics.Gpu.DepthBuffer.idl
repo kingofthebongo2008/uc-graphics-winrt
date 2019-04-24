@@ -6,9 +6,9 @@ namespace UniqueCreator
     {
         namespace Gpu
         {
-            runtimeclass SwapChainBuffer : IPixelBuffer
+            interface IDepthBufferBuffer requires IPixelBuffer
             {
-                void Dummy1();
+                void Dummy1();            
             };
         }
     }

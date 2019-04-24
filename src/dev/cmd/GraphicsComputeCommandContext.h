@@ -29,8 +29,8 @@ namespace winrt::UniqueCreator::Graphics::Gpu::implementation
 
         void SetComputeUAVBuffer(uint32_t slot, IVirtualResource r);
 
-        void Clear(const IBackBuffer& b);
-		void SetRenderTarget(const IBackBuffer& b);
+        void Clear(const SwapChainBuffer& b);
+		void SetRenderTarget(const SwapChainBuffer& b);
 
         private:
 

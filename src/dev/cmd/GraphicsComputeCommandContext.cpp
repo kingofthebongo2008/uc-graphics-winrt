@@ -34,7 +34,7 @@ namespace winrt::UniqueCreator::Graphics::Gpu::implementation
         m_ctx->transition_resource(r0->GetResource(), static_cast<D3D12_RESOURCE_STATES>(old_state), static_cast<D3D12_RESOURCE_STATES>(new_state));
     }
 
-    void DirectGpuCommandContext::Clear(const IBackBuffer& b)
+    void DirectGpuCommandContext::Clear(const SwapChainBuffer& b)
     {
         com_ptr<IBackBufferNative> r0(b.as<IBackBufferNative>());
         m_ctx->clear(r0->GetBackBuffer());
@@ -92,7 +92,7 @@ namespace winrt::UniqueCreator::Graphics::Gpu::implementation
 		m_ctx->set_scissor_rectangle(r);
 	}
 
-	void DirectGpuCommandContext::SetRenderTarget(const IBackBuffer& b)
+	void DirectGpuCommandContext::SetRenderTarget(const SwapChainBuffer& b)
 	{
 		com_ptr<IBackBufferNative> r0(b.as<IBackBufferNative>());
 		m_ctx->set_render_target(r0->GetBackBuffer());

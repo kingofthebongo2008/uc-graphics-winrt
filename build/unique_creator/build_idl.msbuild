@@ -4,12 +4,14 @@
 <ItemGroup>	
 <Midl Include = "..\..\src\idl\UniqueCreator.Graphics.Gpu.BackBuffer.idl"/>	
 <Midl Include = "..\..\src\idl\UniqueCreator.Graphics.Gpu.BlendDescription.idl"/>	
+<Midl Include = "..\..\src\idl\UniqueCreator.Graphics.Gpu.ColorBuffer.idl"/>	
 <Midl Include = "..\..\src\idl\UniqueCreator.Graphics.Gpu.CommandContext.idl"/>	
 <Midl Include = "..\..\src\idl\UniqueCreator.Graphics.Gpu.CompositionSwapChainResources.idl"/>	
 <Midl Include = "..\..\src\idl\UniqueCreator.Graphics.Gpu.ComputeCommandContext.idl"/>	
 <Midl Include = "..\..\src\idl\UniqueCreator.Graphics.Gpu.ComputePipelineState.idl"/>	
 <Midl Include = "..\..\src\idl\UniqueCreator.Graphics.Gpu.ComputePipelineStateDescription.idl"/>	
 <Midl Include = "..\..\src\idl\UniqueCreator.Graphics.Gpu.ComputeShaderByteCode.idl"/>	
+<Midl Include = "..\..\src\idl\UniqueCreator.Graphics.Gpu.DepthBuffer.idl"/>	
 <Midl Include = "..\..\src\idl\UniqueCreator.Graphics.Gpu.DomainShaderByteCode.idl"/>	
 <Midl Include = "..\..\src\idl\UniqueCreator.Graphics.Gpu.FenceHandle.idl"/>	
 <Midl Include = "..\..\src\idl\UniqueCreator.Graphics.Gpu.GeometryShaderByteCode.idl"/>	

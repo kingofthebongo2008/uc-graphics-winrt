@@ -11,10 +11,10 @@
 
 namespace winrt::UniqueCreator::Graphics::Gpu::implementation
 {
+	using BackBuffer1 = BackBuffer;
+
     namespace
     {
-        using BackBuffer1 = BackBuffer;
-
         std::unique_ptr<uc::gx::dx12::gpu_command_queue> create_command_queue(ID3D12Device* d, D3D12_COMMAND_LIST_TYPE type)
         {
             Microsoft::WRL::ComPtr<ID3D12CommandQueue>                      present_queue;
@@ -241,7 +241,7 @@ namespace winrt::UniqueCreator::Graphics::Gpu::implementation
 		throw hresult_not_implemented();
 	}
 
-    IBackBuffer CompositionSwapChainResources::BackBuffer() const
+	SwapChainBuffer CompositionSwapChainResources::BackBuffer() const
     {
         return make<BackBuffer1>(m_back_buffer[m_buffer_index].get());
     }

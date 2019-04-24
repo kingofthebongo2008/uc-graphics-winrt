@@ -35,7 +35,7 @@ namespace winrt::UniqueCreator::Graphics::Gpu::implementation
         void SetLogicalSize(Size2D size);
         void SetDisplayInformation(const Windows::Graphics::Display::DisplayInformation& displayInformation);
 
-        IBackBuffer BackBuffer() const;
+		SwapChainBuffer BackBuffer() const;
 
         private:
         std::unique_ptr<uc::gx::dx12::gpu_command_queue> m_direct_queue;

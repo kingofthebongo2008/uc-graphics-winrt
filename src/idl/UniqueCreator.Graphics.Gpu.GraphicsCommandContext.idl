@@ -15,13 +15,13 @@ namespace UniqueCreator
                 void SetDescriptorHeaps();
                 void SetGraphicsPipelineStateObject(GraphicsPipelineState pso);
 
-                void Clear(IBackBuffer b);
+                void Clear(SwapChainBuffer b);
                 void SetPrimitiveTopology(PrimitiveTopology t);
                 void Draw(UInt32 vertexCount, UInt32 vertexOffset);
 
                 void SetViewPort(ViewPort vp);
                 void SetScissorRectangle(Rectangle2D r);
-                void SetRenderTarget(IBackBuffer b);
+                void SetRenderTarget(SwapChainBuffer b);
                 void TransitionResource(IVirtualResource r, ResourceState old_state, ResourceState new_state);
             }
         }
