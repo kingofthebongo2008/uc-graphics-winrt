@@ -38,15 +38,13 @@ namespace winrt::UniqueCreator::Graphics::Gpu::implementation
 
 		void SetRenderTargetSimple(const IColorBuffer& b);
 		void SetRenderTargetSimple(const SwapChainBuffer& b);
+		void SetRenderTargetSimple(const IDepthBuffer& d);
+		void SetRenderTargetSimple(const IDepthStencilBuffer& d);
 
 		void SetRenderTarget(const IColorBuffer& b, const IDepthBuffer& d);
 		void SetRenderTarget(const IColorBuffer& b, const IDepthStencilBuffer& d);
-
 		void SetRenderTarget(const SwapChainBuffer& b, const IDepthBuffer& d);
 		void SetRenderTarget(const SwapChainBuffer& b, const IDepthStencilBuffer& d);
-
-		void SetDepth(const IDepthBuffer& d);
-		void SetDepth(const IDepthStencilBuffer& d);
 
 		private:
         uc::gx::dx12::managed_graphics_compute_command_context m_ctx;

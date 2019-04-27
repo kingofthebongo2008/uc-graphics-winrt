@@ -96,7 +96,7 @@ namespace uc_engine_hello_world
 
             var depthStencil = new DepthStencilDescription
             {
-                DepthEnable = false,
+                DepthEnable = true,
                 StencilEnable = false,
                 DepthWriteMask = DepthWriteMask.All,
                 DepthFunc = ComparisonFunction.Less
@@ -111,7 +111,7 @@ namespace uc_engine_hello_world
             depthStencil.StencilWriteMask = 0xff;
 
 
-            rasterizerState.CullMode = CullMode.None;
+            rasterizerState.CullMode = CullMode.Back;
             rasterizerState.FillMode = FillMode.Solid;
             rasterizerState.FrontCounterClockwise = true;
             rasterizerState.AntialiasedLineEnable = false;
@@ -235,20 +235,24 @@ namespace uc_engine_hello_world
         private void Render()
         {
             {
-                var ctx             = m_swapChain.CreateGraphicsComputeCommandContext();
-                var backBuffer      = m_swapChain.BackBuffer;
-                var frameBackBuffer = m_ctx.CreateFrameColorBuffer((uint)backBuffer.Size2D.Width, (uint)backBuffer.Size2D.Height, GraphicsFormat.R8G8B8A8_UNORM);
+                var ctx                 = m_swapChain.CreateGraphicsComputeCommandContext();
+                var backBuffer          = m_swapChain.BackBuffer;
+                var size                = backBuffer.Size2D;
 
-                ctx.SetRenderTargetSimple(frameBackBuffer);
+                var frameColorBuffer    = m_ctx.CreateFrameColorBuffer((uint)size.Width, (uint)size.Height, GraphicsFormat.R8G8B8A8_UNORM);
+                var frameDepthBuffer    = m_ctx.CreateFrameDepthBuffer((uint)size.Width, (uint)size.Height, DepthBufferFormat.Depth32Single);
+
+                ctx.SetRenderTarget(frameColorBuffer, frameDepthBuffer);
                 ctx.SetGraphicsPipelineStateObject(m_triangle);
                 ctx.SetDescriptorHeaps();
-                ctx.TransitionResource(frameBackBuffer, ResourceState.Common, ResourceState.RenderTarget);
-                ctx.Clear(frameBackBuffer);
+                ctx.TransitionResource(frameColorBuffer, ResourceState.Common, ResourceState.RenderTarget);
+                ctx.Clear(frameColorBuffer);
+                ctx.Clear(frameDepthBuffer);
 
                 ctx.SetPrimitiveTopology(PrimitiveTopology.TriangleList);
 
                 {
-                    Size2D s = frameBackBuffer.Size2D;
+                    Size2D s = size;
 
                     {
                         ViewPort v;
@@ -277,8 +281,8 @@ namespace uc_engine_hello_world
                 ctx.Draw(3, 0);
 
                 ctx.TransitionResource(backBuffer, ResourceState.Present, ResourceState.CopyDestination);
-                ctx.TransitionResource(frameBackBuffer, ResourceState.RenderTarget, ResourceState.CopySource);
-                ctx.CopyResource(backBuffer, frameBackBuffer);
+                ctx.TransitionResource(frameColorBuffer, ResourceState.RenderTarget, ResourceState.CopySource);
+                ctx.CopyResource(backBuffer, frameColorBuffer);
                 ctx.TransitionResource(backBuffer, ResourceState.CopyDestination, ResourceState.Present);
                 ctx.Submit();
             }

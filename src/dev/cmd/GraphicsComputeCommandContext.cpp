@@ -58,7 +58,7 @@ namespace winrt::UniqueCreator::Graphics::Gpu::implementation
 	void DirectGpuCommandContext::Clear(const IDepthBuffer& b)
 	{
 		com_ptr<IDepthBufferNative> r0(b.as<IDepthBufferNative>());
-		m_ctx->clear(r0->GetDepthBuffer());
+		m_ctx->clear_depth(r0->GetDepthBuffer(), 1.0f);
 	}
 
 	void DirectGpuCommandContext::Clear(const IDepthStencilBuffer& b)
@@ -134,33 +134,37 @@ namespace winrt::UniqueCreator::Graphics::Gpu::implementation
 
 	void DirectGpuCommandContext::SetRenderTarget(const IColorBuffer& b, const IDepthBuffer& d)
 	{
-
-	
+		com_ptr<IColorBufferNative> r0(b.as<IColorBufferNative>());
+		com_ptr<IDepthBufferNative> r1(d.as<IDepthBufferNative>());
+		m_ctx->set_render_target(r0->GetColorBuffer(), r1->GetDepthBuffer());
 	}
 
 	void DirectGpuCommandContext::SetRenderTarget(const IColorBuffer& b, const IDepthStencilBuffer& d)
 	{
-
+		throw hresult_not_implemented();
 	}
 
 	void DirectGpuCommandContext::SetRenderTarget(const SwapChainBuffer& b, const IDepthBuffer& d)
 	{
-
+		com_ptr<IBackBufferNative> r0(b.as<IBackBufferNative>());
+		com_ptr<IDepthBufferNative> r1(d.as<IDepthBufferNative>());
+		m_ctx->set_render_target(r0->GetBackBuffer(), r1->GetDepthBuffer());
 	}
 
 	void DirectGpuCommandContext::SetRenderTarget(const SwapChainBuffer& b, const IDepthStencilBuffer& d)
 	{
-
+		throw hresult_not_implemented();
 	}
 
-	void DirectGpuCommandContext::SetDepth(const IDepthBuffer& d)
+	void DirectGpuCommandContext::SetRenderTargetSimple(const IDepthBuffer& d)
 	{
-
+		com_ptr<IDepthBufferNative> r1(d.as<IDepthBufferNative>());
+		m_ctx->set_render_target(r1->GetDepthBuffer());
 	}
 	
-	void DirectGpuCommandContext::SetDepth(const IDepthStencilBuffer& d)
+	void DirectGpuCommandContext::SetRenderTargetSimple(const IDepthStencilBuffer& d)
 	{
-
+		throw hresult_not_implemented();
 	}
 }
 
