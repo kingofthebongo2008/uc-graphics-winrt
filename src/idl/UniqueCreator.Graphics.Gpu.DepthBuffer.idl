@@ -4,12 +4,42 @@ namespace UniqueCreator
 {
     namespace Graphics
     {
-		namespace Gpu
-		{
-			[default_interface]
-			runtimeclass DepthBuffer : IPixelBuffer
-			{
-			};
-		}
+        namespace Gpu
+        {
+
+            interface IDepthBuffer requires IPixelBuffer
+            {
+                void Dummy1();
+            };
+
+            interface IDepthStencilBuffer requires IPixelBuffer
+            {
+                void Dummy1();
+            };
+
+            [default_interface]
+            runtimeclass FrameDepthBuffer : IDepthBuffer
+            {
+
+            };
+
+            [default_interface]
+            runtimeclass ViewDepthBuffer : IDepthBuffer
+            {
+
+            };
+
+            [default_interface]
+            runtimeclass FrameDepthStencilBuffer : IDepthStencilBuffer
+            {
+
+            };
+
+            [default_interface]
+            runtimeclass ViewDepthStencilBuffer : IDepthStencilBuffer
+            {
+
+            };
+        }
     }
 }

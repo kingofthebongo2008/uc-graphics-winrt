@@ -29,11 +29,24 @@ namespace winrt::UniqueCreator::Graphics::Gpu::implementation
 
         void SetComputeUAVBuffer(uint32_t slot, IVirtualResource r);
 
-        void Clear(const SwapChainBuffer& b);
-		void SetRenderTarget(const SwapChainBuffer& b);
+		void Clear(const SwapChainBuffer& b);
+		void Clear(const IColorBuffer& b);
+		void Clear(const IDepthBuffer& b);
+		void Clear(const IDepthStencilBuffer& b);
 
-        private:
+		void SetRenderTargetSimple(const IColorBuffer& b);
+		void SetRenderTargetSimple(const SwapChainBuffer& b);
 
+		void SetRenderTarget(const IColorBuffer& b, const IDepthBuffer& d);
+		void SetRenderTarget(const IColorBuffer& b, const IDepthStencilBuffer& d);
+
+		void SetRenderTarget(const SwapChainBuffer& b, const IDepthBuffer& d);
+		void SetRenderTarget(const SwapChainBuffer& b, const IDepthStencilBuffer& d);
+
+		void SetDepth(const IDepthBuffer& d);
+		void SetDepth(const IDepthStencilBuffer& d);
+
+		private:
         uc::gx::dx12::managed_graphics_compute_command_context m_ctx;
    };  
 }

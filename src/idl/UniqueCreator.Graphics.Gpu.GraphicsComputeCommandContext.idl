@@ -3,6 +3,8 @@
 import "UniqueCreator.Graphics.Gpu.ComputeCommandContext.idl";
 import "UniqueCreator.Graphics.Gpu.GraphicsPipelineState.idl";
 import "UniqueCreator.Graphics.Gpu.BackBuffer.idl";
+import "UniqueCreator.Graphics.Gpu.ColorBuffer.idl";
+import "UniqueCreator.Graphics.Gpu.DepthBuffer.idl";
 
 namespace UniqueCreator
 {
@@ -14,14 +16,47 @@ namespace UniqueCreator
             {
                 void SetGraphicsPipelineStateObject(GraphicsPipelineState pso);
 
-                void Clear(SwapChainBuffer b);
+                [overload("Clear"), default_overload]
+                void ClearSwapChain(SwapChainBuffer b);
+
+                [overload("Clear")]
+                void ClearColor(IColorBuffer b);
+
+                [overload("Clear")]
+                void ClearDepth(IDepthBuffer b);
+
+                [overload("Clear")]
+                void ClearDepthStencil(IDepthStencilBuffer b);
+
                 void SetPrimitiveTopology(PrimitiveTopology t);
 
                 void Draw(UInt32 vertexCount, UInt32 vertexOffset);
 
                 void SetViewPort(ViewPort vp);
                 void SetScissorRectangle(Rectangle2D r);
-                void SetRenderTarget(SwapChainBuffer b);
+
+                [overload("SetRenderTargetSimple"), default_overload]
+                void SetRenderTarget(IColorBuffer b);
+                [overload("SetRenderTargetSimple")]
+                void SetSwapChain(SwapChainBuffer b);
+
+                [overload("SetRenderTarget"), default_overload]
+                void SetColorDepth(IColorBuffer b, IDepthBuffer d);
+
+                [overload("SetRenderTarget")]
+                void SetColorDepthStencil(IColorBuffer b, IDepthStencilBuffer d);
+
+                [overload("SetRenderTarget")]
+                void SetSwapChainDepth(SwapChainBuffer b, IDepthBuffer d);
+
+                [overload("SetRenderTarget")]
+                void SetSwapChainDepthStencil(SwapChainBuffer b, IDepthStencilBuffer d);
+
+                [overload("SetDepth"), default_overload]
+                void SetDepth(IDepthBuffer d);
+
+                [overload("SetDepth")]
+                void SetDepthStencil(IDepthStencilBuffer d);
 
                 void TransitionResource(IVirtualResource r, ResourceState old_state, ResourceState new_state);
             }

@@ -23,7 +23,10 @@
 <ClCompile Include = "..\..\src\dev\WindowsEnvironment.cpp" />	
 <ClCompile Include = "..\..\src\dev\cmd\ComputeCommandContext.cpp" />	
 <ClCompile Include = "..\..\src\dev\cmd\GraphicsComputeCommandContext.cpp" />	
-<ClCompile Include = "..\..\src\dev\gpu\BackBuffer.cpp" />
+<ClCompile Include = "..\..\src\dev\gpu\BackBuffer.cpp" />	
+<ClCompile Include = "..\..\src\dev\gpu\ColorBuffer.cpp" />	
+<ClCompile Include = "..\..\src\dev\gpu\DepthBuffer.cpp" />	
+<ClCompile Include = "..\..\src\dev\gpu\DepthStencilBuffer.cpp" />
 </ItemGroup>
 <ItemGroup>	
 <ClCompile Include = "..\..\src\pch\pch.cpp"><PrecompiledHeader>Create</PrecompiledHeader></ClCompile>

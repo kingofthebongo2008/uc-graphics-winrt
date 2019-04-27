@@ -7,6 +7,8 @@
 #include "IComputePipelineStateNative.h"
 
 #include "IBackBufferNative.h"
+#include "IDepthBufferNative.h"
+
 
 namespace winrt::UniqueCreator::Graphics::Gpu::implementation
 {
@@ -39,6 +41,25 @@ namespace winrt::UniqueCreator::Graphics::Gpu::implementation
         com_ptr<IBackBufferNative> r0(b.as<IBackBufferNative>());
         m_ctx->clear(r0->GetBackBuffer());
     }
+
+	void DirectGpuCommandContext::Clear(const IColorBuffer& b)
+	{
+		com_ptr<IColorBufferNative> r0(b.as<IColorBufferNative>());
+		m_ctx->clear(r0->GetColorBuffer());
+	}
+
+	void DirectGpuCommandContext::Clear(const IDepthBuffer& b)
+	{
+		com_ptr<IDepthBufferNative> r0(b.as<IDepthBufferNative>());
+		m_ctx->clear(r0->GetDepthBuffer());
+	}
+
+	void DirectGpuCommandContext::Clear(const IDepthStencilBuffer& b)
+	{
+		com_ptr<IDepthStencilBufferNative> r0(b.as<IDepthStencilBufferNative>());
+		m_ctx->clear(r0->GetDepthStencilBuffer());
+	}
+
 
     void DirectGpuCommandContext::SetComputeUAVBuffer(uint32_t slot, IVirtualResource r)
     {
@@ -92,9 +113,47 @@ namespace winrt::UniqueCreator::Graphics::Gpu::implementation
 		m_ctx->set_scissor_rectangle(r);
 	}
 
-	void DirectGpuCommandContext::SetRenderTarget(const SwapChainBuffer& b)
+	void DirectGpuCommandContext::SetRenderTargetSimple(const SwapChainBuffer& b)
 	{
 		com_ptr<IBackBufferNative> r0(b.as<IBackBufferNative>());
 		m_ctx->set_render_target(r0->GetBackBuffer());
 	}
+
+	void DirectGpuCommandContext::SetRenderTargetSimple(const IColorBuffer& b)
+	{
+		com_ptr<IColorBufferNative> r0(b.as<IColorBufferNative>());
+		m_ctx->set_render_target(r0->GetColorBuffer());
+	}
+
+	void DirectGpuCommandContext::SetRenderTarget(const IColorBuffer& b, const IDepthBuffer& d)
+	{
+
+	
+	}
+
+	void DirectGpuCommandContext::SetRenderTarget(const IColorBuffer& b, const IDepthStencilBuffer& d)
+	{
+
+	}
+
+	void DirectGpuCommandContext::SetRenderTarget(const SwapChainBuffer& b, const IDepthBuffer& d)
+	{
+
+	}
+
+	void DirectGpuCommandContext::SetRenderTarget(const SwapChainBuffer& b, const IDepthStencilBuffer& d)
+	{
+
+	}
+
+	void DirectGpuCommandContext::SetDepth(const IDepthBuffer& d)
+	{
+
+	}
+	
+	void DirectGpuCommandContext::SetDepth(const IDepthStencilBuffer& d)
+	{
+
+	}
 }
+

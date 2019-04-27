@@ -1,17 +1,31 @@
 ﻿#pragma once
 
+import "UniqueCreator.Graphics.Gpu.ColorBuffer.idl";
+import "UniqueCreator.Graphics.Gpu.DepthBuffer.idl";
+
 namespace UniqueCreator
 {
     namespace Graphics
     {
         namespace Gpu
         {
-        runtimeclass ResourceCreateContext
-        {
-            ResourceCreateContext();
-            void Sync();
-            void ResetViewDependentResources();
-        }
+            runtimeclass ResourceCreateContext
+            {
+                ResourceCreateContext();
+
+                void Sync();
+                void ResetViewDependentResources();
+
+
+                FrameColorBuffer        CreateFrameColorBuffer( );
+                FrameDepthBuffer        CreateFrameDepthBuffer( );
+                FrameDepthStencilBuffer CreateFrameDepthStencilBuffer( );
+                
+                ViewColorBuffer        CreateViewColorBuffer( );
+                ViewDepthBuffer        CreateViewDepthBuffer( );
+                ViewDepthStencilBuffer CreateViewDepthStencilBuffer( );
+
+            }
         }
     }
 }

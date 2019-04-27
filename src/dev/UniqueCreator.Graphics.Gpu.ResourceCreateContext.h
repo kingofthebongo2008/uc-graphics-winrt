@@ -14,8 +14,14 @@ namespace winrt::UniqueCreator::Graphics::Gpu::implementation
 
         uc::gx::dx12::gpu_resource_create_context* GetResourceCreateContext() noexcept;
 
-        //ResourceCreateContext
-        //UniqueCreator::Graphics::DirectQueue CreateDirectQueue();
+        
+		Gpu::FrameColorBuffer        CreateFrameColorBuffer();
+		Gpu::FrameDepthBuffer        CreateFrameDepthBuffer();
+		Gpu::FrameDepthStencilBuffer CreateFrameDepthStencilBuffer();
+
+		Gpu::ViewColorBuffer        CreateViewColorBuffer();
+		Gpu::ViewDepthBuffer        CreateViewDepthBuffer();
+		Gpu::ViewDepthStencilBuffer CreateViewDepthStencilBuffer();
 
         void Sync();
         void ResetViewDependentResources();

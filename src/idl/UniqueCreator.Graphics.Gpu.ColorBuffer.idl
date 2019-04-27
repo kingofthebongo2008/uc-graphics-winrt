@@ -6,9 +6,21 @@ namespace UniqueCreator
     {
         namespace Gpu
         {
+            interface IColorBuffer requires IPixelBuffer
+            {
+				void Dummy1();
+            };
+
 			[default_interface]
-			runtimeclass ColorBuffer : IPixelBuffer
+            runtimeclass FrameColorBuffer : IColorBuffer
+            {
+
+            };
+
+			[default_interface]
+			runtimeclass ViewColorBuffer : IColorBuffer
 			{
+
 			};
         }
     }

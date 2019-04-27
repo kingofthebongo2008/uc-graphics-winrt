@@ -4,6 +4,7 @@
 <ItemGroup>	
 <ClInclude Include = "..\..\src\dev\IBackBufferNative.h"/>	
 <ClInclude Include = "..\..\src\dev\IComputePipelineStateNative.h"/>	
+<ClInclude Include = "..\..\src\dev\IDepthBufferNative.h"/>	
 <ClInclude Include = "..\..\src\dev\IFenceHandleNative.h"/>	
 <ClInclude Include = "..\..\src\dev\IGpuVirtualResourceNative.h"/>	
 <ClInclude Include = "..\..\src\dev\IGraphicsPipelineStateNative.h"/>	
@@ -31,7 +32,10 @@
 <ClInclude Include = "..\..\src\dev\WindowsEnvironment.h"/>	
 <ClInclude Include = "..\..\src\dev\cmd\ComputeCommandContext.h"/>	
 <ClInclude Include = "..\..\src\dev\cmd\GraphicsComputeCommandContext.h"/>	
-<ClInclude Include = "..\..\src\dev\gpu\BackBuffer.h"/>
+<ClInclude Include = "..\..\src\dev\gpu\BackBuffer.h"/>	
+<ClInclude Include = "..\..\src\dev\gpu\ColorBuffer.h"/>	
+<ClInclude Include = "..\..\src\dev\gpu\DepthBuffer.h"/>	
+<ClInclude Include = "..\..\src\dev\gpu\DepthStencilBuffer.h"/>
 </ItemGroup>
 <ItemGroup>	
 <ClInclude Include = "..\..\src\pch\pch.h"/>

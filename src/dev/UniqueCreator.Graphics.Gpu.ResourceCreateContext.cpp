@@ -1,7 +1,12 @@
 ﻿#include "pch.h"
 #include "UniqueCreator.Graphics.Gpu.ResourceCreateContext.h"
+#include "gpu/ColorBuffer.h"
+#include "gpu/DepthBuffer.h"
+#include "gpu/DepthStencilBuffer.h"
 
 #include "uc/gx/dx12/dx12.h"
+
+
 
 namespace winrt::UniqueCreator::Graphics::Gpu::implementation
 {
@@ -42,12 +47,35 @@ namespace winrt::UniqueCreator::Graphics::Gpu::implementation
         }
     }
 
-    /*
-    UniqueCreator::Graphics::DirectQueue ResourceCreateContext::CreateDirectQueue()
-    {
-        return DirectQueue();
-    }
-    */
+	Gpu::FrameColorBuffer ResourceCreateContext::CreateFrameColorBuffer()
+	{
+		return make<FrameColorBuffer>(m_ctx->create_frame_color_buffer(8, 8, DXGI_FORMAT_B8G8R8A8_UNORM_SRGB));
+	}
+
+	Gpu::FrameDepthBuffer ResourceCreateContext::CreateFrameDepthBuffer()
+	{
+		return make<FrameDepthBuffer>(m_ctx->create_frame_depth_buffer(8, 8, DXGI_FORMAT_B8G8R8A8_UNORM_SRGB));
+	}
+
+	Gpu::FrameDepthStencilBuffer ResourceCreateContext::CreateFrameDepthStencilBuffer()
+	{
+		throw hresult_not_implemented();
+	}
+
+	Gpu::ViewColorBuffer        ResourceCreateContext::CreateViewColorBuffer()
+	{
+		return make<ViewColorBuffer>(m_ctx->create_view_color_buffer(8, 8, DXGI_FORMAT_B8G8R8A8_UNORM_SRGB));
+	}
+
+	Gpu::ViewDepthBuffer        ResourceCreateContext::CreateViewDepthBuffer()
+	{
+		return make<ViewDepthBuffer>(m_ctx->create_view_depth_buffer(8, 8, DXGI_FORMAT_B8G8R8A8_UNORM_SRGB));
+	}
+
+	Gpu::ViewDepthStencilBuffer ResourceCreateContext::CreateViewDepthStencilBuffer()
+	{
+		throw hresult_not_implemented();
+	}
 
     void ResourceCreateContext::Sync()
     {

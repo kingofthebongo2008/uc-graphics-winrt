@@ -242,7 +242,7 @@ namespace uc_engine_hello_world
                 ctx.SetDescriptorHeaps();
 
                 ctx.TransitionResource(backBuffer, ResourceState.Present, ResourceState.RenderTarget);
-                ctx.SetRenderTarget(m_swapChain.BackBuffer);
+                ctx.SetRenderTargetSimple(m_swapChain.BackBuffer);
                 ctx.Clear(m_swapChain.BackBuffer);
 
                 ctx.SetPrimitiveTopology(PrimitiveTopology.TriangleList);

@@ -10,6 +10,7 @@
 <ItemGroup>	
 <ClInclude Include = "..\..\src\dev\IBackBufferNative.h"><Filter>src\dev</Filter></ClInclude>	
 <ClInclude Include = "..\..\src\dev\IComputePipelineStateNative.h"><Filter>src\dev</Filter></ClInclude>	
+<ClInclude Include = "..\..\src\dev\IDepthBufferNative.h"><Filter>src\dev</Filter></ClInclude>	
 <ClInclude Include = "..\..\src\dev\IFenceHandleNative.h"><Filter>src\dev</Filter></ClInclude>	
 <ClInclude Include = "..\..\src\dev\IGpuVirtualResourceNative.h"><Filter>src\dev</Filter></ClInclude>	
 <ClInclude Include = "..\..\src\dev\IGraphicsPipelineStateNative.h"><Filter>src\dev</Filter></ClInclude>	
@@ -37,7 +38,10 @@
 <ClInclude Include = "..\..\src\dev\WindowsEnvironment.h"><Filter>src\dev</Filter></ClInclude>	
 <ClInclude Include = "..\..\src\dev\cmd\ComputeCommandContext.h"><Filter>src\dev\cmd</Filter></ClInclude>	
 <ClInclude Include = "..\..\src\dev\cmd\GraphicsComputeCommandContext.h"><Filter>src\dev\cmd</Filter></ClInclude>	
-<ClInclude Include = "..\..\src\dev\gpu\BackBuffer.h"><Filter>src\dev\gpu</Filter></ClInclude>
+<ClInclude Include = "..\..\src\dev\gpu\BackBuffer.h"><Filter>src\dev\gpu</Filter></ClInclude>	
+<ClInclude Include = "..\..\src\dev\gpu\ColorBuffer.h"><Filter>src\dev\gpu</Filter></ClInclude>	
+<ClInclude Include = "..\..\src\dev\gpu\DepthBuffer.h"><Filter>src\dev\gpu</Filter></ClInclude>	
+<ClInclude Include = "..\..\src\dev\gpu\DepthStencilBuffer.h"><Filter>src\dev\gpu</Filter></ClInclude>
 </ItemGroup>
 <ItemGroup>
 <Filter Include = "src"/>
@@ -74,7 +78,10 @@
 <ClCompile Include = "..\..\src\dev\WindowsEnvironment.cpp"><Filter>src\dev</Filter></ClCompile>	
 <ClCompile Include = "..\..\src\dev\cmd\ComputeCommandContext.cpp"><Filter>src\dev\cmd</Filter></ClCompile>	
 <ClCompile Include = "..\..\src\dev\cmd\GraphicsComputeCommandContext.cpp"><Filter>src\dev\cmd</Filter></ClCompile>	
-<ClCompile Include = "..\..\src\dev\gpu\BackBuffer.cpp"><Filter>src\dev\gpu</Filter></ClCompile>
+<ClCompile Include = "..\..\src\dev\gpu\BackBuffer.cpp"><Filter>src\dev\gpu</Filter></ClCompile>	
+<ClCompile Include = "..\..\src\dev\gpu\ColorBuffer.cpp"><Filter>src\dev\gpu</Filter></ClCompile>	
+<ClCompile Include = "..\..\src\dev\gpu\DepthBuffer.cpp"><Filter>src\dev\gpu</Filter></ClCompile>	
+<ClCompile Include = "..\..\src\dev\gpu\DepthStencilBuffer.cpp"><Filter>src\dev\gpu</Filter></ClCompile>
 </ItemGroup>
 <ItemGroup>
 <Filter Include = "src"/>
