@@ -49,12 +49,12 @@ namespace winrt::UniqueCreator::Graphics::Gpu::implementation
 
 	Gpu::FrameColorBuffer ResourceCreateContext::CreateFrameColorBuffer()
 	{
-		return make<FrameColorBuffer>(m_ctx->create_frame_color_buffer(8, 8, DXGI_FORMAT_B8G8R8A8_UNORM_SRGB));
+		return make<FrameColorBuffer>(std::unique_ptr<gpu_frame_color_buffer>(m_ctx->create_frame_color_buffer(8, 8, DXGI_FORMAT_B8G8R8A8_UNORM_SRGB)));
 	}
 
 	Gpu::FrameDepthBuffer ResourceCreateContext::CreateFrameDepthBuffer()
 	{
-		return make<FrameDepthBuffer>(m_ctx->create_frame_depth_buffer(8, 8, DXGI_FORMAT_B8G8R8A8_UNORM_SRGB));
+		return make<FrameDepthBuffer>(std::unique_ptr<gpu_frame_depth_buffer>(m_ctx->create_frame_depth_buffer(8, 8, DXGI_FORMAT_B8G8R8A8_UNORM_SRGB)));
 	}
 
 	Gpu::FrameDepthStencilBuffer ResourceCreateContext::CreateFrameDepthStencilBuffer()
@@ -64,12 +64,12 @@ namespace winrt::UniqueCreator::Graphics::Gpu::implementation
 
 	Gpu::ViewColorBuffer        ResourceCreateContext::CreateViewColorBuffer()
 	{
-		return make<ViewColorBuffer>(m_ctx->create_view_color_buffer(8, 8, DXGI_FORMAT_B8G8R8A8_UNORM_SRGB));
+		return make<ViewColorBuffer>(std::unique_ptr<gpu_view_color_buffer>(m_ctx->create_view_color_buffer(8, 8, DXGI_FORMAT_B8G8R8A8_UNORM_SRGB)));
 	}
 
 	Gpu::ViewDepthBuffer        ResourceCreateContext::CreateViewDepthBuffer()
 	{
-		return make<ViewDepthBuffer>(m_ctx->create_view_depth_buffer(8, 8, DXGI_FORMAT_B8G8R8A8_UNORM_SRGB));
+		return make<ViewDepthBuffer>(std::unique_ptr<gpu_view_depth_buffer>(m_ctx->create_view_depth_buffer(8, 8, DXGI_FORMAT_B8G8R8A8_UNORM_SRGB)));
 	}
 
 	Gpu::ViewDepthStencilBuffer ResourceCreateContext::CreateViewDepthStencilBuffer()

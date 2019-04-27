@@ -8,6 +8,11 @@ namespace winrt::UniqueCreator::Graphics::Gpu::implementation
 
     }
 
+	BackBuffer::~BackBuffer()
+	{
+		
+	}
+
     GpuVirtualAddress BackBuffer::VirtualAddress() const
     {
         return { m_back_buffer->virtual_address() };

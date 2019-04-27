@@ -14,6 +14,7 @@ namespace winrt::UniqueCreator::Graphics::Gpu::implementation
     struct BackBuffer : SwapChainBufferT<BackBuffer, IGpuVirtualResourceNative, IBackBufferNative >
     {
         BackBuffer(gpu_back_buffer* b);
+		~BackBuffer();
 
         void Dummy1() {}
 

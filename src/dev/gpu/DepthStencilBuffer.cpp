@@ -34,6 +34,7 @@ namespace winrt::UniqueCreator::Graphics::Gpu::implementation
 	{
 		return m_depth_buffer;
 	}
+
 	///////////////////////////////////
 
 

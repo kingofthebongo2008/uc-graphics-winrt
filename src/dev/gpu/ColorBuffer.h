@@ -14,7 +14,7 @@ namespace winrt::UniqueCreator::Graphics::Gpu::implementation
 
     struct FrameColorBuffer : FrameColorBufferT<FrameColorBuffer, IGpuVirtualResourceNative, IColorBufferNative >
     {
-		FrameColorBuffer(gpu_color_buffer* b);
+		FrameColorBuffer(std::unique_ptr<gpu_frame_color_buffer> b);
 
         void Dummy1() {}
 
@@ -26,12 +26,12 @@ namespace winrt::UniqueCreator::Graphics::Gpu::implementation
         Size2D            Size2D() const;
         Size3D            Size3D() const;
         private:
-        gpu_color_buffer*		m_color_buffer;
+		std::unique_ptr<gpu_frame_color_buffer>		m_color_buffer;
    };  
 
 	struct ViewColorBuffer : ViewColorBufferT<ViewColorBuffer, IGpuVirtualResourceNative, IColorBufferNative >
 	{
-		ViewColorBuffer(gpu_color_buffer* b);
+		ViewColorBuffer(std::unique_ptr<gpu_view_color_buffer> b);
 
 		void Dummy1() {}
 
@@ -43,7 +43,7 @@ namespace winrt::UniqueCreator::Graphics::Gpu::implementation
 		Size2D            Size2D() const;
 		Size3D            Size3D() const;
 	private:
-		gpu_color_buffer* m_color_buffer;
+		std::unique_ptr<gpu_view_color_buffer>		m_color_buffer;
 	};
 }
 

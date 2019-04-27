@@ -3,7 +3,7 @@
 
 namespace winrt::UniqueCreator::Graphics::Gpu::implementation
 {
-    FrameDepthBuffer::FrameDepthBuffer(gpu_depth_buffer* b) : m_depth_buffer(b)
+    FrameDepthBuffer::FrameDepthBuffer(std::unique_ptr<gpu_frame_depth_buffer> b) : m_depth_buffer(std::move(b))
     {
 
     }
@@ -27,17 +27,17 @@ namespace winrt::UniqueCreator::Graphics::Gpu::implementation
 
     uc::gx::dx12::gpu_depth_buffer* FrameDepthBuffer::GetDepthBuffer()
     {
-        return m_depth_buffer;
+		return m_depth_buffer.get();
     }
 
     uc::gx::dx12::gpu_virtual_resource* FrameDepthBuffer::GetResource()
     {
-        return m_depth_buffer;
+		return m_depth_buffer.get();
     }
 
 	////////////////////////////////////
 
-	ViewDepthBuffer::ViewDepthBuffer(gpu_depth_buffer* b) : m_depth_buffer(b)
+	ViewDepthBuffer::ViewDepthBuffer(std::unique_ptr<gpu_view_depth_buffer> b) : m_depth_buffer( std::move(b))
 	{
 
 	}
@@ -61,12 +61,12 @@ namespace winrt::UniqueCreator::Graphics::Gpu::implementation
 
 	uc::gx::dx12::gpu_depth_buffer* ViewDepthBuffer::GetDepthBuffer()
 	{
-		return m_depth_buffer;
+		return m_depth_buffer.get();
 	}
 
 	uc::gx::dx12::gpu_virtual_resource* ViewDepthBuffer::GetResource()
 	{
-		return m_depth_buffer;
+		return m_depth_buffer.get();
 	}
    
 }

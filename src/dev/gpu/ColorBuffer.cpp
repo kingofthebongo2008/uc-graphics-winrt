@@ -3,7 +3,7 @@
 
 namespace winrt::UniqueCreator::Graphics::Gpu::implementation
 {
-    FrameColorBuffer::FrameColorBuffer(gpu_color_buffer* b) : m_color_buffer(b)
+    FrameColorBuffer::FrameColorBuffer(std::unique_ptr<gpu_frame_color_buffer> b) : m_color_buffer(std::move(b))
     {
 
     }
@@ -27,16 +27,16 @@ namespace winrt::UniqueCreator::Graphics::Gpu::implementation
 
     uc::gx::dx12::gpu_color_buffer* FrameColorBuffer::GetColorBuffer()
     {
-        return m_color_buffer;
+        return m_color_buffer.get();
     }
 
     uc::gx::dx12::gpu_virtual_resource* FrameColorBuffer::GetResource()
     {
-        return m_color_buffer;
+        return m_color_buffer.get();
     }
 
 	//////////////////////
-	ViewColorBuffer::ViewColorBuffer(gpu_color_buffer* b) : m_color_buffer(b)
+	ViewColorBuffer::ViewColorBuffer(std::unique_ptr<gpu_view_color_buffer> b) : m_color_buffer(std::move(b))
 	{
 
 	}
@@ -60,12 +60,12 @@ namespace winrt::UniqueCreator::Graphics::Gpu::implementation
 
 	uc::gx::dx12::gpu_color_buffer* ViewColorBuffer::GetColorBuffer()
 	{
-		return m_color_buffer;
+		return m_color_buffer.get();
 	}
 
 	uc::gx::dx12::gpu_virtual_resource* ViewColorBuffer::GetResource()
 	{
-		return m_color_buffer;
+		return m_color_buffer.get();
 	}
    
 }
