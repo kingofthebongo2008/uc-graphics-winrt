@@ -3,7 +3,7 @@
 
 namespace winrt::UniqueCreator::Graphics::Gpu::implementation
 {
-    FrameDepthBuffer::FrameDepthBuffer(std::unique_ptr<gpu_frame_depth_buffer> b) : m_depth_buffer(std::move(b))
+    FrameDepthBuffer::FrameDepthBuffer(managed_gpu_frame_depth_buffer b) : m_depth_buffer(std::move(b))
     {
 
     }

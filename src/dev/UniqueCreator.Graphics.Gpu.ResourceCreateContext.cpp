@@ -43,36 +43,35 @@ namespace winrt::UniqueCreator::Graphics::Gpu::implementation
         if (r == S_OK)
         {
             m_ctx = std::make_unique<uc::gx::dx12::gpu_resource_create_context>(m_device.get());
-            //todo
         }
     }
 
-	Gpu::FrameColorBuffer ResourceCreateContext::CreateFrameColorBuffer()
+	Gpu::FrameColorBuffer ResourceCreateContext::CreateFrameColorBuffer(uint32_t width, uint32_t height, GraphicsFormat		format)
 	{
-		return make<FrameColorBuffer>(std::unique_ptr<gpu_frame_color_buffer>(m_ctx->create_frame_color_buffer(8, 8, DXGI_FORMAT_B8G8R8A8_UNORM_SRGB)));
+		return make<FrameColorBuffer>(create_frame_color_buffer(m_ctx.get(), width, height, static_cast<DXGI_FORMAT>(format)));
 	}
 
-	Gpu::FrameDepthBuffer ResourceCreateContext::CreateFrameDepthBuffer()
+	Gpu::FrameDepthBuffer ResourceCreateContext::CreateFrameDepthBuffer(uint32_t width, uint32_t height, DepthBufferFormat	format)
 	{
-		return make<FrameDepthBuffer>(std::unique_ptr<gpu_frame_depth_buffer>(m_ctx->create_frame_depth_buffer(8, 8, DXGI_FORMAT_B8G8R8A8_UNORM_SRGB)));
+		return make<FrameDepthBuffer>(create_frame_depth_buffer(m_ctx.get(), width, height, static_cast<DXGI_FORMAT>(format)));
 	}
 
-	Gpu::FrameDepthStencilBuffer ResourceCreateContext::CreateFrameDepthStencilBuffer()
+	Gpu::FrameDepthStencilBuffer ResourceCreateContext::CreateFrameDepthStencilBuffer(uint32_t width, uint32_t height, DepthStencilBufferFormat format)
 	{
 		throw hresult_not_implemented();
 	}
 
-	Gpu::ViewColorBuffer        ResourceCreateContext::CreateViewColorBuffer()
+	Gpu::ViewColorBuffer ResourceCreateContext::CreateViewColorBuffer(uint32_t width, uint32_t height, GraphicsFormat	format)
 	{
-		return make<ViewColorBuffer>(std::unique_ptr<gpu_view_color_buffer>(m_ctx->create_view_color_buffer(8, 8, DXGI_FORMAT_B8G8R8A8_UNORM_SRGB)));
+		return make<ViewColorBuffer>(std::unique_ptr<gpu_view_color_buffer>(m_ctx->create_view_color_buffer(width, height, static_cast<DXGI_FORMAT>(format))));
 	}
 
-	Gpu::ViewDepthBuffer        ResourceCreateContext::CreateViewDepthBuffer()
+	Gpu::ViewDepthBuffer ResourceCreateContext::CreateViewDepthBuffer(uint32_t width, uint32_t height, DepthBufferFormat format)
 	{
-		return make<ViewDepthBuffer>(std::unique_ptr<gpu_view_depth_buffer>(m_ctx->create_view_depth_buffer(8, 8, DXGI_FORMAT_B8G8R8A8_UNORM_SRGB)));
+		return make<ViewDepthBuffer>(std::unique_ptr<gpu_view_depth_buffer>(m_ctx->create_view_depth_buffer(width, height, static_cast<DXGI_FORMAT>(format))));
 	}
 
-	Gpu::ViewDepthStencilBuffer ResourceCreateContext::CreateViewDepthStencilBuffer()
+	Gpu::ViewDepthStencilBuffer ResourceCreateContext::CreateViewDepthStencilBuffer(uint32_t width, uint32_t height, DepthStencilBufferFormat format)
 	{
 		throw hresult_not_implemented();
 	}

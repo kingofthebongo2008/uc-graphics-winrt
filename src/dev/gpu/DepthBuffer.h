@@ -14,7 +14,7 @@ namespace winrt::UniqueCreator::Graphics::Gpu::implementation
 
     struct FrameDepthBuffer :  FrameDepthBufferT<FrameDepthBuffer, IGpuVirtualResourceNative, IDepthBufferNative >
     {
-        FrameDepthBuffer(std::unique_ptr<gpu_frame_depth_buffer> b);
+        FrameDepthBuffer(managed_gpu_frame_depth_buffer b);
 
         void Dummy1() {}
 
@@ -26,7 +26,7 @@ namespace winrt::UniqueCreator::Graphics::Gpu::implementation
         Size2D            Size2D() const;
         Size3D            Size3D() const;
         private:
-        std::unique_ptr<gpu_frame_depth_buffer>  m_depth_buffer;
+		managed_gpu_frame_depth_buffer  m_depth_buffer;
    };  
 
 	struct ViewDepthBuffer : ViewDepthBufferT<ViewDepthBuffer, IGpuVirtualResourceNative, IDepthBufferNative >

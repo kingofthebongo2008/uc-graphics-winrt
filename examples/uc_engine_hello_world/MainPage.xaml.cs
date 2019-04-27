@@ -235,20 +235,20 @@ namespace uc_engine_hello_world
         private void Render()
         {
             {
-                var ctx = m_swapChain.CreateGraphicsComputeCommandContext();
-                var backBuffer = m_swapChain.BackBuffer;
+                var ctx             = m_swapChain.CreateGraphicsComputeCommandContext();
+                var backBuffer      = m_swapChain.BackBuffer;
+                var frameBackBuffer = m_ctx.CreateFrameColorBuffer((uint)backBuffer.Size2D.Width, (uint)backBuffer.Size2D.Height, GraphicsFormat.R8G8B8A8_UNORM);
 
+                ctx.SetRenderTargetSimple(frameBackBuffer);
                 ctx.SetGraphicsPipelineStateObject(m_triangle);
                 ctx.SetDescriptorHeaps();
-
-                ctx.TransitionResource(backBuffer, ResourceState.Present, ResourceState.RenderTarget);
-                ctx.SetRenderTargetSimple(m_swapChain.BackBuffer);
-                ctx.Clear(m_swapChain.BackBuffer);
+                ctx.TransitionResource(frameBackBuffer, ResourceState.Common, ResourceState.RenderTarget);
+                ctx.Clear(frameBackBuffer);
 
                 ctx.SetPrimitiveTopology(PrimitiveTopology.TriangleList);
 
                 {
-                    Size2D s = m_swapChain.BackBuffer.Size2D;
+                    Size2D s = frameBackBuffer.Size2D;
 
                     {
                         ViewPort v;
@@ -274,12 +274,12 @@ namespace uc_engine_hello_world
                     }
                 }
 
-
-
                 ctx.Draw(3, 0);
 
-                ctx.TransitionResource(backBuffer, ResourceState.RenderTarget, ResourceState.Present);
-
+                ctx.TransitionResource(backBuffer, ResourceState.Present, ResourceState.CopyDestination);
+                ctx.TransitionResource(frameBackBuffer, ResourceState.RenderTarget, ResourceState.CopySource);
+                ctx.CopyResource(backBuffer, frameBackBuffer);
+                ctx.TransitionResource(backBuffer, ResourceState.CopyDestination, ResourceState.Present);
                 ctx.Submit();
             }
            

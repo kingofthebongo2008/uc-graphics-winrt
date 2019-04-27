@@ -58,6 +58,8 @@ namespace UniqueCreator
                 [overload("SetDepth")]
                 void SetDepthStencil(IDepthStencilBuffer d);
 
+
+				void CopyResource(IVirtualResource d, IVirtualResource s);
                 void TransitionResource(IVirtualResource r, ResourceState old_state, ResourceState new_state);
             }
         }

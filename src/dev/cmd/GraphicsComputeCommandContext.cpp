@@ -36,6 +36,13 @@ namespace winrt::UniqueCreator::Graphics::Gpu::implementation
         m_ctx->transition_resource(r0->GetResource(), static_cast<D3D12_RESOURCE_STATES>(old_state), static_cast<D3D12_RESOURCE_STATES>(new_state));
     }
 
+	void DirectGpuCommandContext::CopyResource(IVirtualResource d, IVirtualResource s)
+	{
+		com_ptr<IGpuVirtualResourceNative> r0(d.as<IGpuVirtualResourceNative>());
+		com_ptr<IGpuVirtualResourceNative> r1(s.as<IGpuVirtualResourceNative>());
+		m_ctx->copy_resource(r0->GetResource(), r1->GetResource());
+	}
+
     void DirectGpuCommandContext::Clear(const SwapChainBuffer& b)
     {
         com_ptr<IBackBufferNative> r0(b.as<IBackBufferNative>());

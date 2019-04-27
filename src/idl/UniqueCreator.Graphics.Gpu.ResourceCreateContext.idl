@@ -1,7 +1,9 @@
 ﻿#pragma once
 
+import "UniqueCreator.Graphics.Gpu.GraphicTypes.idl";
 import "UniqueCreator.Graphics.Gpu.ColorBuffer.idl";
 import "UniqueCreator.Graphics.Gpu.DepthBuffer.idl";
+
 
 namespace UniqueCreator
 {
@@ -17,13 +19,13 @@ namespace UniqueCreator
                 void ResetViewDependentResources();
 
 
-                FrameColorBuffer        CreateFrameColorBuffer( );
-                FrameDepthBuffer        CreateFrameDepthBuffer( );
-                FrameDepthStencilBuffer CreateFrameDepthStencilBuffer( );
+                FrameColorBuffer        CreateFrameColorBuffer(UInt32 width, UInt32 height, GraphicsFormat format );
+                FrameDepthBuffer        CreateFrameDepthBuffer(UInt32 width, UInt32 height, DepthBufferFormat format);
+				FrameDepthStencilBuffer CreateFrameDepthStencilBuffer(UInt32 width, UInt32 height, DepthStencilBufferFormat format);
                 
-                ViewColorBuffer        CreateViewColorBuffer( );
-                ViewDepthBuffer        CreateViewDepthBuffer( );
-                ViewDepthStencilBuffer CreateViewDepthStencilBuffer( );
+                ViewColorBuffer			CreateViewColorBuffer(UInt32 width, UInt32 height, GraphicsFormat format);
+                ViewDepthBuffer			CreateViewDepthBuffer(UInt32 width, UInt32 height, DepthBufferFormat format);
+                ViewDepthStencilBuffer	CreateViewDepthStencilBuffer(UInt32 width, UInt32 height, DepthStencilBufferFormat format);
 
             }
         }

@@ -14,6 +14,8 @@ namespace winrt::UniqueCreator::Graphics::Gpu::implementation
         IFenceHandle Submit();
         void SubmitAndWaitToExecute();
         void TransitionResource(IVirtualResource r, ResourceState old_state, ResourceState new_state);
+		void CopyResource(IVirtualResource d, IVirtualResource s);
+
 
         void Copy() {}
         void Dispatch(uint32_t x, uint32_t y, uint32_t z) {}
