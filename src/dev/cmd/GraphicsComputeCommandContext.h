@@ -17,7 +17,6 @@ namespace winrt::UniqueCreator::Graphics::Gpu::implementation
 		void CopyResource(IVirtualResource d, IVirtualResource s);
 
 
-        void Copy() {}
         void Dispatch(uint32_t x, uint32_t y, uint32_t z) {}
 		void Draw(uint32_t vertex_count, uint32_t vertex_offset);
 		void DrawInstanced(uint32_t vertexCountPerInstance, uint32_t instanceCount, uint32_t startVertexLocation, uint32_t startInstanceLocation);
@@ -32,6 +31,9 @@ namespace winrt::UniqueCreator::Graphics::Gpu::implementation
 		void SetViewPort(const ViewPort& vp);
 		void SetScissorRectangle(const Rectangle2D& r);
 		void SetPrimitiveTopology(const PrimitiveTopology& t);
+
+		void SetIndexBuffer(const IndexBufferView& view);
+		void SetVertexBuffer(uint32_t slot, const VertexBufferView& view);
 
         void SetComputeUAVBuffer(uint32_t slot, IVirtualResource r);
 

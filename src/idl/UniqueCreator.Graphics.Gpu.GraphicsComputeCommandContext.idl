@@ -38,6 +38,10 @@ namespace UniqueCreator
                 void SetViewPort(ViewPort vp);
                 void SetScissorRectangle(Rectangle2D r);
 
+
+				void SetIndexBuffer(IndexBufferView view);
+				void SetVertexBuffer(UInt32 slot, VertexBufferView view);
+
                 [overload("SetRenderTargetSimple"), default_overload]
                 void SetRenderTarget(IColorBuffer b);
                 [overload("SetRenderTargetSimple")]

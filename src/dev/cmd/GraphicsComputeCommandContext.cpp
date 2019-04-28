@@ -110,6 +110,24 @@ namespace winrt::UniqueCreator::Graphics::Gpu::implementation
 		m_ctx->set_primitive_topology(static_cast<D3D12_PRIMITIVE_TOPOLOGY>(t));
 	}
 
+	void DirectGpuCommandContext::SetIndexBuffer(const IndexBufferView& view)
+	{
+		D3D12_INDEX_BUFFER_VIEW v;
+		v.BufferLocation = view.BufferLocation.Value;
+		v.Format = static_cast<DXGI_FORMAT>(view.Format);
+		v.SizeInBytes = view.SizeInBytes;
+		m_ctx->set_index_buffer(v);
+	}
+
+	void DirectGpuCommandContext::SetVertexBuffer(uint32_t slot, const VertexBufferView& view)
+	{
+		D3D12_VERTEX_BUFFER_VIEW v;
+		v.BufferLocation = view.BufferLocation.Value;
+		v.StrideInBytes = view.StrideInBytes;
+		v.SizeInBytes = view.SizeInBytes;
+		m_ctx->set_vertex_buffer(slot, v);
+	}
+
 	void DirectGpuCommandContext::SetViewPort(const ViewPort& vp)
 	{
 		D3D12_VIEWPORT v = {};
