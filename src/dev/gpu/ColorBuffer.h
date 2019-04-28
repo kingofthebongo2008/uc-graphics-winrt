@@ -20,9 +20,12 @@ namespace winrt::UniqueCreator::Graphics::Gpu::implementation
         void Dummy1() {}
 
         GpuVirtualAddress VirtualAddress() const;
+		CpuDescriptorHandle SRV() const;
+		CpuDescriptorHandle UAV() const;
 
         gpu_color_buffer*        GetColorBuffer();
         gpu_virtual_resource*    GetResource();
+
 
         Size2D            Size2D() const;
         Size3D            Size3D() const;
@@ -37,6 +40,8 @@ namespace winrt::UniqueCreator::Graphics::Gpu::implementation
 		void Dummy1() {}
 
 		GpuVirtualAddress VirtualAddress() const;
+		CpuDescriptorHandle SRV() const;
+		CpuDescriptorHandle UAV() const;
 
 		gpu_color_buffer* GetColorBuffer();
 		gpu_virtual_resource* GetResource();

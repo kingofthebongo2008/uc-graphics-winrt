@@ -6,7 +6,7 @@ namespace UniqueCreator
     {
         namespace Gpu
         {
-            interface IColorBuffer requires IPixelBuffer
+            interface IColorBuffer requires IPixelBuffer, IShaderResourceView, IUnorderedAccessView
             {
 				void Dummy1();
             };

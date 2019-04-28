@@ -12,6 +12,16 @@ namespace UniqueCreator
             {
                 GpuVirtualAddress VirtualAddress { get; };
             };
+
+			interface IShaderResourceView
+			{
+				CpuDescriptorHandle SRV{ get; };
+			};
+
+			interface IUnorderedAccessView
+			{
+				CpuDescriptorHandle UAV{ get; };
+			};
         }
     }
 }

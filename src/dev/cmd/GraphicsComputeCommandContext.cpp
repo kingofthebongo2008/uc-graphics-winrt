@@ -216,5 +216,32 @@ namespace winrt::UniqueCreator::Graphics::Gpu::implementation
 	{
 		m_ctx->set_graphics_constant_buffer(rootIndex, r.Value);
 	}
+
+	void DirectGpuCommandContext::SetGraphicsConstantBufferData(uint32_t rootIndex, const Windows::Foundation::Collections::IVector<uint8_t>& buffer)
+	{
+		std::vector<uint8_t> data;
+		data.resize(buffer.Size());
+		buffer.GetMany(0, array_view<uint8_t>(data));
+		m_ctx->set_graphics_constant_buffer(rootIndex, &data[0], data.size());
+	}
+
+	void DirectGpuCommandContext::SetGraphicsSRV(uint32_t rootIndex, uint32_t offset, const IShaderResourceView& r)
+	{
+		D3D12_CPU_DESCRIPTOR_HANDLE h;
+		h.ptr = r.SRV().Value;
+		m_ctx->set_graphics_dynamic_descriptor(rootIndex, h, offset);
+	}
+
+	void DirectGpuCommandContext::SetGraphicsUAV(uint32_t rootIndex, uint32_t offset, const IUnorderedAccessView& r)
+	{
+		D3D12_CPU_DESCRIPTOR_HANDLE h;
+		h.ptr = r.UAV().Value;
+		m_ctx->set_graphics_dynamic_descriptor(rootIndex, h, offset);
+	}
+
+	void DirectGpuCommandContext::SetGraphicsRootConstant(uint32_t rootIndex, uint32_t offset, uint32_t constant)
+	{
+		throw hresult_not_implemented();
+	}
 }
 

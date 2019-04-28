@@ -13,6 +13,18 @@ namespace winrt::UniqueCreator::Graphics::Gpu::implementation
         return { m_color_buffer->virtual_address() };
     }
 
+	CpuDescriptorHandle FrameColorBuffer::SRV() const
+	{
+		D3D12_CPU_DESCRIPTOR_HANDLE h = m_color_buffer->srv();
+		return { h.ptr };
+	}
+
+	CpuDescriptorHandle FrameColorBuffer::UAV() const
+	{
+		D3D12_CPU_DESCRIPTOR_HANDLE h = m_color_buffer->uav();
+		return { h.ptr };
+	}
+
     Size3D FrameColorBuffer::Size3D() const
     {
         auto r = m_color_buffer->desc();
@@ -46,6 +58,18 @@ namespace winrt::UniqueCreator::Graphics::Gpu::implementation
 		return { m_color_buffer->virtual_address() };
 	}
 
+	CpuDescriptorHandle ViewColorBuffer::SRV() const
+	{
+		D3D12_CPU_DESCRIPTOR_HANDLE h = m_color_buffer->srv();
+		return { h.ptr };
+	}
+
+	CpuDescriptorHandle ViewColorBuffer::UAV() const
+	{
+		D3D12_CPU_DESCRIPTOR_HANDLE h = m_color_buffer->uav();
+		return { h.ptr };
+	}
+	
 	Size3D ViewColorBuffer::Size3D() const
 	{
 		auto r = m_color_buffer->desc();

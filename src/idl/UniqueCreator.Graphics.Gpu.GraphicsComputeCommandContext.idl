@@ -46,6 +46,11 @@ namespace UniqueCreator
 				void SetGraphicsUAVBuffer(UInt32 rootIndex, IVirtualResource r);
 				void SetGraphicsConstantBuffer(UInt32 rootIndex, GpuVirtualAddress r);
 
+				void SetGraphicsConstantBufferData(UInt32 rootIndex, Windows.Foundation.Collections.IVector<UInt8> buffer);
+				void SetGraphicsSRV(UInt32 rootIndex, UInt32 offset, IShaderResourceView r);
+				void SetGraphicsUAV(UInt32 rootIndex, UInt32 offset, IUnorderedAccessView r);
+				void SetGraphicsRootConstant(UInt32 rootIndex, UInt32 offset, UInt32 constant);
+
                 [overload("SetRenderTargetSimple"), default_overload]
                 void SetRenderTarget(IColorBuffer b);
                 [overload("SetRenderTargetSimple")]

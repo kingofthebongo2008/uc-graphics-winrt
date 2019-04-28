@@ -54,6 +54,12 @@ namespace winrt::UniqueCreator::Graphics::Gpu::implementation
 		void SetGraphicsUAVBuffer(uint32_t rootIndex, const IVirtualResource& r);
 		void SetGraphicsConstantBuffer(uint32_t rootIndex, GpuVirtualAddress r);
 
+		void SetGraphicsSRV(uint32_t rootIndex, uint32_t offset, const IShaderResourceView& r);
+		void SetGraphicsUAV(uint32_t rootIndex, uint32_t offset, const IUnorderedAccessView& r);
+		void SetGraphicsRootConstant(uint32_t rootIndex, uint32_t offset, uint32_t constant);
+
+		void SetGraphicsConstantBufferData(uint32_t rootIndex, const Windows::Foundation::Collections::IVector<uint8_t>& buffer);
+
 		private:
 
         uc::gx::dx12::managed_graphics_compute_command_context m_ctx;

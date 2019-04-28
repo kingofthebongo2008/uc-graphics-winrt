@@ -429,7 +429,12 @@ namespace UniqueCreator
             UInt64 Value;
         };
 
-        struct RootIndex
+		struct CpuDescriptorHandle
+		{
+			UInt64 Value;
+		};
+
+		struct RootIndex
         {
             UInt32 Value;
         };
