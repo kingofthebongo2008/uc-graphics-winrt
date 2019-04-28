@@ -46,17 +46,17 @@ namespace winrt::UniqueCreator::Graphics::Gpu::implementation
         }
     }
 
-	Gpu::FrameColorBuffer ResourceCreateContext::CreateFrameColorBuffer(uint32_t width, uint32_t height, GraphicsFormat		format)
+	Gpu::FrameColorBuffer ResourceCreateContext::CreateFrameColorBuffer(uint32_t width, uint32_t height, GraphicsFormat		format, ResourceState state)
 	{
-		return make<FrameColorBuffer>(create_frame_color_buffer(m_ctx.get(), width, height, static_cast<DXGI_FORMAT>(format)));
+		return make<FrameColorBuffer>(create_frame_color_buffer(m_ctx.get(), width, height, static_cast<DXGI_FORMAT>(format), static_cast<D3D12_RESOURCE_STATES>(state)));
 	}
 
-	Gpu::FrameDepthBuffer ResourceCreateContext::CreateFrameDepthBuffer(uint32_t width, uint32_t height, DepthBufferFormat	format)
+	Gpu::FrameDepthBuffer ResourceCreateContext::CreateFrameDepthBuffer(uint32_t width, uint32_t height, DepthBufferFormat	format, ResourceState state)
 	{
-		return make<FrameDepthBuffer>(create_frame_depth_buffer(m_ctx.get(), width, height, static_cast<DXGI_FORMAT>(format)));
+		return make<FrameDepthBuffer>(create_frame_depth_buffer(m_ctx.get(), width, height, static_cast<DXGI_FORMAT>(format)));// , static_cast<D3D12_RESOURCE_STATES>(state)));
 	}
 
-	Gpu::FrameDepthStencilBuffer ResourceCreateContext::CreateFrameDepthStencilBuffer(uint32_t width, uint32_t height, DepthStencilBufferFormat format)
+	Gpu::FrameDepthStencilBuffer ResourceCreateContext::CreateFrameDepthStencilBuffer(uint32_t width, uint32_t height, DepthStencilBufferFormat format, ResourceState state)
 	{
 		throw hresult_not_implemented();
 	}

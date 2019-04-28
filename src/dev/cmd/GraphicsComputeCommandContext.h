@@ -20,6 +20,10 @@ namespace winrt::UniqueCreator::Graphics::Gpu::implementation
         void Copy() {}
         void Dispatch(uint32_t x, uint32_t y, uint32_t z) {}
 		void Draw(uint32_t vertex_count, uint32_t vertex_offset);
+		void DrawInstanced(uint32_t vertexCountPerInstance, uint32_t instanceCount, uint32_t startVertexLocation, uint32_t startInstanceLocation);
+		void DrawIndexed(uint32_t indexCount, uint32_t startIndexLocation, int32_t baseVertexLocation);
+		void DrawIndexedInstanced(uint32_t indexCountPerInstance, uint32_t instanceCount, uint32_t startIndexLocation, int32_t baseVertexLocation, uint32_t startInstanceLocation);
+
 
 		void SetDescriptorHeaps();
         void SetComputePipelineStateObject(const ComputePipelineState& s) {}

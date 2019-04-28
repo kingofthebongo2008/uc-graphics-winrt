@@ -15,9 +15,9 @@ namespace winrt::UniqueCreator::Graphics::Gpu::implementation
         uc::gx::dx12::gpu_resource_create_context* GetResourceCreateContext() noexcept;
 
         
-		Gpu::FrameColorBuffer        CreateFrameColorBuffer(uint32_t width, uint32_t height, GraphicsFormat					 format);
-		Gpu::FrameDepthBuffer        CreateFrameDepthBuffer(uint32_t width, uint32_t height, DepthBufferFormat				 format);
-		Gpu::FrameDepthStencilBuffer CreateFrameDepthStencilBuffer(uint32_t width, uint32_t height, DepthStencilBufferFormat format);
+		Gpu::FrameColorBuffer        CreateFrameColorBuffer(uint32_t width, uint32_t height, GraphicsFormat					 format, ResourceState state);
+		Gpu::FrameDepthBuffer        CreateFrameDepthBuffer(uint32_t width, uint32_t height, DepthBufferFormat				 format, ResourceState state);
+		Gpu::FrameDepthStencilBuffer CreateFrameDepthStencilBuffer(uint32_t width, uint32_t height, DepthStencilBufferFormat format, ResourceState state);
 
 		Gpu::ViewColorBuffer        CreateViewColorBuffer(uint32_t width, uint32_t height, GraphicsFormat format);
 		Gpu::ViewDepthBuffer        CreateViewDepthBuffer(uint32_t width, uint32_t height, DepthBufferFormat format);

@@ -31,6 +31,9 @@ namespace UniqueCreator
                 void SetPrimitiveTopology(PrimitiveTopology t);
 
                 void Draw(UInt32 vertexCount, UInt32 vertexOffset);
+				void DrawInstanced(UInt32 vertexCountPerInstance, UInt32 instanceCount, UInt32 startVertexLocation, UInt32 startInstanceLocation);
+				void DrawIndexed(UInt32 indexCount, UInt32 startIndexLocation, Int32 baseVertexLocation );
+				void DrawIndexedInstanced(UInt32 indexCountPerInstance, UInt32 instanceCount, UInt32 startIndexLocation, Int32 baseVertexLocation, UInt32 startInstanceLocation);
 
                 void SetViewPort(ViewPort vp);
                 void SetScissorRectangle(Rectangle2D r);

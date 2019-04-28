@@ -18,10 +18,9 @@ namespace UniqueCreator
                 void Sync();
                 void ResetViewDependentResources();
 
-
-                FrameColorBuffer        CreateFrameColorBuffer(UInt32 width, UInt32 height, GraphicsFormat format );
-                FrameDepthBuffer        CreateFrameDepthBuffer(UInt32 width, UInt32 height, DepthBufferFormat format);
-				FrameDepthStencilBuffer CreateFrameDepthStencilBuffer(UInt32 width, UInt32 height, DepthStencilBufferFormat format);
+                FrameColorBuffer        CreateFrameColorBuffer(UInt32 width, UInt32 height, GraphicsFormat format, ResourceState initialState);
+                FrameDepthBuffer        CreateFrameDepthBuffer(UInt32 width, UInt32 height, DepthBufferFormat format, ResourceState initialState);
+				FrameDepthStencilBuffer CreateFrameDepthStencilBuffer(UInt32 width, UInt32 height, DepthStencilBufferFormat format, ResourceState initialState);
                 
                 ViewColorBuffer			CreateViewColorBuffer(UInt32 width, UInt32 height, GraphicsFormat format);
                 ViewDepthBuffer			CreateViewDepthBuffer(UInt32 width, UInt32 height, DepthBufferFormat format);

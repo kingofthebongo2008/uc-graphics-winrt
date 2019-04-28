@@ -85,6 +85,21 @@ namespace winrt::UniqueCreator::Graphics::Gpu::implementation
 		m_ctx->draw(vertex_count, vertex_offset);
 	}
 
+	void DirectGpuCommandContext::DrawInstanced(uint32_t vertexCountPerInstance, uint32_t instanceCount, uint32_t startVertexLocation, uint32_t startInstanceLocation)
+	{
+		m_ctx->draw_instanced(vertexCountPerInstance, instanceCount, startVertexLocation, startInstanceLocation);
+	}
+
+	void DirectGpuCommandContext::DrawIndexed(uint32_t indexCount, uint32_t startIndexLocation, int32_t baseVertexLocation)
+	{
+		m_ctx->draw_indexed(indexCount, startIndexLocation, baseVertexLocation);
+	}
+
+	void DirectGpuCommandContext::DrawIndexedInstanced(uint32_t indexCountPerInstance, uint32_t instanceCount, uint32_t startIndexLocation, int32_t baseVertexLocation, uint32_t startInstanceLocation)
+	{
+		m_ctx->draw_indexed_instanced(indexCountPerInstance, instanceCount, startIndexLocation, baseVertexLocation, startInstanceLocation);
+	}
+
 	void DirectGpuCommandContext::SetDescriptorHeaps()
 	{
 		m_ctx->set_descriptor_heaps();
