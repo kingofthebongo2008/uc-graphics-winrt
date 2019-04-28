@@ -68,12 +68,6 @@ namespace winrt::UniqueCreator::Graphics::Gpu::implementation
 	}
 
 
-    void DirectGpuCommandContext::SetComputeUAVBuffer(uint32_t slot, const IVirtualResource& r)
-    {
-        com_ptr<IGpuVirtualResourceNative> r0(r.as<IGpuVirtualResourceNative>());
-        m_ctx->set_compute_uav_buffer(slot, r0->GetResource());
-    }
-
 	void DirectGpuCommandContext::SetGraphicsPipelineStateObject(const GraphicsPipelineState& s)
 	{
 		com_ptr<IGraphicsPipelineStateNative> s0(s.as<IGraphicsPipelineStateNative>());
@@ -242,6 +236,62 @@ namespace winrt::UniqueCreator::Graphics::Gpu::implementation
 	void DirectGpuCommandContext::SetGraphicsRootConstant(uint32_t rootIndex, uint32_t offset, uint32_t constant)
 	{
 		throw hresult_not_implemented();
+	}
+
+	void DirectGpuCommandContext::SetComputePipelineStateObject(const ComputePipelineState& s)
+	{
+		auto native = s.as<IComputePipelineStateNative>();
+		m_ctx->set_pso(native->GetPipelineState());
+	}
+
+	void DirectGpuCommandContext::SetComputeSRVBuffer(uint32_t rootIndex, const IVirtualResource& r)
+	{
+		com_ptr<IGpuVirtualResourceNative> r0(r.as<IGpuVirtualResourceNative>());
+		m_ctx->set_compute_srv_buffer(rootIndex, r0->GetResource());
+	}
+
+	void DirectGpuCommandContext::SetComputeUAVBuffer(uint32_t slot, const IVirtualResource& r)
+	{
+		com_ptr<IGpuVirtualResourceNative> r0(r.as<IGpuVirtualResourceNative>());
+		m_ctx->set_compute_uav_buffer(slot, r0->GetResource());
+	}
+
+	void DirectGpuCommandContext::SetComputeConstantBuffer(uint32_t rootIndex, const GpuVirtualAddress r)
+	{
+		m_ctx->set_compute_constant_buffer(rootIndex, r.Value);
+	}
+
+	void DirectGpuCommandContext::SetComputeConstantBufferData(uint32_t rootIndex, const Windows::Foundation::Collections::IVector<uint8_t>& buffer)
+	{
+		std::vector<uint8_t> data;
+		data.resize(buffer.Size());
+		buffer.GetMany(0, array_view<uint8_t>(data));
+		m_ctx->set_compute_constant_buffer(rootIndex, &data[0], data.size());
+
+	}
+
+	void DirectGpuCommandContext::SetComputeSRV(uint32_t rootIndex, uint32_t offset, const IShaderResourceView& r)
+	{
+		D3D12_CPU_DESCRIPTOR_HANDLE h;
+		h.ptr = r.SRV().Value;
+		m_ctx->set_compute_dynamic_descriptor(rootIndex, h, offset);
+	}
+
+	void DirectGpuCommandContext::SetComputeUAV(uint32_t rootIndex, uint32_t offset, const IUnorderedAccessView& r)
+	{
+		D3D12_CPU_DESCRIPTOR_HANDLE h;
+		h.ptr = r.UAV().Value;
+		m_ctx->set_compute_dynamic_descriptor(rootIndex, h, offset);
+	}
+
+	void DirectGpuCommandContext::SetComputeRootConstant(uint32_t rootIndex, uint32_t offset, uint32_t constant)
+	{
+		throw hresult_not_implemented();
+	}
+
+	void DirectGpuCommandContext::Dispatch(uint32_t x, uint32_t y, uint32_t z)
+	{
+		m_ctx->dispatch(x, y, z);
 	}
 }
 

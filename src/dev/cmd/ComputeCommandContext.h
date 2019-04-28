@@ -12,15 +12,19 @@ namespace winrt::UniqueCreator::Graphics::Gpu::implementation
         IFenceHandle Submit();
         void SubmitAndWaitToExecute();
         void TransitionResource(IVirtualResource r, ResourceState old_state, ResourceState new_state);
-
-		void SetComputeUAVBuffer(uint32_t slot, IVirtualResource r);
-
-        void Copy() {}
-
-        void Dispatch(uint32_t x, uint32_t y, uint32_t z);
-        void SetComputePipelineStateObject(const ComputePipelineState& s);
-
 		void SetDescriptorHeaps();
+
+
+		void SetComputePipelineStateObject(const ComputePipelineState& s);
+		void Dispatch(uint32_t x, uint32_t y, uint32_t z);
+		void SetComputeSRVBuffer(uint32_t rootIndex, const IVirtualResource& r);
+		void SetComputeUAVBuffer(uint32_t rootIndex, const IVirtualResource& r);
+		void SetComputeConstantBuffer(uint32_t rootIndex, const GpuVirtualAddress r);
+
+		void SetComputeConstantBufferData(uint32_t rootIndex, const Windows::Foundation::Collections::IVector<uint8_t>& buffer);
+		void SetComputeSRV(uint32_t rootIndex, uint32_t offset, const IShaderResourceView& r);
+		void SetComputeUAV(uint32_t rootIndex, uint32_t offset, const IUnorderedAccessView& r);
+		void SetComputeRootConstant(uint32_t rootIndex, uint32_t offset, uint32_t constant);
 
         private:
 

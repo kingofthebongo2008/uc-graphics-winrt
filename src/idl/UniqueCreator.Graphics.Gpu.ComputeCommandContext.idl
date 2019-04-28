@@ -14,10 +14,17 @@ namespace UniqueCreator
             {
                 void SetDescriptorHeaps();
 
-                void SetComputeUAVBuffer(UInt32 slot, IVirtualResource r);
-                void SetComputePipelineStateObject(ComputePipelineState pso);
-
+				void SetComputePipelineStateObject(ComputePipelineState pso);
                 void Dispatch( UInt32 x, UInt32 y, UInt32 z);
+
+				void SetComputeSRVBuffer(UInt32 rootIndex, IVirtualResource r);
+				void SetComputeUAVBuffer(UInt32 rootIndex, IVirtualResource r);
+				void SetComputeConstantBuffer(UInt32 rootIndex, GpuVirtualAddress r);
+
+				void SetComputeConstantBufferData(UInt32 rootIndex, Windows.Foundation.Collections.IVector<UInt8> buffer);
+				void SetComputeSRV(UInt32 rootIndex, UInt32 offset, IShaderResourceView r);
+				void SetComputeUAV(UInt32 rootIndex, UInt32 offset, IUnorderedAccessView r);
+				void SetComputeRootConstant(UInt32 rootIndex, UInt32 offset, UInt32 constant);
             };
         }
     }

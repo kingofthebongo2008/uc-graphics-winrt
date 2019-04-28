@@ -14,6 +14,7 @@ namespace UniqueCreator
         {
             interface IGraphicsComputeCommandContext requires IComputeCommandContext
             {
+				//Graphics
                 void SetGraphicsPipelineStateObject(GraphicsPipelineState pso);
 
                 [overload("Clear"), default_overload]
@@ -38,7 +39,6 @@ namespace UniqueCreator
                 void SetViewPort(ViewPort vp);
                 void SetScissorRectangle(Rectangle2D r);
 
-
 				void SetIndexBuffer(IndexBufferView view);
 				void SetVertexBuffer(UInt32 slot, VertexBufferView view);
 
@@ -51,7 +51,7 @@ namespace UniqueCreator
 				void SetGraphicsUAV(UInt32 rootIndex, UInt32 offset, IUnorderedAccessView r);
 				void SetGraphicsRootConstant(UInt32 rootIndex, UInt32 offset, UInt32 constant);
 
-                [overload("SetRenderTargetSimple"), default_overload]
+				[overload("SetRenderTargetSimple"), default_overload]
                 void SetRenderTarget(IColorBuffer b);
                 [overload("SetRenderTargetSimple")]
                 void SetSwapChain(SwapChainBuffer b);
@@ -73,6 +73,8 @@ namespace UniqueCreator
 
 				[overload("SetRenderTargetSimple")]
                 void SetDepthStencil(IDepthStencilBuffer d);
+
+				//Compute
 
 				void CopyResource(IVirtualResource d, IVirtualResource s);
                 void TransitionResource(IVirtualResource r, ResourceState old_state, ResourceState new_state);
