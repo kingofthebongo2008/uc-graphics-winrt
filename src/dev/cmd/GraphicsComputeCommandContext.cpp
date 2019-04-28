@@ -29,14 +29,14 @@ namespace winrt::UniqueCreator::Graphics::Gpu::implementation
         m_ctx->submit(uc::gx::dx12::gpu_command_context::wait_to_execute);
         m_ctx.reset();
     }
-    void DirectGpuCommandContext::TransitionResource(IVirtualResource r, ResourceState old_state, ResourceState new_state)
+    void DirectGpuCommandContext::TransitionResource(const IVirtualResource& r, ResourceState old_state, ResourceState new_state)
     {
         com_ptr<IGpuVirtualResourceNative> r0(r.as<IGpuVirtualResourceNative>());
 
         m_ctx->transition_resource(r0->GetResource(), static_cast<D3D12_RESOURCE_STATES>(old_state), static_cast<D3D12_RESOURCE_STATES>(new_state));
     }
 
-	void DirectGpuCommandContext::CopyResource(IVirtualResource d, IVirtualResource s)
+	void DirectGpuCommandContext::CopyResource(const IVirtualResource& d, const IVirtualResource& s)
 	{
 		com_ptr<IGpuVirtualResourceNative> r0(d.as<IGpuVirtualResourceNative>());
 		com_ptr<IGpuVirtualResourceNative> r1(s.as<IGpuVirtualResourceNative>());
@@ -68,7 +68,7 @@ namespace winrt::UniqueCreator::Graphics::Gpu::implementation
 	}
 
 
-    void DirectGpuCommandContext::SetComputeUAVBuffer(uint32_t slot, IVirtualResource r)
+    void DirectGpuCommandContext::SetComputeUAVBuffer(uint32_t slot, const IVirtualResource& r)
     {
         com_ptr<IGpuVirtualResourceNative> r0(r.as<IGpuVirtualResourceNative>());
         m_ctx->set_compute_uav_buffer(slot, r0->GetResource());
@@ -198,6 +198,23 @@ namespace winrt::UniqueCreator::Graphics::Gpu::implementation
 	void DirectGpuCommandContext::SetRenderTargetSimple(const IDepthStencilBuffer& d)
 	{
 		throw hresult_not_implemented();
+	}
+
+	void DirectGpuCommandContext::SetGraphicsSRVBuffer(uint32_t rootIndex, const IVirtualResource& r)
+	{
+		com_ptr<IGpuVirtualResourceNative> r0(r.as<IGpuVirtualResourceNative>());
+		m_ctx->set_graphics_srv_buffer(rootIndex, r0->GetResource());
+	}
+
+	void DirectGpuCommandContext::SetGraphicsUAVBuffer(uint32_t rootIndex, const IVirtualResource& r)
+	{
+		com_ptr<IGpuVirtualResourceNative> r0(r.as<IGpuVirtualResourceNative>());
+		m_ctx->set_graphics_uav_buffer(rootIndex, r0->GetResource());
+	}
+
+	void DirectGpuCommandContext::SetGraphicsConstantBuffer(uint32_t rootIndex, GpuVirtualAddress r)
+	{
+		m_ctx->set_graphics_constant_buffer(rootIndex, r.Value);
 	}
 }
 

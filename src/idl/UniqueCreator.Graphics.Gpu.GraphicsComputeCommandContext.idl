@@ -42,6 +42,10 @@ namespace UniqueCreator
 				void SetIndexBuffer(IndexBufferView view);
 				void SetVertexBuffer(UInt32 slot, VertexBufferView view);
 
+				void SetGraphicsSRVBuffer(UInt32 rootIndex, IVirtualResource r);
+				void SetGraphicsUAVBuffer(UInt32 rootIndex, IVirtualResource r);
+				void SetGraphicsConstantBuffer(UInt32 rootIndex, GpuVirtualAddress r);
+
                 [overload("SetRenderTargetSimple"), default_overload]
                 void SetRenderTarget(IColorBuffer b);
                 [overload("SetRenderTargetSimple")]
