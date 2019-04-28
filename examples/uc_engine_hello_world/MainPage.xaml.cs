@@ -41,41 +41,6 @@ namespace uc_engine_hello_world
             var display = DisplayInformation.GetForCurrentView();
             display.DpiChanged += new TypedEventHandler<DisplayInformation, object>(OnDpiChanged);
 
-            /*unit test
-
-            var description = new BlendDescription();
-            RenderTargetBlendDescription d;
-            d.BlendEnable = true;
-            d.BlendOperation = BlendOperation.Add;
-            d.BlendOperationAlpha = BlendOperation.Add;
-            d.DestinationBlend = Blend.DestinationAlpha;
-            d.DestinationBlendAlpha = Blend.DestinationAlpha;
-            d.LogicOperation = LogicOperation.And;
-            d.LogicOperationEnable = false;
-            d.RenderTargetWriteMask = 0;
-            d.SourceBlend = Blend.DestinationAlpha;
-            d.SourceBlendAlpha = Blend.DestinationAlpha;
-
-            description.AlphaToCoverageEnable = true;
-            description.RenderTargets.Add(d);
-
-            var d0 = new RenderTargetBlendDescription[1];
-            d0[0] = d;
-
-            description.RenderTargets = d0;
-
-            var code = new VertexShaderByteCode();
-
-            var bytes = new byte[120];
-
-            for ( var i = 0;  i < 120; ++i)
-            {
-                bytes[i] = (byte)i;
-            }
-
-            code.Code = bytes;
-            */
-
             var code = UniqueCreator.Graphics.Gpu.Shaders.compute_cs.Factory.Create();
             var description = new ComputePipelineStateDescription();
             description.CS = code;
@@ -158,9 +123,6 @@ namespace uc_engine_hello_world
             description2.RtvFormats.Add(GraphicsFormat.R8G8B8A8_UNORM);
 
             m_triangle = new GraphicsPipelineState(m_ctx, description2);
-
-
-
         }
 
         public void OnResuming()
@@ -239,13 +201,12 @@ namespace uc_engine_hello_world
                 var backBuffer          = m_swapChain.BackBuffer;
                 var size                = backBuffer.Size2D;
 
-                var frameColorBuffer    = m_ctx.CreateFrameColorBuffer((uint)size.Width, (uint)size.Height, GraphicsFormat.R8G8B8A8_UNORM);
-                var frameDepthBuffer    = m_ctx.CreateFrameDepthBuffer((uint)size.Width, (uint)size.Height, DepthBufferFormat.Depth32Single);
+                var frameColorBuffer    = m_ctx.CreateFrameColorBuffer((uint)size.Width, (uint)size.Height, GraphicsFormat.R8G8B8A8_UNORM, ResourceState.RenderTarget);
+                var frameDepthBuffer    = m_ctx.CreateFrameDepthBuffer((uint)size.Width, (uint)size.Height, DepthBufferFormat.Depth32Single, ResourceState.DepthWrite);
 
                 ctx.SetRenderTarget(frameColorBuffer, frameDepthBuffer);
                 ctx.SetGraphicsPipelineStateObject(m_triangle);
                 ctx.SetDescriptorHeaps();
-                ctx.TransitionResource(frameColorBuffer, ResourceState.Common, ResourceState.RenderTarget);
                 ctx.Clear(frameColorBuffer);
                 ctx.Clear(frameDepthBuffer);
 
@@ -279,7 +240,6 @@ namespace uc_engine_hello_world
                 }
 
                 ctx.Draw(3, 0);
-
                 ctx.TransitionResource(backBuffer, ResourceState.Present, ResourceState.CopyDestination);
                 ctx.TransitionResource(frameColorBuffer, ResourceState.RenderTarget, ResourceState.CopySource);
                 ctx.CopyResource(backBuffer, frameColorBuffer);
