@@ -94,5 +94,12 @@ namespace winrt::UniqueCreator::Graphics::Gpu::implementation
 	{
 		throw hresult_not_implemented();
 	}
+
+	void ComputeCommandContext::CopyResource(const IVirtualResource& d, const IVirtualResource& s)
+	{
+		com_ptr<IGpuVirtualResourceNative> r0(d.as<IGpuVirtualResourceNative>());
+		com_ptr<IGpuVirtualResourceNative> r1(s.as<IGpuVirtualResourceNative>());
+		m_ctx->copy_resource(r0->GetResource(), r1->GetResource());
+	}
 	
 }

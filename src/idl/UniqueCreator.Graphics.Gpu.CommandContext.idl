@@ -14,6 +14,7 @@ namespace UniqueCreator
             {
                 IFenceHandle Submit();
                 void SubmitAndWaitToExecute();
+				void CopyResource(IVirtualResource d, IVirtualResource s);
             };
         }
     }

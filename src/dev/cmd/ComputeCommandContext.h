@@ -12,6 +12,8 @@ namespace winrt::UniqueCreator::Graphics::Gpu::implementation
         IFenceHandle Submit();
         void SubmitAndWaitToExecute();
         void TransitionResource(IVirtualResource r, ResourceState old_state, ResourceState new_state);
+		void ComputeCommandContext::CopyResource(const IVirtualResource& d, const IVirtualResource& s);
+
 		void SetDescriptorHeaps();
 
 
