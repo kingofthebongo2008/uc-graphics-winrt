@@ -28,28 +28,17 @@ namespace uc_engine_hello_world
         private ResourceCreateContext         m_ctx;
         private CompositionSwapChainResources m_swapChain;
         private GraphicsPipelineState         m_triangle;
+        private ComputePipelineState          m_compute;
         private object m_rendererLock         = new object();
         private IAsyncAction                  m_renderLoopWorker;
 
-        public MainPage()
+
+        GraphicsPipelineState makeTriangle(ResourceCreateContext ctx)
         {
-            this.InitializeComponent();
-
-            m_ctx = new ResourceCreateContext();
-            m_swapChain = new CompositionSwapChainResources(m_ctx, m_swapChainPanel);
-
-            var display = DisplayInformation.GetForCurrentView();
-            display.DpiChanged += new TypedEventHandler<DisplayInformation, object>(OnDpiChanged);
-
-            var code = UniqueCreator.Graphics.Gpu.Shaders.compute_cs.Factory.Create();
-            var description = new ComputePipelineStateDescription();
-            description.CS = code;
-            var pipeline = new ComputePipelineState(m_ctx, description);
-
             var triangleVertex = UniqueCreator.Graphics.Gpu.Shaders.triangle_vertex.Factory.Create();
-            var trianglePixel  = UniqueCreator.Graphics.Gpu.Shaders.triangle_pixel.Factory.Create();
+            var trianglePixel = UniqueCreator.Graphics.Gpu.Shaders.triangle_pixel.Factory.Create();
 
-            var description2    = new GraphicsPipelineStateDescription();
+            var description2 = new GraphicsPipelineStateDescription();
 
             var rasterizerState = new RasterizerDescription();
 
@@ -110,19 +99,40 @@ namespace uc_engine_hello_world
 
             blendState.RenderTargets = new RenderTargetBlendDescription[] { blend };
 
-            description2.VS                             = triangleVertex;
-            description2.PS                             = trianglePixel;
-            description2.SampleMask                     = 0xFFFFFFFF;
-            description2.RasterizerState                = rasterizerState;
-            description2.PrimitiveTopology              = PrimitiveTopologyType.Triangle;
-            description2.Samples                        = samples;
-            description2.DepthStencilState              = depthStencil;
+            description2.VS = triangleVertex;
+            description2.PS = trianglePixel;
+            description2.SampleMask = 0xFFFFFFFF;
+            description2.RasterizerState = rasterizerState;
+            description2.PrimitiveTopology = PrimitiveTopologyType.Triangle;
+            description2.Samples = samples;
+            description2.DepthStencilState = depthStencil;
             description2.DsvFormat = GraphicsFormat.D32_Single;
             description2.IbStripCutValue = IndexBufferStripCut.ValueDisabled;
             description2.BlendState = blendState;
             description2.RtvFormats.Add(GraphicsFormat.R8G8B8A8_UNORM);
 
-            m_triangle = new GraphicsPipelineState(m_ctx, description2);
+            return new GraphicsPipelineState(ctx, description2);
+        }
+
+        ComputePipelineState makeCompute(ResourceCreateContext ctx)
+        {
+            var code = UniqueCreator.Graphics.Gpu.Shaders.compute_cs.Factory.Create();
+            var description = new ComputePipelineStateDescription();
+            description.CS = code;
+            return new ComputePipelineState(m_ctx, description);
+        }
+
+        public MainPage()
+        {
+            this.InitializeComponent();
+
+            m_ctx = new ResourceCreateContext();
+            m_swapChain = new CompositionSwapChainResources(m_ctx, m_swapChainPanel);
+
+            var display = DisplayInformation.GetForCurrentView();
+            display.DpiChanged += new TypedEventHandler<DisplayInformation, object>(OnDpiChanged);
+            m_triangle = makeTriangle(m_ctx);
+            m_compute = makeCompute(m_ctx);
         }
 
         public void OnResuming()
@@ -200,9 +210,12 @@ namespace uc_engine_hello_world
                 var ctx                 = m_swapChain.CreateGraphicsComputeCommandContext();
                 var backBuffer          = m_swapChain.BackBuffer;
                 var size                = backBuffer.Size2D;
+                var w                   = (uint)backBuffer.Size2D.Width;
+                var h                   = (uint)backBuffer.Size2D.Height;
 
-                var frameColorBuffer    = m_ctx.CreateFrameColorBuffer((uint)size.Width, (uint)size.Height, GraphicsFormat.R8G8B8A8_UNORM, ResourceState.RenderTarget);
-                var frameDepthBuffer    = m_ctx.CreateFrameDepthBuffer((uint)size.Width, (uint)size.Height, DepthBufferFormat.Depth32Single, ResourceState.DepthWrite);
+                var frameColorBuffer    = m_ctx.CreateFrameColorBuffer(w, h, GraphicsFormat.R8G8B8A8_UNORM, ResourceState.RenderTarget);
+                var frameDepthBuffer    = m_ctx.CreateFrameDepthBuffer(w, h, DepthBufferFormat.Depth32Single, ResourceState.DepthWrite);
+                var postProcess         = m_ctx.CreateFrameColorBuffer(w, h, GraphicsFormat.R8G8B8A8_UNORM, ResourceState.UnorderedAccess);
 
                 ctx.SetRenderTarget(frameColorBuffer, frameDepthBuffer);
                 ctx.SetGraphicsPipelineStateObject(m_triangle);
@@ -240,9 +253,17 @@ namespace uc_engine_hello_world
                 }
 
                 ctx.Draw(3, 0);
+
+                ctx.TransitionResource(frameColorBuffer, ResourceState.RenderTarget, ResourceState.NonPixelShaderResource);
+                ctx.SetComputePipelineStateObject(m_compute);
+
+                ctx.SetComputeUAV(4, 0, postProcess);
+                ctx.SetComputeSRV(5, 0, frameColorBuffer);
+                ctx.Dispatch((w + 7) / 8, (h + 7) / 8, 1);
+
                 ctx.TransitionResource(backBuffer, ResourceState.Present, ResourceState.CopyDestination);
-                ctx.TransitionResource(frameColorBuffer, ResourceState.RenderTarget, ResourceState.CopySource);
-                ctx.CopyResource(backBuffer, frameColorBuffer);
+                ctx.TransitionResource(postProcess, ResourceState.UnorderedAccess, ResourceState.CopySource);
+                ctx.CopyResource(backBuffer, postProcess);
                 ctx.TransitionResource(backBuffer, ResourceState.CopyDestination, ResourceState.Present);
                 ctx.Submit();
             }

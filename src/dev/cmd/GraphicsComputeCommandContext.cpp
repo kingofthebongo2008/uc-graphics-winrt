@@ -272,7 +272,7 @@ namespace winrt::UniqueCreator::Graphics::Gpu::implementation
 
 	void DirectGpuCommandContext::SetComputeSRV(uint32_t rootIndex, uint32_t offset, const IShaderResourceView& r)
 	{
-		D3D12_CPU_DESCRIPTOR_HANDLE h;
+		D3D12_CPU_DESCRIPTOR_HANDLE h = {};
 		h.ptr = r.SRV().Value;
 		m_ctx->set_compute_dynamic_descriptor(rootIndex, h, offset);
 	}
