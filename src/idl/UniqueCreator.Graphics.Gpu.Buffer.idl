@@ -1,0 +1,21 @@
+﻿#pragma once
+import "UniqueCreator.Graphics.Gpu.PixelBuffer.idl";
+namespace UniqueCreator
+{
+    namespace Graphics
+    {
+        namespace Gpu
+        {
+            interface IBuffer requires IVirtualResource, IShaderResourceView, IUnorderedAccessView
+            {
+                void Dummy1();
+            };
+
+            [default_interface]
+            runtimeclass Buffer : IBuffer
+            {
+
+            };
+        }
+    }
+}

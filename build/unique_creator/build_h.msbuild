@@ -33,9 +33,11 @@
 <ClInclude Include = "..\..\src\dev\cmd\ComputeCommandContext.h"/>	
 <ClInclude Include = "..\..\src\dev\cmd\GraphicsComputeCommandContext.h"/>	
 <ClInclude Include = "..\..\src\dev\gpu\BackBuffer.h"/>	
+<ClInclude Include = "..\..\src\dev\gpu\Buffer.h"/>	
 <ClInclude Include = "..\..\src\dev\gpu\ColorBuffer.h"/>	
 <ClInclude Include = "..\..\src\dev\gpu\DepthBuffer.h"/>	
-<ClInclude Include = "..\..\src\dev\gpu\DepthStencilBuffer.h"/>
+<ClInclude Include = "..\..\src\dev\gpu\DepthStencilBuffer.h"/>	
+<ClInclude Include = "..\..\src\dev\gpu\Texture2D.h"/>
 </ItemGroup>
 <ItemGroup>	
 <ClInclude Include = "..\..\src\pch\pch.h"/>

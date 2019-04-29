@@ -74,8 +74,12 @@ namespace UniqueCreator
 				[overload("SetRenderTargetSimple")]
                 void SetDepthStencil(IDepthStencilBuffer d);
 
-				//Compute
+				/*
+				void UploadBuffer(IVirtualResource destination, UInt32 offset, Windows.Foundation.Collections.IVector<UInt8> buffer);
+				void UploadTexture2D();
+				*/
 
+				//Compute
                 void TransitionResource(IVirtualResource r, ResourceState old_state, ResourceState new_state);
             }
         }

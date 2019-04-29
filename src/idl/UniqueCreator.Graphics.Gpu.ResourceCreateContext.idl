@@ -3,7 +3,8 @@
 import "UniqueCreator.Graphics.Gpu.GraphicTypes.idl";
 import "UniqueCreator.Graphics.Gpu.ColorBuffer.idl";
 import "UniqueCreator.Graphics.Gpu.DepthBuffer.idl";
-
+import "UniqueCreator.Graphics.Gpu.Buffer.idl";
+import "UniqueCreator.Graphics.Gpu.Texture2D.idl";
 
 namespace UniqueCreator
 {
@@ -26,6 +27,8 @@ namespace UniqueCreator
                 ViewDepthBuffer			CreateViewDepthBuffer(UInt32 width, UInt32 height, DepthBufferFormat format);
                 ViewDepthStencilBuffer	CreateViewDepthStencilBuffer(UInt32 width, UInt32 height, DepthStencilBufferFormat format);
 
+				Buffer					CreateBuffer(UInt32 size, ResourceState initialState);
+				Texture2D				CreateTexture2D(UInt32 width, UInt32 height, UInt32 mips, GraphicsFormat format, ResourceState initialState);
             }
         }
     }

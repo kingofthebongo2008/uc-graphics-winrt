@@ -4,6 +4,7 @@
 <ItemGroup>	
 <Midl Include = "..\..\src\idl\UniqueCreator.Graphics.Gpu.BackBuffer.idl"/>	
 <Midl Include = "..\..\src\idl\UniqueCreator.Graphics.Gpu.BlendDescription.idl"/>	
+<Midl Include = "..\..\src\idl\UniqueCreator.Graphics.Gpu.Buffer.idl"/>	
 <Midl Include = "..\..\src\idl\UniqueCreator.Graphics.Gpu.ColorBuffer.idl"/>	
 <Midl Include = "..\..\src\idl\UniqueCreator.Graphics.Gpu.CommandContext.idl"/>	
 <Midl Include = "..\..\src\idl\UniqueCreator.Graphics.Gpu.CompositionSwapChainResources.idl"/>	
@@ -29,6 +30,7 @@
 <Midl Include = "..\..\src\idl\UniqueCreator.Graphics.Gpu.RootSignatureByteCode.idl"/>	
 <Midl Include = "..\..\src\idl\UniqueCreator.Graphics.Gpu.StreamOutputDescription.idl"/>	
 <Midl Include = "..\..\src\idl\UniqueCreator.Graphics.Gpu.SwapChainResources.idl"/>	
+<Midl Include = "..\..\src\idl\UniqueCreator.Graphics.Gpu.Texture2D.idl"/>	
 <Midl Include = "..\..\src\idl\UniqueCreator.Graphics.Gpu.VertexShaderByteCode.idl"/>	
 <Midl Include = "..\..\src\idl\UniqueCreator.Graphics.Gpu.VirtualResource.idl"/>
 </ItemGroup></Project> 
