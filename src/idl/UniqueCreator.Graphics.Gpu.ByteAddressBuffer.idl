@@ -6,13 +6,13 @@ namespace UniqueCreator
     {
         namespace Gpu
         {
-            interface IBuffer requires IVirtualResource, IShaderResourceView, IUnorderedAccessView
+            interface IBuffer requires IVirtualResource
             {
                 void Dummy1();
             };
 
             [default_interface]
-            runtimeclass Buffer : IBuffer
+            runtimeclass ByteAddressBuffer : IBuffer, IShaderResourceView, IUnorderedAccessView
             {
 
             };

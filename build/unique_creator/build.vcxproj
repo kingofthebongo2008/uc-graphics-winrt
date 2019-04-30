@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\uc-graphics.1.0.29\build\native\uc-graphics.props" Condition="Exists('..\packages\uc-graphics.1.0.29\build\native\uc-graphics.props')" />
   <Import Project="..\packages\uc-tools-msbuild-tasks.1.0.32\build\uc-tools-msbuild-tasks.props" Condition="Exists('..\packages\uc-tools-msbuild-tasks.1.0.32\build\uc-tools-msbuild-tasks.props')" />
   <Import Project="..\packages\uc-tools-graphics-gpu-shader-compiler.1.0.12\build\uc-tools-graphics-gpu-shader-compiler.props" Condition="Exists('..\packages\uc-tools-graphics-gpu-shader-compiler.1.0.12\build\uc-tools-graphics-gpu-shader-compiler.props')" />
   <Import Project="..\packages\uc-tools-graphics-gpu-pipeline-compiler.1.0.32\build\uc-tools-graphics-gpu-pipeline-compiler.props" Condition="Exists('..\packages\uc-tools-graphics-gpu-pipeline-compiler.1.0.32\build\uc-tools-graphics-gpu-pipeline-compiler.props')" />
-  <Import Project="..\packages\uc-graphics.1.0.23\build\native\uc-graphics.props" Condition="Exists('..\packages\uc-graphics.1.0.23\build\native\uc-graphics.props')" />
   <Import Project="..\packages\uc-serialization-engine.1.0.2\build\native\uc-serialization-engine.props" Condition="Exists('..\packages\uc-serialization-engine.1.0.2\build\native\uc-serialization-engine.props')" />
   <Import Project="..\packages\uc-math.1.0.4\build\native\uc-math.props" Condition="Exists('..\packages\uc-math.1.0.4\build\native\uc-math.props')" />
   <Import Project="..\packages\uc-imaging.1.0.12\build\native\uc-imaging.props" Condition="Exists('..\packages\uc-imaging.1.0.12\build\native\uc-imaging.props')" />
@@ -40,7 +40,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)'=='Release'" Label="Configuration">
     <UseDebugLibraries>false</UseDebugLibraries>
-    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
@@ -51,10 +51,10 @@
     <Import Project="..\packages\uc-imaging.1.0.12\build\native\uc-imaging.targets" Condition="Exists('..\packages\uc-imaging.1.0.12\build\native\uc-imaging.targets')" />
     <Import Project="..\packages\uc-math.1.0.4\build\native\uc-math.targets" Condition="Exists('..\packages\uc-math.1.0.4\build\native\uc-math.targets')" />
     <Import Project="..\packages\uc-serialization-engine.1.0.2\build\native\uc-serialization-engine.targets" Condition="Exists('..\packages\uc-serialization-engine.1.0.2\build\native\uc-serialization-engine.targets')" />
-    <Import Project="..\packages\uc-graphics.1.0.23\build\native\uc-graphics.targets" Condition="Exists('..\packages\uc-graphics.1.0.23\build\native\uc-graphics.targets')" />
     <Import Project="..\packages\uc-tools-graphics-gpu-pipeline-compiler.1.0.32\build\uc-tools-graphics-gpu-pipeline-compiler.targets" Condition="Exists('..\packages\uc-tools-graphics-gpu-pipeline-compiler.1.0.32\build\uc-tools-graphics-gpu-pipeline-compiler.targets')" />
     <Import Project="..\packages\uc-tools-graphics-gpu-shader-compiler.1.0.12\build\uc-tools-graphics-gpu-shader-compiler.targets" Condition="Exists('..\packages\uc-tools-graphics-gpu-shader-compiler.1.0.12\build\uc-tools-graphics-gpu-shader-compiler.targets')" />
     <Import Project="..\packages\uc-tools-msbuild-tasks.1.0.32\build\uc-tools-msbuild-tasks.targets" Condition="Exists('..\packages\uc-tools-msbuild-tasks.1.0.32\build\uc-tools-msbuild-tasks.targets')" />
+    <Import Project="..\packages\uc-graphics.1.0.29\build\native\uc-graphics.targets" Condition="Exists('..\packages\uc-graphics.1.0.29\build\native\uc-graphics.targets')" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -83,8 +83,8 @@
   <ItemDefinitionGroup Condition="'$(Configuration)'=='Release'">
     <ClCompile>
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Full</Optimization>
-      <InlineFunctionExpansion Condition="'$(Configuration)|$(Platform)'=='Release|x64'">AnySuitable</InlineFunctionExpansion>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Disabled</Optimization>
+      <InlineFunctionExpansion Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Disabled</InlineFunctionExpansion>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup>
@@ -138,13 +138,13 @@
     <Error Condition="!Exists('..\packages\uc-math.1.0.4\build\native\uc-math.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\uc-math.1.0.4\build\native\uc-math.targets'))" />
     <Error Condition="!Exists('..\packages\uc-serialization-engine.1.0.2\build\native\uc-serialization-engine.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\uc-serialization-engine.1.0.2\build\native\uc-serialization-engine.props'))" />
     <Error Condition="!Exists('..\packages\uc-serialization-engine.1.0.2\build\native\uc-serialization-engine.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\uc-serialization-engine.1.0.2\build\native\uc-serialization-engine.targets'))" />
-    <Error Condition="!Exists('..\packages\uc-graphics.1.0.23\build\native\uc-graphics.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\uc-graphics.1.0.23\build\native\uc-graphics.props'))" />
-    <Error Condition="!Exists('..\packages\uc-graphics.1.0.23\build\native\uc-graphics.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\uc-graphics.1.0.23\build\native\uc-graphics.targets'))" />
     <Error Condition="!Exists('..\packages\uc-tools-graphics-gpu-pipeline-compiler.1.0.32\build\uc-tools-graphics-gpu-pipeline-compiler.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\uc-tools-graphics-gpu-pipeline-compiler.1.0.32\build\uc-tools-graphics-gpu-pipeline-compiler.props'))" />
     <Error Condition="!Exists('..\packages\uc-tools-graphics-gpu-pipeline-compiler.1.0.32\build\uc-tools-graphics-gpu-pipeline-compiler.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\uc-tools-graphics-gpu-pipeline-compiler.1.0.32\build\uc-tools-graphics-gpu-pipeline-compiler.targets'))" />
     <Error Condition="!Exists('..\packages\uc-tools-graphics-gpu-shader-compiler.1.0.12\build\uc-tools-graphics-gpu-shader-compiler.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\uc-tools-graphics-gpu-shader-compiler.1.0.12\build\uc-tools-graphics-gpu-shader-compiler.props'))" />
     <Error Condition="!Exists('..\packages\uc-tools-graphics-gpu-shader-compiler.1.0.12\build\uc-tools-graphics-gpu-shader-compiler.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\uc-tools-graphics-gpu-shader-compiler.1.0.12\build\uc-tools-graphics-gpu-shader-compiler.targets'))" />
     <Error Condition="!Exists('..\packages\uc-tools-msbuild-tasks.1.0.32\build\uc-tools-msbuild-tasks.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\uc-tools-msbuild-tasks.1.0.32\build\uc-tools-msbuild-tasks.props'))" />
     <Error Condition="!Exists('..\packages\uc-tools-msbuild-tasks.1.0.32\build\uc-tools-msbuild-tasks.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\uc-tools-msbuild-tasks.1.0.32\build\uc-tools-msbuild-tasks.targets'))" />
+    <Error Condition="!Exists('..\packages\uc-graphics.1.0.29\build\native\uc-graphics.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\uc-graphics.1.0.29\build\native\uc-graphics.props'))" />
+    <Error Condition="!Exists('..\packages\uc-graphics.1.0.29\build\native\uc-graphics.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\uc-graphics.1.0.29\build\native\uc-graphics.targets'))" />
   </Target>
 </Project>

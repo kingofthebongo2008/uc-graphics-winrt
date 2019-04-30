@@ -3,7 +3,7 @@
 #include "gpu/ColorBuffer.h"
 #include "gpu/DepthBuffer.h"
 #include "gpu/DepthStencilBuffer.h"
-#include "gpu/Buffer.h"
+#include "gpu/ByteAddressBuffer.h"
 #include "gpu/Texture2D.h"
 
 #include "uc/gx/dx12/dx12.h"
@@ -88,9 +88,9 @@ namespace winrt::UniqueCreator::Graphics::Gpu::implementation
         m_ctx->reset_view_dependent_resources();
     }
 
-	Gpu::Buffer	ResourceCreateContext::CreateBuffer(uint32_t size, ResourceState const& initialState)
+	Gpu::ByteAddressBuffer	ResourceCreateContext::CreateByteAddressBuffer(uint32_t size, ResourceState const& initialState)
 	{
-		return make<Buffer>();
+		return make<ByteAddressBuffer>(create_byteaddress_buffer(m_ctx.get(), size , static_cast<D3D12_RESOURCE_STATES>(initialState)));
 	}
 
 	Gpu::Texture2D ResourceCreateContext::CreateTexture2D(uint32_t width, uint32_t height, uint32_t mips, GraphicsFormat const& format, ResourceState const& initialState)

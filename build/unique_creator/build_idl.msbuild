@@ -4,7 +4,7 @@
 <ItemGroup>	
 <Midl Include = "..\..\src\idl\UniqueCreator.Graphics.Gpu.BackBuffer.idl"/>	
 <Midl Include = "..\..\src\idl\UniqueCreator.Graphics.Gpu.BlendDescription.idl"/>	
-<Midl Include = "..\..\src\idl\UniqueCreator.Graphics.Gpu.Buffer.idl"/>	
+<Midl Include = "..\..\src\idl\UniqueCreator.Graphics.Gpu.ByteAddressBuffer.idl"/>	
 <Midl Include = "..\..\src\idl\UniqueCreator.Graphics.Gpu.ColorBuffer.idl"/>	
 <Midl Include = "..\..\src\idl\UniqueCreator.Graphics.Gpu.CommandContext.idl"/>	
 <Midl Include = "..\..\src\idl\UniqueCreator.Graphics.Gpu.CompositionSwapChainResources.idl"/>	

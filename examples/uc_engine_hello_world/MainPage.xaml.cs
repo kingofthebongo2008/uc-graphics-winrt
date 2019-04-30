@@ -31,6 +31,7 @@ namespace uc_engine_hello_world
         private ComputePipelineState          m_compute;
         private object m_rendererLock         = new object();
         private IAsyncAction                  m_renderLoopWorker;
+        private ByteAddressBuffer             m_buffer;
 
 
         GraphicsPipelineState makeTriangle(ResourceCreateContext ctx)
@@ -133,6 +134,8 @@ namespace uc_engine_hello_world
             display.DpiChanged += new TypedEventHandler<DisplayInformation, object>(OnDpiChanged);
             m_triangle = makeTriangle(m_ctx);
             m_compute = makeCompute(m_ctx);
+
+            m_buffer = m_ctx.CreateByteAddressBuffer(4096, ResourceState.CopyDestination);
         }
 
         public void OnResuming()

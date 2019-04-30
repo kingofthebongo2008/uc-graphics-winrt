@@ -24,7 +24,7 @@
 <ClCompile Include = "..\..\src\dev\cmd\ComputeCommandContext.cpp" />	
 <ClCompile Include = "..\..\src\dev\cmd\GraphicsComputeCommandContext.cpp" />	
 <ClCompile Include = "..\..\src\dev\gpu\BackBuffer.cpp" />	
-<ClCompile Include = "..\..\src\dev\gpu\Buffer.cpp" />	
+<ClCompile Include = "..\..\src\dev\gpu\ByteAddressBuffer.cpp" />	
 <ClCompile Include = "..\..\src\dev\gpu\ColorBuffer.cpp" />	
 <ClCompile Include = "..\..\src\dev\gpu\DepthBuffer.cpp" />	
 <ClCompile Include = "..\..\src\dev\gpu\DepthStencilBuffer.cpp" />	
