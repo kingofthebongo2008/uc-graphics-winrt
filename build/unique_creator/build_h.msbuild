@@ -37,7 +37,8 @@
 <ClInclude Include = "..\..\src\dev\gpu\ColorBuffer.h"/>	
 <ClInclude Include = "..\..\src\dev\gpu\DepthBuffer.h"/>	
 <ClInclude Include = "..\..\src\dev\gpu\DepthStencilBuffer.h"/>	
-<ClInclude Include = "..\..\src\dev\gpu\Texture2D.h"/>
+<ClInclude Include = "..\..\src\dev\gpu\Texture2D.h"/>	
+<ClInclude Include = "..\..\src\dev\gpu\UploadBuffer.h"/>
 </ItemGroup>
 <ItemGroup>	
 <ClInclude Include = "..\..\src\pch\pch.h"/>

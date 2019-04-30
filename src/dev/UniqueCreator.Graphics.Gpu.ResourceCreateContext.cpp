@@ -4,6 +4,7 @@
 #include "gpu/DepthBuffer.h"
 #include "gpu/DepthStencilBuffer.h"
 #include "gpu/ByteAddressBuffer.h"
+#include "gpu/UploadBuffer.h"
 #include "gpu/Texture2D.h"
 
 #include "uc/gx/dx12/dx12.h"
@@ -91,6 +92,11 @@ namespace winrt::UniqueCreator::Graphics::Gpu::implementation
 	Gpu::ByteAddressBuffer	ResourceCreateContext::CreateByteAddressBuffer(uint32_t size, ResourceState const& initialState)
 	{
 		return make<ByteAddressBuffer>(create_byteaddress_buffer(m_ctx.get(), size , static_cast<D3D12_RESOURCE_STATES>(initialState)));
+	}
+
+	Gpu::UploadBuffer ResourceCreateContext::CreateUploadBuffer(uint32_t size)
+	{
+		return make<UploadBuffer>(create_upload_buffer(m_ctx.get(), size));
 	}
 
 	Gpu::Texture2D ResourceCreateContext::CreateTexture2D(uint32_t width, uint32_t height, uint32_t mips, GraphicsFormat const& format, ResourceState const& initialState)

@@ -5,6 +5,7 @@ import "UniqueCreator.Graphics.Gpu.ColorBuffer.idl";
 import "UniqueCreator.Graphics.Gpu.DepthBuffer.idl";
 import "UniqueCreator.Graphics.Gpu.ByteAddressBuffer.idl";
 import "UniqueCreator.Graphics.Gpu.Texture2D.idl";
+import "UniqueCreator.Graphics.Gpu.UploadBuffer.idl";
 
 namespace UniqueCreator
 {
@@ -29,6 +30,8 @@ namespace UniqueCreator
 
 				ByteAddressBuffer		CreateByteAddressBuffer(UInt32 size, ResourceState initialState);
 				Texture2D				CreateTexture2D(UInt32 width, UInt32 height, UInt32 mips, GraphicsFormat format, ResourceState initialState);
+
+				UploadBuffer			CreateUploadBuffer(UInt32 size);
             }
         }
     }

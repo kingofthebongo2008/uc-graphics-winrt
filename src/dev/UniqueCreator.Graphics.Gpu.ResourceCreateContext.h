@@ -26,6 +26,8 @@ namespace winrt::UniqueCreator::Graphics::Gpu::implementation
 		Gpu::ByteAddressBuffer		CreateByteAddressBuffer(uint32_t size, ResourceState const& initialState);
 		Gpu::Texture2D				CreateTexture2D(uint32_t width, uint32_t height, uint32_t mips, GraphicsFormat const& format, ResourceState const& initialState);
 
+		Gpu::UploadBuffer			CreateUploadBuffer(uint32_t size);
+
         void Sync();
         void ResetViewDependentResources();
 

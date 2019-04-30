@@ -8,33 +8,34 @@
 
 #include "IBackBufferNative.h"
 #include "IDepthBufferNative.h"
+#include "d3dx12.h"
 
 
 namespace winrt::UniqueCreator::Graphics::Gpu::implementation
 {
-    DirectGpuCommandContext::DirectGpuCommandContext(uc::gx::dx12::managed_graphics_compute_command_context ctx) : m_ctx(std::move(ctx))
-    {
+	DirectGpuCommandContext::DirectGpuCommandContext(uc::gx::dx12::managed_graphics_compute_command_context ctx) : m_ctx(std::move(ctx))
+	{
 
-    }
+	}
 
-    IFenceHandle DirectGpuCommandContext::Submit()
-    {
-        auto r = make<FenceHandle>(m_ctx->submit(uc::gx::dx12::gpu_command_context::do_not_wait_to_execute));
-        m_ctx.reset();
-        return r;
-    }
+	IFenceHandle DirectGpuCommandContext::Submit()
+	{
+		auto r = make<FenceHandle>(m_ctx->submit(uc::gx::dx12::gpu_command_context::do_not_wait_to_execute));
+		m_ctx.reset();
+		return r;
+	}
 
-    void DirectGpuCommandContext::SubmitAndWaitToExecute()
-    {
-        m_ctx->submit(uc::gx::dx12::gpu_command_context::wait_to_execute);
-        m_ctx.reset();
-    }
-    void DirectGpuCommandContext::TransitionResource(const IVirtualResource& r, ResourceState old_state, ResourceState new_state)
-    {
-        com_ptr<IGpuVirtualResourceNative> r0(r.as<IGpuVirtualResourceNative>());
+	void DirectGpuCommandContext::SubmitAndWaitToExecute()
+	{
+		m_ctx->submit(uc::gx::dx12::gpu_command_context::wait_to_execute);
+		m_ctx.reset();
+	}
+	void DirectGpuCommandContext::TransitionResource(const IVirtualResource& r, ResourceState old_state, ResourceState new_state)
+	{
+		com_ptr<IGpuVirtualResourceNative> r0(r.as<IGpuVirtualResourceNative>());
 
-        m_ctx->transition_resource(r0->GetResource(), static_cast<D3D12_RESOURCE_STATES>(old_state), static_cast<D3D12_RESOURCE_STATES>(new_state));
-    }
+		m_ctx->transition_resource(r0->GetResource(), static_cast<D3D12_RESOURCE_STATES>(old_state), static_cast<D3D12_RESOURCE_STATES>(new_state));
+	}
 
 	void DirectGpuCommandContext::CopyResource(const IVirtualResource& d, const IVirtualResource& s)
 	{
@@ -43,11 +44,11 @@ namespace winrt::UniqueCreator::Graphics::Gpu::implementation
 		m_ctx->copy_resource(r0->GetResource(), r1->GetResource());
 	}
 
-    void DirectGpuCommandContext::Clear(const SwapChainBuffer& b)
-    {
-        com_ptr<IBackBufferNative> r0(b.as<IBackBufferNative>());
-        m_ctx->clear(r0->GetBackBuffer());
-    }
+	void DirectGpuCommandContext::Clear(const SwapChainBuffer& b)
+	{
+		com_ptr<IBackBufferNative> r0(b.as<IBackBufferNative>());
+		m_ctx->clear(r0->GetBackBuffer());
+	}
 
 	void DirectGpuCommandContext::Clear(const IColorBuffer& b)
 	{
@@ -126,12 +127,12 @@ namespace winrt::UniqueCreator::Graphics::Gpu::implementation
 	{
 		D3D12_VIEWPORT v = {};
 
-		v.Height	= vp.Height;
-		v.MaxDepth	= vp.MaxDepth;
-		v.MinDepth	= vp.MinDepth;
-		v.TopLeftX	= vp.TopLeftX;
-		v.TopLeftY	= vp.TopLeftY;
-		v.Width		= vp.Width;
+		v.Height = vp.Height;
+		v.MaxDepth = vp.MaxDepth;
+		v.MinDepth = vp.MinDepth;
+		v.TopLeftX = vp.TopLeftX;
+		v.TopLeftY = vp.TopLeftY;
+		v.Width = vp.Width;
 		m_ctx->set_view_port(v);
 	}
 
@@ -188,7 +189,7 @@ namespace winrt::UniqueCreator::Graphics::Gpu::implementation
 		com_ptr<IDepthBufferNative> r1(d.as<IDepthBufferNative>());
 		m_ctx->set_render_target(r1->GetDepthBuffer());
 	}
-	
+
 	void DirectGpuCommandContext::SetRenderTargetSimple(const IDepthStencilBuffer& d)
 	{
 		throw hresult_not_implemented();
@@ -293,5 +294,16 @@ namespace winrt::UniqueCreator::Graphics::Gpu::implementation
 	{
 		m_ctx->dispatch(x, y, z);
 	}
+
+	void DirectGpuCommandContext::UpdateBuffer(const IVirtualResource& destination, uint32_t destination_offset, const Windows::Foundation::Collections::IVector<uint8_t>& buffer)
+	{
+		std::vector<uint8_t> data;
+		data.resize(buffer.Size());
+		buffer.GetMany(0, array_view<uint8_t>(data));
+
+		com_ptr<IGpuVirtualResourceNative> r0(destination.as<IGpuVirtualResourceNative>());
+		m_ctx->upload_buffer(r0->GetResource(), destination_offset, &data[0], data.size());
+	}
 }
+
 

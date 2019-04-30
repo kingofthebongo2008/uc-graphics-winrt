@@ -28,7 +28,8 @@
 <ClCompile Include = "..\..\src\dev\gpu\ColorBuffer.cpp" />	
 <ClCompile Include = "..\..\src\dev\gpu\DepthBuffer.cpp" />	
 <ClCompile Include = "..\..\src\dev\gpu\DepthStencilBuffer.cpp" />	
-<ClCompile Include = "..\..\src\dev\gpu\Texture2D.cpp" />
+<ClCompile Include = "..\..\src\dev\gpu\Texture2D.cpp" />	
+<ClCompile Include = "..\..\src\dev\gpu\UploadBuffer.cpp" />
 </ItemGroup>
 <ItemGroup>	
 <ClCompile Include = "..\..\src\pch\pch.cpp"><PrecompiledHeader>Create</PrecompiledHeader></ClCompile>

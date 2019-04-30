@@ -69,8 +69,9 @@ namespace winrt::UniqueCreator::Graphics::Gpu::implementation
 		void SetComputeUAV(uint32_t rootIndex, uint32_t offset, const IUnorderedAccessView& r);
 		void SetComputeRootConstant(uint32_t rootIndex, uint32_t offset, uint32_t constant);
 
-		private:
+		void UpdateBuffer(const IVirtualResource& destination, uint32_t destination_offset, const Windows::Foundation::Collections::IVector<uint8_t>& buffer);
 
+		private:
         uc::gx::dx12::managed_graphics_compute_command_context m_ctx;
    };  
 }

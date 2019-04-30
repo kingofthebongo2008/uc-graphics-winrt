@@ -31,6 +31,7 @@
 <Midl Include = "..\..\src\idl\UniqueCreator.Graphics.Gpu.StreamOutputDescription.idl"/>	
 <Midl Include = "..\..\src\idl\UniqueCreator.Graphics.Gpu.SwapChainResources.idl"/>	
 <Midl Include = "..\..\src\idl\UniqueCreator.Graphics.Gpu.Texture2D.idl"/>	
+<Midl Include = "..\..\src\idl\UniqueCreator.Graphics.Gpu.UploadBuffer.idl"/>	
 <Midl Include = "..\..\src\idl\UniqueCreator.Graphics.Gpu.VertexShaderByteCode.idl"/>	
 <Midl Include = "..\..\src\idl\UniqueCreator.Graphics.Gpu.VirtualResource.idl"/>
 </ItemGroup></Project> 

@@ -136,6 +136,37 @@ namespace uc_engine_hello_world
             m_compute = makeCompute(m_ctx);
 
             m_buffer = m_ctx.CreateByteAddressBuffer(4096, ResourceState.CopyDestination);
+
+            var ctx = m_swapChain.CreateGraphicsComputeCommandContext();
+
+            {
+                float[] positions =
+                {
+                    0.0f, 0.5f, 0.5f, 1.0f,
+                    -0.5f, 0.0f, 0.5f, 1.0f,
+                    0.5f, 0.0f, 0.5f, 1.0f
+                };
+
+                byte[] b0 = new byte[positions.Length * 4];
+                Buffer.BlockCopy(positions, 0, b0, 0, b0.Length);
+
+                float[] colors =
+                {
+                    1.0f, 0.0f, 0.0f,
+                    0.0f, 1.0f, 0.0f,
+                    0.0f, 0.0f, 1.0f
+                };
+
+                byte[] b1 = new byte[colors.Length * 4];
+                Buffer.BlockCopy(colors, 0, b1, 0, b1.Length);
+
+                ctx.UpdateBuffer(m_buffer, 0, b0);
+                ctx.UpdateBuffer(m_buffer, (uint)b0.Length, b1);
+            }
+
+            ctx.TransitionResource(m_buffer, ResourceState.CopyDestination, ResourceState.NonPixelShaderResource );
+
+            ctx.SubmitAndWaitToExecute();
         }
 
         public void OnResuming()
@@ -255,6 +286,7 @@ namespace uc_engine_hello_world
                     }
                 }
 
+                ctx.SetGraphicsSRV(5, 0, m_buffer);
                 ctx.Draw(3, 0);
 
                 ctx.TransitionResource(frameColorBuffer, ResourceState.RenderTarget, ResourceState.NonPixelShaderResource);

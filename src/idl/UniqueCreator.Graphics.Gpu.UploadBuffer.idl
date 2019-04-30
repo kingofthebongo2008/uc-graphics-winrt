@@ -1,0 +1,16 @@
+﻿#pragma once
+import "UniqueCreator.Graphics.Gpu.PixelBuffer.idl";
+namespace UniqueCreator
+{
+    namespace Graphics
+    {
+        namespace Gpu
+        {
+            [default_interface]
+            runtimeclass UploadBuffer : IVirtualResource
+            {
+
+            };
+        }
+    }
+}
