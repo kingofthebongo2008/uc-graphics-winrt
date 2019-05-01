@@ -70,6 +70,7 @@ namespace winrt::UniqueCreator::Graphics::Gpu::implementation
 		void SetComputeRootConstant(uint32_t rootIndex, uint32_t offset, uint32_t constant);
 
 		void UpdateBuffer(const IVirtualResource& destination, uint32_t destination_offset, const Windows::Foundation::Collections::IVector<uint8_t>& buffer);
+		void UploadResource(const IVirtualResource& r, uint32_t first_sub_resource, uint32_t sub_resource_count, const Windows::Foundation::Collections::IVector<Gpu::SubresourceData>& d);
 
 		private:
         uc::gx::dx12::managed_graphics_compute_command_context m_ctx;

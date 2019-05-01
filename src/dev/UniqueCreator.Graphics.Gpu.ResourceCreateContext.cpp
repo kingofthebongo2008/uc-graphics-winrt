@@ -101,6 +101,6 @@ namespace winrt::UniqueCreator::Graphics::Gpu::implementation
 
 	Gpu::Texture2D ResourceCreateContext::CreateTexture2D(uint32_t width, uint32_t height, uint32_t mips, GraphicsFormat const& format, ResourceState const& initialState)
 	{
-		return make<Texture2D>();
+		return make<Texture2D>(create_texture_2d(m_ctx.get(), width, height, static_cast<DXGI_FORMAT>(format), static_cast<D3D12_RESOURCE_STATES>(initialState)));
 	}
 }

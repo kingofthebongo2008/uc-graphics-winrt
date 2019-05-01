@@ -28,6 +28,7 @@
 <ClInclude Include = "..\..\src\dev\UniqueCreator.Graphics.Gpu.ResourceCreateContext.h"/>	
 <ClInclude Include = "..\..\src\dev\UniqueCreator.Graphics.Gpu.RootSignatureByteCode.h"/>	
 <ClInclude Include = "..\..\src\dev\UniqueCreator.Graphics.Gpu.StreamOutputDescription.h"/>	
+<ClInclude Include = "..\..\src\dev\UniqueCreator.Graphics.Gpu.SubresourceData.h"/>	
 <ClInclude Include = "..\..\src\dev\UniqueCreator.Graphics.Gpu.VertexShaderByteCode.h"/>	
 <ClInclude Include = "..\..\src\dev\WindowsEnvironment.h"/>	
 <ClInclude Include = "..\..\src\dev\cmd\ComputeCommandContext.h"/>	

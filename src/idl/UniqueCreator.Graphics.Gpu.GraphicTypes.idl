@@ -464,13 +464,6 @@ namespace UniqueCreator
             IndexBufferFormat   Format;
         };
 
-        struct SubresourceData
-        {
-            CpuVirtualAddress   Data;
-            UInt64              RowPitch;
-            UInt64              SlicePitch;
-        };
-
         struct PrimitiveRange
         {
             UInt32 Begin;

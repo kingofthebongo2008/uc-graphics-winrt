@@ -1,17 +1,30 @@
 #pragma once
 #include "UniqueCreator.Graphics.Gpu.Texture2D.g.h"
+#include "IGpuVirtualResourceNative.h"
+
+#include <uc/gx/dx12/dx12.h>
 
 namespace winrt::UniqueCreator::Graphics::Gpu::implementation
 {
-    struct Texture2D : Texture2DT<Texture2D>
-    {
-        Texture2D() = default;
+	using namespace uc::gx::dx12;
 
-        UniqueCreator::Graphics::Gpu::GpuVirtualAddress VirtualAddress();
-        UniqueCreator::Graphics::Gpu::Size2D Size2D();
-        UniqueCreator::Graphics::Gpu::Size3D Size3D();
-        UniqueCreator::Graphics::Gpu::CpuDescriptorHandle SRV();
-        UniqueCreator::Graphics::Gpu::CpuDescriptorHandle UAV();
+    struct Texture2D : Texture2DT<Texture2D, IGpuVirtualResourceNative >
+    {
+        Texture2D(managed_gpu_texture_2d g);
+
+        GpuVirtualAddress VirtualAddress() const;
+
+        Size2D Size2D() const;
+        Size3D Size3D() const;
+
+        CpuDescriptorHandle SRV() const;
+        CpuDescriptorHandle UAV() const;
+
         void Dummy1();
+
+		uc::gx::dx12::gpu_virtual_resource* GetResource();
+
+		private:
+		managed_gpu_texture_2d m_texture;
     };
 }

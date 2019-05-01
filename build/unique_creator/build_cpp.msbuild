@@ -19,6 +19,7 @@
 <ClCompile Include = "..\..\src\dev\UniqueCreator.Graphics.Gpu.ResourceCreateContext.cpp" />	
 <ClCompile Include = "..\..\src\dev\UniqueCreator.Graphics.Gpu.RootSignatureByteCode.cpp" />	
 <ClCompile Include = "..\..\src\dev\UniqueCreator.Graphics.Gpu.StreamOutputDescription.cpp" />	
+<ClCompile Include = "..\..\src\dev\UniqueCreator.Graphics.Gpu.SubresourceData.cpp" />	
 <ClCompile Include = "..\..\src\dev\UniqueCreator.Graphics.Gpu.VertexShaderByteCode.cpp" />	
 <ClCompile Include = "..\..\src\dev\WindowsEnvironment.cpp" />	
 <ClCompile Include = "..\..\src\dev\cmd\ComputeCommandContext.cpp" />	

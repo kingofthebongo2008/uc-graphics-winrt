@@ -1,0 +1,19 @@
+﻿#pragma once
+
+namespace UniqueCreator
+{
+	namespace Graphics
+	{
+		namespace Gpu
+		{
+			runtimeclass SubresourceData
+			{
+				SubresourceData();
+
+                Windows.Foundation.Collections.IVector<UInt8> Data;
+                UInt64                                        RowPitch;
+                UInt64                                        SlicePitch;
+            };
+        }
+    }
+}

@@ -1,6 +1,7 @@
 ﻿#include "pch.h"
 #include "GraphicsComputeCommandContext.h"
 #include "UniqueCreator.Graphics.Gpu.FenceHandle.h"
+#include "UniqueCreator.Graphics.Gpu.SubresourceData.h"
 
 #include "IGpuVirtualResourceNative.h"
 #include "IGraphicsPipelineStateNative.h"
@@ -8,7 +9,6 @@
 
 #include "IBackBufferNative.h"
 #include "IDepthBufferNative.h"
-#include "d3dx12.h"
 
 
 namespace winrt::UniqueCreator::Graphics::Gpu::implementation
@@ -303,6 +303,33 @@ namespace winrt::UniqueCreator::Graphics::Gpu::implementation
 
 		com_ptr<IGpuVirtualResourceNative> r0(destination.as<IGpuVirtualResourceNative>());
 		m_ctx->upload_buffer(r0->GetResource(), destination_offset, &data[0], data.size());
+	}
+
+	void DirectGpuCommandContext::UploadResource(const IVirtualResource& r, uint32_t first_sub_resource, uint32_t sub_resource_count, const Windows::Foundation::Collections::IVector<Gpu::SubresourceData>& d)
+	{
+		std::vector< D3D12_SUBRESOURCE_DATA> d3d;
+		std::vector< std::vector<uint8_t> >  subs;
+
+		for (auto && data : d)
+		{
+			D3D12_SUBRESOURCE_DATA r = {};
+
+			std::vector<uint8_t> sub;
+
+			sub.resize( data.Data().Size() );
+			data.Data().GetMany(0, array_view<uint8_t>(sub));
+
+			D3D12_SUBRESOURCE_DATA d3dx = {};
+			d3dx.pData = &sub[0];
+			d3dx.RowPitch = data.RowPitch();
+			d3dx.SlicePitch = data.SlicePitch();
+
+			d3d.push_back(std::move(d3dx));
+			subs.push_back(std::move(sub));
+		}
+
+		com_ptr<IGpuVirtualResourceNative> r0(r.as<IGpuVirtualResourceNative>());
+		m_ctx->upload_resource(r0->GetResource(), first_sub_resource, sub_resource_count, &d3d[0]);
 	}
 }
 

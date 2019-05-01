@@ -6,13 +6,8 @@ namespace UniqueCreator
     {
         namespace Gpu
         {
-            interface ITexture2D requires IPixelBuffer, IShaderResourceView, IUnorderedAccessView
-            {
-                void Dummy1();
-            };
-
             [default_interface]
-            runtimeclass Texture2D : ITexture2D
+            runtimeclass Texture2D : IPixelBuffer, IShaderResourceView
             {
 
             };

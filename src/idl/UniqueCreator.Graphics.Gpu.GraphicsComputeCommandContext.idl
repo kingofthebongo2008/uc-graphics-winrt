@@ -6,6 +6,7 @@ import "UniqueCreator.Graphics.Gpu.BackBuffer.idl";
 import "UniqueCreator.Graphics.Gpu.ColorBuffer.idl";
 import "UniqueCreator.Graphics.Gpu.DepthBuffer.idl";
 import "UniqueCreator.Graphics.Gpu.UploadBuffer.idl";
+import "UniqueCreator.Graphics.Gpu.SubresourceData.idl";
 
 namespace UniqueCreator
 {
@@ -76,6 +77,8 @@ namespace UniqueCreator
                 void SetDepthStencil(IDepthStencilBuffer d);
 
 				void UpdateBuffer(IVirtualResource destination, UInt32 destination_offset, Windows.Foundation.Collections.IVector<UInt8> data );
+				void UploadResource(IVirtualResource r, UInt32 first_sub_resource, UInt32 sub_resource_count, Windows.Foundation.Collections.IVector<SubresourceData> d);
+
 
 				//Compute
                 void TransitionResource(IVirtualResource r, ResourceState old_state, ResourceState new_state);

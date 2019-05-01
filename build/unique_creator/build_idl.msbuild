@@ -29,6 +29,7 @@
 <Midl Include = "..\..\src\idl\UniqueCreator.Graphics.Gpu.ResourceCreateContext.idl"/>	
 <Midl Include = "..\..\src\idl\UniqueCreator.Graphics.Gpu.RootSignatureByteCode.idl"/>	
 <Midl Include = "..\..\src\idl\UniqueCreator.Graphics.Gpu.StreamOutputDescription.idl"/>	
+<Midl Include = "..\..\src\idl\UniqueCreator.Graphics.Gpu.SubresourceData.idl"/>	
 <Midl Include = "..\..\src\idl\UniqueCreator.Graphics.Gpu.SwapChainResources.idl"/>	
 <Midl Include = "..\..\src\idl\UniqueCreator.Graphics.Gpu.Texture2D.idl"/>	
 <Midl Include = "..\..\src\idl\UniqueCreator.Graphics.Gpu.UploadBuffer.idl"/>	

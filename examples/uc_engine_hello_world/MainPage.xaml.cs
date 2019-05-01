@@ -137,6 +137,8 @@ namespace uc_engine_hello_world
 
             m_buffer = m_ctx.CreateByteAddressBuffer(4096, ResourceState.CopyDestination);
 
+            var m_texture = m_ctx.CreateTexture2D( 256, 256, 1, GraphicsFormat.R8_UINT, ResourceState.CopyDestination );
+
             var ctx = m_swapChain.CreateGraphicsComputeCommandContext();
 
             {
@@ -162,6 +164,25 @@ namespace uc_engine_hello_world
 
                 ctx.UpdateBuffer(m_buffer, 0, b0);
                 ctx.UpdateBuffer(m_buffer, (uint)b0.Length, b1);
+            }
+
+            {
+                byte[] pixels = new byte[256 * 256];
+
+                for ( var i = 0; i < 256*256; ++i)
+                {
+                    pixels[i] = 0xFF;
+                }
+
+                var subResourceData = new SubresourceData();
+
+                subResourceData.Data         = pixels;
+                subResourceData.RowPitch     = 256;
+                subResourceData.SlicePitch   = 256 * 256;
+
+                SubresourceData[] datas      = { subResourceData };
+
+                ctx.UploadResource(m_texture, 0, 1, datas);
             }
 
             ctx.TransitionResource(m_buffer, ResourceState.CopyDestination, ResourceState.NonPixelShaderResource );
