@@ -32,6 +32,7 @@ namespace uc_engine_hello_world
         private object m_rendererLock         = new object();
         private IAsyncAction                  m_renderLoopWorker;
         private ByteAddressBuffer             m_buffer;
+        private Texture2D                     m_texture;
 
 
         GraphicsPipelineState makeTriangle(ResourceCreateContext ctx)
@@ -123,6 +124,41 @@ namespace uc_engine_hello_world
             return new ComputePipelineState(m_ctx, description);
         }
 
+        // Generate a simple black and white checkerboard texture.
+        byte[] GenerateTextureData()
+        {
+            const uint TextureWidth = 256;
+            const uint TextureHeight = 256;
+            const uint TexturePixelSize = 1;    // The number of bytes used to represent a pixel in the texture.
+
+            const uint rowPitch     = TextureWidth * TexturePixelSize;
+            const uint cellPitch    = rowPitch >> 3;        // The width of a cell in the checkboard texture.
+            const uint cellHeight   = TextureWidth >> 3;    // The height of a cell in the checkerboard texture.
+            const uint textureSize  = rowPitch * TextureHeight;
+
+            byte[] data = new byte[textureSize];
+
+            for (uint n = 0; n < textureSize; n += TexturePixelSize)
+            {
+                var x = n % rowPitch;
+                var y = n / rowPitch;
+                var i = x / cellPitch;
+                var j = y / cellHeight;
+
+                if (i % 2 == j % 2)
+                {
+                    data[n] = 0x00;        // R
+                }
+                else
+                {
+                    data[n] = 0xff;        // R
+                }
+            }
+
+            return data;
+        }
+
+
         public MainPage()
         {
             this.InitializeComponent();
@@ -137,7 +173,7 @@ namespace uc_engine_hello_world
 
             m_buffer = m_ctx.CreateByteAddressBuffer(4096, ResourceState.CopyDestination);
 
-            var m_texture = m_ctx.CreateTexture2D( 256, 256, 1, GraphicsFormat.R8_UINT, ResourceState.CopyDestination );
+            m_texture = m_ctx.CreateTexture2D( 256, 256, 1, GraphicsFormat.R8_UNORM, ResourceState.CopyDestination );
 
             var ctx = m_swapChain.CreateGraphicsComputeCommandContext();
 
@@ -167,16 +203,9 @@ namespace uc_engine_hello_world
             }
 
             {
-                byte[] pixels = new byte[256 * 256];
-
-                for ( var i = 0; i < 256*256; ++i)
-                {
-                    pixels[i] = 0xFF;
-                }
-
                 var subResourceData = new SubresourceData();
 
-                subResourceData.Data         = pixels;
+                subResourceData.Data         = GenerateTextureData();
                 subResourceData.RowPitch     = 256;
                 subResourceData.SlicePitch   = 256 * 256;
 
@@ -185,6 +214,7 @@ namespace uc_engine_hello_world
                 ctx.UploadResource(m_texture, 0, 1, datas);
             }
 
+            ctx.TransitionResource(m_texture, ResourceState.CopyDestination, ResourceState.PixelShaderResource | ResourceState.NonPixelShaderResource);
             ctx.TransitionResource(m_buffer, ResourceState.CopyDestination, ResourceState.NonPixelShaderResource );
 
             ctx.SubmitAndWaitToExecute();
@@ -308,6 +338,7 @@ namespace uc_engine_hello_world
                 }
 
                 ctx.SetGraphicsSRV(5, 0, m_buffer);
+                ctx.SetGraphicsSRV(5, 1, m_texture);
                 ctx.Draw(3, 0);
 
                 ctx.TransitionResource(frameColorBuffer, ResourceState.RenderTarget, ResourceState.NonPixelShaderResource);
