@@ -1,0 +1,57 @@
+﻿#pragma once
+
+import "UniqueCreator.Graphics.Gpu.GraphicsComputeCommandContext.idl";
+import "UniqueCreator.Graphics.Gpu.ResourceCreateContext.idl";
+
+namespace UniqueCreator
+{
+    namespace Graphics
+    {
+        namespace Gpu
+        {
+            struct Matrix44
+            {
+				Single r00;
+				Single r01;
+				Single r02;
+				Single r03;
+
+				Single r10;
+				Single r11;
+				Single r12;
+				Single r13;
+
+				Single r20;
+				Single r21;
+				Single r22;
+				Single r23;
+
+				Single r30;
+				Single r31;
+				Single r32;
+				Single r33;
+            };
+
+            interface DerivativesSkinnedModelInstance
+            {
+                void SubmitDepth(IGraphicsComputeCommandContext d);
+                void SubmitAlbedo(IGraphicsComputeCommandContext d);
+            };
+
+            runtimeclass DerivativesSkinnedModel
+            {
+                DerivativesSkinnedModel( ResourceCreateContext rc, IGraphicsComputeCommandContext ctx, String payload );
+
+                DerivativesSkinnedModelInstance MakeInstance(Matrix44 d);
+
+                void BeginDepth(IGraphicsComputeCommandContext d);
+                void EndDepth(IGraphicsComputeCommandContext d);
+
+                void BeginAlbedo(IGraphicsComputeCommandContext d);
+                void EndAlbedo(IGraphicsComputeCommandContext d);
+            };
+        }
+    }
+}
+
+

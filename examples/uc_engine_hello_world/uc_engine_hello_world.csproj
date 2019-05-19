@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\..\build\packages\uc-tools-msbuild-tasks.1.0.31\build\uc-tools-msbuild-tasks.props" Condition="Exists('..\..\build\packages\uc-tools-msbuild-tasks.1.0.31\build\uc-tools-msbuild-tasks.props')" />
-  <Import Project="..\..\build\packages\uc-tools-graphics-gpu-shader-compiler.1.0.12\build\uc-tools-graphics-gpu-shader-compiler.props" Condition="Exists('..\..\build\packages\uc-tools-graphics-gpu-shader-compiler.1.0.12\build\uc-tools-graphics-gpu-shader-compiler.props')" />
-  <Import Project="..\..\build\packages\uc-tools-graphics-gpu-pipeline-compiler.1.0.32\build\uc-tools-graphics-gpu-pipeline-compiler.props" Condition="Exists('..\..\build\packages\uc-tools-graphics-gpu-pipeline-compiler.1.0.32\build\uc-tools-graphics-gpu-pipeline-compiler.props')" />
+  <Import Project="..\..\build\packages\uc-tools-msbuild-tasks.1.0.39\build\uc-tools-msbuild-tasks.props" Condition="Exists('..\..\build\packages\uc-tools-msbuild-tasks.1.0.39\build\uc-tools-msbuild-tasks.props')" />
+  <Import Project="..\..\build\packages\uc-tools-graphics-gpu-shader-compiler.1.0.14\build\uc-tools-graphics-gpu-shader-compiler.props" Condition="Exists('..\..\build\packages\uc-tools-graphics-gpu-shader-compiler.1.0.14\build\uc-tools-graphics-gpu-shader-compiler.props')" />
+  <Import Project="..\..\build\packages\uc-tools-graphics-gpu-pipeline-compiler.1.0.35\build\uc-tools-graphics-gpu-pipeline-compiler.props" Condition="Exists('..\..\build\packages\uc-tools-graphics-gpu-pipeline-compiler.1.0.35\build\uc-tools-graphics-gpu-pipeline-compiler.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -39,9 +39,9 @@
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <ImportGroup Label="ExtensionSettings">
-    <Import Project="..\..\build\packages\uc-tools-graphics-gpu-pipeline-compiler.1.0.32\build\uc-tools-graphics-gpu-pipeline-compiler.targets" Condition="Exists('..\..\build\packages\uc-tools-graphics-gpu-pipeline-compiler.1.0.32\build\uc-tools-graphics-gpu-pipeline-compiler.targets')" />
-    <Import Project="..\..\build\packages\uc-tools-graphics-gpu-shader-compiler.1.0.12\build\uc-tools-graphics-gpu-shader-compiler.targets" Condition="Exists('..\..\build\packages\uc-tools-graphics-gpu-shader-compiler.1.0.12\build\uc-tools-graphics-gpu-shader-compiler.targets')" />
-    <Import Project="..\..\build\packages\uc-tools-msbuild-tasks.1.0.32\build\uc-tools-msbuild-tasks.targets" Condition="Exists('..\..\build\packages\uc-tools-msbuild-tasks.1.0.32\build\uc-tools-msbuild-tasks.targets')" />
+    <Import Project="..\..\build\packages\uc-tools-graphics-gpu-pipeline-compiler.1.0.35\build\uc-tools-graphics-gpu-pipeline-compiler.targets" Condition="Exists('..\..\build\packages\uc-tools-graphics-gpu-pipeline-compiler.1.0.35\build\uc-tools-graphics-gpu-pipeline-compiler.targets')" />
+    <Import Project="..\..\build\packages\uc-tools-graphics-gpu-shader-compiler.1.0.14\build\uc-tools-graphics-gpu-shader-compiler.targets" Condition="Exists('..\..\build\packages\uc-tools-graphics-gpu-shader-compiler.1.0.14\build\uc-tools-graphics-gpu-shader-compiler.targets')" />
+    <Import Project="..\..\build\packages\uc-tools-msbuild-tasks.1.0.39\build\uc-tools-msbuild-tasks.targets" Condition="Exists('..\..\build\packages\uc-tools-msbuild-tasks.1.0.39\build\uc-tools-msbuild-tasks.targets')" />
   </ImportGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
@@ -103,7 +103,7 @@
       <Version>2.1.190405004.1</Version>
     </PackageReference>
     <PackageReference Include="uc-tools-msbuild-tasks">
-      <Version>1.0.32</Version>
+      <Version>1.0.39</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
@@ -120,12 +120,12 @@
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\..\build\packages\uc-tools-graphics-gpu-pipeline-compiler.1.0.32\build\uc-tools-graphics-gpu-pipeline-compiler.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\build\uc-tools-graphics-gpu-pipeline-compiler.1.0.32\build\uc-tools-graphics-gpu-pipeline-compiler.props'))" />
-    <Error Condition="!Exists('..\..\build\packages\uc-tools-graphics-gpu-pipeline-compiler.1.0.32\build\uc-tools-graphics-gpu-pipeline-compiler.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\build\uc-tools-graphics-gpu-pipeline-compiler.1.0.32\build\uc-tools-graphics-gpu-pipeline-compiler.targets'))" />
-    <Error Condition="!Exists('..\..\build\packages\uc-tools-graphics-gpu-shader-compiler.1.0.12\build\uc-tools-graphics-gpu-shader-compiler.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\build\uc-tools-graphics-gpu-shader-compiler.1.0.12\build\uc-tools-graphics-gpu-shader-compiler.props'))" />
-    <Error Condition="!Exists('..\..\build\packages\uc-tools-graphics-gpu-shader-compiler.1.0.12\build\uc-tools-graphics-gpu-shader-compiler.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\build\uc-tools-graphics-gpu-shader-compiler.1.0.12\build\uc-tools-graphics-gpu-shader-compiler.targets'))" />
-    <Error Condition="!Exists('..\..\build\packages\uc-tools-msbuild-tasks.1.0.32\build\uc-tools-msbuild-tasks.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\uc-tools-msbuild-tasks.1.0.32\build\build\uc-tools-msbuild-tasks.props'))" />
-    <Error Condition="!Exists('..\..\build\packages\uc-tools-msbuild-tasks.1.0.32\build\uc-tools-msbuild-tasks.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\uc-tools-msbuild-tasks.1.0.32\build\build\uc-tools-msbuild-tasks.targets'))" />
+    <Error Condition="!Exists('..\..\build\packages\uc-tools-graphics-gpu-pipeline-compiler.1.0.35\build\uc-tools-graphics-gpu-pipeline-compiler.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\build\uc-tools-graphics-gpu-pipeline-compiler.1.0.35\build\uc-tools-graphics-gpu-pipeline-compiler.props'))" />
+    <Error Condition="!Exists('..\..\build\packages\uc-tools-graphics-gpu-pipeline-compiler.1.0.35\build\uc-tools-graphics-gpu-pipeline-compiler.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\build\uc-tools-graphics-gpu-pipeline-compiler.1.0.35\build\uc-tools-graphics-gpu-pipeline-compiler.targets'))" />
+    <Error Condition="!Exists('..\..\build\packages\uc-tools-graphics-gpu-shader-compiler.1.0.14\build\uc-tools-graphics-gpu-shader-compiler.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\build\uc-tools-graphics-gpu-shader-compiler.1.0.14\build\uc-tools-graphics-gpu-shader-compiler.props'))" />
+    <Error Condition="!Exists('..\..\build\packages\uc-tools-graphics-gpu-shader-compiler.1.0.14\build\uc-tools-graphics-gpu-shader-compiler.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\build\uc-tools-graphics-gpu-shader-compiler.1.0.14\build\uc-tools-graphics-gpu-shader-compiler.targets'))" />
+    <Error Condition="!Exists('..\..\build\packages\uc-tools-msbuild-tasks.1.0.39\build\uc-tools-msbuild-tasks.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\uc-tools-msbuild-tasks.1.0.39\build\build\uc-tools-msbuild-tasks.props'))" />
+    <Error Condition="!Exists('..\..\build\packages\uc-tools-msbuild-tasks.1.0.39\build\uc-tools-msbuild-tasks.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\uc-tools-msbuild-tasks.1.0.39\build\build\uc-tools-msbuild-tasks.targets'))" />
   </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets. !-->

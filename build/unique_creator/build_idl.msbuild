@@ -13,6 +13,7 @@
 <Midl Include = "..\..\src\idl\UniqueCreator.Graphics.Gpu.ComputePipelineStateDescription.idl"/>	
 <Midl Include = "..\..\src\idl\UniqueCreator.Graphics.Gpu.ComputeShaderByteCode.idl"/>	
 <Midl Include = "..\..\src\idl\UniqueCreator.Graphics.Gpu.DepthBuffer.idl"/>	
+<Midl Include = "..\..\src\idl\UniqueCreator.Graphics.Gpu.DerivativesSkinnedModel.idl"/>	
 <Midl Include = "..\..\src\idl\UniqueCreator.Graphics.Gpu.DomainShaderByteCode.idl"/>	
 <Midl Include = "..\..\src\idl\UniqueCreator.Graphics.Gpu.FenceHandle.idl"/>	
 <Midl Include = "..\..\src\idl\UniqueCreator.Graphics.Gpu.GeometryShaderByteCode.idl"/>	

@@ -359,6 +359,7 @@ namespace uc_engine_hello_world
 
             m_swapChain.MoveToNextFrame();
 
+            //flush all buffers
             m_ctx.Sync();
             m_swapChain.Sync();
         }

@@ -1,0 +1,11 @@
+import geometry
+
+PipelineStateObject derivatives_skinned_model_albedo : solid_geometry =
+{
+    .RootSignature          = derivatives_skinned_model_signature
+    .VertexShader           = derivatives_skinned_model_albedo_vertex
+    .PixelShader            = derivatives_skinned_model_albedo_pixel
+}
+
+
+

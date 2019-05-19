@@ -16,6 +16,7 @@
 <ClInclude Include = "..\..\src\dev\UniqueCreator.Graphics.Gpu.ComputePipelineState.h"/>	
 <ClInclude Include = "..\..\src\dev\UniqueCreator.Graphics.Gpu.ComputePipelineStateDescription.h"/>	
 <ClInclude Include = "..\..\src\dev\UniqueCreator.Graphics.Gpu.ComputeShaderByteCode.h"/>	
+<ClInclude Include = "..\..\src\dev\UniqueCreator.Graphics.Gpu.DerivativesSkinnedModel.h"/>	
 <ClInclude Include = "..\..\src\dev\UniqueCreator.Graphics.Gpu.DomainShaderByteCode.h"/>	
 <ClInclude Include = "..\..\src\dev\UniqueCreator.Graphics.Gpu.FenceHandle.h"/>	
 <ClInclude Include = "..\..\src\dev\UniqueCreator.Graphics.Gpu.GeometryShaderByteCode.h"/>	
