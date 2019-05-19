@@ -5,13 +5,9 @@
 
     <RootSignature Include="..\..\src\shaders\default_graphics_signature.hlsl">
       <EntryPointName>MyRS1</EntryPointName>
-      <CPPOutput>..\..\src\shaders\default_graphics_signature.cpp</CPPOutput>
-      <CPPHeaderOutput>..\..\src\shaders\default_graphics_signature.h</CPPHeaderOutput>
     </RootSignature>
 
     <RootSignature Include="..\..\src\shaders\default_compute_signature.hlsl">
-      <CPPOutput>..\..\src\shaders\default_compute_signature.cpp</CPPOutput>
-      <CPPHeaderOutput>..\..\src\shaders\default_compute_signature.h</CPPHeaderOutput>
       <EntryPointName>MyRS2</EntryPointName>
     </RootSignature>
 

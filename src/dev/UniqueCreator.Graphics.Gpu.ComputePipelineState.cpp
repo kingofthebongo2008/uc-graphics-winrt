@@ -4,7 +4,7 @@
 #include "IShaderByteCodeNative.h"
 #include "IResourceCreateContextNative.h"
 
-#include "shaders/default_compute_signature.h"
+#include <default_compute_signature.h>
 
 
 namespace winrt::UniqueCreator::Graphics::Gpu::implementation

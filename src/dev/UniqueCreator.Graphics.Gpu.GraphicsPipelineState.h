@@ -3,7 +3,7 @@
 #include "winrt/UniqueCreator.Graphics.Gpu.h"
 #include "UniqueCreator.Graphics.Gpu.GraphicsPipelineState.g.h"
 
-#include "shaders/default_graphics_signature.h"
+#include <default_graphics_signature.h>
 #include "IGraphicsPipelineStateNative.h"
 
 namespace winrt::UniqueCreator::Graphics::Gpu::implementation

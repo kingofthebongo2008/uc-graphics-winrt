@@ -2,7 +2,7 @@
 
 #include "UniqueCreator.Graphics.Gpu.ComputePipelineState.g.h"
 
-#include "shaders/default_compute_signature.h"
+#include <default_compute_signature.h>
 #include "IComputePipelineStateNative.h"
 
 namespace winrt::UniqueCreator::Graphics::Gpu::implementation
