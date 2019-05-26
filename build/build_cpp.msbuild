@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003"> 
+
+<ItemGroup>	
+<ClCompile Include = "..\src\dev\UniqueCreator.Graphics.Gpu.BlendDescription.cpp" />	
+<ClCompile Include = "..\src\dev\UniqueCreator.Graphics.Gpu.CompositionSwapChainResources.cpp" />	
+<ClCompile Include = "..\src\dev\UniqueCreator.Graphics.Gpu.ComputePipelineState.cpp" />	
+<ClCompile Include = "..\src\dev\UniqueCreator.Graphics.Gpu.ComputePipelineStateDescription.cpp" />	
+<ClCompile Include = "..\src\dev\UniqueCreator.Graphics.Gpu.ComputeShaderByteCode.cpp" />	
+<ClCompile Include = "..\src\dev\UniqueCreator.Graphics.Gpu.DerivativesSkinnedModel.cpp" />	
+<ClCompile Include = "..\src\dev\UniqueCreator.Graphics.Gpu.DomainShaderByteCode.cpp" />	
+<ClCompile Include = "..\src\dev\UniqueCreator.Graphics.Gpu.FenceHandle.cpp" />	
+<ClCompile Include = "..\src\dev\UniqueCreator.Graphics.Gpu.GeometryShaderByteCode.cpp" />	
+<ClCompile Include = "..\src\dev\UniqueCreator.Graphics.Gpu.GraphicsPipelineState.cpp" />	
+<ClCompile Include = "..\src\dev\UniqueCreator.Graphics.Gpu.GraphicsPipelineStateDescription.cpp" />	
+<ClCompile Include = "..\src\dev\UniqueCreator.Graphics.Gpu.HullShaderByteCode.cpp" />	
+<ClCompile Include = "..\src\dev\UniqueCreator.Graphics.Gpu.InputLayoutDescription.cpp" />	
+<ClCompile Include = "..\src\dev\UniqueCreator.Graphics.Gpu.PixelShaderByteCode.cpp" />	
+<ClCompile Include = "..\src\dev\UniqueCreator.Graphics.Gpu.PrimitiveRangeDescription.cpp" />	
+<ClCompile Include = "..\src\dev\UniqueCreator.Graphics.Gpu.ResourceCreateContext.cpp" />	
+<ClCompile Include = "..\src\dev\UniqueCreator.Graphics.Gpu.RootSignatureByteCode.cpp" />	
+<ClCompile Include = "..\src\dev\UniqueCreator.Graphics.Gpu.StreamOutputDescription.cpp" />	
+<ClCompile Include = "..\src\dev\UniqueCreator.Graphics.Gpu.SubresourceData.cpp" />	
+<ClCompile Include = "..\src\dev\UniqueCreator.Graphics.Gpu.VertexShaderByteCode.cpp" />	
+<ClCompile Include = "..\src\dev\WindowsEnvironment.cpp" />	
+<ClCompile Include = "..\src\dev\cmd\ComputeCommandContext.cpp" />	
+<ClCompile Include = "..\src\dev\cmd\GraphicsComputeCommandContext.cpp" />	
+<ClCompile Include = "..\src\dev\gpu\BackBuffer.cpp" />	
+<ClCompile Include = "..\src\dev\gpu\ByteAddressBuffer.cpp" />	
+<ClCompile Include = "..\src\dev\gpu\ColorBuffer.cpp" />	
+<ClCompile Include = "..\src\dev\gpu\DepthBuffer.cpp" />	
+<ClCompile Include = "..\src\dev\gpu\DepthStencilBuffer.cpp" />	
+<ClCompile Include = "..\src\dev\gpu\Texture2D.cpp" />	
+<ClCompile Include = "..\src\dev\gpu\UploadBuffer.cpp" />
+</ItemGroup>
+<ItemGroup>	
+<ClCompile Include = "..\src\pch\pch.cpp"><PrecompiledHeader>Create</PrecompiledHeader></ClCompile>
+</ItemGroup></Project> 

@@ -29,11 +29,12 @@ namespace winrt::UniqueCreator::Graphics::Gpu::implementation
         }
     }
     
-    ComputePipelineState::ComputePipelineState(ResourceCreateContext const& ctx, ComputePipelineStateDescription const& d)
+    ComputePipelineState::ComputePipelineState(ResourceCreateContext const& ctx, ComputePipelineStateDescription const& d1)
     {
+		ComputePipelineStateDescription d0 = d1;
         using namespace uc::gx::dx12;
 
-        auto nativeCode = d.CS().as<IShaderByteCodeNative>();
+        auto nativeCode = d0.CS().as<IShaderByteCodeNative>();
         auto native     = ctx.as<IResourceCreateContextNative>();
         auto device     = native->GetDevice();
         auto r          = native->GetResourceCreateContext();

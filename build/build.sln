@@ -3,12 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28729.10
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "UniqueCreator", "unique_creator\build.vcxproj", "{23F057FA-8518-4D9C-A57D-4809080F3234}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "uc_engine_hello_world", "..\examples\uc_engine_hello_world\uc_engine_hello_world.csproj", "{4827E285-4C27-4B48-BFA4-71D1E3306A8E}"
-	ProjectSection(ProjectDependencies) = postProject
-		{23F057FA-8518-4D9C-A57D-4809080F3234} = {23F057FA-8518-4D9C-A57D-4809080F3234}
-	EndProjectSection
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "UniqueCreator", "build.vcxproj", "{23F057FA-8518-4D9C-A57D-4809080F3234}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,14 +12,12 @@ Global
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{23F057FA-8518-4D9C-A57D-4809080F3234}.Release|x64.ActiveCfg = Release|x64
 		{23F057FA-8518-4D9C-A57D-4809080F3234}.Release|x64.Build.0 = Release|x64
-		{4827E285-4C27-4B48-BFA4-71D1E3306A8E}.Release|x64.ActiveCfg = Release|x64
-		{4827E285-4C27-4B48-BFA4-71D1E3306A8E}.Release|x64.Build.0 = Release|x64
-		{4827E285-4C27-4B48-BFA4-71D1E3306A8E}.Release|x64.Deploy.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {BF0C5B11-723C-4699-8687-65003CCB5585}
+		        SolutionGuid = {BF0C5B11-723C-4699-8687-65003CCB5585}
+		SolutionGuid = {18510637-4918-430C-9D20-A723AA219C35}
 	EndGlobalSection
 EndGlobal

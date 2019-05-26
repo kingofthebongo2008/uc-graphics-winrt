@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003"> 
+
+<ItemGroup>	
+<ClInclude Include = "..\src\dev\IBackBufferNative.h"/>	
+<ClInclude Include = "..\src\dev\IComputePipelineStateNative.h"/>	
+<ClInclude Include = "..\src\dev\IDepthBufferNative.h"/>	
+<ClInclude Include = "..\src\dev\IFenceHandleNative.h"/>	
+<ClInclude Include = "..\src\dev\IGpuVirtualResourceNative.h"/>	
+<ClInclude Include = "..\src\dev\IGraphicsPipelineStateNative.h"/>	
+<ClInclude Include = "..\src\dev\IPixelBufferNative.h"/>	
+<ClInclude Include = "..\src\dev\IResourceCreateContextNative.h"/>	
+<ClInclude Include = "..\src\dev\IShaderByteCodeNative.h"/>	
+<ClInclude Include = "..\src\dev\UniqueCreator.Graphics.Gpu.BlendDescription.h"/>	
+<ClInclude Include = "..\src\dev\UniqueCreator.Graphics.Gpu.CompositionSwapChainResources.h"/>	
+<ClInclude Include = "..\src\dev\UniqueCreator.Graphics.Gpu.ComputePipelineState.h"/>	
+<ClInclude Include = "..\src\dev\UniqueCreator.Graphics.Gpu.ComputePipelineStateDescription.h"/>	
+<ClInclude Include = "..\src\dev\UniqueCreator.Graphics.Gpu.ComputeShaderByteCode.h"/>	
+<ClInclude Include = "..\src\dev\UniqueCreator.Graphics.Gpu.DerivativesSkinnedModel.h"/>	
+<ClInclude Include = "..\src\dev\UniqueCreator.Graphics.Gpu.DomainShaderByteCode.h"/>	
+<ClInclude Include = "..\src\dev\UniqueCreator.Graphics.Gpu.FenceHandle.h"/>	
+<ClInclude Include = "..\src\dev\UniqueCreator.Graphics.Gpu.GeometryShaderByteCode.h"/>	
+<ClInclude Include = "..\src\dev\UniqueCreator.Graphics.Gpu.GraphicsPipelineState.h"/>	
+<ClInclude Include = "..\src\dev\UniqueCreator.Graphics.Gpu.GraphicsPipelineStateDescription.h"/>	
+<ClInclude Include = "..\src\dev\UniqueCreator.Graphics.Gpu.HullShaderByteCode.h"/>	
+<ClInclude Include = "..\src\dev\UniqueCreator.Graphics.Gpu.InputLayoutDescription.h"/>	
+<ClInclude Include = "..\src\dev\UniqueCreator.Graphics.Gpu.PixelShaderByteCode.h"/>	
+<ClInclude Include = "..\src\dev\UniqueCreator.Graphics.Gpu.PrimitiveRangeDescription.h"/>	
+<ClInclude Include = "..\src\dev\UniqueCreator.Graphics.Gpu.ResourceCreateContext.h"/>	
+<ClInclude Include = "..\src\dev\UniqueCreator.Graphics.Gpu.RootSignatureByteCode.h"/>	
+<ClInclude Include = "..\src\dev\UniqueCreator.Graphics.Gpu.StreamOutputDescription.h"/>	
+<ClInclude Include = "..\src\dev\UniqueCreator.Graphics.Gpu.SubresourceData.h"/>	
+<ClInclude Include = "..\src\dev\UniqueCreator.Graphics.Gpu.VertexShaderByteCode.h"/>	
+<ClInclude Include = "..\src\dev\WindowsEnvironment.h"/>	
+<ClInclude Include = "..\src\dev\cmd\ComputeCommandContext.h"/>	
+<ClInclude Include = "..\src\dev\cmd\GraphicsComputeCommandContext.h"/>	
+<ClInclude Include = "..\src\dev\file.h"/>	
+<ClInclude Include = "..\src\dev\gpu\BackBuffer.h"/>	
+<ClInclude Include = "..\src\dev\gpu\ByteAddressBuffer.h"/>	
+<ClInclude Include = "..\src\dev\gpu\ColorBuffer.h"/>	
+<ClInclude Include = "..\src\dev\gpu\DepthBuffer.h"/>	
+<ClInclude Include = "..\src\dev\gpu\DepthStencilBuffer.h"/>	
+<ClInclude Include = "..\src\dev\gpu\Texture2D.h"/>	
+<ClInclude Include = "..\src\dev\gpu\UploadBuffer.h"/>	
+<ClInclude Include = "..\src\dev\loader.h"/>	
+<ClInclude Include = "..\src\dev\lzham_compressor.h"/>
+</ItemGroup>
+<ItemGroup>	
+<ClInclude Include = "..\src\pch\pch.h"/>
+</ItemGroup></Project> 

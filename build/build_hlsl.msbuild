@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003"> 
+
+<ItemGroup> 
+
+    <RootSignature Include="..\src\shaders\default_graphics_signature.hlsl">
+      <EntryPointName>MyRS1</EntryPointName>
+    </RootSignature>
+
+    <RootSignature Include="..\src\shaders\default_compute_signature.hlsl">
+      <EntryPointName>MyRS2</EntryPointName>
+    </RootSignature>
+
+    <RootSignature Include="..\src\shaders\derivatives_skinned_model_signature.hlsl">
+      <EntryPointName>MyRS1</EntryPointName>
+    </RootSignature>
+
+    <PixelShader Include   = "..\src\shaders\derivatives_skinned_model_albedo_pixel.hlsl"></PixelShader>
+    <VertexShader Include  = "..\src\shaders\derivatives_skinned_model_albedo_vertex.hlsl"></VertexShader>
+    <VertexShader Include  = "..\src\shaders\derivatives_skinned_model_depth_vertex.hlsl"></VertexShader>
+
+</ItemGroup>
+
+
+</Project> 

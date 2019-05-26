@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>uc-graphics-winrt</id>
+    <version>@version</version>
+    <title>uc-data-military-mechanic</title>
+    <authors>Stefan Dyulgerov</authors>
+    <owners>kingofthebongo2009</owners>
+    <licenseUrl>http://opensource.org/licenses/MS-PL</licenseUrl>
+    <projectUrl>https://blogs.msdn.microsoft.com/pix/winpixeventruntime/</projectUrl>
+    <iconUrl>http://www.gravatar.com/avatar/df362936893270e6a1b53807fa90e8fa</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Allows Native C++ Applications to use precompiled lzham</description>
+    <tags>imaging,unique,uc,creator</tags>
+
+    <dependencies>
+        <package    id="lzham-uwp-win64" version="1.0.0" targetFramework="native" />
+    </dependencies>
+
+    <references>
+        <reference file = "UniqueCreator.Graphics.Gpu.winmd" />
+    </references>
+
+  </metadata>
+
+  <files>
+
+    <file src = "bin\win-64\Release\UniqueCreator.Graphics.Gpu.dll"     target = "lib\native\UniqueCreator.Graphics.Gpu.dll" />
+    <file src = "bin\win-64\Release\UniqueCreator.Graphics.Gpu.pdb"     target = "lib\native\UniqueCreator.Graphics.Gpu.pdb" />
+    <file src = "bin\win-64\Release\UniqueCreator.Graphics.Gpu.winmd"   target = "lib\native\UniqueCreator.Graphics.Gpu.winmd" />
+    <file src = "bin\win-64\Release\UniqueCreator.Graphics.Gpu.pri"   target = "lib\native\UniqueCreator.Graphics.Gpu.pri" />
+
+    <file src = "build\uc-graphics-winrt-native.props"                  target = "build\native\uc-graphics-winrt-native.props" />
+    <file src = "build\uc-graphics-winrt-native.targets"                target = "build\native\uc-graphics-winrt-native.targets" />
+
+    <file src = "bin\win-64\Release\UniqueCreator.Graphics.Gpu.dll"     target = "lib\uap\UniqueCreator.Graphics.Gpu.dll" />
+    <file src = "bin\win-64\Release\UniqueCreator.Graphics.Gpu.pdb"     target = "lib\uap\UniqueCreator.Graphics.Gpu.pdb" />
+    <file src = "bin\win-64\Release\UniqueCreator.Graphics.Gpu.pri"   target = "lib\uap\UniqueCreator.Graphics.Gpu.pri" />
+
+    <file src = "build\uc-graphics-winrt-uap.props"                     target = "build\uap\uc-graphics-winrt-native.props" />
+    <file src = "build\uc-graphics-winrt-uap.targets"                   target = "build\uap\uc-graphics-winrt-native.targets" />
+  </files>
+
+</package>
