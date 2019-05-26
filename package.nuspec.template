@@ -14,7 +14,7 @@
     <tags>imaging,unique,uc,creator</tags>
 
     <dependencies>
-        <dependency id="lzham-uwp-win64" version="1.0.0" />
+        <!--dependency id="lzham-uwp-win64" version="1.0.0" /-->
     </dependencies>
 
     <references>
@@ -30,15 +30,16 @@
     <file src = "bin\win-x64\Release\UniqueCreator.Graphics.Gpu.winmd"   target = "lib\native\UniqueCreator.Graphics.Gpu.winmd" />
     <file src = "bin\win-x64\Release\UniqueCreator.Graphics.Gpu.pri"     target = "lib\native\UniqueCreator.Graphics.Gpu.pri" />
 
-    <file src = "build\uc-graphics-winrt-native.props"                  target = "build\native\uc-graphics-winrt-native.props" />
-    <file src = "build\uc-graphics-winrt-native.targets"                target = "build\native\uc-graphics-winrt-native.targets" />
+    <file src = "build\uc-graphics-winrt-native.props"                   target = "build\native\uc-graphics-winrt.props" />
+    <file src = "build\uc-graphics-winrt-native.targets"                 target = "build\native\uc-graphics-winrt.targets" />
 
     <file src = "bin\win-x64\Release\UniqueCreator.Graphics.Gpu.dll"     target = "lib\uap\UniqueCreator.Graphics.Gpu.dll" />
     <file src = "bin\win-x64\Release\UniqueCreator.Graphics.Gpu.pdb"     target = "lib\uap\UniqueCreator.Graphics.Gpu.pdb" />
     <file src = "bin\win-x64\Release\UniqueCreator.Graphics.Gpu.pri"     target = "lib\uap\UniqueCreator.Graphics.Gpu.pri" />
+    <file src = "bin\win-x64\Release\UniqueCreator.Graphics.Gpu.winmd"   target = "lib\uap\UniqueCreator.Graphics.Gpu.winmd" />
 
-    <file src = "build\uc-graphics-winrt-uap.props"                     target = "build\uap\uc-graphics-winrt-native.props" />
-    <file src = "build\uc-graphics-winrt-uap.targets"                   target = "build\uap\uc-graphics-winrt-native.targets" />
+    <file src = "build\uc-graphics-winrt-uap.props"                      target = "build\uap\uc-graphics-winrt.props" />
+    <file src = "build\uc-graphics-winrt-uap.targets"                    target = "build\uap\uc-graphics-winrt.targets" />
   </files>
 
 </package>
