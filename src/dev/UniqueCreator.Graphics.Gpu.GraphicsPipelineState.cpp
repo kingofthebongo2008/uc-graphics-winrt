@@ -26,8 +26,9 @@ namespace winrt::UniqueCreator::Graphics::Gpu::implementation
         }
     }
     
-    GraphicsPipelineState::GraphicsPipelineState(ResourceCreateContext const& ctx, GraphicsPipelineStateDescription const& d)
+    GraphicsPipelineState::GraphicsPipelineState(ResourceCreateContext const& ctx, GraphicsPipelineStateDescription const& d0)
     {
+		GraphicsPipelineStateDescription const d = d0;
         using namespace uc::gx::dx12;
 
 		winrt::com_ptr< IShaderByteCodeNative > vs;

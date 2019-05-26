@@ -11,43 +11,79 @@ namespace UniqueCreator
         {
             struct Matrix44
             {
-				Single r00;
-				Single r01;
-				Single r02;
-				Single r03;
+                Single r00;
+                Single r01;
+                Single r02;
+                Single r03;
 
-				Single r10;
-				Single r11;
-				Single r12;
-				Single r13;
+                Single r10;
+                Single r11;
+                Single r12;
+                Single r13;
 
-				Single r20;
-				Single r21;
-				Single r22;
-				Single r23;
+                Single r20;
+                Single r21;
+                Single r22;
+                Single r23;
 
-				Single r30;
-				Single r31;
-				Single r32;
-				Single r33;
+                Single r30;
+                Single r31;
+                Single r32;
+                Single r33;
             };
 
-            interface DerivativesSkinnedModelInstance
+			struct WorldTransform
+			{
+				Matrix44 Value;
+			};
+
+			struct CameraTransforms
+			{
+				Matrix44 ViewTransform;
+				Matrix44 PerspectiveTransform;
+			};
+
+			struct DepthPassData
             {
+                CameraTransforms Camera;
+            };
+
+            struct AlbedoPassData
+            {
+                CameraTransforms Camera;
+            };
+
+			runtimeclass DerivativesSkinnedModel;
+
+			interface DerivativesSkinnedModelInstance
+            {
+				DerivativesSkinnedModel Model;
                 void SubmitDepth(IGraphicsComputeCommandContext d);
                 void SubmitAlbedo(IGraphicsComputeCommandContext d);
             };
 
-            runtimeclass DerivativesSkinnedModel
+			runtimeclass AlbedoPass
+			{
+				void AddInstance( DerivativesSkinnedModelInstance instance );
+				void Submit( AlbedoPassData passData, IGraphicsComputeCommandContext ctx );
+			}
+
+			runtimeclass DepthPass
+			{
+				void AddInstance(DerivativesSkinnedModelInstance instance);
+				void Submit(DepthPassData passData, IGraphicsComputeCommandContext ctx);
+			}
+
+			runtimeclass DerivativesSkinnedModel
             {
                 DerivativesSkinnedModel( ResourceCreateContext rc, IGraphicsComputeCommandContext ctx, String payload );
 
-                DerivativesSkinnedModelInstance MakeInstance(Matrix44 d);
+				DerivativesSkinnedModelInstance MakeInstance(Matrix44 d);
 
-                void BeginDepth(IGraphicsComputeCommandContext d);
+				void BeginDepth(IGraphicsComputeCommandContext d);
                 void EndDepth(IGraphicsComputeCommandContext d);
 
-                void BeginAlbedo(IGraphicsComputeCommandContext d);
+				void BeginAlbedo(IGraphicsComputeCommandContext d);
                 void EndAlbedo(IGraphicsComputeCommandContext d);
             };
         }
