@@ -11,6 +11,8 @@ install:
 
   - git submodule update --init --recursive
 
+  - cd c:\projects
+
 build_script:
 - cmd: >-
     nuget restore c:\projects\build\build.sln
