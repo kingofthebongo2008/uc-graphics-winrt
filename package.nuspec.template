@@ -14,7 +14,7 @@
     <tags>imaging,unique,uc,creator</tags>
 
     <dependencies>
-        <package    id="lzham-uwp-win64" version="1.0.0" targetFramework="native" />
+        <dependency id="lzham-uwp-win64" version="1.0.0" />
     </dependencies>
 
     <references>
