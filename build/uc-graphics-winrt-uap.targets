@@ -9,8 +9,10 @@
  
   <Target Name="InjectReference" BeforeTargets="ResolveAssemblyReferences">
     <ItemGroup Condition="'$(Platform)' == 'x64'">
-    <Reference Include="UniqueCreator.Graphics.Gpu">
+    <Reference Include="UniqueCreator.Graphics.Gpu, Version=255.255.255.255, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>$(MSBuildThisFileDirectory)\..\..\lib\uap\UniqueCreator.Graphics.Gpu.winmd</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+      <Implementation>UniqueCreator.Graphics.Gpu.dll</Implementation>
     </Reference>
     </ItemGroup>
   </Target>
