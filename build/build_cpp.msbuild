@@ -2,12 +2,15 @@
 <Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003"> 
 
 <ItemGroup>	
+<ClCompile Include = "..\src\dev\UniqueCreator.Graphics.Gpu.AlbedoPass.cpp" />	
 <ClCompile Include = "..\src\dev\UniqueCreator.Graphics.Gpu.BlendDescription.cpp" />	
 <ClCompile Include = "..\src\dev\UniqueCreator.Graphics.Gpu.CompositionSwapChainResources.cpp" />	
 <ClCompile Include = "..\src\dev\UniqueCreator.Graphics.Gpu.ComputePipelineState.cpp" />	
 <ClCompile Include = "..\src\dev\UniqueCreator.Graphics.Gpu.ComputePipelineStateDescription.cpp" />	
 <ClCompile Include = "..\src\dev\UniqueCreator.Graphics.Gpu.ComputeShaderByteCode.cpp" />	
+<ClCompile Include = "..\src\dev\UniqueCreator.Graphics.Gpu.DepthPass.cpp" />	
 <ClCompile Include = "..\src\dev\UniqueCreator.Graphics.Gpu.DerivativesSkinnedModel.cpp" />	
+<ClCompile Include = "..\src\dev\UniqueCreator.Graphics.Gpu.DerivativesSkinnedModelInstance.cpp" />	
 <ClCompile Include = "..\src\dev\UniqueCreator.Graphics.Gpu.DomainShaderByteCode.cpp" />	
 <ClCompile Include = "..\src\dev\UniqueCreator.Graphics.Gpu.FenceHandle.cpp" />	
 <ClCompile Include = "..\src\dev\UniqueCreator.Graphics.Gpu.GeometryShaderByteCode.cpp" />	

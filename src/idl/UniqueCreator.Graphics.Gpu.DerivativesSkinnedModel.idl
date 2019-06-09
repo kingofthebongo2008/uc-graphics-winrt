@@ -32,18 +32,18 @@ namespace UniqueCreator
                 Single r33;
             };
 
-			struct WorldTransform
-			{
-				Matrix44 Value;
-			};
+            struct WorldTransform
+            {
+                Matrix44 Value;
+            };
 
-			struct CameraTransforms
-			{
-				Matrix44 ViewTransform;
-				Matrix44 PerspectiveTransform;
-			};
+            struct CameraTransforms
+            {
+                Matrix44 ViewTransform;
+                Matrix44 PerspectiveTransform;
+            };
 
-			struct DepthPassData
+            struct DepthPassData
             {
                 CameraTransforms Camera;
             };
@@ -53,39 +53,31 @@ namespace UniqueCreator
                 CameraTransforms Camera;
             };
 
-			runtimeclass DerivativesSkinnedModel;
-
-			interface DerivativesSkinnedModelInstance
+            runtimeclass AlbedoPass
             {
-				DerivativesSkinnedModel Model;
+                void AddInstance( DerivativesSkinnedModelInstance instance );
+                void Submit( AlbedoPassData passData, IGraphicsComputeCommandContext ctx );
+            }
+
+            runtimeclass DepthPass
+            {
+                void AddInstance(DerivativesSkinnedModelInstance instance);
+                void Submit(DepthPassData passData, IGraphicsComputeCommandContext ctx);
+            }
+
+            [default_interface]
+            runtimeclass DerivativesSkinnedModel
+            {
+                DerivativesSkinnedModel( ResourceCreateContext rc, IGraphicsComputeCommandContext ctx, String payload );
+            };
+
+            runtimeclass DerivativesSkinnedModelInstance
+            {
+                DerivativesSkinnedModelInstance(DerivativesSkinnedModel Model, Matrix44 instance);
                 void SubmitDepth(IGraphicsComputeCommandContext d);
                 void SubmitAlbedo(IGraphicsComputeCommandContext d);
             };
 
-			runtimeclass AlbedoPass
-			{
-				void AddInstance( DerivativesSkinnedModelInstance instance );
-				void Submit( AlbedoPassData passData, IGraphicsComputeCommandContext ctx );
-			}
-
-			runtimeclass DepthPass
-			{
-				void AddInstance(DerivativesSkinnedModelInstance instance);
-				void Submit(DepthPassData passData, IGraphicsComputeCommandContext ctx);
-			}
-
-			runtimeclass DerivativesSkinnedModel
-            {
-                DerivativesSkinnedModel( ResourceCreateContext rc, IGraphicsComputeCommandContext ctx, String payload );
-
-				DerivativesSkinnedModelInstance MakeInstance(Matrix44 d);
-
-				void BeginDepth(IGraphicsComputeCommandContext d);
-                void EndDepth(IGraphicsComputeCommandContext d);
-
-				void BeginAlbedo(IGraphicsComputeCommandContext d);
-                void EndAlbedo(IGraphicsComputeCommandContext d);
-            };
         }
     }
 }

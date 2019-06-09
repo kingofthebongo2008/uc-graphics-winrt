@@ -83,26 +83,5 @@ namespace winrt::UniqueCreator::Graphics::Gpu::implementation
 			ctx->transition_resource(t.get(), D3D12_RESOURCE_STATE_COPY_DEST, D3D12_RESOURCE_STATE_PIXEL_SHADER_RESOURCE);
 		}
     }
-
-    UniqueCreator::Graphics::Gpu::DerivativesSkinnedModelInstance DerivativesSkinnedModel::MakeInstance(UniqueCreator::Graphics::Gpu::Matrix44 const& d)
-    {
-        throw hresult_not_implemented();
-    }
-    void DerivativesSkinnedModel::BeginDepth(UniqueCreator::Graphics::Gpu::IGraphicsComputeCommandContext const& d)
-    {
-        throw hresult_not_implemented();
-    }
-    void DerivativesSkinnedModel::EndDepth(UniqueCreator::Graphics::Gpu::IGraphicsComputeCommandContext const& d)
-    {
-        throw hresult_not_implemented();
-    }
-    void DerivativesSkinnedModel::BeginAlbedo(UniqueCreator::Graphics::Gpu::IGraphicsComputeCommandContext const& d)
-    {
-        throw hresult_not_implemented();
-    }
-    void DerivativesSkinnedModel::EndAlbedo(UniqueCreator::Graphics::Gpu::IGraphicsComputeCommandContext const& d)
-    {
-        throw hresult_not_implemented();
-    }
 }
 
