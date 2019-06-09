@@ -5,10 +5,11 @@ namespace winrt::UniqueCreator::Graphics::Gpu::implementation
 {
     void AlbedoPass::AddInstance(UniqueCreator::Graphics::Gpu::DerivativesSkinnedModelInstance const& instance)
     {
-        throw hresult_not_implemented();
+        m_instances.push_back(instance);
     }
+
     void AlbedoPass::Submit(UniqueCreator::Graphics::Gpu::AlbedoPassData const& passData, UniqueCreator::Graphics::Gpu::IGraphicsComputeCommandContext const& ctx)
     {
-        throw hresult_not_implemented();
+        
     }
 }

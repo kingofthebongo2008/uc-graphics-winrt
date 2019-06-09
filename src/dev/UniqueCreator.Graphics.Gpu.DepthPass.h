@@ -9,5 +9,8 @@ namespace winrt::UniqueCreator::Graphics::Gpu::implementation
 
         void AddInstance(UniqueCreator::Graphics::Gpu::DerivativesSkinnedModelInstance const& instance);
         void Submit(UniqueCreator::Graphics::Gpu::DepthPassData const& passData, UniqueCreator::Graphics::Gpu::IGraphicsComputeCommandContext const& ctx);
+
+        private:
+        std::vector< UniqueCreator::Graphics::Gpu::DerivativesSkinnedModelInstance> m_instances;
     };
 }

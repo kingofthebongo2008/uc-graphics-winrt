@@ -41,14 +41,15 @@ namespace winrt::UniqueCreator::Graphics::Gpu::implementation
                 std::vector< gpu_primitive_range >              m_opaque_ranges;
             };
 
-            gpu_mesh                                    m_mesh;
-            gpu_mesh_opaque                             m_mesh_opaque;
-            gx::dx12::managed_byteaddress_gpu_buffer    m_geometry;
+            gpu_mesh                                            m_mesh;
+            gpu_mesh_opaque                                     m_mesh_opaque;
+            gx::dx12::managed_byteaddress_gpu_buffer            m_geometry;
     };
 }
 namespace winrt::UniqueCreator::Graphics::Gpu::factory_implementation
 {
     struct DerivativesSkinnedModel : DerivativesSkinnedModelT<DerivativesSkinnedModel, implementation::DerivativesSkinnedModel>
     {
+
     };
 }

@@ -28,8 +28,8 @@ namespace winrt::UniqueCreator::Graphics::Gpu::implementation
 
         auto create_swap_chain(IDXGIFactory2* factory, ID3D12CommandQueue* queue, uint32_t back_buffer_width, uint32_t back_buffer_height)
         {
-            back_buffer_width   = max(back_buffer_width, 8U);
-            back_buffer_height  = max(back_buffer_height, 8U);
+            back_buffer_width   = std::max(back_buffer_width, 8U);
+            back_buffer_height  = std::max(back_buffer_height, 8U);
             // Otherwise, create a new one using the same adapter as the existing Direct3D device.
             DXGI_SCALING scaling = DXGI_SCALING_STRETCH;    // DisplayMetrics::SupportHighResolutions ? DXGI_SCALING_NONE : DXGI_SCALING_STRETCH;
             DXGI_SWAP_CHAIN_DESC1 swapChainDesc = {};

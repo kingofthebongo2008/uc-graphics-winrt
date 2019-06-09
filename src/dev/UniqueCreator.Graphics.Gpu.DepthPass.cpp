@@ -5,10 +5,11 @@ namespace winrt::UniqueCreator::Graphics::Gpu::implementation
 {
     void DepthPass::AddInstance(UniqueCreator::Graphics::Gpu::DerivativesSkinnedModelInstance const& instance)
     {
-        throw hresult_not_implemented();
+        m_instances.push_back(instance);
     }
+
     void DepthPass::Submit(UniqueCreator::Graphics::Gpu::DepthPassData const& passData, UniqueCreator::Graphics::Gpu::IGraphicsComputeCommandContext const& ctx)
     {
-        throw hresult_not_implemented();
+
     }
 }
