@@ -88,5 +88,15 @@ namespace winrt::UniqueCreator::Graphics::Gpu::implementation
     {
         return &m_mesh;
     }
+
+    void DerivativesSkinnedModel::SubmitDepth(UniqueCreator::Graphics::Gpu::IGraphicsComputeCommandContext const& d)
+    {
+        auto graphics = d.as< IGraphicsComputeCommandContextNative >()->GetContext();
+    }
+
+    void DerivativesSkinnedModel::SubmitAlbedo(UniqueCreator::Graphics::Gpu::IGraphicsComputeCommandContext const& d)
+    {
+
+    }
 }
 

@@ -69,6 +69,8 @@ namespace UniqueCreator
             runtimeclass DerivativesSkinnedModel
             {
                 DerivativesSkinnedModel( ResourceCreateContext rc, IGraphicsComputeCommandContext ctx, String payload );
+                void SubmitDepth(IGraphicsComputeCommandContext d);
+                void SubmitAlbedo(IGraphicsComputeCommandContext d);
             };
 
             runtimeclass DerivativesSkinnedModelInstance

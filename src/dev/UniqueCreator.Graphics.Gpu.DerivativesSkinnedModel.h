@@ -13,6 +13,9 @@ namespace winrt::UniqueCreator::Graphics::Gpu::implementation
 
         DerivativesSkinnedModel(UniqueCreator::Graphics::Gpu::ResourceCreateContext const& rc, UniqueCreator::Graphics::Gpu::IGraphicsComputeCommandContext const& ctx, hstring const& payload);
 
+        void SubmitDepth(UniqueCreator::Graphics::Gpu::IGraphicsComputeCommandContext const& d);
+        void SubmitAlbedo(UniqueCreator::Graphics::Gpu::IGraphicsComputeCommandContext const& d);
+
         derivatives_skinned_mesh* GetMesh() override;
 
         private:
