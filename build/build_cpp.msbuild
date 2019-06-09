@@ -9,6 +9,7 @@
 <ClCompile Include = "..\src\dev\UniqueCreator.Graphics.Gpu.ComputePipelineStateDescription.cpp" />	
 <ClCompile Include = "..\src\dev\UniqueCreator.Graphics.Gpu.ComputeShaderByteCode.cpp" />	
 <ClCompile Include = "..\src\dev\UniqueCreator.Graphics.Gpu.DepthPass.cpp" />	
+<ClCompile Include = "..\src\dev\UniqueCreator.Graphics.Gpu.DerivativesSkinnedMaterial.cpp" />	
 <ClCompile Include = "..\src\dev\UniqueCreator.Graphics.Gpu.DerivativesSkinnedModel.cpp" />	
 <ClCompile Include = "..\src\dev\UniqueCreator.Graphics.Gpu.DerivativesSkinnedModelInstance.cpp" />	
 <ClCompile Include = "..\src\dev\UniqueCreator.Graphics.Gpu.DomainShaderByteCode.cpp" />	

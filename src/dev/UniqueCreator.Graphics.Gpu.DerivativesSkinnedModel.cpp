@@ -22,7 +22,8 @@ namespace winrt::UniqueCreator::Graphics::Gpu::implementation
 		}
 	}
 
-	DerivativesSkinnedModel::DerivativesSkinnedModel(UniqueCreator::Graphics::Gpu::ResourceCreateContext const& _rc, UniqueCreator::Graphics::Gpu::IGraphicsComputeCommandContext const& _c, hstring const& _payload)
+	DerivativesSkinnedModel::DerivativesSkinnedModel(UniqueCreator::Graphics::Gpu::DerivativesSkinnedMaterial const& m, UniqueCreator::Graphics::Gpu::ResourceCreateContext const& _rc, UniqueCreator::Graphics::Gpu::IGraphicsComputeCommandContext const& _c, hstring const& _payload) :
+    m_material(m)
     {
         auto mesh		= lip::create_from_compressed_lip_file<lip::derivatives_skinned_model>(_payload.c_str());
 		auto pos		= static_cast<uint32_t>(align(size(mesh->m_positions), 256U));
@@ -96,7 +97,7 @@ namespace winrt::UniqueCreator::Graphics::Gpu::implementation
 
     void DerivativesSkinnedModel::SubmitAlbedo(UniqueCreator::Graphics::Gpu::IGraphicsComputeCommandContext const& d)
     {
-
+        auto graphics = d.as< IGraphicsComputeCommandContextNative >()->GetContext();
     }
 }
 

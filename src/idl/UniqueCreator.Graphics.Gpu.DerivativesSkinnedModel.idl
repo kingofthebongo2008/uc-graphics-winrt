@@ -66,9 +66,17 @@ namespace UniqueCreator
             }
 
             [default_interface]
+            runtimeclass DerivativesSkinnedMaterial
+            {
+                DerivativesSkinnedMaterial( ResourceCreateContext rc, IGraphicsComputeCommandContext ctx, String payload );
+                void SubmitDepth(IGraphicsComputeCommandContext d);
+                void SubmitAlbedo(IGraphicsComputeCommandContext d);
+            };
+
+            [default_interface]
             runtimeclass DerivativesSkinnedModel
             {
-                DerivativesSkinnedModel( ResourceCreateContext rc, IGraphicsComputeCommandContext ctx, String payload );
+                DerivativesSkinnedModel( DerivativesSkinnedMaterial material, ResourceCreateContext rc, IGraphicsComputeCommandContext ctx, String payload );
                 void SubmitDepth(IGraphicsComputeCommandContext d);
                 void SubmitAlbedo(IGraphicsComputeCommandContext d);
             };
