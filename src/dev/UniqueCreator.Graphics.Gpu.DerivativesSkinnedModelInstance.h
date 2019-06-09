@@ -1,7 +1,10 @@
 #pragma once
 #include "UniqueCreator.Graphics.Gpu.DerivativesSkinnedModelInstance.g.h"
 
+#include "IDerivativesSkinnedModelNative.h"
+
 #include <uc/math/math.h>
+
 
 namespace winrt::UniqueCreator::Graphics::Gpu::implementation
 {
@@ -16,7 +19,8 @@ namespace winrt::UniqueCreator::Graphics::Gpu::implementation
 
         private:
         const UniqueCreator::Graphics::Gpu::DerivativesSkinnedModel m_model;
-        math::float4x4                                              m_transform;
+        derivatives_skinned_mesh*                                   m_mesh;
+        math::float4x4                                              m_world;
     };
 }
 namespace winrt::UniqueCreator::Graphics::Gpu::factory_implementation

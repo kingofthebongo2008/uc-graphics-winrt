@@ -35,8 +35,8 @@ namespace winrt::UniqueCreator::Graphics::Gpu::implementation
 		auto rc			= native->GetResourceCreateContext();
 		auto ctx		= _c.as< IGraphicsComputeCommandContextNative >()->GetContext();
 
-		m_mesh_opaque.m_opaque_textures.resize(mesh->m_textures.size());
-		m_mesh_opaque.m_opaque_ranges.resize(mesh->m_primitive_ranges.size());
+        m_mesh.m_mesh_opaque.m_opaque_textures.resize(mesh->m_textures.size());
+        m_mesh.m_mesh_opaque.m_opaque_ranges.resize(mesh->m_primitive_ranges.size());
 
 		for (auto i = 0U; i < mesh->m_textures.size(); ++i)
 		{
@@ -45,43 +45,48 @@ namespace winrt::UniqueCreator::Graphics::Gpu::implementation
 			auto w = texture.m_levels[0].m_width;
 			auto h = texture.m_levels[0].m_height;
 
-			m_mesh_opaque.m_opaque_textures[i] = gx::dx12::create_texture_2d(rc, w, h, static_cast<DXGI_FORMAT>(texture.m_levels[0].view()), D3D12_RESOURCE_STATE_COPY_DEST);
+            m_mesh.m_mesh_opaque.m_opaque_textures[i] = gx::dx12::create_texture_2d(rc, w, h, static_cast<DXGI_FORMAT>(texture.m_levels[0].view()), D3D12_RESOURCE_STATE_COPY_DEST);
 			D3D12_SUBRESOURCE_DATA s[1];
 			s[0] = gx::sub_resource_data(&texture.m_levels[0]);
-			ctx->upload_resource(m_mesh_opaque.m_opaque_textures[i].get(), 0, 1, &s[0]);
+			ctx->upload_resource(m_mesh.m_mesh_opaque.m_opaque_textures[i].get(), 0, 1, &s[0]);
 		}
 
 		for (auto i = 0U; i < mesh->m_primitive_ranges.size(); ++i)
 		{
 			const auto& r = mesh->m_primitive_ranges[i];
-			m_mesh_opaque.m_opaque_ranges[i].m_begin = r.m_begin;
-			m_mesh_opaque.m_opaque_ranges[i].m_end = r.m_end;
+            m_mesh.m_mesh_opaque.m_opaque_ranges[i].m_begin = r.m_begin;
+            m_mesh.m_mesh_opaque.m_opaque_ranges[i].m_end = r.m_end;
 		}
 
 		auto s		= static_cast<uint32_t> (pos + uv + normals + tangents + indices);
-		m_geometry	= gx::dx12::create_byteaddress_buffer(rc, s, D3D12_RESOURCE_STATE_COPY_DEST);
+        m_mesh.m_geometry	= gx::dx12::create_byteaddress_buffer(rc, s, D3D12_RESOURCE_STATE_COPY_DEST);
 
 		//allocation
-		m_mesh.m_pos = 0;
-		m_mesh.m_uv = pos;
-		m_mesh.m_normals = pos + uv;
-		m_mesh.m_tangents = pos + uv + normals;
-		m_mesh.m_indices = pos + uv + normals + tangents;
-		m_mesh.m_indices_size = static_cast<uint32_t>(size(mesh->m_indices));
-		m_mesh.m_vertex_count = static_cast<uint32_t>(mesh->m_positions.size());
+        m_mesh.m_mesh.m_pos = 0;
+        m_mesh.m_mesh.m_uv = pos;
+        m_mesh.m_mesh.m_normals = pos + uv;
+        m_mesh.m_mesh.m_tangents = pos + uv + normals;
+        m_mesh.m_mesh.m_indices = pos + uv + normals + tangents;
+        m_mesh.m_mesh.m_indices_size = static_cast<uint32_t>(size(mesh->m_indices));
+        m_mesh.m_mesh.m_vertex_count = static_cast<uint32_t>(mesh->m_positions.size());
 
-		ctx->upload_buffer(m_geometry.get(), m_mesh.m_pos, mesh->m_positions.data(), size(mesh->m_positions));
-		ctx->upload_buffer(m_geometry.get(), m_mesh.m_uv, mesh->m_uv.data(), size(mesh->m_uv));
-		ctx->upload_buffer(m_geometry.get(), m_mesh.m_normals, mesh->m_normals.data(), size(mesh->m_normals));
-		ctx->upload_buffer(m_geometry.get(), m_mesh.m_tangents, mesh->m_tangents.data(), size(mesh->m_tangents));
-		ctx->upload_buffer(m_geometry.get(), m_mesh.m_indices, mesh->m_indices.data(), size(mesh->m_indices));
+		ctx->upload_buffer(m_mesh.m_geometry.get(), m_mesh.m_mesh.m_pos, mesh->m_positions.data(), size(mesh->m_positions));
+		ctx->upload_buffer(m_mesh.m_geometry.get(), m_mesh.m_mesh.m_uv, mesh->m_uv.data(), size(mesh->m_uv));
+		ctx->upload_buffer(m_mesh.m_geometry.get(), m_mesh.m_mesh.m_normals, mesh->m_normals.data(), size(mesh->m_normals));
+		ctx->upload_buffer(m_mesh.m_geometry.get(), m_mesh.m_mesh.m_tangents, mesh->m_tangents.data(), size(mesh->m_tangents));
+		ctx->upload_buffer(m_mesh.m_geometry.get(), m_mesh.m_mesh.m_indices, mesh->m_indices.data(), size(mesh->m_indices));
 
-		ctx->transition_resource(m_geometry.get(), D3D12_RESOURCE_STATE_COPY_DEST, D3D12_RESOURCE_STATE_NON_PIXEL_SHADER_RESOURCE);
+		ctx->transition_resource(m_mesh.m_geometry.get(), D3D12_RESOURCE_STATE_COPY_DEST, D3D12_RESOURCE_STATE_NON_PIXEL_SHADER_RESOURCE);
 
-		for (auto&& t : m_mesh_opaque.m_opaque_textures)
+		for (auto&& t : m_mesh.m_mesh_opaque.m_opaque_textures)
 		{
 			ctx->transition_resource(t.get(), D3D12_RESOURCE_STATE_COPY_DEST, D3D12_RESOURCE_STATE_PIXEL_SHADER_RESOURCE);
 		}
+    }
+
+    derivatives_skinned_mesh* DerivativesSkinnedModel::GetMesh() 
+    {
+        return &m_mesh;
     }
 }
 
