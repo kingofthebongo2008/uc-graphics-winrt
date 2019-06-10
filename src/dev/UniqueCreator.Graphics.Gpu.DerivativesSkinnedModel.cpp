@@ -118,11 +118,9 @@ namespace winrt::UniqueCreator::Graphics::Gpu::implementation
         graphics->set_graphics_root_constant(0, m_mesh.m_mesh.m_uv, offsetof(interop::draw_call, m_uv) / sizeof(uint32_t));
         graphics->set_graphics_root_constant(0, m_mesh.m_mesh.m_normals, offsetof(interop::draw_call, m_normal) / sizeof(uint32_t));
         graphics->set_graphics_root_constant(0, m_mesh.m_mesh.m_tangents, offsetof(interop::draw_call, m_tangent) / sizeof(uint32_t));
-        
+
         graphics->set_graphics_srv_buffer(2, m_mesh.m_geometry.get());
-
         graphics->set_index_buffer({ m_mesh.m_geometry->virtual_address() + m_mesh.m_mesh.m_indices, m_mesh.m_mesh.m_indices_size, DXGI_FORMAT_R32_UINT });
-
     }
 }
 
