@@ -32,6 +32,18 @@ namespace winrt::UniqueCreator::Graphics::Gpu::implementation
 
     void DerivativesSkinnedModelInstance::SubmitAlbedo(UniqueCreator::Graphics::Gpu::IGraphicsComputeCommandContext const& d)
     {
-    
+        auto graphics = d.as< IGraphicsComputeCommandContextNative >()->GetContext();
+
+        {
+            auto m = transpose(m_world);
+            graphics->set_graphics_root_constants(0, sizeof(m) / sizeof(uint32_t), &m, offsetof(interop::draw_call, m_world) / sizeof(uint32_t));
+        }
+
+        for (auto i = 0U; i < m_mesh->m_mesh_opaque.m_opaque_textures.size(); ++i)
+        {
+            graphics->set_graphics_dynamic_descriptor(4, m_mesh->m_mesh_opaque.m_opaque_textures[i]->srv());
+            graphics->draw_indexed(m_mesh->m_mesh_opaque.m_opaque_ranges[i].index_count(), m_mesh->m_mesh_opaque.m_opaque_ranges[i].m_begin);
+        }
+
     }
 }
