@@ -43,14 +43,24 @@ namespace UniqueCreator
                 Matrix44 PerspectiveTransform;
             };
 
+            struct PassView
+            {
+                Single Width;
+                Single Height;
+                Single MinimumZ;
+                Single MaximumZ;
+            };
+
             struct DepthPassData
             {
                 CameraTransforms Camera;
+                PassView         ViewPort;
             };
 
             struct AlbedoPassData
             {
                 CameraTransforms Camera;
+                PassView         ViewPort;
             };
 
             runtimeclass AlbedoPass
@@ -69,8 +79,8 @@ namespace UniqueCreator
             runtimeclass DerivativesSkinnedMaterial
             {
                 DerivativesSkinnedMaterial( ResourceCreateContext rc, IGraphicsComputeCommandContext ctx, String payload );
-                void SubmitDepth(IGraphicsComputeCommandContext d);
-                void SubmitAlbedo(IGraphicsComputeCommandContext d);
+                void SubmitDepth(DepthPassData p, IGraphicsComputeCommandContext d);
+                void SubmitAlbedo(AlbedoPassData p, IGraphicsComputeCommandContext d);
             };
 
             [default_interface]

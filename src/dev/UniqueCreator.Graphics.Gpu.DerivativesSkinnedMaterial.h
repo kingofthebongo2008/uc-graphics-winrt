@@ -13,8 +13,8 @@ namespace winrt::UniqueCreator::Graphics::Gpu::implementation
     {
         DerivativesSkinnedMaterial(UniqueCreator::Graphics::Gpu::ResourceCreateContext const& rc, UniqueCreator::Graphics::Gpu::IGraphicsComputeCommandContext const& ctx, hstring const& payload);
 
-        void SubmitDepth(UniqueCreator::Graphics::Gpu::IGraphicsComputeCommandContext const& d);
-        void SubmitAlbedo(UniqueCreator::Graphics::Gpu::IGraphicsComputeCommandContext const& d);
+        void SubmitDepth(UniqueCreator::Graphics::Gpu::DepthPassData const& p, UniqueCreator::Graphics::Gpu::IGraphicsComputeCommandContext const& d);
+        void SubmitAlbedo(UniqueCreator::Graphics::Gpu::AlbedoPassData const& p, UniqueCreator::Graphics::Gpu::IGraphicsComputeCommandContext const& d);
 
         private:
 
