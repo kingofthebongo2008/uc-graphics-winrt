@@ -11,10 +11,10 @@ namespace winrt::UniqueCreator::Graphics::Gpu::implementation
     DerivativesSkinnedModelInstance::DerivativesSkinnedModelInstance(UniqueCreator::Graphics::Gpu::DerivativesSkinnedModel const& Model, UniqueCreator::Graphics::Gpu::Matrix44 const& instance) :
     m_model(Model)
     {
-        m_world.r[0] = math::set(instance.r00, instance.r01, instance.r02, instance.r02);
-        m_world.r[1] = math::set(instance.r10, instance.r11, instance.r12, instance.r12);
-        m_world.r[2] = math::set(instance.r20, instance.r21, instance.r22, instance.r22);
-        m_world.r[3] = math::set(instance.r30, instance.r31, instance.r32, instance.r32);
+        m_world.r[0] = math::set(instance.r00, instance.r01, instance.r02, instance.r03);
+        m_world.r[1] = math::set(instance.r10, instance.r11, instance.r12, instance.r13);
+        m_world.r[2] = math::set(instance.r20, instance.r21, instance.r22, instance.r23);
+        m_world.r[3] = math::set(instance.r30, instance.r31, instance.r32, instance.r33);
         m_mesh       = Model.as<IDerivativesSkinnedModelNative>()->GetMesh();
     }
 

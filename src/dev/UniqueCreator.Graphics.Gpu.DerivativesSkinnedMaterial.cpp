@@ -13,10 +13,10 @@ namespace winrt::UniqueCreator::Graphics::Gpu::implementation
     {
         math::float4x4 result;
 
-        result.r[0] = math::set(instance.r00, instance.r01, instance.r02, instance.r02);
-        result.r[1] = math::set(instance.r10, instance.r11, instance.r12, instance.r12);
-        result.r[2] = math::set(instance.r20, instance.r21, instance.r22, instance.r22);
-        result.r[3] = math::set(instance.r30, instance.r31, instance.r32, instance.r32);
+        result.r[0] = math::set(instance.r00, instance.r01, instance.r02, instance.r03);
+        result.r[1] = math::set(instance.r10, instance.r11, instance.r12, instance.r13);
+        result.r[2] = math::set(instance.r20, instance.r21, instance.r22, instance.r23);
+        result.r[3] = math::set(instance.r30, instance.r31, instance.r32, instance.r33);
         return result;
     }
 
