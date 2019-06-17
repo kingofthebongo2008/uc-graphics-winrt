@@ -1,4 +1,5 @@
 ﻿#include "pch.h"
+#include "winrt.h"
 #include "ComputeCommandContext.h"
 
 #include "UniqueCreator.Graphics.Gpu.FenceHandle.h"

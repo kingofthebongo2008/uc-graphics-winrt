@@ -1,4 +1,5 @@
 ﻿#include "pch.h"
+#include "winrt.h"
 #include "UniqueCreator.Graphics.Gpu.CompositionSwapChainResources.h"
 #include "gpu/BackBuffer.h"
 #include "IFenceHandleNative.h"

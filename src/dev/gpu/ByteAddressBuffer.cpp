@@ -1,4 +1,5 @@
 #include "pch.h"
+#include "winrt.h"
 #include "ByteAddressBuffer.h"
 
 namespace winrt::UniqueCreator::Graphics::Gpu::implementation

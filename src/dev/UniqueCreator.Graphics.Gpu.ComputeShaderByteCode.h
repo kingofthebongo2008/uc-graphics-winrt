@@ -1,4 +1,5 @@
 ﻿#pragma once
+#include "winrt.h"
 
 #include "UniqueCreator.Graphics.Gpu.ComputeShaderByteCode.g.h"
 

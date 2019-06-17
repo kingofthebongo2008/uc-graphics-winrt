@@ -1,4 +1,6 @@
 ﻿#include "pch.h"
+#include "winrt.h"
+#include "winrt.h"
 #include "UniqueCreator.Graphics.Gpu.GeometryShaderByteCode.h"
 
 namespace winrt::UniqueCreator::Graphics::Gpu::implementation

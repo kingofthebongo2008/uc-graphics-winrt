@@ -1,4 +1,5 @@
 #include "pch.h"
+#include "winrt.h"
 #include "UniqueCreator.Graphics.Gpu.DerivativesSkinnedModelInstance.h"
 
 #include "IGraphicsComputeCommandContextNative.h"

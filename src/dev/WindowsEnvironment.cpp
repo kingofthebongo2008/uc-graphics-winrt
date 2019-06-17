@@ -1,5 +1,5 @@
 #include "pch.h"
-
+#include "winrt.h"
 #include <dxgi1_6.h>
 
 #include "WindowsEnvironment.h"

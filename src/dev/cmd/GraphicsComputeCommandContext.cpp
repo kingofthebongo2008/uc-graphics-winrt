@@ -1,4 +1,6 @@
 ﻿#include "pch.h"
+#include "winrt.h"
+
 #include "GraphicsComputeCommandContext.h"
 #include "UniqueCreator.Graphics.Gpu.FenceHandle.h"
 #include "UniqueCreator.Graphics.Gpu.SubresourceData.h"

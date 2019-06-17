@@ -1,7 +1,8 @@
 ﻿#include "pch.h"
+#include "winrt.h"
 
 #include "UniqueCreator.Graphics.Gpu.GraphicsPipelineStateDescription.h"
-#include <Windows.Foundation.Collections.h>
+
 
 namespace winrt::UniqueCreator::Graphics::Gpu::implementation
 {

@@ -1,4 +1,5 @@
 ﻿#include "pch.h"
+#include "winrt.h"
 #include "DepthBuffer.h"
 
 namespace winrt::UniqueCreator::Graphics::Gpu::implementation

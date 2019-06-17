@@ -1,4 +1,5 @@
 ﻿#include "pch.h"
+#include "winrt.h"
 #include "UniqueCreator.Graphics.Gpu.ComputePipelineState.h"
 
 #include "IShaderByteCodeNative.h"

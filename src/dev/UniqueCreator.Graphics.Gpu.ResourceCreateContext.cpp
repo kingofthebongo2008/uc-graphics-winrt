@@ -1,4 +1,5 @@
 ﻿#include "pch.h"
+#include "winrt.h"
 #include "UniqueCreator.Graphics.Gpu.ResourceCreateContext.h"
 #include "gpu/ColorBuffer.h"
 #include "gpu/DepthBuffer.h"

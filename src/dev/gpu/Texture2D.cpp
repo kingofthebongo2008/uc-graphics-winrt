@@ -1,4 +1,5 @@
 #include "pch.h"
+#include "winrt.h"
 #include "Texture2D.h"
 
 namespace winrt::UniqueCreator::Graphics::Gpu::implementation
