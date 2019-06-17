@@ -396,5 +396,6 @@
     <None Include="$(MSBuildThisFileDirectory)..\bin\win-x64\*.dll" />
     <None Include="module.def" />
     <None Include="packages.config" />
+    <None Include="$(MSBuildThisFileDirectory)..\bin\win-x64\*.dll" />
   </ItemGroup>
 </Project>

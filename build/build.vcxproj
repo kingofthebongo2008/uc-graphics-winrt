@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="packages\uc-graphics.1.0.35\build\native\uc-graphics.props" Condition="Exists('packages\uc-graphics.1.0.35\build\native\uc-graphics.props')" />
+  <Import Project="packages\uc-graphics.1.0.36\build\native\uc-graphics.props" Condition="Exists('packages\uc-graphics.1.0.36\build\native\uc-graphics.props')" />
   <Import Project="packages\Microsoft.Windows.CppWinRT.2.0.190417.3\build\native\Microsoft.Windows.CppWinRT.props" Condition="Exists('packages\Microsoft.Windows.CppWinRT.2.0.190417.3\build\native\Microsoft.Windows.CppWinRT.props')" />
   <Import Project="packages\uc-tools-msbuild-tasks.1.0.39\build\uc-tools-msbuild-tasks.props" Condition="Exists('packages\uc-tools-msbuild-tasks.1.0.39\build\uc-tools-msbuild-tasks.props')" />
   <Import Project="packages\uc-tools-graphics-gpu-shader-compiler.1.0.14\build\uc-tools-graphics-gpu-shader-compiler.props" Condition="Exists('packages\uc-tools-graphics-gpu-shader-compiler.1.0.14\build\uc-tools-graphics-gpu-shader-compiler.props')" />
@@ -22,6 +22,7 @@
     <ApplicationTypeRevision>10.0</ApplicationTypeRevision>
     <WindowsTargetPlatformVersion Condition=" '$(WindowsTargetPlatformVersion)' == '' ">10.0.17763.0</WindowsTargetPlatformVersion>
     <WindowsTargetPlatformMinVersion>10.0.17763.0</WindowsTargetPlatformMinVersion>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <ItemGroup Label="ProjectConfigurations">
@@ -54,7 +55,7 @@
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <PrecompiledHeaderOutputFile>$(IntDir)pch.pch</PrecompiledHeaderOutputFile>
       <WarningLevel>Level4</WarningLevel>
-      <AdditionalOptions>%(AdditionalOptions) /bigobj</AdditionalOptions>
+      <AdditionalOptions>%(AdditionalOptions) /bigobj /Zm150</AdditionalOptions>
       <AdditionalIncludeDirectories>..\src\pch;$(GeneratedFilesDir);..\src\dev\;..\src;..\src\shaders\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>28204</DisableSpecificWarnings>
       <PreprocessorDefinitions>_WINRT_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -121,8 +122,8 @@
     <Error Condition="!Exists('packages\uc-tools-msbuild-tasks.1.0.39\build\uc-tools-msbuild-tasks.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\uc-tools-msbuild-tasks.1.0.39\build\uc-tools-msbuild-tasks.targets'))" />
     <Error Condition="!Exists('packages\Microsoft.Windows.CppWinRT.2.0.190417.3\build\native\Microsoft.Windows.CppWinRT.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.Windows.CppWinRT.2.0.190417.3\build\native\Microsoft.Windows.CppWinRT.props'))" />
     <Error Condition="!Exists('packages\Microsoft.Windows.CppWinRT.2.0.190417.3\build\native\Microsoft.Windows.CppWinRT.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.Windows.CppWinRT.2.0.190417.3\build\native\Microsoft.Windows.CppWinRT.targets'))" />
-    <Error Condition="!Exists('packages\uc-graphics.1.0.35\build\native\uc-graphics.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\uc-graphics.1.0.35\build\native\uc-graphics.props'))" />
-    <Error Condition="!Exists('packages\uc-graphics.1.0.35\build\native\uc-graphics.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\uc-graphics.1.0.35\build\native\uc-graphics.targets'))" />
+    <Error Condition="!Exists('packages\uc-graphics.1.0.36\build\native\uc-graphics.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\uc-graphics.1.0.36\build\native\uc-graphics.props'))" />
+    <Error Condition="!Exists('packages\uc-graphics.1.0.36\build\native\uc-graphics.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\uc-graphics.1.0.36\build\native\uc-graphics.targets'))" />
   </Target>
   <Import Project="packages\lzham-uwp-win64.1.0.0\build\lzham-uwp-win64.targets" Condition="Exists('packages\lzham-uwp-win64.1.0.0\build\lzham-uwp-win64.targets')" />
   <Import Project="packages\microsoft-gsl-library.1.0.7\build\native\microsoft-gsl-library.targets" Condition="Exists('packages\microsoft-gsl-library.1.0.7\build\native\microsoft-gsl-library.targets')" />
@@ -134,5 +135,5 @@
   <Import Project="packages\uc-tools-graphics-gpu-shader-compiler.1.0.14\build\uc-tools-graphics-gpu-shader-compiler.targets" Condition="Exists('packages\uc-tools-graphics-gpu-shader-compiler.1.0.14\build\uc-tools-graphics-gpu-shader-compiler.targets')" />
   <Import Project="packages\uc-tools-msbuild-tasks.1.0.39\build\uc-tools-msbuild-tasks.targets" Condition="Exists('packages\uc-tools-msbuild-tasks.1.0.39\build\uc-tools-msbuild-tasks.targets')" />
   <Import Project="packages\Microsoft.Windows.CppWinRT.2.0.190417.3\build\native\Microsoft.Windows.CppWinRT.targets" Condition="Exists('packages\Microsoft.Windows.CppWinRT.2.0.190417.3\build\native\Microsoft.Windows.CppWinRT.targets')" />
-  <Import Project="packages\uc-graphics.1.0.35\build\native\uc-graphics.targets" Condition="Exists('packages\uc-graphics.1.0.35\build\native\uc-graphics.targets')" />
+  <Import Project="packages\uc-graphics.1.0.36\build\native\uc-graphics.targets" Condition="Exists('packages\uc-graphics.1.0.36\build\native\uc-graphics.targets')" />
 </Project>
